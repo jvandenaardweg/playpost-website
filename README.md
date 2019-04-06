@@ -248,7 +248,7 @@ npm install popper.js --save
 npm install jquery --save
 ````
 
-Replace the project `index.scss` with 
+Replace the project `index.scss` with
 
 ````scss
 @import "~bootstrap/scss/bootstrap";
