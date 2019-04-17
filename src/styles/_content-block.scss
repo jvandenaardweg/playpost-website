@@ -1,4 +1,9 @@
 .content-block {
   max-width: 650px;
   width: 100%;
+  padding: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    padding: 1.5rem;
+  }
 }

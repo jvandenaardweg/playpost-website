@@ -1,3 +1,7 @@
 .feature {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 3rem;
+  }
 }

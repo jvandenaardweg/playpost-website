@@ -1,0 +1,29 @@
+.footer {
+  text-align: center;
+  padding-bottom: 24px;
+  padding-top: 2rem;
+  background-color: #0077FF;
+
+  @include media-breakpoint-up(lg) {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    width: 50%;
+    right: 0;
+  }
+
+  a {
+    color: #fff;
+    opacity: 0.5;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 85%;
+  }
+
+  .downloads {
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}
