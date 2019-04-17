@@ -1,7 +1,21 @@
 .demo {
   background-color: #0077FF;
+  padding-top: 5rem;
+
+  @include media-breakpoint-up(lg) {
+    height: 100%;
+    padding-top: 0;
+  }
 
   img {
-    max-width: 350px;
+    max-width: 220px;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 350px;
+    }
+  }
+
+  .demo-container {
+    height: 100%;
   }
 }
