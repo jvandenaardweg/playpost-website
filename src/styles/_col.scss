@@ -6,3 +6,9 @@
     top: 0;
   }
 }
+
+.col-features {
+  @include media-breakpoint-up(lg) {
+    height: 100%;
+  }
+}

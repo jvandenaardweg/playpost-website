@@ -22,6 +22,8 @@
   }
 
   .downloads {
+    text-align: center;
+
     @include media-breakpoint-up(lg) {
       display: none;
     }
