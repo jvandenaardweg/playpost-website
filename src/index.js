@@ -2,8 +2,11 @@
 require('normalize.css/normalize.css');
 require('./styles/index.scss');
 
+const { Howl } = require('howler');
+
 document.addEventListener("DOMContentLoaded", () => {
   const btnLearnMore = document.getElementById('btn-learn-more');
+  const btnPlayExample = document.getElementById('btn-play-example');
 
   btnLearnMore.addEventListener('click', () => {
     scrollIt(
@@ -13,6 +16,37 @@ document.addEventListener("DOMContentLoaded", () => {
       () => console.log(`Just finished scrolling to ${window.pageYOffset}px`)
     );
   });
+
+  const exampleSound = new Howl({
+    src: ['assets/audio/example.wav'],
+    autoplay: false,
+    loop: false,
+    volume: 0.5,
+    onplay: function() {
+      btnPlayExample.classList.add('is-playing');
+      btnPlayExample.classList.remove('is-paused');
+    },
+    onpause: function() {
+      btnPlayExample.classList.remove('is-playing');
+      btnPlayExample.classList.add('is-paused');
+    },
+    onstop: function() {
+      btnPlayExample.classList.remove('is-playing');
+      btnPlayExample.classList.remove('is-paused');
+    },
+    onend: function() {
+      btnPlayExample.classList.remove('is-playing');
+      btnPlayExample.classList.remove('is-paused');
+    }
+  });
+
+  btnPlayExample.addEventListener('click', () => {
+    if (btnPlayExample.classList.contains('is-playing')) {
+      exampleSound.pause();
+    } else {
+      exampleSound.play();
+    }
+  })
 });
 
 

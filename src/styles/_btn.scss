@@ -1,3 +1,39 @@
+.btn {
+  span {
+    margin-left: 10px;
+  }
+}
+
+.btn-preview {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .icon-playing {
+    display: none;
+  }
+
+  &.is-playing {
+    .icon-playing {
+      display: inline-block;
+    }
+    .icon-stopped {
+      display: none;
+    }
+  }
+
+  &.is-paused,
+  &.is-stopped {
+    .icon-playing {
+      display: none;
+    }
+    .icon-stopped {
+      display: inline-block;
+    }
+  }
+
+}
 .btn-lg {
   font-size: 1.1rem;
   padding: 0.6rem 1.4rem;
