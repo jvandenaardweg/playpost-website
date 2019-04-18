@@ -3,17 +3,36 @@ require('normalize.css/normalize.css');
 require('./styles/index.scss');
 
 const { Howl } = require('howler');
+const throttle = require('lodash/throttle');
 
 document.addEventListener("DOMContentLoaded", () => {
   const btnLearnMore = document.getElementById('btn-learn-more');
   const btnPlayExample = document.getElementById('btn-play-example');
+  const btnLearnMoreChevron = document.getElementById('btn-learn-more-chevron');
+
+  window.addEventListener('scroll', throttle(() => {
+    if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
+      return btnLearnMoreChevron.classList.add('is-hidden');
+    }
+
+    if (window.pageYOffset < 200 && btnLearnMoreChevron.classList.contains('is-hidden')) {
+      return btnLearnMoreChevron.classList.remove('is-hidden');
+    }
+  }, 100));
 
   btnLearnMore.addEventListener('click', () => {
     scrollIt(
       document.getElementById('features'),
       750,
-      'easeInOutCubic',
-      () => console.log(`Just finished scrolling to ${window.pageYOffset}px`)
+      'easeInOutCubic'
+    );
+  });
+
+  btnLearnMoreChevron.addEventListener('click', () => {
+    scrollIt(
+      document.getElementById('features'),
+      750,
+      'easeInOutCubic'
     );
   });
 
@@ -48,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 });
-
 
 function scrollIt(destination, duration = 200, easing = 'linear', callback) {
 

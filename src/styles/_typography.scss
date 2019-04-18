@@ -30,6 +30,7 @@ p {
 .lead {
     color: #818896;
     font-size: 1.15rem;
+    font-weight: 400;
 
     @include media-breakpoint-up(lg) {
       font-size: 1.25rem;

@@ -49,3 +49,40 @@
     border-color: #0077FF;
   }
 }
+
+.btn-down {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: 250ms all;
+  opacity: 1;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    bottom: 6rem;
+    width: 50%;
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+
+    @include media-breakpoint-up(lg) {
+      width: 60px;
+      height: 60px;
+
+    }
+  }
+}
