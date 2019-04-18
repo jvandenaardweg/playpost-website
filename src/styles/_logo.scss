@@ -1,9 +1,17 @@
 .logo {
-  width: 65px;
+  // width: 65px;
   margin-bottom: 1rem;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+
+  @include media-breakpoint-up(lg) {
+
+  }
 
   svg {
-    display: block;
+    display: inline-block;
     width: 100%;
+    width: 65px;
   }
 }

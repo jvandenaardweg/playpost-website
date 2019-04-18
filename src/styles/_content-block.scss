@@ -6,6 +6,34 @@
   @include media-breakpoint-up(lg) {
     padding: 1.5rem;
   }
+
+  &.content-block--intro {
+    text-align: center;
+    padding-top: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      text-align: left;
+      padding-top: 0;
+    }
+
+    .downloads {
+      margin-top: 4rem;
+    }
+  }
+
+  &.content-block--features {
+    .display-2 {
+      padding-top: 1.2rem;
+
+      // @include media-breakpoint-up(lg) {
+      //   padding-top: 0;
+      // }
+    }
+
+    .downloads {
+      padding: 1rem;
+    }
+  }
 }
 
 .content-block__footer {

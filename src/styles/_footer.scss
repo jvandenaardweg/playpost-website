@@ -23,6 +23,7 @@
 
   .downloads {
     text-align: center;
+    margin-bottom: 5rem;
 
     @include media-breakpoint-up(lg) {
       display: none;

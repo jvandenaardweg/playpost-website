@@ -2,4 +2,12 @@
   @include media-breakpoint-up(lg) {
     height: 100%;
   }
+
+  .downloads {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
 }

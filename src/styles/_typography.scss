@@ -1,8 +1,12 @@
 .display-1 {
+  font-size: 2rem; // 42px
+  font-weight: 600;
+  color: #15243D;
+  margin-bottom: 1.7rem;
+
+  @include media-breakpoint-up(lg) {
     font-size: 2.6rem; // 42px
-    font-weight: 600;
-    color: #15243D;
-    margin-bottom: 1.7rem;
+  }
 }
 .display-2 {
   font-size: 2.2rem;
@@ -24,10 +28,15 @@ p {
 
 .lead {
     color: #818896;
+    font-size: 1.15rem;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1.25rem;
+    }
 }
 
 h2, .h2 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #15243D;
   font-weight: 600;
 }
