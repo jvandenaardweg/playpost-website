@@ -51,15 +51,19 @@
 }
 
 .btn-down {
-  position: fixed;
-  bottom: 15%;
-  left: 0;
   justify-content: center;
   display: flex;
   align-items: center;
   width: 100%;
   transition: 250ms all;
   opacity: 1;
+  margin-top: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    position: fixed;
+  bottom: 18%;
+  left: 0;
+  }
 
   &:focus {
     outline: none;
