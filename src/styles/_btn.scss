@@ -5,9 +5,23 @@
 }
 
 .btn-preview {
+  // padding: 0;
+  margin-left: 10px;
+  background: #ecf3fb;
+
   &:focus {
     outline: none;
     box-shadow: none;
+  }
+
+  .btn-preview__label {
+    position: relative;
+    top: 1px;
+  }
+
+  svg {
+    width: 28px;
+    height: 28px;
   }
 
   .icon-playing {
@@ -39,6 +53,7 @@
   padding: 0.6rem 1.4rem;
   font-weight: 500;
   border-width: 2px;
+  height: 52px;
 }
 
 .btn-outline-primary {

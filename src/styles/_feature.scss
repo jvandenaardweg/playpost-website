@@ -4,4 +4,9 @@
   @include media-breakpoint-up(lg) {
     margin-bottom: 3rem;
   }
+
+  .badge {
+    position: relative;
+    top: -2px;
+  }
 }

@@ -1,6 +1,6 @@
 .footer {
   text-align: center;
-  padding-bottom: 10rem;
+  padding-bottom: 2rem;
   padding-top: 2rem;
   background-color: #0077FF;
 
@@ -13,16 +13,20 @@
     right: 0;
   }
 
-  .footer__links a {
-    color: #fff;
-    opacity: 0.5;
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 85%;
+  .footer__links {
+
+    .footer__links-item {
+      color: #fff;
+      opacity: 0.5;
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 85%;
+
+    }
   }
 
-  .downloads {
+  .footer__downloads {
     text-align: center;
     margin-bottom: 5rem;
 
