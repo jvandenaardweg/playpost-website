@@ -1,8 +1,9 @@
 .footer {
   text-align: center;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-color: #0077FF;
+  // padding-bottom: 2rem;
+  // padding-top: 2rem;
+  padding: 2rem;
+  // background-color: #0077FF;
 
   @include media-breakpoint-up(lg) {
     padding-bottom: 24px;
@@ -14,19 +15,23 @@
   }
 
   .display-3 {
-    color: #ffffff;
+    // color: #ffffff;
     margin-bottom: 2rem;
   }
 
   .footer__links {
 
     .footer__links-item {
-      color: #fff;
+      color: #000;
       opacity: 0.5;
       display: inline-block;
       margin-left: 10px;
       margin-right: 10px;
       font-size: 85%;
+
+      @include media-breakpoint-up(lg) {
+        color: #fff;
+      }
 
     }
   }
