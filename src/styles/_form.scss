@@ -15,6 +15,11 @@
   .form-control {
     height: 52px;
     border-color: #d6dce2;
+    font-size: 1.15rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.25rem;
+    }
 
     &::placeholder {
       color: #d6dce2;

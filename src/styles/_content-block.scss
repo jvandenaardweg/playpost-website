@@ -9,9 +9,11 @@
 
   &.content-block--intro {
     text-align: center;
+    margin-top: 2rem;
 
     @include media-breakpoint-up(lg) {
-      text-align: left
+      text-align: left;
+      margin-top: 0;
     }
 
     .downloads {
