@@ -11,6 +11,7 @@
   svg {
     display: inline-block;
     width: 140px;
+    height: 100%;
 
     @include media-breakpoint-up(lg) {
       width: 190px;
