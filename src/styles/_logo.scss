@@ -1,11 +1,11 @@
 .logo {
   margin-bottom: 2rem;
   display: flex;
-  align-items: center;
   justify-content: center;
 
   @include media-breakpoint-up(lg) {
     margin-bottom: 3rem;
+    justify-content: flex-start;
   }
 
   svg {
