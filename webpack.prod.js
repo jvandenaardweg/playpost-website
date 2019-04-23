@@ -108,7 +108,7 @@ module.exports = {
       // favicon background color (see https://github.com/haydenbleasel/favicons#usage)
       background: '#fff',
       // favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-      title: 'postplay-website}}',
+      title: 'playpost-website}}',
 
       // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
       icons: {
