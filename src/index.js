@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnLearnMore = document.getElementById('btn-learn-more');
   const btnPlayExample = document.getElementById('btn-play-example');
   const btnLearnMoreChevron = document.getElementById('btn-learn-more-chevron');
+  const btnBack = document.querySelectorAll('.btn-back');
 
   window.addEventListener('scroll', throttle(() => {
     if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
@@ -20,52 +21,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 100));
 
-  btnLearnMore.addEventListener('click', () => {
-    scrollIt(
-      document.getElementById('features'),
-      750,
-      'easeInOutCubic'
-    );
-  });
+  if (btnLearnMore) {
+    btnLearnMore.addEventListener('click', () => {
+      scrollIt(
+        document.getElementById('features'),
+        750,
+        'easeInOutCubic'
+      );
+    });
+  }
 
-  btnLearnMoreChevron.addEventListener('click', () => {
-    scrollIt(
-      document.getElementById('features'),
-      750,
-      'easeInOutCubic'
-    );
-  });
+  if (btnLearnMoreChevron) {
+    btnLearnMoreChevron.addEventListener('click', () => {
+      scrollIt(
+        document.getElementById('features'),
+        750,
+        'easeInOutCubic'
+      );
+    });
+  }
 
-  const exampleSound = new Howl({
-    src: ['assets/audio/example.wav'],
-    autoplay: false,
-    loop: false,
-    volume: 0.5,
-    onplay: function() {
-      btnPlayExample.classList.add('is-playing');
-      btnPlayExample.classList.remove('is-paused');
-    },
-    onpause: function() {
-      btnPlayExample.classList.remove('is-playing');
-      btnPlayExample.classList.add('is-paused');
-    },
-    onstop: function() {
-      btnPlayExample.classList.remove('is-playing');
-      btnPlayExample.classList.remove('is-paused');
-    },
-    onend: function() {
-      btnPlayExample.classList.remove('is-playing');
-      btnPlayExample.classList.remove('is-paused');
-    }
-  });
+  if (btnPlayExample) {
+    const exampleSound = new Howl({
+      src: ['assets/audio/example.wav'],
+      autoplay: false,
+      loop: false,
+      volume: 0.5,
+      onplay: function() {
+        btnPlayExample.classList.add('is-playing');
+        btnPlayExample.classList.remove('is-paused');
+      },
+      onpause: function() {
+        btnPlayExample.classList.remove('is-playing');
+        btnPlayExample.classList.add('is-paused');
+      },
+      onstop: function() {
+        btnPlayExample.classList.remove('is-playing');
+        btnPlayExample.classList.remove('is-paused');
+      },
+      onend: function() {
+        btnPlayExample.classList.remove('is-playing');
+        btnPlayExample.classList.remove('is-paused');
+      }
+    });
 
-  btnPlayExample.addEventListener('click', () => {
-    if (btnPlayExample.classList.contains('is-playing')) {
-      exampleSound.pause();
-    } else {
-      exampleSound.play();
-    }
-  })
+    btnPlayExample.addEventListener('click', () => {
+      if (btnPlayExample.classList.contains('is-playing')) {
+        exampleSound.pause();
+      } else {
+        exampleSound.play();
+      }
+    })
+  }
+
+
+
+  // Adjust the back button if we have a ref
+  // We use the ref in the app to allow the user to be redirected back into the app
+  for (let i = 0; i < btnBack.length; i++) {
+    btnBack[i].addEventListener('click', (event) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get('ref');
+      if (ref.includes('playpost://')) {
+        event.preventDefault();
+        window.open(ref, '_self');
+      }
+    })
+  }
 });
 
 function scrollIt(destination, duration = 200, easing = 'linear', callback) {
