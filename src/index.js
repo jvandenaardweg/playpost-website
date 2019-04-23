@@ -74,8 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-
-
   // Adjust the back button if we have a ref
   // We use the ref in the app to allow the user to be redirected back into the app
   for (let i = 0; i < btnBack.length; i++) {
