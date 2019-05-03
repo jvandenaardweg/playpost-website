@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnPlayExample = document.getElementById('btn-play-example');
   const btnLearnMoreChevron = document.getElementById('btn-learn-more-chevron');
   const btnBack = document.querySelectorAll('.btn-back');
+  const btnOpenChat = document.getElementById('btn-open-chat');
 
   window.addEventListener('scroll', throttle(() => {
     if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
@@ -86,6 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   }
+
+  window.CRISP_READY_TRIGGER = function() {
+    $crisp.push(['do', 'chat:open']);
+  };
+
+  if (btnOpenChat) {
+    btnOpenChat.addEventListener('click', (event) => {
+      event.preventDefault();
+      $crisp.push(['do', 'chat:open']);
+    });
+  }
+
 });
 
 function scrollIt(destination, duration = 200, easing = 'linear', callback) {

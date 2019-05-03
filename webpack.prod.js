@@ -94,6 +94,12 @@ module.exports = {
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
+    new HtmlWebpackPlugin({
+      filename: 'support.html',
+      template: './support.html',
+      // Inject the js bundle at the end of the body of the given template
+      inject: 'body',
+    }),
     new CleanWebpackPlugin(buildPath),
     new FaviconsWebpackPlugin({
       // Your source logo

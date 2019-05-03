@@ -84,6 +84,11 @@ module.exports = {
       template: './terms-of-use.html',
       inject: true
     }),
+    new HtmlWebpackPlugin({
+      filename: 'support.html',
+      template: './support.html',
+      inject: true
+    }),
     new CopyPlugin([
       { from: './src/assets/audio/example.wav', to: './assets/audio/example.wav' }
     ]),
