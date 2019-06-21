@@ -1,4 +1,10 @@
 {
   "root": "dist/",
-  "clean_urls": true
+  "clean_urls": true,
+  "redirects": {
+    "/apple-app-site-association": {
+      "url": "/apple-app-site-association.json",
+      "status": 302
+    }
+  }
 }

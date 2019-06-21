@@ -148,5 +148,8 @@ module.exports = {
     new CopyPlugin([
       { from: './src/assets/audio/example.wav', to: './assets/audio/example.wav' }
     ]),
+    new CopyPlugin([
+      { from: './src/apple-app-site-association.json', to: './apple-app-site-association.json' }
+    ])
   ]
 };
