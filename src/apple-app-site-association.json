@@ -4,5 +4,14 @@
       "8GH8GLAMTU.com.aardwegmedia.playpost",
       "8GH8GLAMTU.com.aardwegmedia.playpost.shareextension"
     ]
-   }
- }
+  },
+  "appLinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8GH8GLAMTU.com.aardwegmedia.playpost",
+        "paths": ["*"]
+      }
+    ]
+  }
+}
