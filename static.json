@@ -6,5 +6,8 @@
       "url": "/apple-app-site-association.json",
       "status": 302
     }
+  },
+  "routes": {
+    "/login/reset-password/*": "/reset-password.html"
   }
 }

@@ -100,6 +100,12 @@ module.exports = {
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
+    new HtmlWebpackPlugin({
+      filename: 'reset-password.html',
+      template: './reset-password.html',
+      // Inject the js bundle at the end of the body of the given template
+      inject: 'body',
+    }),
     new CleanWebpackPlugin(buildPath),
     new FaviconsWebpackPlugin({
       // Your source logo

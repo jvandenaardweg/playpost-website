@@ -89,6 +89,11 @@ module.exports = {
       template: './support.html',
       inject: true
     }),
+    new HtmlWebpackPlugin({
+      filename: 'reset-password.html',
+      template: './reset-password.html',
+      inject: true
+    }),
     new CopyPlugin([
       { from: './src/assets/audio/example.wav', to: './assets/audio/example.wav' }
     ]),

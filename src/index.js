@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnLearnMoreChevron = document.getElementById('btn-learn-more-chevron');
   const btnBack = document.querySelectorAll('.btn-back');
   const btnOpenChat = document.getElementById('btn-open-chat');
+  const resetPasswordTokenElement = document.getElementById('reset-password-token');
 
   window.addEventListener('scroll', throttle(() => {
     if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
@@ -21,6 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return btnLearnMoreChevron.classList.remove('is-hidden');
     }
   }, 100));
+
+  if (resetPasswordTokenElement) {
+    const windowLocationPathNames = window.location.pathname.split('/');
+    const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
+    resetPasswordTokenElement.textContent = resetPasswordToken;
+  }
 
   if (btnLearnMore) {
     btnLearnMore.addEventListener('click', () => {
