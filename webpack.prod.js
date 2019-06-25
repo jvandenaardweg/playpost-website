@@ -14,7 +14,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: '[name].[hash:20].js',
-    path: buildPath
+    path: buildPath,
+    publicPath: './'
   },
   node: {
     fs: 'empty'
