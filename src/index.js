@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (resetPasswordTokenElement) {
     const windowLocationPathNames = window.location.pathname.split('/');
 
-    if (indowLocationPathNames.length) {
+    if (windowLocationPathNames.length) {
       const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
       resetPasswordTokenElement.textContent = resetPasswordToken;
     }
