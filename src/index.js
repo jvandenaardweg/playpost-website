@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnBack = document.querySelectorAll('.btn-back');
   const btnOpenChat = document.getElementById('btn-open-chat');
   const resetPasswordTokenElement = document.getElementById('reset-password-token');
+  const resetPasswordTokenButtonElement = document.getElementById('reset-password-token-button');
 
   window.addEventListener('scroll', throttle(() => {
     if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
@@ -29,7 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (windowLocationPathNames.length) {
       const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
       resetPasswordTokenElement.textContent = resetPasswordToken;
+
+      if (resetPasswordTokenButtonElement) {
+        resetPasswordTokenButtonElement.href = `playpost://login/reset-password/${resetPasswordToken}`;
+      }
     }
+
   }
 
   if (btnLearnMore) {
