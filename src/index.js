@@ -18,29 +18,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetPasswordTokenElement = document.getElementById('reset-password-token');
   const resetPasswordTokenButtonElement = document.getElementById('reset-password-token-button');
 
-  window.addEventListener('scroll', throttle(() => {
-    if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
-      return btnLearnMoreChevron.classList.add('is-hidden');
-    }
+  // window.addEventListener('scroll', throttle(() => {
+  //   if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
+  //     return btnLearnMoreChevron.classList.add('is-hidden');
+  //   }
 
-    if (window.pageYOffset < 200 && btnLearnMoreChevron.classList.contains('is-hidden')) {
-      return btnLearnMoreChevron.classList.remove('is-hidden');
-    }
-  }, 100));
+  //   if (window.pageYOffset < 200 && btnLearnMoreChevron.classList.contains('is-hidden')) {
+  //     return btnLearnMoreChevron.classList.remove('is-hidden');
+  //   }
+  // }, 100));
 
-  if (resetPasswordTokenElement) {
-    const windowLocationPathNames = window.location.pathname.split('/');
+  // if (resetPasswordTokenElement) {
+  //   const windowLocationPathNames = window.location.pathname.split('/');
 
-    if (windowLocationPathNames.length) {
-      const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
-      resetPasswordTokenElement.textContent = resetPasswordToken;
+  //   if (windowLocationPathNames.length) {
+  //     const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
+  //     resetPasswordTokenElement.textContent = resetPasswordToken;
 
-      if (resetPasswordTokenButtonElement) {
-        resetPasswordTokenButtonElement.href = `playpost://login/reset-password/${resetPasswordToken}`;
-      }
-    }
+  //     if (resetPasswordTokenButtonElement) {
+  //       resetPasswordTokenButtonElement.href = `playpost://login/reset-password/${resetPasswordToken}`;
+  //     }
+  //   }
 
-  }
+  // }
 
   if (btnLearnMore) {
     btnLearnMore.addEventListener('click', () => {
