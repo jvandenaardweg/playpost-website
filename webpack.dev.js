@@ -51,6 +51,10 @@ module.exports = {
           }
           // Please note we are not running postcss here
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
       ,
       {
@@ -71,27 +75,28 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      filename: 'index.html',
+      template: './src/index.html',
       inject: true
     }),
     new HtmlWebpackPlugin({
       filename: 'privacy-policy.html',
-      template: './privacy-policy.html',
+      template: './src/privacy-policy.html',
       inject: true
     }),
     new HtmlWebpackPlugin({
       filename: 'terms-of-use.html',
-      template: './terms-of-use.html',
+      template: './src/terms-of-use.html',
       inject: true
     }),
     new HtmlWebpackPlugin({
       filename: 'support.html',
-      template: './support.html',
+      template: './src/support.html',
       inject: true
     }),
     new HtmlWebpackPlugin({
       filename: 'reset-password.html',
-      template: './reset-password.html',
+      template: './src/reset-password.html',
       inject: true
     }),
     new CopyPlugin([

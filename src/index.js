@@ -1,6 +1,10 @@
 
 require('normalize.css/normalize.css');
-require('./styles/index.scss');
+require('./scss/platforma-light.scss');
+require('./scss/index.scss');
+
+require('jquery');
+require('./js/bootstrap.bundle.min');
 
 const { Howl } = require('howler');
 const throttle = require('lodash/throttle');

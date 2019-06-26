@@ -63,6 +63,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },
+      {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -79,31 +83,32 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      filename: 'index.html',
+      template: './src/index.html',
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
       filename: 'privacy-policy.html',
-      template: './privacy-policy.html',
+      template: './src/privacy-policy.html',
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
       filename: 'terms-of-use.html',
-      template: './terms-of-use.html',
+      template: './src/terms-of-use.html',
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
       filename: 'support.html',
-      template: './support.html',
+      template: './src/support.html',
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
       filename: 'reset-password.html',
-      template: './reset-password.html',
+      template: './src/reset-password.html',
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
