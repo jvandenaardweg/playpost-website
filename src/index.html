@@ -19,7 +19,7 @@
   <meta name="msapplication-navbutton-color" content="#0077FF">
   <meta name="msapplication-TileColor" content="#0077FF">
 
-  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+  <!-- <link href="https://rsms.me/inter/inter.css" rel="stylesheet"> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
 </head>
@@ -28,54 +28,60 @@
   <div class="container-fluid p-0">
 
     <!-- nav -->
-    <div class="container">
-      <div class="navbar navbar-expand-lg"><a class="navbar-toggler mr-1" href="" data-id="headers-1-sidebar-toggle"><img src="./assets/glyphs/burger.svg" /></a>
-        <div class="mr-4"><img src="./assets/logos/acme.svg" width="62" /></div>
-        <div class="collapse navbar-collapse weight-500">
-          <div class="navbar-nav">
-            <div class="nav-item"><a class="nav-link text-dark" href="">Home</a></div>
-            <div class="nav-item"><a class="nav-link text-dark" href="">Features</a></div>
-            <div class="nav-item"><a class="nav-link text-dark" href="">Support</a></div>
-            <div class="nav-item"><a class="nav-link text-dark" href="">Privacy</a></div>
-            <div class="nav-item"><a class="nav-link text-dark" href="">Contact</a></div>
+    <div class="bg-tint">
+      <div class="container">
+        <div class="navbar navbar-expand-lg"><a class="navbar-toggler mr-1" href="" data-id="headers-1-sidebar-toggle"><img src="./assets/glyphs/burger.svg" /></a>
+          <div class="mr-4">
+            <svg width="47" height="34" viewBox="0 0 47 34" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 16H1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2zm43 0h-2a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2zm-7-8c-.552 0-1 .475-1 1.063v14.874c0 .588.448 1.063 1 1.063s1-.475 1-1.063V9.063C40 8.476 39.552 8 39 8zM17 8c-.552 0-1 .475-1 1.063v14.874c0 .588.448 1.063 1 1.063s1-.475 1-1.063V9.063C18 8.476 17.552 8 17 8zm-9 4c-.552 0-1 .503-1 1.125v6.75C7 20.497 7.448 21 8 21s1-.503 1-1.125v-6.75C9 12.503 8.552 12 8 12zm26-7c-.552 0-1 .466-1 1.042v22.916c0 .576.448 1.042 1 1.042s1-.466 1-1.042V6.042C35 5.466 34.552 5 34 5zm-8 0c-.552 0-1 .466-1 1.042v22.916c0 .576.448 1.042 1 1.042s1-.466 1-1.042V6.042C27 5.466 26.552 5 26 5zM12 5c-.552 0-1 .466-1 1.042v22.916c0 .576.448 1.042 1 1.042s1-.466 1-1.042V6.042C13 5.466 12.552 5 12 5zm18-5c-.552 0-1 .475-1 1.063v31.875c0 .587.448 1.062 1 1.062s1-.475 1-1.063V1.064C31 .475 30.552 0 30 0zm-9 0c-.552 0-1 .475-1 1.063v31.875c0 .587.448 1.062 1 1.062s1-.475 1-1.063V1.064C22 .475 21.552 0 21 0z" fill="#FFF" fill-rule="nonzero"/>
+            </svg>
           </div>
+          <div class="collapse navbar-collapse weight-500">
+            <div class="navbar-nav">
+              <div class="nav-item"><a class="nav-link text-white" href="">Home</a></div>
+              <div class="nav-item"><a class="nav-link text-white" href="">Features</a></div>
+              <div class="nav-item"><a class="nav-link text-white" href="">Support</a></div>
+              <div class="nav-item"><a class="nav-link text-white" href="">Privacy</a></div>
+              <div class="nav-item"><a class="nav-link text-white" href="">Contact</a></div>
+            </div>
+          </div>
+          <div class="ml-auto d-lg-none"><a href=""><img src="./assets/glyphs/star-primary.svg" width="24" /></a></div>
+          <div class="ml-auto d-none d-lg-block"><a class="btn btn-lg btn-white font-weight-semibold" href="">Get iPhone App</a></div>
         </div>
-        <div class="ml-auto d-lg-none"><a href=""><img src="./assets/glyphs/star-primary.svg" width="24" /></a></div>
-        <div class="ml-auto d-none d-lg-block"><a class="btn btn-primary" href="">Get iOS App</a></div>
-      </div>
-      <div class="navbar-side" id="headers-1-sidebar" data-id="headers-1-sidebar-close">
-          <div class="navbar-side-content d-flex flex-column justify-content-between">
-            <div class="weight-700"><a class="navbar-side-close mb-4" href="" data-id="headers-1-sidebar-close"><img src="./assets/glyphs/close.svg" width="32" /></a>
-              <div class="navbar-nav">
-                <div class="nav-item"><a class="nav-link text-dark" href="">First</a></div>
-                <div class="nav-item"><a class="nav-link text-dark" href="">Second</a></div>
-                <div class="nav-item"><a class="nav-link text-dark" href="">Third</a></div>
-                <div class="nav-item dropdown"><a class="nav-link text-dark dropdown-toggle" href="" id="headers-1-dropdown" data-toggle="dropdown">Fourth</a>
-                  <div class="dropdown-menu" aria-labelledby="headers-1-dropdown"><a class="dropdown-item" href="">Action 1</a><a class="dropdown-item" href="">Action 2</a><a class="dropdown-item" href="">Action 3</a></div>
+        <div class="navbar-side" id="headers-1-sidebar" data-id="headers-1-sidebar-close">
+            <div class="navbar-side-content d-flex flex-column justify-content-between">
+              <div class="weight-700"><a class="navbar-side-close mb-4" href="" data-id="headers-1-sidebar-close"><img src="./assets/glyphs/close.svg" width="32" /></a>
+                <div class="navbar-nav">
+                  <div class="nav-item"><a class="nav-link text-dark" href="">First</a></div>
+                  <div class="nav-item"><a class="nav-link text-dark" href="">Second</a></div>
+                  <div class="nav-item"><a class="nav-link text-dark" href="">Third</a></div>
+                  <div class="nav-item dropdown"><a class="nav-link text-dark dropdown-toggle" href="" id="headers-1-dropdown" data-toggle="dropdown">Fourth</a>
+                    <div class="dropdown-menu" aria-labelledby="headers-1-dropdown"><a class="dropdown-item" href="">Action 1</a><a class="dropdown-item" href="">Action 2</a><a class="dropdown-item" href="">Action 3</a></div>
+                  </div>
+                  <div class="nav-item"><a class="nav-link text-dark" href="">Fifth</a></div>
+                  <div class="nav-item"><a class="nav-link text-dark" href="">Sixth</a></div>
                 </div>
-                <div class="nav-item"><a class="nav-link text-dark" href="">Fifth</a></div>
-                <div class="nav-item"><a class="nav-link text-dark" href="">Sixth</a></div>
+              </div>
+              <div>
+                <p class="mb-3"><a class="transparent-invert-link" href=""><img src="./assets/glyphs/instagram-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/facebook-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/twitter-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/pinterest-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/thumbler-small.svg" width="16" /></a></p>
+                <p class="small mb-0"><span class="d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2">&copy; 2019 Acme. All right reserved.</span><a class="text-muted mr-2" href=""><span>Privacy Policy</span></a><a class="text-muted" href=""><span>Terms of Service</span></a></p>
               </div>
             </div>
-            <div>
-              <p class="mb-3"><a class="transparent-invert-link" href=""><img src="./assets/glyphs/instagram-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/facebook-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/twitter-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/pinterest-small.svg" width="16" /></a><a class="transparent-invert-link ml-2" href=""><img src="./assets/glyphs/thumbler-small.svg" width="16" /></a></p>
-              <p class="small mb-0"><span class="d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2">&copy; 2019 Acme. All right reserved.</span><a class="text-muted mr-2" href=""><span>Privacy Policy</span></a><a class="text-muted" href=""><span>Terms of Service</span></a></p>
-            </div>
-          </div>
-          <div class="navbar-side-content weight-700"><a class="navbar-side-close mb-4" href="" data-id="headers-2-sidebar-close"><img src="./assets/glyphs/close.svg" width="32" /></a></div>
+            <div class="navbar-side-content weight-700"><a class="navbar-side-close mb-4" href="" data-id="headers-2-sidebar-close"><img src="./assets/glyphs/close.svg" width="32" /></a></div>
+        </div>
+        <script>
+          $(function() {
+            $('[data-id=headers-1-sidebar-toggle]').click(function(e) {
+              e.preventDefault();
+              $('#headers-1-sidebar').toggleClass('show');
+            });
+            $('[data-id=headers-1-sidebar-close]').click(function(e) {
+              e.preventDefault();
+              $('#headers-1-sidebar').removeClass('show');
+            });
+          });
+        </script>
       </div>
-      <script>
-        $(function() {
-          $('[data-id=headers-1-sidebar-toggle]').click(function(e) {
-            e.preventDefault();
-            $('#headers-1-sidebar').toggleClass('show');
-          });
-          $('[data-id=headers-1-sidebar-close]').click(function(e) {
-            e.preventDefault();
-            $('#headers-1-sidebar').removeClass('show');
-          });
-        });
-      </script>
     </div>
 
     <!-- cover - full width -->
@@ -84,15 +90,15 @@
         <div class="row justify-content-between align-items-center py-5">
           <div class="col-12 col-md-6 order-2 order-md-1">
             <h1 class="display-4 text-white">Instant podcasts of every article</h1>
-            <p class="large mb-4 text-white-50">Turn every article on the web into audio using industry leading high quality voices. So you can listen to it just like Podcasts and Audiobooks.</p>
+            <p class="large mb-4 text-white-80">Turn every article on the web into audio using industry leading high quality voices. So you can listen to it just like Podcasts and Audiobooks.</p>
             <div class="row align-items-center">
-              <div class="col-12 col-md-5 mb-2 mb-md-0"><a class="btn btn-block btn-lg btn-white" href="">Get iPhone App</a></div>
+              <div class="col-12 col-md-5 mb-2 mb-md-0"><a class="btn btn-block btn-lg btn-white font-weight-semibold" href="">Get iPhone App</a></div>
               <div class="col-12 col-md-6 text-center text-md-left text-white">
                 <div class="small ml-md-6">Android App will be available later this year. &nbsp;<a class="text-white" href=""><strong>Subscribe for updates</strong></a></div>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/pictures/cover-2.png') %>" /></div>
+          <div class="col-12 col-md-5 order-1 order-md-2 pl-md-0 mb-4 mb-md-0"><img class="w-100 cover-image" src="<%= require('./assets/example-cover.png') %>" /></div>
         </div>
       </div>
     </div>
@@ -114,16 +120,21 @@
 
       <!-- voices -->
       <div class="row justify-content-between align-items-center py-5">
-        <div class="col-12 col-md-6 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/pictures/image-555x380.png') %>" /></div>
+        <div class="col-12 col-md-6 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/example-voices.png') %>" /></div>
         <div class="col-12 col-md-5">
-          <h4 class="text-black-50">Artificially Intelligent</h4>
+          <h4 class="text-black-50">Sounds natural</h4>
           <h2>50+ naturally sounding voices by Artificial Intelligence</h2>
+          <p class="mb-4">The most advanced text to speech synthesis solutions to speak text to you and sound natural and pleasant to listen to. Personalize the experience by using a variety of voices.</p>
           <div class="row">
-            <div class="col-6"><img class="mb-2" src="<%= require('./assets/glyphs/rectangle-6.svg') %>" width="32" />
-              <div class="small">Gorgeous, high-quality video sharing on desktop, mobile, tablet</div>
+            <div class="col-6">
+              <svg width="32" height="24" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1 1)" stroke="#06F" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="11" r="3"/><path d="M21.36 4.64a9 9 0 0 1 0 12.735M8.64 17.36a9 9 0 0 1 0-12.735M25.605.395c5.856 5.857 5.856 15.353 0 21.21m-21.21 0c-5.856-5.857-5.856-15.353 0-21.21"/></g></svg>
+              <h4 class="font-weight-bold">Voice customization</h4>
+              <div class="small">Male ánd female voices, with different accessents like British or American.</div>
             </div>
-            <div class="col-6"><img class="mb-2" src="<%= require('./assets/glyphs/rectangle-1.svg') %>" width="32" />
-              <div class="small">Gorgeous, high-quality video sharing on desktop, mobile, tablet</div>
+            <div class="col-6">
+              <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1 1)" stroke="#06F" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="15" r="15"/><path d="M0 15h30M15 0a22.95 22.95 0 0 1 6 15 22.95 22.95 0 0 1-6 15 22.95 22.95 0 0 1-6-15 22.95 22.95 0 0 1 6-15z"/></g></svg>
+              <h4 class="font-weight-bold">Multiple languages</h4>
+              <div class="small">Not just English, but also; German, French, Dutch and Spanish. <strong>More to come!</strong></div>
             </div>
           </div>
         </div>
@@ -132,31 +143,31 @@
       <!-- playlist -->
       <div class="row justify-content-between align-items-center py-5">
         <div class="col-12 col-md-5 order-2 order-md-1">
-          <h4 class="text-black-50">Sounds like...</h4>
+          <h4 class="text-black-50">Familiar interface</h4>
           <h2>Just like a music app playlist, but for articles</h2>
           <p>Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean Separated they live in Bookmarks right at the coast</p>
           <ul class="custom-list mb-0">
-            <li>Showcase and embed your work with</li>
-            <li>Publish across social channels in a click</li>
-            <li>Sell your videos worldwide</li>
+            <li class="font-weight-semibold">Showcase and embed your work with</li>
+            <li class="font-weight-semibold">Publish across social channels in a click</li>
+            <li class="font-weight-semibold">Sell your videos worldwide</li>
           </ul>
         </div>
-        <div class="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/pictures/head-phone-555x380.png') %>" /></div>
+        <div class="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/example-playlist.png') %>" /></div>
       </div>
 
       <!-- share -->
       <div class="row justify-content-between align-items-center py-5">
-        <div class="col-12 col-md-6 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/pictures/some-555x380.png') %>" /></div>
+        <div class="col-12 col-md-5 pl-md-0 mb-4 mb-md-0"><img class="w-100" src="<%= require('./assets/example-apps.png') %>" /></div>
         <div class="col-12 col-md-5">
           <h4 class="text-black-50">Multiple apps supported</h4>
           <h2>Easily save articles to your playlist from every app on your phone</h2>
           <p>Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean Separated they live in Bookmarks right at the coast</p>
-          <ul class="mb-0">
-            <li>Showcase and embed your work with</li>
-            <li>Publish across social channels in a click</li>
-            <li>Sell your videos worldwide</li>
-            <li>Embed your work with</li>
-          </ul>
+          <ol class="custom-list mb-0">
+            <li class="font-weight-semibold">Showcase and embed your work with</li>
+            <li class="font-weight-semibold">Publish across social channels in a click</li>
+            <li class="font-weight-semibold">Sell your videos worldwide</li>
+            <li class="font-weight-semibold">Embed your work with</li>
+          </ol>
         </div>
       </div>
 
@@ -168,7 +179,7 @@
               <div class="py-5 py-md-0">
                 <h3>Standard</h3>
                 <div class="price-medium mb-3">€0<span class="price-unit ml-1">/ mo</span></div>
-                <p class="mb-4">Basic quality voices. One voice option per language. Max. 5 minutes per article. Some advertisements.</p><button class="btn btn-primary">Get started for free</button>
+                <p class="mb-4">Basic quality voices. One voice option per language. Max. 5 minutes per article. Some advertisements.</p><button class="btn btn-primary btn-lg font-weight-semibold">Get started for free</button>
               </div>
               <div class="border-bottom d-md-none"></div>
             </div>
@@ -181,7 +192,7 @@
               <div class="py-5 py-md-0">
                 <h3>Premium</h3>
                 <div class="price-medium mb-3">€4,99<span class="price-unit ml-1">/ mo</span></div>
-                <p class="mb-4">50+ Higher Quality voices. Multiple voice options per language. Unlimited listening. No advertisements.</p><button class="btn btn-primary">Get started for free</button>
+                <p class="mb-4">50+ Higher Quality voices. Multiple voice options per language. Unlimited listening. No advertisements.</p><button class="btn btn-primary btn-lg font-weight-semibold">Get started for free</button>
               </div>
             </div>
           </div>
@@ -284,7 +295,7 @@
       <div class="container">
         <div class="row pt-4 mb-4 mb-lg-5">
           <div class="col-12 col-lg-4 mb-4 mb-lg-0"><img class="mb-3" src="<%= require('./assets/logos/acme.svg') %>" width="91" />
-            <p class="small text-muted">Stórhöfði 33<br />110 Reykjavík, Iceland<br />Tel: +354 587 9999<br /><a class="text-muted" href=""><span>info@mountainguides.is</span></a></p>
+            <p class="small text-muted">Playpost<br />Amsterdam, The Netherlands<br /><a class="text-muted" href=""><span>info@playpost.app</span></a></p>
             <div class="mt-3 d-lg-none"><a class="transparent-link mr-2" href=""><img src="<%= require('./assets/glyphs/twitter.svg') %>" width="24" /></a><a class="transparent-link mr-2" href=""><img src="<%= require('./assets/glyphs/facebook.svg') %>" width="24" /></a><a class="transparent-link mr-2" href=""><img src="<%= require('./assets/glyphs/linkedin.svg') %>" width="24" /></a></div>
             <div class="mt-3 d-none d-lg-block"><a class="transparent-link mr-2" href=""><img src="<%= require('./assets/glyphs/twitter.svg') %>" width="16" /></a><a class="transparent-link mr-2" href=""><img src="<%= require('./assets/glyphs/facebook.svg') %>" width="16" /></a><a class="transparent-link mr-2" href=""><img src="<%= require('./assets/glyphs/linkedin.svg') %>" width="16" /></a></div>
             <div class="border-top mt-3 d-lg-none"></div>
@@ -298,21 +309,13 @@
               <div class="mb-1"><a class="text-dark" href=""><span>Fourth</span></a></div>
             </div>
           </div>
-          <div class="col-6 col-lg-2">
-            <h4>Second column</h4>
-            <div class="small">
-              <div class="mb-1"><a class="text-dark" href=""><span>Fifth page</span></a></div>
-              <div class="mb-1"><a class="text-dark" href=""><span>Sixth page</span></a></div>
-              <div class="mb-0"><a class="text-dark" href=""><span>Eighth</span></a></div>
+          <div class="col-12 col-lg-4">
+            <div class="border-top pt-4 d-lg-none"></div>
+            <h4>Subscribe</h4>
+            <div class="form-group input-group input-group-lg"><input class="form-control form-control-lg" type="text" placeholder="Enter your email address" />
+              <div class="input-group-control"><a class="transparent-invert-link" href=""><img src="./assets/glyphs/plane.svg" width="24" /></a></div>
             </div>
-          </div>
-          <div class="col-6 col-lg-2">
-            <h4>Third column</h4>
-            <div class="small">
-              <div class="mb-1"><a class="text-dark" href=""><span>First page</span></a></div>
-              <div class="mb-1"><a class="text-dark" href=""><span>Second page</span></a></div>
-              <div class="mb-1"><a class="text-dark" href=""><span>Third</span></a></div>
-            </div>
+            <p class="small text-muted mb-0">Join our newsletter to stay up to date on features and releases</p>
           </div>
           <div class="col-6 col-lg-2">
             <h4>Mobile apps</h4>
@@ -322,7 +325,7 @@
         </div>
         <div class="border-top d-lg-none"></div>
         <div class="d-block d-lg-flex justify-content-between py-3 py-lg-2">
-          <div class="small mb-2 mb-lg-0"><span class="text-muted mr-5">&copy; 2019 Acme. All right reserved.</span></div>
+          <div class="small mb-2 mb-lg-0"><span class="text-muted mr-5">&copy; 2019 Playpost. All right reserved. Made with love in Amsterdam.</span></div>
           <div class="small"><a class="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0" href=""><span>Privacy Policy</span></a><a class="d-block d-lg-inline text-muted ml-lg-2" href=""><span>Terms of Service</span></a></div>
         </div>
       </div>
