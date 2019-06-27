@@ -209,19 +209,23 @@ const Footer = ({ author, title }) => (
         <div className="small mb-2 mb-lg-0">
           <span className="text-muted mr-5">
             &copy; 2019 Playpost. All right reserved. Made with love in
-            Amsterdam.
+            Amsterdam by{' '}
+            <a href="https://www.linkedin.com/in/jvandenaardweg/">
+              Jordy van den Aardweg
+            </a>
+            .
           </span>
         </div>
         <div className="small">
-          <a
+          <Link
             className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
-            href=""
+            to="/privacy"
           >
             <span>Privacy Policy</span>
-          </a>
-          <a className="d-block d-lg-inline text-muted ml-lg-2" href="">
+          </Link>
+          <Link className="d-block d-lg-inline text-muted ml-lg-2" to="/terms">
             <span>Terms of Service</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

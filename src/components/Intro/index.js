@@ -23,13 +23,8 @@ class Intro extends React.Component {
             </p>
             <div className="large">
               <span className="mx-2">
-                <a className="weight-500 action-link" href="">
-                  <span>First action</span>
-                </a>
-              </span>
-              <span className="mx-2">
-                <a className="weight-500 action-link" href="">
-                  <span>Second action</span>
+                <a className="weight-500 action-link" href="#voices">
+                  <span>Show me how</span>
                 </a>
               </span>
             </div>

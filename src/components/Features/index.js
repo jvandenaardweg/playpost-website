@@ -10,7 +10,7 @@ class Features extends React.Component {
     return (
       <div className="row justify-content-between align-items-center py-5">
         <div className="col-12 col-md-5 order-2 order-md-1">
-          <h4 className="text-black-50">Familiar interface</h4>
+          <h4 className="text-black-50">Easy to use</h4>
           <h2>Just like a music app playlist, but for articles</h2>
           <p>
             Separated they live in Bookmarks right at the coast of the famous
@@ -27,9 +27,9 @@ class Features extends React.Component {
             <li className="font-weight-semibold">
               Playback controls in full view
             </li>
-            <li className="font-weight-semibold">
+            {/* <li className="font-weight-semibold">
               Drag and drop to re-order your playlist
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0">

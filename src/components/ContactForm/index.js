@@ -8,13 +8,13 @@ class ContactForm extends React.Component {
 
     return (
       <div className="row justify-content-center text-center py-5">
-        <div className="col-12 col-md-6 col-lg-4">
+        <div className="col-12 col-md-6 col-lg-5">
           <form className="mb-3">
             <div className="form-group">
               <input
                 className="form-control form-control-lg"
                 type="text"
-                placeholder="Email"
+                placeholder="Your e-mail address"
               />
             </div>
             <div className="form-group">
@@ -30,12 +30,12 @@ class ContactForm extends React.Component {
             <div className="form-group">
               <textarea
                 className="form-control form-control-lg"
-                placeholder="Feedback"
+                placeholder="How can we help?"
                 rows="4"
               ></textarea>
             </div>
             <button className="btn btn-lg btn-primary btn-block">
-              Send your feedback
+              Send message
             </button>
           </form>
         </div>

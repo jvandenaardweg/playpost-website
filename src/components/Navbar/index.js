@@ -63,8 +63,8 @@ class Navbar extends React.PureComponent {
                       : 'nav-item'
                   }
                 >
-                  <Link className="nav-link text-white" to="/about">
-                    About
+                  <Link className="nav-link text-white" to="/#features">
+                    Features
                   </Link>
                 </div>
                 <div
@@ -74,19 +74,8 @@ class Navbar extends React.PureComponent {
                       : 'nav-item'
                   }
                 >
-                  <Link className="nav-link text-white" to="/faq">
-                    FAQ
-                  </Link>
-                </div>
-                <div
-                  className={
-                    location.pathname === '/privacy'
-                      ? 'nav-item active'
-                      : 'nav-item'
-                  }
-                >
-                  <Link className="nav-link text-white" to="/privacy">
-                    Privacy
+                  <Link className="nav-link text-white" to="/#pricing">
+                    Pricing
                   </Link>
                 </div>
                 <div

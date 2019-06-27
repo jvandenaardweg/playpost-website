@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Gatstrap',
-        short_name: 'Gatstrap',
-        description: 'Gatsby starter for bootstrap a blog',
-        homepage_url: 'https://gatstrap.netlify.com',
+        name: 'Playpost',
+        short_name: 'Playpost',
+        description: 'Instant podcasts of every article',
+        homepage_url: 'https://playpost.app/',
         start_url: '/',
         background_color: '#fff',
-        theme_color: '#673ab7',
+        theme_color: '#0077FF',
         display: 'standalone',
         icons: [
           {

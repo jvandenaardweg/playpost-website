@@ -11,12 +11,13 @@ class Terms extends React.Component {
 
     return (
       <Layout location={location}>
+        <CenterHeader
+          title="Terms and Conditions"
+          description="By downloading or using the app, these terms will automatically apply to you – you should make sure
+          therefore that you read them carefully before using the app."
+        />
+
         <div className="container">
-          <CenterHeader
-            title="Terms and Conditions"
-            description="By downloading or using the app, these terms will automatically apply to you – you should make sure
-            therefore that you read them carefully before using the app."
-          />
 
           <p>Last update: 19-04-2019 14:19</p>
 

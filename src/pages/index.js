@@ -12,12 +12,12 @@ import Pricing from 'components/Pricing'
 import CustomerResponses from 'components/CustomerResponses'
 import NewsletterLarge from 'components/NewsletterLarge'
 
-const BlogIndex = ({ data, location }) => {
-  const posts = get(data, 'remark.posts')
+const Index = ({ data, location }) => {
+  // const posts = get(data, 'remark.posts')
   return (
     <Layout location={location}>
       <Cover />
-      <div className="container">
+      <div className="container" id="features">
         <Intro />
         <Voices />
         <Features />
@@ -26,57 +26,47 @@ const BlogIndex = ({ data, location }) => {
         <CustomerResponses />
         <NewsletterLarge />
       </div>
-      {/* <Meta site={get(data, 'site.meta')} />
-      {posts.map(({ post }, i) => (
-        <Post
-          data={post}
-          options={{
-            isIndex: true,
-          }}
-          key={i}
-        />
-      ))} */}
     </Layout>
   )
 }
 
-export default BlogIndex
+export default Index
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      meta: siteMetadata {
-        title
-        description
-        url: siteUrl
-        author
-        twitter
-      }
-    }
-    remark: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      posts: edges {
-        post: node {
-          html
-          frontmatter {
-            layout
-            title
-            path
-            category
-            tags
-            description
-            date(formatString: "YYYY/MM/DD")
-            image {
-              childImageSharp {
-                fixed(width: 500) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query IndexQuery {
+//     site {
+//       meta: siteMetadata {
+//         title
+//         description
+//         url: siteUrl
+//         author
+//         twitter
+//       }
+//     }
+//     remark: allMarkdownRemark(
+//       sort: { fields: [frontmatter___date], order: DESC }
+//     ) {
+//       posts: edges {
+//         post: node {
+//           html
+//           frontmatter {
+//             layout
+//             title
+//             path
+//             category
+//             tags
+//             description
+//             date(formatString: "YYYY/MM/DD")
+//             image {
+//               childImageSharp {
+//                 fixed(width: 500) {
+//                   ...GatsbyImageSharpFixed_withWebp
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

@@ -6,7 +6,7 @@ class NewsletterLarge extends React.Component {
     const { location, title } = this.props
 
     return (
-      <div className="py-5">
+      <div className="py-5" id="newsletter">
         <div className="row justify-content-center text-center pt-3">
           <div className="col-12 col-md-8">
             <h4 className="text-black-50">About our Android App</h4>
@@ -14,10 +14,9 @@ class NewsletterLarge extends React.Component {
               Subscribe for Android release date
             </h1>
             <p className="mb-4">
-              Change the color to match your brand or vision, add your logo,
-              choose the perfect thumbnail, remove the playbar, add speed
-              controls, and more. Increase engagement with CTAs and custom end
-              screens, or keep your video private and password-protected.
+              Signup for our newsletter for future updates. Be the first
+              to know about our Android App's release date. Or when we support
+              new languages and add new voices.
             </p>
           </div>
         </div>
@@ -37,9 +36,9 @@ class NewsletterLarge extends React.Component {
             <p className="small mb-0 text-black-50">
               By clicking the Button you confirming that you’re agree with our
               following{' '}
-              <a className="text-dark weight-500" href="">
+              <Link className="text-dark weight-500" to="/terms">
                 <span>Terms and Conditions</span>
-              </a>
+              </Link>
             </p>
           </div>
         </div>

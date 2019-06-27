@@ -1,5 +1,25 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
 .cover-image {
-  margin-bottom: -3.75rem;
+  margin-bottom: 0;
   position: relative;
-  right: -1.8rem;
+  margin-bottom: -3.75rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 0;
+    position: relative;
+    right: -1.8rem;
+  }
+
+  img {
+    display: block;
+    margin: 0;
+    max-width: 500px;
+    height: 100%;
+  }
 }

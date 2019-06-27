@@ -17,7 +17,7 @@ class ResetPassword extends React.Component {
 
     return (
       <div>
-        <h1 class="display-1">Reset your password</h1>
+        <h1 className="display-1">Reset your password</h1>
         <p>
           Use this reset password code in the Playpost app:
           <br />
@@ -28,7 +28,7 @@ class ResetPassword extends React.Component {
         </p>
         <a
           href={`playpost://login/reset-password/${resetPasswordToken}`}
-          class="btn btn-primary btn-lg mt-4"
+          className="btn btn-primary btn-lg mt-4"
           id="reset-password-token-button"
         >
           Reset password in App

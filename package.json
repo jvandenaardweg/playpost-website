@@ -32,7 +32,8 @@
     "gatsby-transformer-remark": "2.5.0",
     "gatsby-transformer-sharp": "2.2.0",
     "howler": "^2.1.2",
-    "react-cookie-consent": "^2.3.2"
+    "react-cookie-consent": "^2.3.2",
+    "swiper": "^4.5.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",

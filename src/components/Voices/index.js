@@ -2,15 +2,63 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import voicesImage from '../../../static/img/example-voices.png'
-import VoiceSample from 'components/VoiceSample/index';
+import VoiceSample from 'components/VoiceSample/index'
 
 class Voices extends React.Component {
+  state = {
+    isVisibleSamples: false,
+  }
+
+  handleOnClickListenSamples = event => {
+    event.preventDefault()
+    this.setState({ isVisibleSamples: !this.state.isVisibleSamples })
+  }
   render() {
-    const { location, title } = this.props
+    const { isVisibleSamples } = this.state
 
     return (
-      <div className="row justify-content-between align-items-center py-5">
-        <div className="col-12 col-md-6 pl-md-0 mb-4 mb-md-0">
+      <div className="row justify-content-between align-items-center py-5" id="voices">
+        <div className="col-12 col-md-6 pl-md-0 mb-4 mb-md-0 position-relative">
+          <VoiceSample
+            src="https://storage.playpost.app/voices/8a0b8297-5070-4733-a424-933adf568ed2.wav"
+            label="Richard (American)"
+            language="English"
+            accent="American"
+            gender="Male"
+            style={{ position: 'absolute', top: '22%', left: '15%' }}
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/1d6ae8a7-a745-4216-8e56-92b1f11a7e75.wav"
+            label="Jack (British)"
+            language="English"
+            accent="British"
+            gender="Male"
+            style={{ position: 'absolute', top: '8%', left: '60%' }}
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/1d6e122d-e102-4de1-9dba-a0b840763858.wav"
+            label="Emily (American)"
+            language="English"
+            accent="American"
+            gender="Female"
+            style={{ position: 'absolute', top: '40%', left: '50%' }}
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/24f93f2e-824c-4eb6-a617-fb12d02fdae4.wav"
+            label="Albert (German)"
+            language="German"
+            accent=""
+            gender="Male"
+            style={{ position: 'absolute', top: '65%', left: '27%' }}
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/32d5c10d-56bc-4509-bad1-8f7b223c8602.wav"
+            label="Noah (Australian)"
+            language="English"
+            accent="Australian"
+            gender="Male"
+            style={{ position: 'absolute', top: '65%', left: '70%' }}
+          />
           <img className="w-100" src={voicesImage} alt="Playpost voices" />
         </div>
         <div className="col-12 col-md-5">
@@ -19,9 +67,110 @@ class Voices extends React.Component {
           <p className="mb-2">
             The most advanced text to speech synthesis solutions to speak text
             to you and sound natural and pleasant to listen to. Personalize the
-            experience by using a variety of voices.
+            experience by using a variety of voices.{' '}
+            <a
+              className="action-link"
+              href="#"
+              onClick={this.handleOnClickListenSamples}
+            >
+              <span>
+                {isVisibleSamples ? 'Hide samples' : 'Listen to samples'}
+              </span>
+            </a>
           </p>
-          <VoiceSample src="audio/example.wav" />
+
+          <div className={!isVisibleSamples ? 'd-none' : ''}>
+            <VoiceSample
+              src="https://storage.playpost.app/voices/8a0b8297-5070-4733-a424-933adf568ed2.wav"
+              label="Richard (American)"
+              language="English"
+              accent="American"
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/1d6ae8a7-a745-4216-8e56-92b1f11a7e75.wav"
+              label="Jack (British)"
+              language="English"
+              accent="British"
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/1d6e122d-e102-4de1-9dba-a0b840763858.wav"
+              label="Emily (American)"
+              language="English"
+              accent="American"
+              gender="Female"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/24f93f2e-824c-4eb6-a617-fb12d02fdae4.wav"
+              label="Albert (German)"
+              language="German"
+              accent=""
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/32d5c10d-56bc-4509-bad1-8f7b223c8602.wav"
+              label="Noah (Australian)"
+              language="English"
+              accent="Australian"
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/5f42e3bc-0db3-4f2c-84b2-5cc348a60610.wav"
+              label="Armand (French)"
+              language="French"
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/df71540d-eacf-4b63-91c7-677f95c941f4.wav"
+              label="Koen (Dutch)"
+              language="Dutch"
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/ca0e586e-0128-47b5-8a4e-eed168ac4cca.wav"
+              label="Vivaan (Indian English)"
+              language="Indian English"
+              gender="Male"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/2945b5e5-ec8a-4851-bdf6-2e41dcfe6202.wav"
+              label="Maya (Spanish)"
+              language="Spanish"
+              gender="Female"
+            />
+            <VoiceSample
+              src="https://storage.playpost.app/voices/eda85a99-619d-4d13-ac3b-ab5203cf3134.mp3"
+              label="Enrique (Spanish)"
+              language="Spanish"
+            />
+          </div>
+
+          {/* <VoiceSample
+            src="https://storage.playpost.app/voices/405ed251-a67e-4b0c-a168-2cb0adffad69.wav"
+            label="Hugo (French)"
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/5f42e3bc-0db3-4f2c-84b2-5cc348a60610.wav"
+            label="Armand (French)"
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/df71540d-eacf-4b63-91c7-677f95c941f4.wav"
+            label="Koen (Dutch)"
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/ca0e586e-0128-47b5-8a4e-eed168ac4cca.wav"
+            label="Vivaan (Indian English)"
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/2945b5e5-ec8a-4851-bdf6-2e41dcfe6202.wav"
+            label="Maya (Spanish)"
+          />
+          <VoiceSample
+            src="https://storage.playpost.app/voices/eda85a99-619d-4d13-ac3b-ab5203cf3134.mp3"
+            label="Enrique (Spanish)"
+          /> */}
+
           <div className="row">
             <div className="col-6">
               <div className="icon">
@@ -42,8 +191,7 @@ class Voices extends React.Component {
               </div>
               <h4 className="font-weight-semibold mb-1">Voice customization</h4>
               <div className="small">
-                Male ánd female voices, with different accessents like British
-                or American.
+                Male ánd female voices, with different accents like British, American or Australian.
               </div>
             </div>
             <div className="col-6">

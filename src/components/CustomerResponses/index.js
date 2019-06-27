@@ -1,7 +1,22 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Swiper from 'swiper'
 
 class CustomerResponses extends React.Component {
+  swiperRef = React.createRef()
+  swiper = null
+
+  componentDidMount() {
+    this.swiper = new Swiper(this.swiperRef.current, {
+      speed: 400,
+      navigation: {
+        nextEl: '#slider-customers-8-next',
+        prevEl: '#slider-customers-8-prev',
+      },
+      slidesPerView: 'auto',
+    })
+  }
+
   render() {
     const { location, title } = this.props
 
@@ -12,16 +27,16 @@ class CustomerResponses extends React.Component {
             <div className="col-12 col-md-8">
               <h4 className="text-black-50">Tagline</h4>
               <h1 className="display-4">Our customers love it</h1>
-              <a className="action-link" href="">
+              <Link className="action-link" to="/contact">
                 <span>Share your feedback</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="swiper swiper-overflow">
           <div className="container">
-            <div className="swiper-container row" id="slider-customers-8">
+            <div className="swiper-container row" ref={this.swiperRef}>
               <div className="swiper-wrapper">
                 <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
                   <div className="card shadow-sm">

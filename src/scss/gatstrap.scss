@@ -35,13 +35,21 @@ $enable-print-styles: true !default;
 //
 // Define the maximum width of `.container` for different screen sizes.
 
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 640px,
+//   lg: 710px,
+//   xl: 780px,
+// ) !default;
+
 $container-max-widths: (
-  sm: 540px,
-  md: 640px,
-  lg: 710px,
-  xl: 780px,
+  sm: 768px,
+  md: 992px,
+  lg: 1100px,
+  xl: 1140px,
 ) !default;
 
+$grid-gutter-width: 30px !default;
 // Body
 //
 // Settings for the `<body>` element.
@@ -113,4 +121,34 @@ ul li {
   height: 60px;
   display: flex;
   align-items: center;
+}
+
+.py-6 {
+  padding-top: 5rem !important;
+}
+
+.py-6 {
+  padding-bottom: 5rem !important;
+}
+
+.py-7 {
+  padding-top: 6.25rem !important;
+}
+
+.py-7 {
+  padding-bottom: 6.25rem !important;
+}
+
+
+.container {
+  // width: 100%;
+  // padding-right: 15px;
+  // padding-left: 15px;
+  // margin-right: auto;
+  // margin-left: auto;
+
+  @include media-breakpoint-up(md) {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }

@@ -12,7 +12,7 @@ class Cover extends React.Component {
       <div className="bg-tint">
         <div className="container">
           <div className="row justify-content-between align-items-center py-5">
-            <div className="col-12 col-md-6 order-2 order-md-1">
+            <div className="col-12 col-md-6 order-1 order-md-1">
               <h1 className="display-4 text-white">
                 Instant podcasts of every article
               </h1>
@@ -22,7 +22,7 @@ class Cover extends React.Component {
                 and Audiobooks.
               </p>
               <div className="row align-items-center">
-                <div className="col-12 col-md-5 mb-2 mb-md-0">
+                <div className="col-12 col-lg-5 mb-2 mb-md-2 mb-lg-0">
                   <a
                     className="btn btn-block btn-lg btn-white font-weight-semibold"
                     href=""
@@ -30,22 +30,20 @@ class Cover extends React.Component {
                     Get iPhone App
                   </a>
                 </div>
-                <div className="col-12 col-md-6 text-center text-md-left text-white">
+                <div className="col-12 col-lg-6 text-center text-md-left text-white">
                   <div className="small ml-md-6">
-                    Android App will be available later this year. &nbsp;
-                    <a className="text-white font-weight-bold" href="">
-                      <span>Subscribe for updates</span>
+                    Android App will be available later this year.
+                    <a className="text-white font-weight-bold" href="#newsletter">
+                      <span>&nbsp;Subscribe for updates</span>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-12 col-md-5 order-1 order-md-2 pl-md-0 mb-4 mb-md-0">
-              <img
-                className="w-100 cover-image"
-                src={coverImage}
-                alt="Playpost"
-              />
+            <div className="col-12 col-md-6 col-lg-5 order-2 order-md-2 pl-md-0 mb-md-0">
+              <div className="cover-image">
+                <img className="w-100" src={coverImage} alt="Playpost" />
+              </div>
             </div>
           </div>
         </div>
