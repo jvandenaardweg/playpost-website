@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import voicesImage from '../../../static/img/example-voices.png'
+import VoiceSample from 'components/VoiceSample/index';
 
 class Voices extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class Voices extends React.Component {
             to you and sound natural and pleasant to listen to. Personalize the
             experience by using a variety of voices.
           </p>
+          <VoiceSample src="audio/example.wav" />
           <div className="row">
             <div className="col-6">
               <div className="icon">

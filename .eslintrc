@@ -1,17 +1,21 @@
 {
+  "parser": "babel-eslint",
   "extends": [
     "prettier",
     "prettier/react"
   ],
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "class-property"
   ],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "generators": true,
+      "experimentalObjectRestSpread": true
     }
   },
   "env": {

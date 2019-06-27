@@ -33,8 +33,8 @@ class Cover extends React.Component {
                 <div className="col-12 col-md-6 text-center text-md-left text-white">
                   <div className="small ml-md-6">
                     Android App will be available later this year. &nbsp;
-                    <a className="text-white" href="">
-                      <strong>Subscribe for updates</strong>
+                    <a className="text-white font-weight-bold" href="">
+                      <span>Subscribe for updates</span>
                     </a>
                   </div>
                 </div>

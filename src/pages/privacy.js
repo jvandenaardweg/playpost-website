@@ -11,12 +11,11 @@ class Privacy extends React.Component {
 
     return (
       <Layout location={location}>
+        <CenterHeader
+          title="Privacy Policy"
+          description="We value privacy and respect yours. This Privacy Policy describes how Playpost collects, uses and discloses information, and what choices you have with respect to the information."
+        />
         <div className="container">
-          <CenterHeader
-            title="Privacy Policy"
-            description="We value privacy and respect yours. This Privacy Policy describes how Playpost collects, uses and discloses information, and what choices you have with respect to the information."
-          />
-
           <p>Last update: 19-04-2019 14:19</p>
           <p>
             {' '}
