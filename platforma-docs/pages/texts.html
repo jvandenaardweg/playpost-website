@@ -1,0 +1,849 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Texts</h3><h4 class="mb-3">texts-1</h4><img src='../assets/components/light/texts-1.png' data-img='texts-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row pt-12 pt-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-5&quot;&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h1&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+    &lt;p&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.pt-12.pt-5
+  .col-12.col-md-5
+    h4 Tagline
+    h1 Long headline to turn your visitors into users
+    p Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more</code></pre></div><h4 class="mb-3">texts-2</h4><img src='../assets/components/light/texts-2.png' data-img='texts-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row pt-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-5&quot;&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h1&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.pt-5
+  .col-12.col-md-5
+    h4 Tagline
+    h1 Long headline to turn your visitors into users</code></pre></div><h4 class="mb-3">texts-3</h4><img src='../assets/components/light/texts-3.png' data-img='texts-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;d-flex justify-content-between align-items-end pt-5 mb-3&quot;&gt;
+  &lt;div&gt;
+    &lt;h1 class=&quot;mb-0&quot;&gt;Short headline&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.d-flex.justify-content-between.align-items-end.pt-5.mb-3
+  div
+    h1.mb-0 Short headline
+  div
+    a(href='').weight-500.action-link
+      span Link</code></pre></div><h4 class="mb-3">texts-4</h4><img src='../assets/components/light/texts-4.png' data-img='texts-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-between align-items-end pt-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-5&quot;&gt;
+    &lt;h2&gt;Headline&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-7 d-flex justify-content-md-end&quot;&gt;
+    &lt;div class=&quot;nav nav-tabs weight-500&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; href=&quot;&quot;&gt;Tab one&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;&quot;&gt;Tab two&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;&quot;&gt;Tab three&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-between.align-items-end.pt-5
+  .col-12.col-md-5
+    h2 Headline
+  .col-12.col-md-7.d-flex.justify-content-md-end
+    .nav.nav-tabs.weight-500
+      .nav-item
+        a(href='').nav-link.active Tab one
+      .nav-item
+        a(href='').nav-link Tab two
+      .nav-item
+        a(href='').nav-link Tab three</code></pre></div><h4 class="mb-3">texts-5</h4><img src='../assets/components/light/texts-5.png' data-img='texts-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;border-bottom mb-2 mb-md-4&quot;&gt;
+  &lt;ol class=&quot;breadcrumb&quot;&gt;
+    &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;breadcrumb-item active&quot;&gt;Third&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row py-10&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;
+    &lt;div class=&quot;navbar-nav weight-500&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Introduction&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-nav pl-2 small weight-500&quot;&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Introduction&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Overview&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Contents&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Overview&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Contents&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Layout&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;border-bottom mt-3 mb-4 d-md-none&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;h1 class=&quot;mb-10&quot;&gt;Medium length title&lt;/h1&gt;
+    &lt;div class=&quot;mb-7&quot;&gt;
+      &lt;h3&gt;Medium length headline&lt;/h3&gt;
+      &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mb-7&quot;&gt;
+      &lt;h3&gt;Medium length headline&lt;/h3&gt;
+      &lt;p&gt;However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+      &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.border-bottom.mb-2.mb-md-4
+  ol.breadcrumb
+    li.breadcrumb-item
+      a(href='').text-dark
+        span First
+    li.breadcrumb-item
+      a(href='').text-dark
+        span Second
+    li.breadcrumb-item.active Third
+.row.py-10
+  .col-12.col-md-3
+    .navbar-nav.weight-500
+      .nav-item
+        a(href='').nav-link.text-dark Introduction
+      .navbar-nav.pl-2.small.weight-500
+        .nav-item
+          a(href='').nav-link.text-dark Introduction
+        .nav-item
+          a(href='').nav-link.text-dark Overview
+        .nav-item
+          a(href='').nav-link.text-dark Contents
+      .nav-item
+        a(href='').nav-link.text-dark Overview
+      .nav-item
+        a(href='').nav-link.text-dark Contents
+      .nav-item
+        a(href='').nav-link.text-dark Layout
+    .border-bottom.mt-3.mb-4.d-md-none
+  .col-12.col-md-6
+    h1.mb-10 Medium length title
+    .mb-7
+      h3 Medium length headline
+      p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    .mb-7
+      h3 Medium length headline
+      p However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+      p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.</code></pre></div><h4 class="mb-3">texts-6</h4><img src='../assets/components/light/texts-6.png' data-img='texts-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center pt-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1&gt;Short headline&lt;/h1&gt;
+    &lt;div class=&quot;border-bottom pb-4&quot;&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;This website is operated by the Design Files. Throughout the site, the terms “we”, “us” and “our” refer to the Design Files. The Design Files offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.pt-5
+  .col-12.col-md-8.col-lg-6
+    h1 Short headline
+    .border-bottom.pb-4
+      p.mb-0 This website is operated by the Design Files. Throughout the site, the terms “we”, “us” and “our” refer to the Design Files. The Design Files offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.</code></pre></div><h4 class="mb-3">texts-7</h4><img src='../assets/components/light/texts-7.png' data-img='texts-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center pt-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h2 class=&quot;mb-4&quot;&gt;Medium length title&lt;/h2&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;This website is operated by the Design Files. Throughout the site, the terms “we”, “us” and “our” refer to the Design Files. The Design Files offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.pt-4
+  .col-12.col-md-8.col-lg-6
+    h2.mb-4 Medium length title
+    h3 Medium length headline
+    p This website is operated by the Design Files. Throughout the site, the terms “we”, “us” and “our” refer to the Design Files. The Design Files offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.</code></pre></div><h4 class="mb-3">texts-8</h4><img src='../assets/components/light/texts-8.png' data-img='texts-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center pt-3&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;p&gt;This website is operated by the Design Files. Throughout the site, the terms “we”, “us” and “our” refer to the Design Files. The Design Files offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.pt-3
+  .col-12.col-md-8.col-lg-6
+    h3 Medium length headline
+    p However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    p This website is operated by the Design Files. Throughout the site, the terms “we”, “us” and “our” refer to the Design Files. The Design Files offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here.</code></pre></div><h4 class="mb-3">texts-9</h4><img src='../assets/components/light/texts-9.png' data-img='texts-9.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center pt-3&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.&lt;/p&gt;
+    &lt;div class=&quot;border-bottom pb-4&quot;&gt;
+      &lt;ul class=&quot;mb-0&quot;&gt;
+        &lt;li&gt;Showcase and embed your work with&lt;/li&gt;
+        &lt;li&gt;Publish across social channels in a click&lt;/li&gt;
+        &lt;li&gt;Sell your videos worldwide&lt;/li&gt;
+        &lt;li&gt;Embed your work with&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.pt-3
+  .col-12.col-md-8.col-lg-6
+    h3 Medium length headline
+    p However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.
+    .border-bottom.pb-4
+      ul.mb-0
+        li Showcase and embed your work with
+        li Publish across social channels in a click
+        li Sell your videos worldwide
+        li Embed your work with</code></pre></div><h4 class="mb-3">texts-10</h4><img src='../assets/components/light/texts-10.png' data-img='texts-10.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;div class=&quot;border-bottom&quot;&gt;
+      &lt;div class=&quot;row align-items-center py-4&quot;&gt;
+        &lt;div class=&quot;col-12 col-md-6 order-2 order-md-1&quot;&gt;
+          &lt;h3&gt;Medium length headline&lt;/h3&gt;
+          &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-12 col-md-6 mb-4 mb-md-0 order-1 order-md-2&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-255x230.png&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center
+  .col-12.col-md-8.col-lg-6
+    .border-bottom
+      .row.align-items-center.py-4
+        .col-12.col-md-6.order-2.order-md-1
+          h3 Medium length headline
+          p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+          a(href='').weight-500.action-link
+            span Read more
+        .col-12.col-md-6.mb-4.mb-md-0.order-1.order-md-2
+          img(src='./assets/pictures/image-255x230.png').w-100</code></pre></div><h4 class="mb-3">texts-11</h4><img src='../assets/components/light/texts-11.png' data-img='texts-11.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;p class=&quot;mb-4&quot;&gt;You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.&lt;/p&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-6&quot;&gt;
+        &lt;h3&gt;Short headline&lt;/h3&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Benefits of usage&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Reset your password&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Manage account&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Sign in as guest&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col-6&quot;&gt;
+        &lt;h3&gt;Short headline&lt;/h3&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;About us&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Careers&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Meet the authors&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;mb-2&quot;&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-4
+  .col-12.col-md-8.col-lg-6
+    p.mb-4 You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.
+    .row
+      .col-6
+        h3 Short headline
+        .mb-2
+          a(href='').weight-500
+            span Benefits of usage
+        .mb-2
+          a(href='').weight-500
+            span Reset your password
+        .mb-2
+          a(href='').weight-500
+            span Manage account
+        .mb-2
+          a(href='').weight-500
+            span Sign in as guest
+      .col-6
+        h3 Short headline
+        .mb-2
+          a(href='').weight-500
+            span About us
+        .mb-2
+          a(href='').weight-500
+            span Careers
+        .mb-2
+          a(href='').weight-500
+            span Meet the authors
+        .mb-2
+          a(href='').weight-500
+            span Terms of service</code></pre></div><h4 class="mb-3">texts-12</h4><img src='../assets/components/light/texts-12.png' data-img='texts-12.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h4&gt;Medium length headline&lt;/h4&gt;
+    &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.&lt;/p&gt;
+    &lt;ol class=&quot;mb-0&quot;&gt;
+      &lt;li&gt;Showcase and embed your work with&lt;/li&gt;
+      &lt;li&gt;Publish across social channels in a click&lt;/li&gt;
+      &lt;li&gt;Agree to subscribe to newsletters&lt;/li&gt;
+      &lt;li&gt;Shared styles that are logically connected with one another&lt;/li&gt;
+      &lt;li&gt;Embed your work with&lt;/li&gt;
+      &lt;li&gt;Sell your videos worldwide&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-4
+  .col-12.col-md-8.col-lg-6
+    h4 Medium length headline
+    p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.
+    ol.mb-0
+      li Showcase and embed your work with
+      li Publish across social channels in a click
+      li Agree to subscribe to newsletters
+      li Shared styles that are logically connected with one another
+      li Embed your work with
+      li Sell your videos worldwide</code></pre></div><h4 class="mb-3">texts-13</h4><img src='../assets/components/light/texts-13.png' data-img='texts-13.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;p class=&quot;mb-4&quot;&gt;You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.&lt;/p&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-6 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-5.svg&quot; width=&quot;40&quot; height=&quot;40&quot; /&gt;
+        &lt;h3&gt;Medium length headline&lt;/h3&gt;
+        &lt;p&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Action link&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col-12 col-md-6&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-2.svg&quot; width=&quot;40&quot; height=&quot;40&quot; /&gt;
+        &lt;h3&gt;Medium length headline&lt;/h3&gt;
+        &lt;p&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Action link&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-4
+  .col-12.col-md-8.col-lg-6
+    p.mb-4 You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.
+    .row
+      .col-12.col-md-6.mb-4.mb-md-0
+        img(src='./assets/glyphs/rectangle-5.svg' width='40' height='40').mb-3
+        h3 Medium length headline
+        p Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more.
+        a(href='').weight-500.action-link
+          span Action link
+      .col-12.col-md-6
+        img(src='./assets/glyphs/rectangle-2.svg' width='40' height='40').mb-3
+        h3 Medium length headline
+        p Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more.
+        a(href='').weight-500.action-link
+          span Action link</code></pre></div><h4 class="mb-3">texts-14</h4><img src='../assets/components/light/texts-14.png' data-img='texts-14.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1 class=&quot;mb-4&quot;&gt;Short headline&lt;/h1&gt;
+    &lt;div class=&quot;accordion&quot; id=&quot;texts-14-accordion&quot;&gt;
+      &lt;h3 class=&quot;caret-down&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#texts-14-1&quot;&gt;Do I need programming skills to use Acme Tool?&lt;/h3&gt;
+      &lt;div class=&quot;border-bottom mb-2&quot;&gt;
+        &lt;div class=&quot;collapse show&quot; id=&quot;texts-14-1&quot; data-parent=&quot;#texts-14-accordion&quot;&gt;
+          &lt;div class=&quot;pb-4&quot;&gt;
+            &lt;p class=&quot;mb-0&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h3 class=&quot;caret-down collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#texts-14-2&quot;&gt;How many projects I can do with Acme Tool?&lt;/h3&gt;
+      &lt;div class=&quot;border-bottom mb-2&quot;&gt;
+        &lt;div class=&quot;collapse&quot; id=&quot;texts-14-2&quot; data-parent=&quot;#texts-14-accordion&quot;&gt;
+          &lt;div class=&quot;pb-4&quot;&gt;
+            &lt;p class=&quot;mb-0&quot;&gt;Remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h3 class=&quot;caret-down collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#texts-14-3&quot;&gt;What result can I achieve using Acme Tool?&lt;/h3&gt;
+      &lt;div class=&quot;collapse&quot; id=&quot;texts-14-3&quot; data-parent=&quot;#texts-14-accordion&quot;&gt;
+        &lt;div class=&quot;pb-0&quot;&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;Each Acme customer will download multiple kind of files. All clients have unlimited access to Acme Tool. Acme automates your subscription revenue and customer reporting.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-4
+  .col-12.col-md-8.col-lg-6
+    h1.mb-4 Short headline
+    .accordion(id='texts-14-accordion')
+        h3.caret-down(data-toggle='collapse' data-target='#texts-14-1') Do I need programming skills to use Acme Tool?
+        .border-bottom.mb-2
+          .collapse.show(id='texts-14-1' data-parent='#texts-14-accordion')
+            .pb-4
+              p.mb-0 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.
+        h3.caret-down.collapsed(data-toggle='collapse' data-target='#texts-14-2') How many projects I can do with Acme Tool?
+        .border-bottom.mb-2
+          .collapse(id='texts-14-2' data-parent='#texts-14-accordion')
+            .pb-4
+              p.mb-0 Remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.
+        h3.caret-down.collapsed(data-toggle='collapse' data-target='#texts-14-3') What result can I achieve using Acme Tool?
+        .collapse(id='texts-14-3' data-parent='#texts-14-accordion')
+          .pb-0
+            p.mb-0 Each Acme customer will download multiple kind of files. All clients have unlimited access to Acme Tool. Acme automates your subscription revenue and customer reporting.</code></pre></div><h4 class="mb-3">texts-15</h4><img src='../assets/components/light/texts-15.png' data-img='texts-15.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1 class=&quot;mb-4&quot;&gt;Short headline&lt;/h1&gt;
+    &lt;p class=&quot;mb-4&quot;&gt;Acme automates your subscription revenue and customer reporting. Just connect your data and Acme will calculate and visualize your most important metrics.&lt;/p&gt;
+    &lt;ol class=&quot;custom-list&quot;&gt;
+      &lt;li class=&quot;mb-4&quot;&gt;
+        &lt;h3&gt;Start by checking your upgrade&lt;/h3&gt;
+        &lt;p class=&quot;mb-0&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;mb-4&quot;&gt;
+        &lt;h3&gt;Give more&lt;/h3&gt;
+        &lt;p class=&quot;mb-0&quot;&gt;Remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;mb-4&quot;&gt;
+        &lt;h3&gt;Change the color to match your brand&lt;/h3&gt;
+        &lt;p class=&quot;mb-0&quot;&gt;Remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h1.mb-4 Short headline
+    p.mb-4 Acme automates your subscription revenue and customer reporting. Just connect your data and Acme will calculate and visualize your most important metrics.
+    ol.custom-list
+      li.mb-4
+        h3 Start by checking your upgrade
+        p.mb-0 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.
+      li.mb-4
+        h3 Give more
+        p.mb-0 Remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.
+      li.mb-4
+        h3 Change the color to match your brand
+        p.mb-0 Remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.</code></pre></div><h4 class="mb-3">texts-16</h4><img src='../assets/components/light/texts-16.png' data-img='texts-16.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1 class=&quot;mb-10&quot;&gt;Short headline&lt;/h1&gt;
+    &lt;p&gt;Acme automates your subscription revenue and customer reporting. Just connect your data and Acme will calculate and visualize your most important metrics.&lt;/p&gt;
+    &lt;div class=&quot;border-bottom py-2&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark caret-right&quot; href=&quot;&quot;&gt;System requirements&lt;/a&gt;&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;border-bottom py-2&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark caret-right&quot; href=&quot;&quot;&gt;Where can I learn more about how to get started?&lt;/a&gt;&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;border-bottom py-2&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark caret-right&quot; href=&quot;&quot;&gt;Is Acme available for Linux?&lt;/a&gt;&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;border-bottom py-2&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark caret-right&quot; href=&quot;&quot;&gt;What about a version for iOS?&lt;/a&gt;&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;border-bottom py-2&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark caret-right&quot; href=&quot;&quot;&gt;Will I automatically be charged when my trial ends?&lt;/a&gt;&lt;/h3&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h1.mb-10 Short headline
+    p Acme automates your subscription revenue and customer reporting. Just connect your data and Acme will calculate and visualize your most important metrics.
+    .border-bottom.py-2
+      h3.mb-0
+        a(href='').text-dark.caret-right System requirements
+    .border-bottom.py-2
+      h3.mb-0
+        a(href='').text-dark.caret-right Where can I learn more about how to get started?
+    .border-bottom.py-2
+      h3.mb-0
+        a(href='').text-dark.caret-right Is Acme available for Linux?
+    .border-bottom.py-2
+      h3.mb-0
+        a(href='').text-dark.caret-right What about a version for iOS?
+    .border-bottom.py-2
+      h3.mb-0
+        a(href='').text-dark.caret-right Will I automatically be charged when my trial ends?</code></pre></div><h4 class="mb-3">texts-17</h4><img src='../assets/components/light/texts-17.png' data-img='texts-17.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p class=&quot;mb-3&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;div class=&quot;accordion&quot; id=&quot;texts-17-accordion&quot;&gt;
+      &lt;h4 class=&quot;mb-0 py-2 caret-down&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#texts-17-1&quot;&gt;Definitions&lt;/h4&gt;
+      &lt;div class=&quot;border-bottom&quot;&gt;
+        &lt;div class=&quot;collapse show&quot; id=&quot;texts-17-1&quot; data-parent=&quot;#texts-17-accordion&quot;&gt;
+          &lt;p class=&quot;pb-3 mb-0&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h4 class=&quot;mb-0 py-2 caret-down collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#texts-17-2&quot;&gt;License&lt;/h4&gt;
+      &lt;div class=&quot;border-bottom&quot;&gt;
+        &lt;div class=&quot;collapse&quot; id=&quot;texts-17-2&quot; data-parent=&quot;#texts-17-accordion&quot;&gt;
+          &lt;p class=&quot;pb-3 mb-0&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h4 class=&quot;mb-0 py-2 caret-down collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#texts-17-3&quot;&gt;Permitted use and restrictions&lt;/h4&gt;
+      &lt;div class=&quot;border-bottom&quot;&gt;
+        &lt;div class=&quot;collapse&quot; id=&quot;texts-17-3&quot; data-parent=&quot;#texts-17-accordion&quot;&gt;
+          &lt;p class=&quot;pb-3 mb-0&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h3 Medium length headline
+    p.mb-3 By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    .accordion(id='texts-17-accordion')
+      h4.mb-0.py-2.caret-down(data-toggle='collapse' data-target='#texts-17-1') Definitions
+      .border-bottom
+        .collapse.show(id='texts-17-1' data-parent='#texts-17-accordion')
+          p.pb-3.mb-0 By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.
+      h4.mb-0.py-2.caret-down.collapsed(data-toggle='collapse' data-target='#texts-17-2') License
+      .border-bottom
+        .collapse(id='texts-17-2' data-parent='#texts-17-accordion')
+          p.pb-3.mb-0 By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.
+      h4.mb-0.py-2.caret-down.collapsed(data-toggle='collapse' data-target='#texts-17-3') Permitted use and restrictions
+      .border-bottom
+        .collapse(id='texts-17-3' data-parent='#texts-17-accordion')
+          p.pb-3.mb-0 By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send.</code></pre></div><h4 class="mb-3">texts-18</h4><img src='../assets/components/light/texts-18.png' data-img='texts-18.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-between align-items-end pb-md-4 pt-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h1&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+    &lt;div class=&quot;mb-3 mb-md-0&quot;&gt;20 September 2019, 10:01 GMT&lt;br /&gt;By Tim Ross, Helene Fouquet, and Ian Wishart&lt;/div&gt;
+    &lt;div class=&quot;border-bottom d-md-none&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 col-lg-6 text-right py-2 py-md-0&quot;&gt;
+    &lt;div class=&quot;d-flex d-md-block justify-content-between&quot;&gt;&lt;span class=&quot;mr-3&quot;&gt;Share:&lt;/span&gt;&lt;span&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;20&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter.svg&quot; width=&quot;20&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/link.svg&quot; width=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-between.align-items-end.pb-md-4.pt-5
+  .col-12.col-md-8.col-lg-6
+    h4 Tagline
+    h1 Long headline to turn your visitors into users
+    .mb-3.mb-md-0
+      | 20 September 2019, 10:01 GMT
+      br
+      | By Tim Ross, Helene Fouquet, and Ian Wishart
+    .border-bottom.d-md-none
+  .col-12.col-md-4.col-lg-6.text-right.py-2.py-md-0
+    .d-flex.d-md-block.justify-content-between
+      span.mr-3 Share:
+      span
+        a(href='').transparent-invert-link.mr-2
+          img(src="./assets/glyphs/facebook.svg" width="20")
+        a(href='').transparent-invert-link.mr-2
+          img(src="./assets/glyphs/twitter.svg" width="20")
+        a(href='').transparent-invert-link
+          img(src="./assets/glyphs/link.svg" width="20")</code></pre></div><h4 class="mb-3">texts-19</h4><img src='../assets/components/light/texts-19.png' data-img='texts-19.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 pr-lg-5 d-none d-md-block&quot;&gt;
+    &lt;h4&gt;Feature one&lt;/h4&gt;
+    &lt;p class=&quot;small&quot;&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;div class=&quot;border-top border-bottom d-md-none pt-2 my-4&quot;&gt;
+      &lt;h4&gt;Feature one&lt;/h4&gt;
+      &lt;p class=&quot;small&quot;&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-12.col-md-3.pr-lg-5.d-none.d-md-block
+    h4 Feature one
+    p.small Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language
+  .col-12.col-md-6
+    p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    .border-top.border-bottom.d-md-none.pt-2.my-4
+      h4 Feature one
+      p.small Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language
+    p.mb-0 You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.</code></pre></div><h4 class="mb-3">texts-20</h4><img src='../assets/components/light/texts-20.png' data-img='texts-20.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;div class=&quot;border-top border-bottom py-4&quot;&gt;
+      &lt;blockquote class=&quot;blockquote weight-500&quot;&gt;&quot;Gimme a break. You cannot write an article admitting to the president’s “anti-democratic” impulses while also saying you want his administration to succeed&quot;&lt;/blockquote&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;&lt;span class=&quot;weight-500&quot;&gt;Name Surname,&lt;/span&gt; vice president of programs&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center
+  .col-12.col-md-8.col-lg-6
+    .border-top.border-bottom.py-4
+      blockquote.blockquote.weight-500 "Gimme a break. You cannot write an article admitting to the president’s “anti-democratic” impulses while also saying you want his administration to succeed"
+      p.mb-0
+        span.weight-500 Name Surname,
+        = ' '
+        | vice president of programs</code></pre></div><h4 class="mb-3">texts-21</h4><img src='../assets/components/light/texts-21.png' data-img='texts-21.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;p&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.&lt;/p&gt;
+    &lt;div class=&quot;border-top border-bottom d-md-none pt-2 my-4&quot;&gt;
+      &lt;div class=&quot;price-large mb-2&quot;&gt;2.6&lt;span class=&quot;price-unit ml-2&quot;&gt;Million&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-2 pl-md-0 ml-auto d-none d-md-block&quot;&gt;
+    &lt;div class=&quot;price-large mb-2&quot;&gt;2.6&lt;span class=&quot;price-unit ml-2&quot;&gt;Million&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on all devices&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-4
+  .col-12.col-md-3
+  .col-12.col-md-6
+    p By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.
+    .border-top.border-bottom.d-md-none.pt-2.my-4
+      .price-large.mb-2 2.6
+        span.price-unit.ml-2 Million
+    p.mb-0 You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.
+  .col-12.col-md-2.pl-md-0.ml-auto.d-none.d-md-block
+    .price-large.mb-2 2.6
+      span.price-unit.ml-2 Million
+    .small Gorgeous, high-quality video sharing on all devices</code></pre></div><h4 class="mb-3">texts-22</h4><img src='../assets/components/light/texts-22.png' data-img='texts-22.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-4 border-top&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x380.png&quot; /&gt;
+    &lt;div class=&quot;small border-bottom py-3&quot;&gt;&lt;span class=&quot;weight-500&quot;&gt;Alessandra Cerreti,&lt;/span&gt; photographed in her office in Gioia Tauro, Italy.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-4.border-top
+  .col-12.col-md-8.col-lg-6
+    img(src='./assets/pictures/image-555x380.png').w-100
+    .small.border-bottom.py-3
+      span.weight-500 Alessandra Cerreti,
+      = ' '
+      | photographed in her office in Gioia Tauro, Italy.</code></pre></div></div></div></div></body></html>

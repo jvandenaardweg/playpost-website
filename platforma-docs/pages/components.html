@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1>{{CONTENT}}</div></div></div></body></html>

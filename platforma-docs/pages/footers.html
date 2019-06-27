@@ -1,0 +1,715 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Footers</h3><h4 class="mb-3">footers-1</h4><img src='../assets/components/light/footers-1.png' data-img='footers-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-between pt-4 pb-3 pb-lg-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-lg-7&quot;&gt;
+    &lt;blockquote class=&quot;blockquote weight-500 mb-10&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more.&lt;/blockquote&gt;
+    &lt;div class=&quot;d-none d-lg-block&quot;&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;d-lg-none mb-4&quot;&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-2 small text-lg-right mb-4 md-lg-0 pt-1&quot;&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First page&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second page&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Third page&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Four&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-3 pt-1 small text-lg-right&quot;&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;Stórhöfði 33&lt;/p&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;110 Reykjavík, Iceland&lt;/p&gt;
+    &lt;p class=&quot;mb-1&quot;&gt;Tel: +354 587 9999&lt;/p&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;info@mountainguides.is&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;border-top d-lg-none&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;d-lg-flex justify-content-between py-3&quot;&gt;
+  &lt;div class=&quot;small&quot;&gt;&lt;span class=&quot;d-block d-lg-inline text-muted mb-2 mb-lg-0 mr-lg-5&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mb-2 mb-lg-0 mr-lg-5&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mb-2 mb-lg-0 mr-lg-5&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;small&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Made in Saint Petersburg&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-between.pt-4.pb-3.pb-lg-5
+  .col-12.col-lg-7
+    blockquote.blockquote.weight-500.mb-10 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more.
+    .d-none.d-lg-block
+      a(href='').transparent-invert-link.mr-1
+        img(src="./assets/glyphs/instagram-small.svg" width="16")
+      a(href='').transparent-invert-link.mr-1
+        img(src="./assets/glyphs/facebook-small.svg" width="16")
+      a(href='').transparent-invert-link.mr-1
+        img(src="./assets/glyphs/twitter-small.svg" width="16")
+      a(href='').transparent-invert-link.mr-1
+        img(src="./assets/glyphs/pinterest-small.svg" width="16")
+      a(href='').transparent-invert-link.mr-1
+        img(src="./assets/glyphs/thumbler-small.svg" width="16")
+    .d-lg-none.mb-4
+      a(href='').transparent-invert-link.mr-2
+        img(src="./assets/glyphs/instagram-small.svg" width="24")
+      a(href='').transparent-invert-link.mr-2
+        img(src="./assets/glyphs/facebook-small.svg" width="24")
+      a(href='').transparent-invert-link.mr-2
+        img(src="./assets/glyphs/twitter-small.svg" width="24")
+      a(href='').transparent-invert-link.mr-2
+        img(src="./assets/glyphs/pinterest-small.svg" width="24")
+      a(href='').transparent-invert-link.mr-2
+        img(src="./assets/glyphs/thumbler-small.svg" width="24")
+  .col-12.col-lg-2.small.text-lg-right.mb-4.md-lg-0.pt-1
+    p.mb-1
+      a(href='').text-dark
+        span First page
+    p.mb-1
+      a(href='').text-dark
+        span Second page
+    p.mb-1
+      a(href='').text-dark
+        span Third page
+    p.mb-0
+      a(href='').text-dark
+        span Four
+  .col-12.col-lg-3.pt-1.small.text-lg-right
+    p.mb-1 Stórhöfði 33
+    p.mb-1 110 Reykjavík, Iceland
+    p.mb-1 Tel: +354 587 9999
+    p.mb-0
+      a(href='').text-dark
+        span info@mountainguides.is
+.border-top.d-lg-none
+.d-lg-flex.justify-content-between.py-3
+  .small
+    span.d-block.d-lg-inline.text-muted.mb-2.mb-lg-0.mr-lg-5 &copy; 2019 Acme. All right reserved.
+    a(href='').d-block.d-lg-inline.text-muted.mb-2.mb-lg-0.mr-lg-5
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.mb-2.mb-lg-0.mr-lg-5
+      span Terms of Service
+  .small
+    span.text-muted Made in Saint Petersburg</code></pre></div><h4 class="mb-3">footers-2</h4><img src='../assets/components/light/footers-2.png' data-img='footers-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row align-items-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-lg-2 text-center text-lg-left&quot;&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;91&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-8 navbar-expand text-center weight-500&quot;&gt;
+    &lt;div class=&quot;navbar-nav d-block d-lg-flex justify-content-center&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;First page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth page&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-2 d-none d-lg-block text-right&quot;&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mr-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 d-lg-none text-center&quot;&gt;&lt;a class=&quot;transparent-invert-link mx-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-1&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row pb-3&quot;&gt;
+  &lt;div class=&quot;col-12 text-center small&quot;&gt;&lt;span class=&quot;text-muted mr-1&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mx-1&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mx-1&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.align-items-center.py-4
+  .col-12.col-lg-2.text-center.text-lg-left
+    img(src='./assets/logos/acme.svg' width='91')
+  .col-12.col-lg-8.navbar-expand.text-center.weight-500
+    .navbar-nav.d-block.d-lg-flex.justify-content-center
+      .nav-item
+        a(href='').nav-link.text-dark First page
+      .nav-item
+        a(href='').nav-link.text-dark Second page
+      .nav-item
+        a(href='').nav-link.text-dark Third page
+      .nav-item
+        a(href='').nav-link.text-dark Fourth page
+      .nav-item
+        a(href='').nav-link.text-dark Fifth page
+  .col-12.col-lg-2.d-none.d-lg-block.text-right
+    a(href='').transparent-invert-link.mr-1
+      img(src="./assets/glyphs/instagram-small.svg" width="16")
+    a(href='').transparent-invert-link.mr-1
+      img(src="./assets/glyphs/facebook-small.svg" width="16")
+    a(href='').transparent-invert-link.mr-1
+      img(src="./assets/glyphs/twitter-small.svg" width="16")
+    a(href='').transparent-invert-link.mr-1
+      img(src="./assets/glyphs/pinterest-small.svg" width="16")
+  .col-12.d-lg-none.text-center
+    a(href='').transparent-invert-link.mx-1
+      img(src="./assets/glyphs/instagram-small.svg" width="24")
+    a(href='').transparent-invert-link.mx-1
+      img(src="./assets/glyphs/facebook-small.svg" width="24")
+    a(href='').transparent-invert-link.mx-1
+      img(src="./assets/glyphs/twitter-small.svg" width="24")
+    a(href='').transparent-invert-link.mx-1
+      img(src="./assets/glyphs/pinterest-small.svg" width="24")
+.row.pb-3
+  .col-12.text-center.small
+    span.text-muted.mr-1 &copy; 2019 Acme. All right reserved.
+    a(href='').d-block.d-lg-inline.text-muted.mx-1
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.mx-1
+      span Terms of Service</code></pre></div><h4 class="mb-3">footers-3</h4><img src='../assets/components/light/footers-3.png' data-img='footers-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row align-items-center py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-lg-2 text-center text-lg-left mb-4 mb-lg-0&quot;&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;91&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-8 navbar-expand text-center weight-500 mb-4 mb-lg-0&quot;&gt;
+    &lt;div class=&quot;navbar-nav d-block d-lg-flex justify-content-center&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;First page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth page&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth page&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-2 small text-center text-lg-right&quot;&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;English version&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;border-top d-lg-none&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;text-center py-4 py-lg-5&quot;&gt;&lt;a class=&quot;transparent-invert-link mx-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/linkedin.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link mx-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;pt-lg-4 pb-4 pb-lg-3 text-center small&quot;&gt;
+  &lt;p class=&quot;mb-0&quot;&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mx-lg-1 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mx-lg-1 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mx-lg-1 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Legal&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted mx-lg-1 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Site Map&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;p class=&quot;text-muted mb-0&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/p&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.align-items-center.py-4
+  .col-12.col-lg-2.text-center.text-lg-left.mb-4.mb-lg-0
+    img(src='./assets/logos/acme.svg' width='91')
+  .col-12.col-lg-8.navbar-expand.text-center.weight-500.mb-4.mb-lg-0
+    .navbar-nav.d-block.d-lg-flex.justify-content-center
+      .nav-item
+        a(href='').nav-link.text-dark First page
+      .nav-item
+        a(href='').nav-link.text-dark Second page
+      .nav-item
+        a(href='').nav-link.text-dark Third page
+      .nav-item
+        a(href='').nav-link.text-dark Fourth page
+      .nav-item
+        a(href='').nav-link.text-dark Fifth page
+  .col-12.col-lg-2.small.text-center.text-lg-right
+    a(href='').text-muted
+      span English version
+.border-top.d-lg-none
+.text-center.py-4.py-lg-5
+  a(href='').transparent-invert-link.mx-2
+    img(src="./assets/glyphs/facebook.svg" width="32")
+  a(href='').transparent-invert-link.mx-2
+    img(src="./assets/glyphs/instagram.svg" width="32")
+  a(href='').transparent-invert-link.mx-2
+    img(src="./assets/glyphs/twitter.svg" width="32")
+  a(href='').transparent-invert-link.mx-2
+    img(src="./assets/glyphs/linkedin.svg" width="32")
+  a(href='').transparent-invert-link.mx-2
+    img(src="./assets/glyphs/pinterest.svg" width="32")
+.pt-lg-4.pb-4.pb-lg-3.text-center.small
+  p.mb-0
+    a(href='').d-block.d-lg-inline.text-muted.mx-lg-1.mb-2.mb-lg-0
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.mx-lg-1.mb-2.mb-lg-0
+      span Terms of Service
+    a(href='').d-block.d-lg-inline.text-muted.mx-lg-1.mb-2.mb-lg-0
+      span Legal
+    a(href='').d-block.d-lg-inline.text-muted.mx-lg-1.mb-2.mb-lg-0
+      span Site Map
+  p.text-muted.mb-0 &copy; 2019 Acme. All right reserved.</code></pre></div><h4 class="mb-3">footers-4</h4><img src='../assets/components/light/footers-4.png' data-img='footers-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row pt-4 mb-4 mb-lg-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-lg-3 pr-lg-0 mb-4 mb-lg-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/logos/acme.svg&quot; width=&quot;91&quot; /&gt;
+    &lt;p class=&quot;small text-muted mb-3&quot;&gt;Join our newsletter to stay up to date on features and releases&lt;/p&gt;
+    &lt;div class=&quot;form-group input-group input-group-lg mb-0&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Enter your email address&quot; /&gt;
+      &lt;div class=&quot;input-group-control&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/plane.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2&quot;&gt;
+    &lt;div class=&quot;navbar-nav weight-500&quot;&gt;
+      &lt;div class=&quot;nav-item mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Third&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Fourth&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2&quot;&gt;
+    &lt;div class=&quot;navbar-nav weight-500&quot;&gt;
+      &lt;div class=&quot;nav-item mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Fifth page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Sixth page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Eighth&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-2 small mt-4 mt-lg-0&quot;&gt;
+    &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;img class=&quot;mr-1&quot; src=&quot;./assets/glyphs/instagram.svg&quot; width=&quot;16&quot; /&gt;&lt;span&gt;Instagram&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;img class=&quot;mr-1&quot; src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;16&quot; /&gt;&lt;span&gt;Facebook&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;img class=&quot;mr-1&quot; src=&quot;./assets/glyphs/twitter.svg&quot; width=&quot;16&quot; /&gt;&lt;span&gt;Twitter&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;border-top d-lg-none&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;d-block d-lg-flex justify-content-between py-3 py-lg-2&quot;&gt;
+  &lt;div class=&quot;small mb-2 mb-lg-0&quot;&gt;&lt;span class=&quot;text-muted mr-5&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;small&quot;&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.pt-4.mb-4.mb-lg-5
+  .col-12.col-lg-3.pr-lg-0.mb-4.mb-lg-0
+    img(src='./assets/logos/acme.svg' width='91').mb-3
+    p.small.text-muted.mb-3 Join our newsletter to stay up to date on features and releases
+    .form-group.input-group.input-group-lg.mb-0
+      input(type='text' placeholder='Enter your email address').form-control.form-control-lg
+      .input-group-control
+          a(href='').transparent-invert-link
+            img(src='./assets/glyphs/plane.svg' width='24')
+  .col-12.col-lg-2
+  .col-6.col-lg-2
+    .navbar-nav.weight-500
+      .nav-item.mb-1
+        a(href='').text-dark
+          span First page
+      .nav-item.mb-1
+        a(href='').text-dark
+          span Second page
+      .nav-item.mb-1
+        a(href='').text-dark
+          span Third
+      .nav-item
+        a(href='').text-dark
+          span Fourth
+  .col-6.col-lg-2
+    .navbar-nav.weight-500
+      .nav-item.mb-1
+        a(href='').text-dark
+          span Fifth page
+      .nav-item.mb-1
+        a(href='').text-dark
+          span Sixth page
+      .nav-item.mb-1
+        a(href='').text-dark
+          span Eighth
+  .col-12.col-lg-1
+  .col-12.col-lg-2.small.mt-4.mt-lg-0
+    .mb-1
+      a(href='').text-dark
+        img(src="./assets/glyphs/instagram.svg" width="16").mr-1
+        span Instagram
+    .mb-1
+      a(href='').text-dark
+        img(src="./assets/glyphs/facebook.svg" width="16").mr-1
+        span Facebook
+    .mb-0
+      a(href='').text-dark
+        img(src="./assets/glyphs/twitter.svg" width="16").mr-1
+        span Twitter
+.border-top.d-lg-none
+.d-block.d-lg-flex.justify-content-between.py-3.py-lg-2
+  .small.mb-2.mb-lg-0
+    span.text-muted.mr-5 &copy; 2019 Acme. All right reserved.
+  .small
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-2.mb-2.mb-lg-0
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-2
+      span Terms of Service</code></pre></div><h4 class="mb-3">footers-5</h4><img src='../assets/components/light/footers-5.png' data-img='footers-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row pt-4 mb-4 mb-lg-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-lg-4 mb-4 mb-lg-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/logos/acme.svg&quot; width=&quot;91&quot; /&gt;
+    &lt;p class=&quot;small text-muted&quot;&gt;Stórhöfði 33&lt;br /&gt;110 Reykjavík, Iceland&lt;br /&gt;Tel: +354 587 9999&lt;br /&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;info@mountainguides.is&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;div class=&quot;mt-3 d-lg-none&quot;&gt;&lt;a class=&quot;transparent-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/linkedin.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;mt-3 d-none d-lg-block&quot;&gt;&lt;a class=&quot;transparent-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link mr-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/linkedin.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;border-top mt-3 d-lg-none&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2&quot;&gt;
+    &lt;h4&gt;First column&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Third&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Fourth&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2&quot;&gt;
+    &lt;h4&gt;Second column&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Fifth page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Sixth page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-0&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Eighth&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2&quot;&gt;
+    &lt;h4&gt;Third column&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Third&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2&quot;&gt;
+    &lt;h4&gt;Mobile apps&lt;/h4&gt;
+    &lt;div class=&quot;mb-2&quot;&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;./assets/logos/app-store.svg&quot; width=&quot;123&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;mb-0&quot;&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;./assets/logos/google-play.svg&quot; width=&quot;123&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;border-top d-lg-none&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;d-block d-lg-flex justify-content-between py-3 py-lg-2&quot;&gt;
+  &lt;div class=&quot;small mb-2 mb-lg-0&quot;&gt;&lt;span class=&quot;text-muted mr-5&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;small&quot;&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.pt-4.mb-4.mb-lg-5
+  .col-12.col-lg-4.mb-4.mb-lg-0
+    img(src='./assets/logos/acme.svg' width='91').mb-3
+    p.small.text-muted
+      | Stórhöfði 33
+      br
+      | 110 Reykjavík, Iceland
+      br
+      | Tel: +354 587 9999
+      br
+      a(href='').text-muted
+        span info@mountainguides.is
+    .mt-3.d-lg-none
+      a(href='').transparent-link.mr-2
+        img(src="./assets/glyphs/twitter.svg" width="24")
+      a(href='').transparent-link.mr-2
+        img(src="./assets/glyphs/facebook.svg" width="24")
+      a(href='').transparent-link.mr-2
+        img(src="./assets/glyphs/linkedin.svg" width="24")
+    .mt-3.d-none.d-lg-block
+      a(href='').transparent-link.mr-2
+        img(src="./assets/glyphs/twitter.svg" width="16")
+      a(href='').transparent-link.mr-2
+        img(src="./assets/glyphs/facebook.svg" width="16")
+      a(href='').transparent-link.mr-2
+        img(src="./assets/glyphs/linkedin.svg" width="16")
+    .border-top.mt-3.d-lg-none
+  .col-6.col-lg-2
+    h4 First column
+    .small
+      .mb-1
+        a(href='').text-dark
+          span First page
+      .mb-1
+        a(href='').text-dark
+          span Second page
+      .mb-1
+        a(href='').text-dark
+          span Third
+      .mb-1
+        a(href='').text-dark
+          span Fourth
+  .col-6.col-lg-2
+    h4 Second column
+    .small
+      .mb-1
+        a(href='').text-dark
+          span Fifth page
+      .mb-1
+        a(href='').text-dark
+          span Sixth page
+      .mb-0
+        a(href='').text-dark
+          span Eighth
+  .col-6.col-lg-2
+    h4 Third column
+    .small
+      .mb-1
+        a(href='').text-dark
+          span First page
+      .mb-1
+        a(href='').text-dark
+          span Second page
+      .mb-1
+        a(href='').text-dark
+          span Third
+  .col-6.col-lg-2
+    h4 Mobile apps
+    .mb-2
+      a(href='')
+        img(src='./assets/logos/app-store.svg' width='123')
+    .mb-0
+      a(href='')
+        img(src='./assets/logos/google-play.svg' width='123')
+.border-top.d-lg-none
+.d-block.d-lg-flex.justify-content-between.py-3.py-lg-2
+  .small.mb-2.mb-lg-0
+    span.text-muted.mr-5 &copy; 2019 Acme. All right reserved.
+  .small
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-2.mb-2.mb-lg-0
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-2
+      span Terms of Service</code></pre></div><h4 class="mb-3">footers-6</h4><img src='../assets/components/light/footers-6.png' data-img='footers-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;d-lg-flex justify-content-between py-3 py-lg-2&quot;&gt;
+  &lt;div class=&quot;small mb-2 mb-lg-0&quot;&gt;&lt;span class=&quot;text-muted mr-5&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;d-flex small align-items-end justify-content-between&quot;&gt;
+    &lt;div&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Legal&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3&quot; href=&quot;&quot;&gt;&lt;span&gt;Site map&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;d-none d-lg-block ml-3&quot;&gt;&lt;a class=&quot;transparent-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;d-lg-none&quot;&gt;&lt;a class=&quot;transparent-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.d-lg-flex.justify-content-between.py-3.py-lg-2
+  .small.mb-2.mb-lg-0
+    span.text-muted.mr-5 &copy; 2019 Acme. All right reserved.
+  .d-flex.small.align-items-end.justify-content-between
+    div
+      a(href='').d-block.d-lg-inline.text-muted.ml-lg-3.mb-2.mb-lg-0
+        span Privacy Policy
+      a(href='').d-block.d-lg-inline.text-muted.ml-lg-3.mb-2.mb-lg-0
+        span Terms of Service
+      a(href='').d-block.d-lg-inline.text-muted.ml-lg-3.mb-2.mb-lg-0
+        span Legal
+      a(href='').d-block.d-lg-inline.text-muted.ml-lg-3
+        span Site map
+    .d-none.d-lg-block.ml-3
+      a(href='').transparent-link
+        img(src="./assets/glyphs/instagram.svg" width="16")
+      a(href='').transparent-link.ml-2
+        img(src="./assets/glyphs/facebook.svg" width="16")
+    .d-lg-none
+      a(href='').transparent-link
+        img(src="./assets/glyphs/instagram.svg" width="24")
+      a(href='').transparent-link.ml-2
+        img(src="./assets/glyphs/facebook.svg" width="24")</code></pre></div><h4 class="mb-3">footers-7</h4><img src='../assets/components/light/footers-7.png' data-img='footers-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;d-lg-flex justify-content-between py-3 py-lg-2&quot;&gt;
+  &lt;div class=&quot;small mb-2 mb-lg-0&quot;&gt;&lt;span class=&quot;text-muted mr-5&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;small&quot;&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.d-lg-flex.justify-content-between.py-3.py-lg-2
+  .small.mb-2.mb-lg-0
+    span.text-muted.mr-5 &copy; 2019 Acme. All right reserved.
+  .small
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-3.mb-2.mb-lg-0
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-3
+      span Terms of Service</code></pre></div><h4 class="mb-3">footers-8</h4><img src='../assets/components/light/footers-8.png' data-img='footers-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-lg-2 mb-4 mb-lg-0&quot;&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;62&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2 mb-4 mb-lg-0&quot;&gt;
+    &lt;h4&gt;First column&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Third&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Fourth&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2 mb-4 mb-lg-0&quot;&gt;
+    &lt;h4&gt;Second&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Fifth page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Sixth page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Eighth&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-6 col-lg-2 mb-4 mb-lg-0&quot;&gt;
+    &lt;h4&gt;Third&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;First page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Second page&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;mb-1&quot;&gt;&lt;a class=&quot;text-dark&quot; href=&quot;&quot;&gt;&lt;span&gt;Third&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-lg-4&quot;&gt;
+    &lt;div class=&quot;border-top pt-4 d-lg-none&quot;&gt;&lt;/div&gt;
+    &lt;h4&gt;Subscribe&lt;/h4&gt;
+    &lt;div class=&quot;form-group input-group input-group-lg&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Enter your email address&quot; /&gt;
+      &lt;div class=&quot;input-group-control&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/plane.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;small text-muted mb-0&quot;&gt;Join our newsletter to stay up to date on features and releases&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;d-lg-flex align-item-ceneter justify-content-between border-top py-3 py-lg-2 mt-lg-5&quot;&gt;
+  &lt;div class=&quot;small mb-2 mb-lg-0&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;small&quot;&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;d-block d-lg-inline text-muted ml-lg-3 mb-2 mb-lg-0&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;d-none d-lg-block ml-auto&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/linkedin-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;d-lg-none&quot;&gt;&lt;a class=&quot;transparent-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/linkedin-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-12.col-lg-2.mb-4.mb-lg-0
+    img(src='./assets/logos/acme.svg' width='62')
+  .col-6.col-lg-2.mb-4.mb-lg-0
+    h4 First column
+    .small
+      .mb-1
+        a(href='').text-dark
+          span First page
+      .mb-1
+        a(href='').text-dark
+          span Second page
+      .mb-1
+        a(href='').text-dark
+          span Third
+      .mb-1
+        a(href='').text-dark
+          span Fourth
+  .col-6.col-lg-2.mb-4.mb-lg-0
+    h4 Second
+    .small
+      .mb-1
+        a(href='').text-dark
+          span Fifth page
+      .mb-1
+        a(href='').text-dark
+          span Sixth page
+      .mb-1
+        a(href='').text-dark
+          span Eighth
+  .col-6.col-lg-2.mb-4.mb-lg-0
+    h4 Third
+    .small
+      .mb-1
+        a(href='').text-dark
+          span First page
+      .mb-1
+        a(href='').text-dark
+          span Second page
+      .mb-1
+        a(href='').text-dark
+          span Third
+  .col-12.col-lg-4
+    .border-top.pt-4.d-lg-none
+    h4 Subscribe
+    .form-group.input-group.input-group-lg
+      input(type='text' placeholder='Enter your email address').form-control.form-control-lg
+      .input-group-control
+          a(href='').transparent-invert-link
+            img(src='./assets/glyphs/plane.svg' width='24')
+    p.small.text-muted.mb-0 Join our newsletter to stay up to date on features and releases
+.d-lg-flex.align-item-ceneter.justify-content-between.border-top.py-3.py-lg-2.mt-lg-5
+  .small.mb-2.mb-lg-0
+    span.text-muted &copy; 2019 Acme. All right reserved.
+  .small
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-3.mb-2.mb-lg-0
+      span Privacy Policy
+    a(href='').d-block.d-lg-inline.text-muted.ml-lg-3.mb-2.mb-lg-0
+      span Terms of Service
+  .d-none.d-lg-block.ml-auto
+    a(href='').transparent-invert-link
+      img(src="./assets/glyphs/facebook-small.svg" width="16")
+    a(href='').transparent-invert-link.ml-2
+      img(src="./assets/glyphs/linkedin-small.svg" width="16")
+    a(href='').transparent-invert-link.ml-2
+      img(src="./assets/glyphs/twitter-small.svg" width="16")
+    a(href='').transparent-invert-link.ml-2
+      img(src="./assets/glyphs/pinterest-small.svg" width="16")
+  .d-lg-none
+    a(href='').transparent-link
+      img(src="./assets/glyphs/facebook-small.svg" width="24")
+    a(href='').transparent-link.ml-2
+      img(src="./assets/glyphs/linkedin-small.svg" width="24")
+    a(href='').transparent-link.ml-2
+      img(src="./assets/glyphs/twitter-small.svg" width="24")
+    a(href='').transparent-link.ml-2
+      img(src="./assets/glyphs/pinterest-small.svg" width="24")</code></pre></div></div></div></div></body></html>

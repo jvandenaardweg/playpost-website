@@ -1,0 +1,701 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Menu</h3><h4 class="mb-3">menu-1</h4><img src='../assets/components/light/menu-1.png' data-img='menu-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;navbar navbar-expand-lg&quot;&gt;&lt;a class=&quot;navbar-toggler mr-1&quot; href=&quot;&quot; data-id=&quot;headers-1-sidebar-toggle&quot;&gt;&lt;img src=&quot;./assets/glyphs/burger.svg&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;mr-4&quot;&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;62&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;collapse navbar-collapse weight-500&quot;&gt;
+    &lt;div class=&quot;navbar-nav&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item dropdown&quot;&gt;&lt;a class=&quot;nav-link text-dark dropdown-toggle&quot; href=&quot;&quot; id=&quot;headers-1-dropdown&quot; data-toggle=&quot;dropdown&quot;&gt;Fourth&lt;/a&gt;
+        &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;headers-1-dropdown&quot;&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;&quot;&gt;Action 1&lt;/a&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;&quot;&gt;Action 2&lt;/a&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;&quot;&gt;Action 3&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Sixth&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ml-auto d-lg-none&quot;&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/star-primary.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;ml-auto d-none d-lg-block&quot;&gt;&lt;a class=&quot;btn btn-primary&quot; href=&quot;&quot;&gt;Action&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;navbar-side&quot; id=&quot;headers-1-sidebar&quot; data-id=&quot;headers-1-sidebar-close&quot;&gt;
+  &lt;div class=&quot;navbar-side-content d-flex flex-column justify-content-between&quot;&gt;
+    &lt;div class=&quot;weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-1-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;
+      &lt;div class=&quot;navbar-nav&quot;&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item dropdown&quot;&gt;&lt;a class=&quot;nav-link text-dark dropdown-toggle&quot; href=&quot;&quot; id=&quot;headers-1-dropdown&quot; data-toggle=&quot;dropdown&quot;&gt;Fourth&lt;/a&gt;
+          &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;headers-1-dropdown&quot;&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;&quot;&gt;Action 1&lt;/a&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;&quot;&gt;Action 2&lt;/a&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;&quot;&gt;Action 3&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Sixth&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+      &lt;p class=&quot;small mb-0&quot;&gt;&lt;span class=&quot;d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;text-muted mr-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;navbar-side-content weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-2-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    $(&#39;[data-id=headers-1-sidebar-toggle]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-1-sidebar&#39;).toggleClass(&#39;show&#39;);
+    });
+    $(&#39;[data-id=headers-1-sidebar-close]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-1-sidebar&#39;).removeClass(&#39;show&#39;);
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">//- PARTS
+mixin headers-1-nav()
+  .navbar-nav
+    .nav-item
+      a(href='').nav-link.text-dark First
+    .nav-item
+      a(href='').nav-link.text-dark Second
+    .nav-item
+      a(href='').nav-link.text-dark Third
+    .nav-item.dropdown
+      a(href='' id='headers-1-dropdown' data-toggle='dropdown').nav-link.text-dark.dropdown-toggle Fourth
+      .dropdown-menu(aria-labelledby='headers-1-dropdown')
+        a(href='').dropdown-item Action 1
+        a(href='').dropdown-item Action 2
+        a(href='').dropdown-item Action 3
+    .nav-item
+      a(href='').nav-link.text-dark Fifth
+    .nav-item
+      a(href='').nav-link.text-dark Sixth
+
+.navbar.navbar-expand-lg
+  a.navbar-toggler.mr-1(href="" data-id='headers-1-sidebar-toggle')
+    img(src='./assets/glyphs/burger.svg')
+  .mr-4
+    img(src='./assets/logos/acme.svg' width='62')
+  .collapse.navbar-collapse.weight-500
+    +headers-1-nav()
+  .ml-auto.d-lg-none
+    a(href='')
+      img(src='./assets/glyphs/star-primary.svg' width='24')
+  .ml-auto.d-none.d-lg-block
+    a(href='').btn.btn-primary Action
+.navbar-side(id='headers-1-sidebar' data-id='headers-1-sidebar-close')
+  .navbar-side-content.d-flex.flex-column.justify-content-between
+    .weight-700
+      a.navbar-side-close.mb-4(href='' data-id='headers-1-sidebar-close')
+        img(src='./assets/glyphs/close.svg' width='32')
+      +headers-1-nav()
+    div
+      p.mb-3
+        a(href='').transparent-invert-link
+          img(src="./assets/glyphs/instagram-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/facebook-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/twitter-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/pinterest-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/thumbler-small.svg" width="16")
+      p.small.mb-0
+        span.d-block.d-xl-inline.text-muted.mb-1.mb-xl-0.mr-2 &copy; 2019 Acme. All right reserved.
+        a(href='').text-muted.mr-2
+          span Privacy Policy
+        a(href='').text-muted
+          span Terms of Service
+  .navbar-side-content.weight-700
+    a.navbar-side-close.mb-4(href='' data-id='headers-2-sidebar-close')
+      img(src='./assets/glyphs/close.svg' width='32')
+//- SCRIPT
+script.
+  $(function() {
+    $('[data-id=headers-1-sidebar-toggle]').click(function(e) {
+      e.preventDefault();
+      $('#headers-1-sidebar').toggleClass('show');
+    });
+    $('[data-id=headers-1-sidebar-close]').click(function(e) {
+      e.preventDefault();
+      $('#headers-1-sidebar').removeClass('show');
+    });
+  });</code></pre></div><h4 class="mb-3">menu-2</h4><img src='../assets/components/light/menu-2.png' data-img='menu-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;navbar navbar-expand-lg justify-content-between&quot;&gt;
+  &lt;div class=&quot;col-3 d-lg-none px-0&quot;&gt;&lt;a class=&quot;navbar-toggler mr-1&quot; href=&quot;&quot; data-id=&quot;headers-2-sidebar-toggle&quot;&gt;&lt;img src=&quot;./assets/glyphs/burger.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-5 collapse navbar-collapse weight-500 px-0&quot;&gt;
+    &lt;div class=&quot;navbar-nav&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pl-0&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;62&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-3 d-lg-none text-right px-0&quot;&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/star-primary.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-5 d-none d-lg-block text-right px-0&quot;&gt;&lt;a class=&quot;btn btn-primary&quot; href=&quot;&quot;&gt;Action&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;navbar-side&quot; id=&quot;headers-2-sidebar&quot; data-id=&quot;headers-2-sidebar-close&quot;&gt;
+  &lt;div class=&quot;navbar-side-content d-flex flex-column justify-content-between&quot;&gt;
+    &lt;div class=&quot;weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-2-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;
+      &lt;div class=&quot;navbar-nav&quot;&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pl-0&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+      &lt;p class=&quot;small mb-0&quot;&gt;&lt;span class=&quot;d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;text-muted mr-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;navbar-side-content weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-2-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    $(&#39;[data-id=headers-2-sidebar-toggle]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-2-sidebar&#39;).toggleClass(&#39;show&#39;);
+    });
+    $(&#39;[data-id=headers-2-sidebar-close]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-2-sidebar&#39;).removeClass(&#39;show&#39;);
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">//- PARTS
+mixin headers-2-nav()
+  .navbar-nav
+    .nav-item
+      a(href='').nav-link.text-dark.pl-0 First
+    .nav-item
+      a(href='').nav-link.text-dark Second
+    .nav-item
+      a(href='').nav-link.text-dark Third
+    .nav-item
+      a(href='').nav-link.text-dark Fourth
+    .nav-item
+      a(href='').nav-link.text-dark Fifth
+
+.navbar.navbar-expand-lg.justify-content-between
+  .col-3.d-lg-none.px-0
+    a.navbar-toggler.mr-1(href="" data-id='headers-2-sidebar-toggle')
+      img(src='./assets/glyphs/burger.svg')
+  .col-5.collapse.navbar-collapse.weight-500.px-0
+    +headers-2-nav()
+  div
+    img(src='./assets/logos/acme.svg' width='62')
+  .col-3.d-lg-none.text-right.px-0
+    a(href='')
+      img(src='./assets/glyphs/star-primary.svg' width='24')
+  .col-5.d-none.d-lg-block.text-right.px-0
+    a(href='').btn.btn-primary Action
+.navbar-side(id='headers-2-sidebar' data-id='headers-2-sidebar-close')
+  .navbar-side-content.d-flex.flex-column.justify-content-between
+    .weight-700
+      a.navbar-side-close.mb-4(href='' data-id='headers-2-sidebar-close')
+        img(src='./assets/glyphs/close.svg' width='32')
+      +headers-2-nav()
+    div
+      p.mb-3
+        a(href='').transparent-invert-link
+          img(src="./assets/glyphs/instagram-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/facebook-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/twitter-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/pinterest-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/thumbler-small.svg" width="16")
+      p.small.mb-0
+        span.d-block.d-xl-inline.text-muted.mb-1.mb-xl-0.mr-2 &copy; 2019 Acme. All right reserved.
+        a(href='').text-muted.mr-2
+          span Privacy Policy
+        a(href='').text-muted
+          span Terms of Service
+  .navbar-side-content.weight-700
+    a.navbar-side-close.mb-4(href='' data-id='headers-2-sidebar-close')
+      img(src='./assets/glyphs/close.svg' width='32')
+//- SCRIPT
+script.
+  $(function() {
+    $('[data-id=headers-2-sidebar-toggle]').click(function(e) {
+      e.preventDefault();
+      $('#headers-2-sidebar').toggleClass('show');
+    });
+    $('[data-id=headers-2-sidebar-close]').click(function(e) {
+      e.preventDefault();
+      $('#headers-2-sidebar').removeClass('show');
+    });
+  });</code></pre></div><h4 class="mb-3">menu-3</h4><img src='../assets/components/light/menu-3.png' data-img='menu-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;navbar navbar-expand-lg justify-content-between&quot;&gt;
+  &lt;div class=&quot;d-lg-none&quot;&gt;&lt;a class=&quot;navbar-toggler mr-1&quot; href=&quot;&quot; data-id=&quot;headers-3-sidebar-toggle&quot;&gt;&lt;img src=&quot;./assets/glyphs/burger.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-3 px-0 mr-auto&quot;&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;62&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;collapse navbar-collapse weight-500&quot;&gt;
+    &lt;div class=&quot;navbar-nav m-auto&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pl-0&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Sixth&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-3 d-flex justify-content-end pr-0 weight-500&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/profile.svg&quot; /&gt;
+        &lt;div class=&quot;d-none d-lg-inline ml-2&quot;&gt;Profile&lt;/div&gt;
+      &lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link d-flex align-items-center text-dark pr-0&quot; href=&quot;&quot;&gt;&lt;img class=&quot;d-lg-none&quot; src=&quot;./assets/glyphs/bag.svg&quot; /&gt;
+        &lt;div class=&quot;d-none d-lg-inline mr-2&quot;&gt;Cart&lt;/div&gt;
+        &lt;div class=&quot;badge badge-primary&quot;&gt;3&lt;/div&gt;
+      &lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;navbar-side&quot; id=&quot;headers-3-sidebar&quot; data-id=&quot;headers-3-sidebar-close&quot;&gt;
+  &lt;div class=&quot;navbar-side-content d-flex flex-column justify-content-between&quot;&gt;
+    &lt;div class=&quot;weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-3-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;
+      &lt;div class=&quot;navbar-nav m-auto&quot;&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pl-0&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Sixth&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+      &lt;p class=&quot;small mb-0&quot;&gt;&lt;span class=&quot;d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;text-muted mr-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;navbar-side-content weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-4-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    $(&#39;[data-id=headers-3-sidebar-toggle]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-3-sidebar&#39;).toggleClass(&#39;show&#39;);
+    });
+    $(&#39;[data-id=headers-3-sidebar-close]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-3-sidebar&#39;).removeClass(&#39;show&#39;);
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">//- PARTS
+mixin headers-3-nav()
+  .navbar-nav.m-auto
+    .nav-item
+      a(href='').nav-link.text-dark.pl-0 First
+    .nav-item
+      a(href='').nav-link.text-dark Second
+    .nav-item
+      a(href='').nav-link.text-dark Third
+    .nav-item
+      a(href='').nav-link.text-dark Fourth
+    .nav-item
+      a(href='').nav-link.text-dark Fifth
+    .nav-item
+      a(href='').nav-link.text-dark Sixth
+
+.navbar.navbar-expand-lg.justify-content-between
+  .d-lg-none
+    a.navbar-toggler.mr-1(href="" data-id='headers-3-sidebar-toggle')
+      img(src='./assets/glyphs/burger.svg')
+  .col-3.px-0.mr-auto
+    img(src='./assets/logos/acme.svg' width='62')
+  .collapse.navbar-collapse.weight-500
+    +headers-3-nav()
+  .col-3.d-flex.justify-content-end.pr-0.weight-500
+    .nav-item
+      a(href='').nav-link.text-dark
+        img(src='./assets/glyphs/profile.svg')
+        .d-none.d-lg-inline.ml-2 Profile
+    .nav-item
+      a(href='').nav-link.d-flex.align-items-center.text-dark.pr-0
+        img(src='./assets/glyphs/bag.svg').d-lg-none
+        .d-none.d-lg-inline.mr-2 Cart
+        div.badge.badge-primary 3
+.navbar-side(id='headers-3-sidebar' data-id='headers-3-sidebar-close')
+  .navbar-side-content.d-flex.flex-column.justify-content-between
+    .weight-700
+      a.navbar-side-close.mb-4(href='' data-id='headers-3-sidebar-close')
+        img(src='./assets/glyphs/close.svg' width='32')
+      +headers-3-nav()
+    div
+      p.mb-3
+        a(href='').transparent-invert-link
+          img(src="./assets/glyphs/instagram-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/facebook-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/twitter-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/pinterest-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/thumbler-small.svg" width="16")
+      p.small.mb-0
+        span.d-block.d-xl-inline.text-muted.mb-1.mb-xl-0.mr-2 &copy; 2019 Acme. All right reserved.
+        a(href='').text-muted.mr-2
+          span Privacy Policy
+        a(href='').text-muted
+          span Terms of Service
+  .navbar-side-content.weight-700
+    a.navbar-side-close.mb-4(href='' data-id='headers-4-sidebar-close')
+      img(src='./assets/glyphs/close.svg' width='32')
+//- SCRIPT
+script.
+  $(function() {
+    $('[data-id=headers-3-sidebar-toggle]').click(function(e) {
+      e.preventDefault();
+      $('#headers-3-sidebar').toggleClass('show');
+    });
+    $('[data-id=headers-3-sidebar-close]').click(function(e) {
+      e.preventDefault();
+      $('#headers-3-sidebar').removeClass('show');
+    });
+  });</code></pre></div><h4 class="mb-3">menu-4</h4><img src='../assets/components/light/menu-4.png' data-img='menu-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;navbar navbar-expand-lg justify-content-between&quot;&gt;
+  &lt;div class=&quot;d-lg-none&quot;&gt;&lt;a class=&quot;navbar-toggler mr-1&quot; href=&quot;&quot; data-id=&quot;headers-4-sidebar-toggle&quot;&gt;&lt;img src=&quot;./assets/glyphs/burger.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;62&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;collapse navbar-collapse flex-grow-0 weight-500&quot;&gt;
+    &lt;div class=&quot;navbar-nav&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pl-0&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Sixth&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;nav-item d-none d-lg-block&quot;&gt;&lt;a class=&quot;nav-link text-dark pr-0&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/search.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;d-lg-none ml-auto&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pr-0&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/search.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;navbar-side&quot; id=&quot;headers-4-sidebar&quot; data-id=&quot;headers-4-sidebar-close&quot;&gt;
+  &lt;div class=&quot;navbar-side-content d-flex flex-column justify-content-between&quot;&gt;
+    &lt;div class=&quot;weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-4-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;
+      &lt;div class=&quot;navbar-nav&quot;&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark pl-0&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Sixth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item d-none d-lg-block&quot;&gt;&lt;a class=&quot;nav-link text-dark pr-0&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/search.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+      &lt;p class=&quot;small mb-0&quot;&gt;&lt;span class=&quot;d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;text-muted mr-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;navbar-side-content weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-4-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    $(&#39;[data-id=headers-4-sidebar-toggle]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-4-sidebar&#39;).toggleClass(&#39;show&#39;);
+    });
+    $(&#39;[data-id=headers-4-sidebar-close]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-4-sidebar&#39;).removeClass(&#39;show&#39;);
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">//- PARTS
+mixin headers-4-nav()
+  .navbar-nav
+    .nav-item
+      a(href='').nav-link.text-dark.pl-0 First
+    .nav-item
+      a(href='').nav-link.text-dark Second
+    .nav-item
+      a(href='').nav-link.text-dark Third
+    .nav-item
+      a(href='').nav-link.text-dark Fourth
+    .nav-item
+      a(href='').nav-link.text-dark Fifth
+    .nav-item
+      a(href='').nav-link.text-dark Sixth
+    .nav-item.d-none.d-lg-block
+      a(href='').nav-link.text-dark.pr-0
+        img(src='./assets/glyphs/search.svg')
+
+.navbar.navbar-expand-lg.justify-content-between
+  .d-lg-none
+    a.navbar-toggler.mr-1(href="" data-id='headers-4-sidebar-toggle')
+      img(src='./assets/glyphs/burger.svg')
+  div
+    img(src='./assets/logos/acme.svg' width='62')
+  .collapse.navbar-collapse.flex-grow-0.weight-500
+    +headers-4-nav()
+  .d-lg-none.ml-auto
+    .nav-item
+      a(href='').nav-link.text-dark.pr-0
+        img(src='./assets/glyphs/search.svg')
+.navbar-side(id='headers-4-sidebar' data-id='headers-4-sidebar-close')
+  .navbar-side-content.d-flex.flex-column.justify-content-between
+    .weight-700
+      a.navbar-side-close.mb-4(href='' data-id='headers-4-sidebar-close')
+        img(src='./assets/glyphs/close.svg' width='32')
+      +headers-4-nav()
+    div
+      p.mb-3
+        a(href='').transparent-invert-link
+          img(src="./assets/glyphs/instagram-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/facebook-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/twitter-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/pinterest-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/thumbler-small.svg" width="16")
+      p.small.mb-0
+        span.d-block.d-xl-inline.text-muted.mb-1.mb-xl-0.mr-2 &copy; 2019 Acme. All right reserved.
+        a(href='').text-muted.mr-2
+          span Privacy Policy
+        a(href='').text-muted
+          span Terms of Service
+  .navbar-side-content.weight-700
+    a.navbar-side-close.mb-4(href='' data-id='headers-4-sidebar-close')
+      img(src='./assets/glyphs/close.svg' width='32')
+//- SCRIPT
+script.
+  $(function() {
+    $('[data-id=headers-4-sidebar-toggle]').click(function(e) {
+      e.preventDefault();
+      $('#headers-4-sidebar').toggleClass('show');
+    });
+    $('[data-id=headers-4-sidebar-close]').click(function(e) {
+      e.preventDefault();
+      $('#headers-4-sidebar').removeClass('show');
+    });
+  });</code></pre></div><h4 class="mb-3">menu-5</h4><img src='../assets/components/light/menu-5.png' data-img='menu-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;navbar navbar-expand-xs justify-content-between&quot;&gt;
+  &lt;div class=&quot;col col-lg-4 px-0&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;navbar-toggler pl-0&quot; href=&quot;&quot; data-id=&quot;headers-5-sidebar-toggle&quot;&gt;&lt;img src=&quot;./assets/glyphs/burger.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-2 d-none d-lg-block text-center px-0&quot;&gt;&lt;img src=&quot;./assets/logos/acme.svg&quot; width=&quot;62&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-4 d-none d-lg-flex justify-content-end align-items-center weight-500 px-0&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link pr-0&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/search.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;d-lg-none&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link pr-0&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/search.svg&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;navbar-side&quot; id=&quot;headers-5-sidebar&quot; data-id=&quot;headers-5-sidebar-close&quot;&gt;
+  &lt;div class=&quot;navbar-side-content d-flex flex-column justify-content-between&quot;&gt;
+    &lt;div class=&quot;weight-700&quot;&gt;&lt;a class=&quot;navbar-side-close mb-4&quot; href=&quot;&quot; data-id=&quot;headers-5-sidebar-close&quot;&gt;&lt;img src=&quot;./assets/glyphs/close.svg&quot; width=&quot;32&quot; /&gt;&lt;/a&gt;
+      &lt;div class=&quot;navbar-nav&quot;&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;First&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Second&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Third&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fourth&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link text-dark&quot; href=&quot;&quot;&gt;Fifth&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/instagram-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/pinterest-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-2&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/thumbler-small.svg&quot; width=&quot;16&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+      &lt;p class=&quot;small mb-0&quot;&gt;&lt;span class=&quot;d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2&quot;&gt;&amp;copy; 2019 Acme. All right reserved.&lt;/span&gt;&lt;a class=&quot;text-muted mr-2&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms of Service&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    $(&#39;[data-id=headers-5-sidebar-toggle]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-5-sidebar&#39;).toggleClass(&#39;show&#39;);
+    });
+    $(&#39;[data-id=headers-5-sidebar-close]&#39;).click(function(e) {
+      e.preventDefault();
+      $(&#39;#headers-5-sidebar&#39;).removeClass(&#39;show&#39;);
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.navbar.navbar-expand-xs.justify-content-between
+  .col.col-lg-4.px-0
+    .nav-item
+      a.navbar-toggler.pl-0(href='' data-id='headers-5-sidebar-toggle')
+        img(src='./assets/glyphs/burger.svg')
+  .col-2.d-none.d-lg-block.text-center.px-0
+    img(src='./assets/logos/acme.svg' width='62')
+  .col-4.d-none.d-lg-flex.justify-content-end.align-items-center.weight-500.px-0
+    .nav-item
+      a(href='').nav-link.text-dark First
+    .nav-item
+      a(href='').nav-link.text-dark Second
+    .nav-item
+      a(href='').nav-link.pr-0
+        img(src='./assets/glyphs/search.svg')
+  .d-lg-none
+    .nav-item
+      a(href='').nav-link.pr-0
+        img(src='./assets/glyphs/search.svg')
+.navbar-side(id='headers-5-sidebar' data-id='headers-5-sidebar-close')
+  .navbar-side-content.d-flex.flex-column.justify-content-between
+    .weight-700
+      a.navbar-side-close.mb-4(href='' data-id='headers-5-sidebar-close')
+        img(src='./assets/glyphs/close.svg' width='32')
+      .navbar-nav
+        .nav-item
+          a(href='').nav-link.text-dark First
+        .nav-item
+          a(href='').nav-link.text-dark Second
+        .nav-item
+          a(href='').nav-link.text-dark Third
+        .nav-item
+          a(href='').nav-link.text-dark Fourth
+        .nav-item
+          a(href='').nav-link.text-dark Fifth
+    div
+      p.mb-3
+        a(href='').transparent-invert-link
+          img(src="./assets/glyphs/instagram-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/facebook-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/twitter-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/pinterest-small.svg" width="16")
+        a(href='').transparent-invert-link.ml-2
+          img(src="./assets/glyphs/thumbler-small.svg" width="16")
+      p.small.mb-0
+        span.d-block.d-xl-inline.text-muted.mb-1.mb-xl-0.mr-2 &copy; 2019 Acme. All right reserved.
+        a(href='').text-muted.mr-2
+          span Privacy Policy
+        a(href='').text-muted
+          span Terms of Service
+//- SCRIPT
+script.
+  $(function() {
+    $('[data-id=headers-5-sidebar-toggle]').click(function(e) {
+      e.preventDefault();
+      $('#headers-5-sidebar').toggleClass('show');
+    });
+    $('[data-id=headers-5-sidebar-close]').click(function(e) {
+      e.preventDefault();
+      $('#headers-5-sidebar').removeClass('show');
+    });
+  });</code></pre></div></div></div></div></body></html>

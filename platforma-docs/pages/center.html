@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Center</h3><h4 class="mb-3">center-1</h4><img src='../assets/components/light/center-1.png' data-img='center-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center py-3&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8&quot;&gt;
+      &lt;h4&gt;Tagline&lt;/h4&gt;
+      &lt;h1 class=&quot;display-4&quot;&gt;Long headline to turn your visitors into users&lt;/h1&gt;&lt;a class=&quot;action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Action link&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.py-3
+    .col-12.col-md-8
+      h4 Tagline
+      h1.display-4 Long headline to turn your visitors into users
+      a(href="").action-link
+        span Action link</code></pre></div><h4 class="mb-3">center-2</h4><img src='../assets/components/light/center-2.png' data-img='center-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center py-3&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8&quot;&gt;
+      &lt;h1 class=&quot;display-4&quot;&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+      &lt;p class=&quot;lead mb-4&quot;&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more&lt;/p&gt;
+      &lt;div class=&quot;d-flex justify-content-center&quot;&gt;
+        &lt;div class=&quot;px-1&quot;&gt;&lt;a class=&quot;btn btn-lg btn-primary&quot; href=&quot;&quot;&gt;Action&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;px-1&quot;&gt;&lt;a class=&quot;btn btn-lg btn-outline-primary&quot; href=&quot;&quot;&gt;Action&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.py-3
+    .col-12.col-md-8
+      h1.display-4 Long headline to turn your visitors into users
+      p.lead.mb-4 Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more
+      .d-flex.justify-content-center
+        .px-1
+          a(href="").btn.btn-lg.btn-primary Action
+        .px-1
+          a(href="").btn.btn-lg.btn-outline-primary Action</code></pre></div><h4 class="mb-3">center-3</h4><img src='../assets/components/light/center-3.png' data-img='center-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center py-3&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8&quot;&gt;
+      &lt;h1 class=&quot;display-4&quot;&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+      &lt;p class=&quot;lead mb-4&quot;&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more&lt;/p&gt;
+      &lt;form class=&quot;row no-gutters mb-3&quot;&gt;
+        &lt;div class=&quot;col-12 col-lg-5 form-group pr-lg-2 mb-md-0&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Placeholder&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;col-12 col-lg-5 form-group pr-lg-2 mb-md-0&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Placeholder&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;col-12 col-lg-2&quot;&gt;&lt;button class=&quot;btn btn-primary btn-lg btn-block px-0&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+      &lt;/form&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;Separated they live in Bookmarksgrove right.&amp;nbsp;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.py-3
+    .col-12.col-md-8
+      h1.display-4 Long headline to turn your visitors into users
+      p.lead.mb-4 Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more
+      form.row.no-gutters.mb-3
+        .col-12.col-lg-5.form-group.pr-lg-2.mb-md-0
+          input(placeholder="Placeholder").form-control.form-control-lg
+        .col-12.col-lg-5.form-group.pr-lg-2.mb-md-0
+          input(placeholder="Placeholder").form-control.form-control-lg
+        .col-12.col-lg-2
+          button.btn.btn-primary.btn-lg.btn-block.px-0 Action
+      p.mb-0 Separated they live in Bookmarksgrove right.&nbsp;
+        a(href="").weight-500.action-link
+          span Link</code></pre></div><h4 class="mb-3">center-4</h4><img src='../assets/components/light/center-4.png' data-img='center-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center py-3&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8&quot;&gt;
+      &lt;h4&gt;Tagline&lt;/h4&gt;
+      &lt;h1 class=&quot;display-4&quot;&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+      &lt;p class=&quot;lead mb-4&quot;&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more&lt;/p&gt;
+      &lt;div class=&quot;large&quot;&gt;&lt;span class=&quot;mx-2&quot;&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;First action&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;mx-2&quot;&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Second action&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.py-3
+    .col-12.col-md-8
+      h4 Tagline
+      h1.display-4 Long headline to turn your visitors into users
+      p.lead.mb-4 Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more
+      .large
+        span.mx-2
+          a(href="").weight-500.action-link
+            span First action
+        span.mx-2
+          a(href="").weight-500.action-link
+            span Second action</code></pre></div><h4 class="mb-3">center-5</h4><img src='../assets/components/light/center-5.png' data-img='center-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center pt-3&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8&quot;&gt;
+      &lt;h4&gt;Tagline&lt;/h4&gt;
+      &lt;h1 class=&quot;display-4 mb-4&quot;&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row justify-content-center text-center pb-3&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8 col-lg-5&quot;&gt;
+      &lt;form class=&quot;input-group mb-3&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Placeholder&quot; /&gt;
+        &lt;div class=&quot;input-group-append&quot;&gt;&lt;button class=&quot;btn btn-primary btn-lg btn-block&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+      &lt;/form&gt;
+      &lt;p class=&quot;small mb-0&quot;&gt;By clicking the Button you confirming that you’re agree with our following &lt;a class=&quot;text-dark weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms and Conditions&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.pt-3
+    .col-12.col-md-8
+      h4 Tagline
+      h1.display-4.mb-4 Long headline to turn your visitors into users
+  .row.justify-content-center.text-center.pb-3
+    .col-12.col-md-8.col-lg-5
+      form.input-group.mb-3
+        input(placeholder="Placeholder").form-control.form-control-lg
+        .input-group-append
+          button.btn.btn-primary.btn-lg.btn-block Action
+      p.small.mb-0 By clicking the Button you confirming that you’re agree with our following
+        = ' '
+        a(href="").text-dark.weight-500
+          span Terms and Conditions</code></pre></div><h4 class="mb-3">center-6</h4><img src='../assets/components/light/center-6.png' data-img='center-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h1&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h4 Tagline
+    h1 Long headline to turn your visitors into users
+    p.mb-0 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.</code></pre></div><h4 class="mb-3">center-7</h4><img src='../assets/components/light/center-7.png' data-img='center-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h1&gt;Long headline to turn your visitors into users&lt;/h1&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h4 Tagline
+    h1 Long headline to turn your visitors into users
+    button.btn.btn-primary Action</code></pre></div><h4 class="mb-3">center-8</h4><img src='../assets/components/light/center-8.png' data-img='center-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1&gt;Long headline for two lines for attention and evolving&lt;/h1&gt;
+    &lt;p class=&quot;mb-4&quot;&gt;With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.&lt;/p&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h1 Long headline for two lines for attention and evolving
+    p.mb-4 With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.
+    button.btn.btn-primary Action</code></pre></div><h4 class="mb-3">center-9</h4><img src='../assets/components/light/center-9.png' data-img='center-9.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-1.svg&quot; width=&quot;52&quot; /&gt;
+    &lt;h1&gt;Medium length headline&lt;/h1&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    img(src="./assets/glyphs/rectangle-1.svg" width="52").mb-3
+    h1 Medium length headline
+    p.mb-0 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.</code></pre></div><h4 class="mb-3">center-10</h4><img src='../assets/components/light/center-10.png' data-img='center-10.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1 class=&quot;mb-4&quot;&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+    &lt;div&gt;&lt;span&gt;Share:&lt;/span&gt;&lt;a class=&quot;transparent-invert-link ml-3&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/facebook.svg&quot; width=&quot;20&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-3&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/twitter.svg&quot; width=&quot;20&quot; /&gt;&lt;/a&gt;&lt;a class=&quot;transparent-invert-link ml-3&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/link.svg&quot; width=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h1.mb-4 Long headline to turn your visitors into users
+    div
+      span Share:
+      a(href='').transparent-invert-link.ml-3
+        img(src="./assets/glyphs/facebook.svg" width="20")
+      a(href='').transparent-invert-link.ml-3
+        img(src="./assets/glyphs/twitter.svg" width="20")
+      a(href='').transparent-invert-link.ml-3
+        img(src="./assets/glyphs/link.svg" width="20")</code></pre></div><h4 class="mb-3">center-11</h4><img src='../assets/components/light/center-11.png' data-img='center-11.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1&gt;Long headline to turn your visitors into users&lt;/h1&gt;
+    &lt;p class=&quot;lead mb-4&quot;&gt;With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.&lt;/p&gt;
+    &lt;div class=&quot;d-flex justify-content-center align-items-center&quot;&gt;
+      &lt;div class=&quot;mr-1 mr-md-2&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/logos/paypal.svg&quot; style=&quot;min-width:72px; max-width: 92px&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;mx-1 mx-md-2&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/logos/android-pay.svg&quot; style=&quot;min-width:27px; max-width: 44px&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;mx-1 mx-md-2&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/logos/apple-pay.svg&quot; style=&quot;min-width:41px; max-width: 51px&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;ml-1 ml-md-2&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/logos/samsung-pay.svg&quot; style=&quot;min-width:86px; max-width: 109px&quot; /&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h1 Long headline to turn your visitors into users
+    p.lead.mb-4 With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.
+    .d-flex.justify-content-center.align-items-center
+      .mr-1.mr-md-2
+        img(src="./assets/logos/paypal.svg" style="min-width:72px; max-width: 92px").w-100
+      .mx-1.mx-md-2
+        img(src="./assets/logos/android-pay.svg" style="min-width:27px; max-width: 44px").w-100
+      .mx-1.mx-md-2
+        img(src="./assets/logos/apple-pay.svg" style="min-width:41px; max-width: 51px").w-100
+      .ml-1.ml-md-2
+        img(src="./assets/logos/samsung-pay.svg" style="min-width:86px; max-width: 109px").w-100</code></pre></div><h4 class="mb-3">center-12</h4><img src='../assets/components/light/center-12.png' data-img='center-12.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h1&gt;Short headline&lt;/h1&gt;&lt;a class=&quot;action-link large&quot; href=&quot;&quot;&gt;&lt;span&gt;Action link&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h1 Short headline
+    a(href="").action-link.large
+      span Action link</code></pre></div><h4 class="mb-3">center-13</h4><img src='../assets/components/light/center-13.png' data-img='center-13.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;h2&gt;Long headline on two lines to turn your visitors into users and achieve more&lt;/h2&gt;&lt;a class=&quot;large action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Action link&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    h2 Long headline on two lines to turn your visitors into users and achieve more
+    a(href="").large.action-link
+      span Action link</code></pre></div><h4 class="mb-3">center-14</h4><img src='../assets/components/light/center-14.png' data-img='center-14.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+    &lt;p class=&quot;lead mb-3&quot;&gt;With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time. Adjust the volume in any room.&lt;/p&gt;&lt;a class=&quot;large weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    p.lead.mb-3 With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time. Adjust the volume in any room.
+    a(href="").large.weight-500.action-link
+      span Link</code></pre></div><h4 class="mb-3">center-15</h4><img src='../assets/components/light/center-15.png' data-img='center-15.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-1.svg&quot; width=&quot;40&quot; /&gt;
+    &lt;h3&gt;Medium Length Title&lt;/h3&gt;
+    &lt;p class=&quot;mb-3&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.&lt;/p&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Long text on link&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-8.col-lg-6
+    img(src="./assets/glyphs/rectangle-1.svg" width='40').mb-3
+    h3 Medium Length Title
+    p.mb-3 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar, add speed controls, and more. Increase engagement with CTAs and custom end screens, or keep your video private and password-protected.
+    a(href="").weight-500
+      span Long text on link</code></pre></div><h4 class="mb-3">center-16</h4><img src='../assets/components/light/center-16.png' data-img='center-16.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center mb-4&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8&quot;&gt;
+      &lt;h4&gt;Tagline&lt;/h4&gt;
+      &lt;h1 class=&quot;display-4&quot;&gt;Main headline to turn your visitors into users&lt;/h1&gt;
+      &lt;p class=&quot;lead mb-6&quot;&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more&lt;/p&gt;&lt;a class=&quot;large weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Learn more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-1110x410.png&quot; /&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.mb-4
+    .col-12.col-md-8
+      h4 Tagline
+      h1.display-4 Main headline to turn your visitors into users
+      p.lead.mb-6 Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language ocean and many more stuff and more more more
+      a(href="").large.weight-500.action-link
+        span Learn more
+  img(src="./assets/pictures/image-1110x410.png").w-100</code></pre></div><h4 class="mb-3">center-17</h4><img src='../assets/components/light/center-17.png' data-img='center-17.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center mb-4&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+      &lt;h1&gt;Long headline for two lines for attention and evolving&lt;/h1&gt;
+      &lt;p class=&quot;lead mb-4&quot;&gt;With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.&lt;/p&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-1110x410.png&quot; /&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.mb-4
+    .col-12.col-md-8.col-lg-6
+      h1 Long headline for two lines for attention and evolving
+      p.lead.mb-4 With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.
+      button.btn.btn-primary Action
+  img(src="./assets/pictures/image-1110x410.png").w-100</code></pre></div><h4 class="mb-3">center-18</h4><img src='../assets/components/light/center-18.png' data-img='center-18.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;
+  &lt;div class=&quot;row justify-content-center text-center mb-4&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+      &lt;p class=&quot;lead mb-3&quot;&gt;With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time. Adjust the volume in any room.&lt;/p&gt;&lt;a class=&quot;large weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;images-ratio ratio-3-1 w-100 mb-3&quot; style=&quot;background-image: url(./assets/pictures/image-1110x410.png)&quot;&gt;&lt;a class=&quot;transparent-invert-link&quot; href=&quot;&quot;&gt;&lt;img src=&quot;./assets/glyphs/play.svg&quot; width=&quot;64&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div class=&quot;row justify-content-center text-center&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+      &lt;div class=&quot;small&quot;&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  .row.justify-content-center.text-center.mb-4
+    .col-12.col-md-8.col-lg-6
+      p.lead.mb-3 With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time. Adjust the volume in any room.
+      a(href="").large.weight-500.action-link
+        span Link
+  .images-ratio.ratio-3-1(style='background-image: url(./assets/pictures/image-1110x410.png)').w-100.mb-3
+    a(href='').transparent-invert-link
+      img(src='./assets/glyphs/play.svg' width='64')
+  .row.justify-content-center.text-center
+    .col-12.col-md-8.col-lg-6
+      .small All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.</code></pre></div><h4 class="mb-3">center-19</h4><img src='../assets/components/light/center-19.png' data-img='center-19.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-5&quot;&gt;&lt;img class=&quot;w-100 mb-4&quot; src=&quot;./assets/pictures/image-1110x410.png&quot; /&gt;
+  &lt;div class=&quot;row justify-content-center text-center&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+      &lt;h3&gt;Long headline for one line for attention&lt;/h3&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-5
+  img(src="./assets/pictures/image-1110x410.png").w-100.mb-4
+  .row.justify-content-center.text-center
+    .col-12.col-md-8.col-lg-6
+      h3 Long headline for one line for attention
+      p.mb-0 With the new AirPlay 2, you can control your home audio system and the speakers throughout your house.4 You can play a song in the living room and your kitchen at the same time.</code></pre></div></div></div></div></body></html>

@@ -1,22 +1,37 @@
+import 'normalize.css/normalize.css';
+import './scss/platforma-light.scss';
+import './scss/index.scss';
 
-require('normalize.css/normalize.css');
-require('./scss/platforma-light.scss');
-require('./scss/index.scss');
+import 'jquery';
+import './js/bootstrap.bundle.min';
 
-require('jquery');
-require('./js/bootstrap.bundle.min');
+import { Howl } from 'howler';
+import throttle from 'lodash/throttle';
 
-const { Howl } = require('howler');
-const throttle = require('lodash/throttle');
-
-document.addEventListener("DOMContentLoaded", () => {
-  const btnLearnMore = document.getElementById('btn-learn-more');
+$(document).ready(function() {
   const btnPlayExample = document.getElementById('btn-play-example');
-  const btnLearnMoreChevron = document.getElementById('btn-learn-more-chevron');
   const btnBack = document.querySelectorAll('.btn-back');
   const btnOpenChat = document.getElementById('btn-open-chat');
   const resetPasswordTokenElement = document.getElementById('reset-password-token');
   const resetPasswordTokenButtonElement = document.getElementById('reset-password-token-button');
+
+  $('[data-id=headers-1-sidebar-toggle]').click(function(e) {
+    e.preventDefault();
+    $('#headers-1-sidebar').toggleClass('show');
+  });
+  $('[data-id=headers-1-sidebar-close]').click(function(e) {
+    e.preventDefault();
+    $('#headers-1-sidebar').removeClass('show');
+  });
+
+  var mySwiper = new Swiper('#slider-customers-8', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-customers-8-next',
+      prevEl: '#slider-customers-8-prev',
+    },
+    slidesPerView: 'auto'
+  });
 
   // window.addEventListener('scroll', throttle(() => {
   //   if (window.pageYOffset > 200 && !btnLearnMoreChevron.classList.contains('is-hidden')) {
@@ -28,38 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
   //   }
   // }, 100));
 
-  // if (resetPasswordTokenElement) {
-  //   const windowLocationPathNames = window.location.pathname.split('/');
+  if (resetPasswordTokenElement) {
+    const windowLocationPathNames = window.location.pathname.split('/');
 
-  //   if (windowLocationPathNames.length) {
-  //     const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
-  //     resetPasswordTokenElement.textContent = resetPasswordToken;
+    if (windowLocationPathNames.length) {
+      const resetPasswordToken = windowLocationPathNames[windowLocationPathNames.length - 1];
+      resetPasswordTokenElement.textContent = resetPasswordToken;
 
-  //     if (resetPasswordTokenButtonElement) {
-  //       resetPasswordTokenButtonElement.href = `playpost://login/reset-password/${resetPasswordToken}`;
-  //     }
-  //   }
-
-  // }
-
-  if (btnLearnMore) {
-    btnLearnMore.addEventListener('click', () => {
-      scrollIt(
-        document.getElementById('features'),
-        750,
-        'easeInOutCubic'
-      );
-    });
-  }
-
-  if (btnLearnMoreChevron) {
-    btnLearnMoreChevron.addEventListener('click', () => {
-      scrollIt(
-        document.getElementById('features'),
-        750,
-        'easeInOutCubic'
-      );
-    });
+      if (resetPasswordTokenButtonElement) {
+        resetPasswordTokenButtonElement.href = `playpost://login/reset-password/${resetPasswordToken}`;
+      }
+    }
   }
 
   if (btnPlayExample) {

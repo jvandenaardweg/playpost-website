@@ -1,5 +1,6 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -54,7 +55,10 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'svg-inline-loader',
+        options: {
+          removeSVGTagAttrs: false
+        }
       }
       ,
       {
@@ -74,6 +78,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',

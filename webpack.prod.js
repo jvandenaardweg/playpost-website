@@ -1,5 +1,6 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -64,7 +65,10 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'svg-inline-loader',
+        options: {
+          removeSVGTagAttrs: false
+        }
       },
       {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
@@ -82,6 +86,10 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',

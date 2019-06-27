@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><title>Documentation - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4" id="introduction">Documentation</h1><h3 class="weight-700 mb-3">Introduction</h3><p class="mb-5">Platforma 2 Bootstrap is a tool which helps you build responsive HTML prototypes that will work like a finished websites. It contains a vast amount of components which you can use to create your designs. To start working unzip the downloaded package.</p><h3 class="weight-700 mb-3">Folder Structure</h3><p>After you download and unzip the package, you’ll find the following folders:</p><p><strong>/build</strong> &ndash; project folder (HTML/CSS), also contains assets with static files (.js libraries and pics);</p><p><strong>/html</strong> &ndash; HTML-version of blocks;</p><p><strong>/src</strong> &ndash; source code;</p><p><strong>/src/blocks</strong> &ndash; blocks’ source code (pug.) divided into categories;</p><p class="mb-5"><strong>/src/styles</strong> &ndash; upgraded Bootstrap source styles with pre-configured variables for Platforma.</p><h3 class="weight-700 mb-3" id="pug">PUG/SASS Version</h3><p>Install <a href="https://nodejs.org" target="_blank">Node.js,</a> then open directory with the project in the console and install npm packs with the command below:</p><pre><code>npm i</code></pre><p>Use the command below to compile files from src to build:</p><pre><code>gulp build</code></pre><p>For working in the <strong>Watch mode</strong> use the command below:</p><pre class="mb-5"><code>gulp watch</code></pre><h4 class="weight-700 mb-3" style="color: #bdbdbd">Layout</h4><p>There is a file <strong>layout.pug</strong> in the root directory, which has the basic structure of the template with styles and .js-files. You can also add your own styles and .js-libraries:</p><pre><code>&lt;!DOCTYPE html&gt;
+html(lang='en')
+  head
+    block title
+      title Platforma 2 Bootstrap - Design Files
+
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+
+    //- CSS import
+    link(rel='stylesheet' href='css/main.css')
+
+    //- JS import
+    script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js')
+    script(src='js/bootstrap.bundle.min.js')
+
+  body
+    block content
+</code></pre><p>In order to make a template, create a file in the root directory, for example:</p><pre><code>src/my-first-template.pug</code></pre><p>You can use this file to modify "content" block from layout.pug. For example, if you want create a file with menu-1, center-5 and footers-2, the final version of your template will look like this:</p><pre><code>extend layout
+
+include blocks/menu/menu-1
+include blocks/center/center-5
+include blocks/footers/footers-2
+
+block content
+  .container
+    +menu-1()
+    +center-5()
+    +footers-2()
+</code></pre><p class="mb-5">You'll find the file called<strong>src/my-first-template.html</strong> with your template in HTML in the <strong>/build</strong> folder.</p><h4 class="weight-700 mb-3" style="color: #bdbdbd">SCSS Styles</h4><p>The workflow is similar to Bootstrap SCSS and all the settings are stored in variables in <strong>styles/bootsrap/_variables.scss</strong> file. You can customize styles by using those variables, which have intuitively understandable names.
+We’ve also added a couple of our own additional classes:</p><p><strong>.action-link</strong> &ndash; link with a pointer;</p><p><strong>.caret-*</strong> &ndash; (up, down, left, right) - adds pointer to the block and is used in accordions;</p><p><strong>.custom-list</strong> &ndash; adds bullet styles for numbered and unnumbered lists;</p><p class="mb-5"><strong>.price-*</strong> &ndash; (small, medium, large) - used with <strong>.price-unit ( e.g.: /mo );</strong></p><h3 class="weight-700 mb-3" id="html">HTML/CSS Version</h3><h4 class="weight-700 mb-3" style="color: #bdbdbd">HTML Structure</h4><p><strong>/html</strong> contains <strong>layout.html</strong> template, which you can use as a basis of your own custom template. CSS and .js are already embedded:</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Platforma 2 Bootstrap - Design Files&lt;/title&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+  &lt;link rel="stylesheet" href="css/main.css" /&gt;
+  &lt;script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"&gt;&lt;/script&gt;
+  &lt;script src="js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!-- your html here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>How to copy HTML-code from <strong>layout.html:</strong> create <strong>my-first-template.html</strong> in <strong>/build</strong> directory, open it in editor and paste the code from layout.html there.</p><p>How to make a template from <strong>menu-1</strong>, <strong>center-5</strong> and <strong>footers-2</strong>: open these blocks from <strong>/html</strong> directory, copy the HTML-code of an opened block and then paste it into the &lt;body&gt;.</p><p class="mb-5">Block are stretched across their entire width. In order to center them use &lt;div class="container"&gt;.</p><h4 class="weight-700 mb-3" style="color: #bdbdbd">Changing Fonts</h4><p>You can set your own fonts with <strong>Google Fonts.</strong> Open <strong>src/styles/bootstrap.scss</strong> and add the font you want:<pre><code>@import url('https://fonts.googleapis.com/css?family=Some+Font');</code></pre><p>Then switch <strong>$font-family-base</strong> to 'Some Font' in <strong>src/styles/_variables</strong> file.</p></p><p>If you use CSS version, you’ll also need to add <strong>import</strong> to <strong>css/main.css:</strong></p><pre><code>@import url('https://fonts.googleapis.com/css?family=Some+Font');</code></pre><p class="mb-5">And then change <strong>font-family</strong> setting for <strong>body</strong> tag.</p><h4 class="weight-700 mb-3" style="color: #bdbdbd">Image & Favicon Settings</h4><p>We are using placeholder images instead of real images. You can replace placeholder image url with your image url like <strong>img/yourimage.jpg</strong></p><p>For HTML version:</p><pre><code>&lt;img src="image path" alt="image alt text"&gt;
+</code></pre><p>For PUG version:</p><pre><code>img(src="image path" alt="image alt text")
+</code></pre><p>To change the favicon image of your site, you need to load a new ICO image in a site root or to point out a new address of the image.</p><pre><code>&lt;!-- favicon --&gt;
+&lt;link rel="shortcut icon" href="images/favicon.png"&gt;
+&lt;link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"&gt;</code></pre></div></div></div></body></html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Forms</h3><h4 class="mb-3">forms-1</h4><img src='../assets/components/light/forms-1.png' data-img='forms-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;form class=&quot;mb-3&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;small text-secondary mt-6&quot;&gt;By signing in you agree with the &lt;a class=&quot;text-secondary secondary-link weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms and Conditions&lt;/span&gt;&lt;/a&gt; and &lt;a class=&quot;text-secondary weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-6.col-lg-4
+    form.mb-3
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      button.btn.btn-lg.btn-primary.btn-block Action
+    .small.text-secondary.mt-6
+      = 'By signing in you agree with the '
+      a(href='').text-secondary.secondary-link.weight-500
+        span Terms and Conditions
+      = ' and '
+      a(href='').text-secondary.weight-500
+        span Privacy Policy</code></pre></div><h4 class="mb-3">forms-2</h4><img src='../assets/components/light/forms-2.png' data-img='forms-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;form&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group custom-control&quot;&gt;&lt;label class=&quot;custom-checkbox mb-0&quot;&gt;&lt;input class=&quot;custom-control-input&quot; type=&quot;checkbox&quot; /&gt;
+          &lt;div class=&quot;custom-control-label small&quot;&gt;Subscribe to the newsletter&lt;/div&gt;
+        &lt;/label&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-6.col-lg-4
+    form
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      .form-group
+        input(type='password' placeholder='Password').form-control.form-control-lg
+      .form-group.custom-control
+        label.custom-checkbox.mb-0
+          input(type='checkbox').custom-control-input
+          .custom-control-label.small Subscribe to the newsletter
+      button.btn.btn-lg.btn-primary.btn-block Action</code></pre></div><h4 class="mb-3">forms-3</h4><img src='../assets/components/light/forms-3.png' data-img='forms-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;form class=&quot;mb-3&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; /&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;small mt-6&quot;&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;or Sign In with Facebook&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-6.col-lg-4
+    form.mb-3
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      .form-group
+        input(type='password' placeholder='Password').form-control.form-control-lg
+      button.btn.btn-lg.btn-primary.btn-block Action
+    .small.mt-6
+      a(href='').weight-500.action-link
+        span or Sign In with Facebook</code></pre></div><h4 class="mb-3">forms-4</h4><img src='../assets/components/light/forms-4.png' data-img='forms-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;form class=&quot;mb-3&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Name&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;row no-gutters&quot;&gt;
+        &lt;div class=&quot;col-6 pr-1&quot;&gt;&lt;button class=&quot;btn btn-lg btn-outline-primary btn-block&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+        &lt;div class=&quot;col-6 pl-1&quot;&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;small text-secondary mt-6&quot;&gt;By signing in you agree with the &lt;a class=&quot;text-secondary weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms and Conditions&lt;/span&gt;&lt;/a&gt; and &lt;a class=&quot;text-secondary weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-6.col-lg-4
+    form.mb-3
+      .form-group
+        input(type='text' placeholder='Name').form-control.form-control-lg
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      .form-group
+        input(type='password' placeholder='Password').form-control.form-control-lg
+      .row.no-gutters
+        .col-6.pr-1
+          button.btn.btn-lg.btn-outline-primary.btn-block Action
+        .col-6.pl-1
+          button.btn.btn-lg.btn-primary.btn-block Action
+    .small.text-secondary.mt-6
+      = 'By signing in you agree with the '
+      a(href='').text-secondary.weight-500
+        span Terms and Conditions
+      = ' and '
+      a(href='').text-secondary.weight-500
+        span Privacy Policy</code></pre></div><h4 class="mb-3">forms-5</h4><img src='../assets/components/light/forms-5.png' data-img='forms-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;form&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Name&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Confirm password&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group custom-control&quot;&gt;&lt;label class=&quot;custom-checkbox mb-0&quot;&gt;&lt;input class=&quot;custom-control-input&quot; type=&quot;checkbox&quot; /&gt;
+          &lt;div class=&quot;custom-control-label small&quot;&gt;Subscribe to the newsletter&lt;/div&gt;
+        &lt;/label&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-6.col-lg-4
+    form
+      .form-group
+        input(type='text' placeholder='Name').form-control.form-control-lg
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      .form-group
+        input(type='password' placeholder='Password').form-control.form-control-lg
+      .form-group
+        input(type='password' placeholder='Confirm password').form-control.form-control-lg
+      .form-group.custom-control
+        label.custom-checkbox.mb-0
+          input(type='checkbox').custom-control-input
+          .custom-control-label.small Subscribe to the newsletter
+      button.btn.btn-lg.btn-primary.btn-block Action</code></pre></div><h4 class="mb-3">forms-6</h4><img src='../assets/components/light/forms-6.png' data-img='forms-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;form class=&quot;mb-3&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;custom-select custom-select-lg&quot;&gt;&lt;select placeholder=&quot;Group&quot;&gt;
+            &lt;option value=&quot;1&quot;&gt;Topic One&lt;/option&gt;
+            &lt;option value=&quot;2&quot;&gt;Topic Two&lt;/option&gt;
+            &lt;option value=&quot;3&quot;&gt;Topic Three&lt;/option&gt;
+            &lt;option value=&quot;4&quot;&gt;Topic Four&lt;/option&gt;
+          &lt;/select&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;textarea class=&quot;form-control form-control-lg&quot; placeholder=&quot;Feedback&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Send your feedback&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-6.col-lg-4
+    form.mb-3
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      .form-group
+        .custom-select.custom-select-lg
+          select(placeholder='Group')
+            option(value='1') Topic One
+            option(value='2') Topic Two
+            option(value='3') Topic Three
+            option(value='4') Topic Four
+      .form-group
+        textarea(placeholder='Feedback' rows='4').form-control.form-control-lg
+      button.btn.btn-lg.btn-primary.btn-block Send your feedback</code></pre></div><h4 class="mb-3">forms-7</h4><img src='../assets/components/light/forms-7.png' data-img='forms-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-9 col-lg-7&quot;&gt;
+    &lt;form class=&quot;mb-3&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-12 col-md-6 pr-md-1&quot;&gt;
+          &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Name&quot; /&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-12 col-md-6 pl-md-1&quot;&gt;
+          &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Surname&quot; /&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group input-group input-group-lg&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; data-role=&quot;forms-7-password&quot; /&gt;
+        &lt;div class=&quot;input-group-control&quot;&gt;&lt;a class=&quot;transparent-link&quot; href=&quot;&quot; data-role=&quot;forms-7-toggle-password&quot; data-target=&quot;forms-7-password&quot;&gt;&lt;img src=&quot;./assets/glyphs/hide-off.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group input-group input-group-lg&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;password&quot; placeholder=&quot;Confirm password&quot; data-role=&quot;forms-7-confirm&quot; /&gt;
+        &lt;div class=&quot;input-group-control&quot;&gt;&lt;a class=&quot;transparent-link&quot; href=&quot;&quot; data-role=&quot;forms-7-toggle-password&quot; data-target=&quot;forms-7-confirm&quot;&gt;&lt;img src=&quot;./assets/glyphs/hide-off.svg&quot; width=&quot;24&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group custom-control&quot;&gt;&lt;label class=&quot;custom-checkbox mb-0&quot;&gt;&lt;input class=&quot;custom-control-input&quot; type=&quot;checkbox&quot; /&gt;
+          &lt;div class=&quot;custom-control-label small&quot;&gt;Subscribe to the newsletter&lt;/div&gt;
+        &lt;/label&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;small text-center text-muted&quot;&gt;By signing in you agree with the &lt;a class=&quot;weight-500 text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Terms and Conditions&lt;/span&gt;&lt;/a&gt; and &lt;a class=&quot;weight-500 text-muted&quot; href=&quot;&quot;&gt;&lt;span&gt;Privacy Policy&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function() {
+    const PASS_ICONS = {
+      hide: &#39;./assets/glyphs/hide-off.svg&#39;,
+      show: &#39;./assets/glyphs/hide-on.svg&#39;,
+    };
+    $(&#39;[data-role=forms-7-toggle-password]&#39;).click(function(e) {
+      e.preventDefault();
+      const $target = $(&#39;[data-role=&#39; + $(this).attr(&#39;data-target&#39;) + &#39;]&#39;);
+      const isHidden = $target.attr(&#39;type&#39;) === &#39;password&#39;;
+      $(this).find(&#39;img&#39;).attr(&#39;src&#39;, PASS_ICONS[isHidden ? &#39;show&#39; : &#39;hide&#39;]);
+      $target.attr(&#39;type&#39;, isHidden ? &#39;text&#39; : &#39;password&#39;);
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-9.col-lg-7
+    form.mb-3
+      .row
+        .col-12.col-md-6.pr-md-1
+          .form-group
+            input(type='text' placeholder='Name').form-control.form-control-lg
+        .col-12.col-md-6.pl-md-1
+          .form-group
+            input(type='text' placeholder='Surname').form-control.form-control-lg
+      .form-group
+        input(type='text' placeholder='Email').form-control.form-control-lg
+      .form-group.input-group.input-group-lg
+        input(type='password' placeholder='Password' data-role='forms-7-password').form-control.form-control-lg
+        .input-group-control
+          a(href='' data-role='forms-7-toggle-password' data-target='forms-7-password').transparent-link
+            img(src='./assets/glyphs/hide-off.svg' width='24')
+      .form-group.input-group.input-group-lg
+        input(type='password' placeholder='Confirm password' data-role='forms-7-confirm').form-control.form-control-lg
+        .input-group-control
+          a(href='' data-role='forms-7-toggle-password' data-target='forms-7-confirm').transparent-link
+            img(src='./assets/glyphs/hide-off.svg' width='24')
+      .form-group.custom-control
+        label.custom-checkbox.mb-0
+          input(type='checkbox').custom-control-input
+          .custom-control-label.small Subscribe to the newsletter
+      button.btn.btn-lg.btn-primary.btn-block Action
+    .small.text-center.text-muted
+      = 'By signing in you agree with the '
+      a(href='').weight-500.text-muted
+        span Terms and Conditions
+      = ' and '
+      a(href='').weight-500.text-muted
+        span Privacy Policy
+script.
+  $(function () {
+    const PASS_ICONS = {
+      hide: './assets/glyphs/hide-off.svg',
+      show: './assets/glyphs/hide-on.svg',
+    };
+    $('[data-role=forms-7-toggle-password]').click(function(e) {
+      e.preventDefault();
+      const $target = $('[data-role='+ $(this).attr('data-target') + ']');
+      const isHidden = $target.attr('type') === 'password';
+      $(this).find('img').attr('src', PASS_ICONS[isHidden ? 'show' : 'hide']);
+      $target.attr('type', isHidden ? 'text' : 'password');
+    });
+  });</code></pre></div><h4 class="mb-3">forms-8</h4><img src='../assets/components/light/forms-8.png' data-img='forms-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-9 col-lg-7&quot;&gt;
+    &lt;form&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;label class=&quot;small&quot; for=&quot;forms-8-email&quot;&gt;Email&lt;/label&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Email&quot; id=&quot;forms-8-email&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;label class=&quot;small&quot; for=&quot;forms-8-name&quot;&gt;Your name&lt;/label&gt;&lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;Your name&quot; id=&quot;forms-8-name&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;&lt;label class=&quot;small&quot; for=&quot;forms-8-topic&quot;&gt;Choose a topic&lt;/label&gt;
+        &lt;div class=&quot;custom-select custom-select-lg&quot;&gt;&lt;select type=&quot;text&quot; placeholder=&quot;ex. System requirements&quot;&gt;
+            &lt;option&gt;System requirements&lt;/option&gt;
+            &lt;option&gt;Where can I learn more about how to get started?&lt;/option&gt;
+            &lt;option&gt;Is Acme available for Linux?&lt;/option&gt;
+            &lt;option&gt;What about a version for iOS?&lt;/option&gt;
+          &lt;/select&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group mb-7&quot;&gt;&lt;label class=&quot;small&quot; for=&quot;forms-8-topic&quot;&gt;Label&lt;/label&gt;&lt;textarea class=&quot;form-control form-control-lg&quot; placeholder=&quot;Let us know&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Send Your Feedback&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-9.col-lg-7
+    form
+      .form-group
+        label(for='forms-8-email').small Email
+        input(type='text' placeholder='Email' id='forms-8-email').form-control.form-control-lg
+      .form-group
+        label(for='forms-8-name').small Your name
+        input(type='text' placeholder='Your name' id='forms-8-name').form-control.form-control-lg
+      .form-group
+        label(for='forms-8-topic').small Choose a topic
+        .custom-select.custom-select-lg
+          select(type='text' placeholder='ex. System requirements')
+            option System requirements
+            option Where can I learn more about how to get started?
+            option Is Acme available for Linux?
+            option What about a version for iOS?
+      .form-group.mb-7
+        label(for='forms-8-topic').small Label
+        textarea(placeholder='Let us know' rows='4').form-control.form-control-lg
+      button.btn.btn-lg.btn-primary.btn-block Send Your Feedback</code></pre></div><h4 class="mb-3">forms-9</h4><img src='../assets/components/light/forms-9.png' data-img='forms-9.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row flex-md-nowrap py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+        &lt;div class=&quot;pt-5 pb-4 pt-md-0 pb-md-0&quot;&gt;
+          &lt;h3&gt;Medium length headline&lt;/h3&gt;
+          &lt;p class=&quot;mb-3&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters.&lt;/p&gt;
+          &lt;div class=&quot;input-group mb-0&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Placeholder&quot; /&gt;
+            &lt;div class=&quot;input-group-append&quot;&gt;&lt;button class=&quot;btn btn-lg btn-primary&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;border-bottom d-md-none&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;border-right d-none d-md-block&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+        &lt;div class=&quot;pt-4 pb-5 pt-md-0 pb-md-0&quot;&gt;
+          &lt;h3&gt;Medium length headline&lt;/h3&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.flex-md-nowrap.py-md-5
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-md-10.col-lg-8
+        .pt-5.pb-4.pt-md-0.pb-md-0
+          h3 Medium length headline
+          p.mb-3 By creating an Account on our service, you agree to subscribe to newsletters.
+          .input-group.mb-0
+            input(placeholder="Placeholder").form-control.form-control-lg
+            .input-group-append
+              button.btn.btn-lg.btn-primary Action
+        .border-bottom.d-md-none
+  .border-right.d-none.d-md-block
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-md-10.col-lg-8
+        .pt-4.pb-5.pt-md-0.pb-md-0
+          h3 Medium length headline
+          p.mb-0 By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out.</code></pre></div><h4 class="mb-3">forms-10</h4><img src='../assets/components/light/forms-10.png' data-img='forms-10.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row flex-md-nowrap py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+        &lt;div class=&quot;pt-5 pb-4 pt-md-0 pb-md-0&quot;&gt;
+          &lt;h2&gt;Registered Customers&lt;/h2&gt;
+          &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;
+          &lt;form&gt;
+            &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Password&quot; type=&quot;password&quot; /&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;border-bottom d-md-none&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;border-right d-none d-md-block&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+        &lt;div class=&quot;pt-4 pb-5 pt-md-0 pb-md-0&quot;&gt;
+          &lt;h2&gt;New Customers&lt;/h2&gt;
+          &lt;p class=&quot;mb-3&quot;&gt;By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out.&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.flex-md-nowrap.py-md-5
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-md-10.col-lg-8
+        .pt-5.pb-4.pt-md-0.pb-md-0
+          h2 Registered Customers
+          p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+          form
+            .form-group
+              input(placeholder="Email").form-control.form-control-lg
+            .form-group
+              input(placeholder="Password" type='password').form-control.form-control-lg
+            button.btn.btn-lg.btn-primary.btn-block Action
+        .border-bottom.d-md-none
+  .border-right.d-none.d-md-block
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-md-10.col-lg-8
+        .pt-4.pb-5.pt-md-0.pb-md-0
+          h2 New Customers
+          p.mb-3 By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out.
+          button.btn.btn-lg.btn-primary.btn-block Action</code></pre></div><h4 class="mb-3">forms-11</h4><img src='../assets/components/light/forms-11.png' data-img='forms-11.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row flex-md-nowrap text-center py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+        &lt;div class=&quot;pt-5 pb-4 pt-md-0 pb-md-0&quot;&gt;
+          &lt;h3&gt;Look it up with your account&lt;/h3&gt;
+          &lt;form class=&quot;mb-3&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Password&quot; type=&quot;password&quot; /&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Sign in&lt;/button&gt;
+          &lt;/form&gt;
+          &lt;div class=&quot;small&quot;&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Forgot your password&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;border-right d-none d-md-block&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+        &lt;div class=&quot;pt-4 pb-5 pt-md-0 pb-md-0&quot;&gt;
+          &lt;h3 class=&quot;mb-9&quot;&gt;Look it up with your order number&lt;/h3&gt;
+          &lt;form class=&quot;mb-3&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Email&quot; /&gt;&lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;&lt;input class=&quot;form-control form-control-lg&quot; placeholder=&quot;Password&quot; type=&quot;password&quot; /&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Sign in&lt;/button&gt;
+          &lt;/form&gt;
+          &lt;div class=&quot;small&quot;&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;How to find your order number&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.flex-md-nowrap.text-center.py-md-5
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-md-10.col-lg-8
+        .pt-5.pb-4.pt-md-0.pb-md-0
+          h3 Look it up with your account
+          form.mb-3
+            .form-group
+              input(placeholder="Email").form-control.form-control-lg
+            .form-group
+              input(placeholder="Password" type='password').form-control.form-control-lg
+            button.btn.btn-lg.btn-primary.btn-block Sign in
+          .small
+            a(href='').weight-500.action-link
+              span Forgot your password
+  .border-right.d-none.d-md-block
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-md-10.col-lg-8
+        .pt-4.pb-5.pt-md-0.pb-md-0
+          h3.mb-9 Look it up with your order number
+          form.mb-3
+            .form-group
+              input(placeholder="Email").form-control.form-control-lg
+            .form-group
+              input(placeholder="Password" type='password').form-control.form-control-lg
+            button.btn.btn-lg.btn-primary.btn-block Sign in
+          .small
+            a(href='').weight-500.action-link
+              span How to find your order number</code></pre></div></div></div></div></body></html>

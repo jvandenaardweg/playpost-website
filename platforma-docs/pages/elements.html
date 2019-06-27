@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"><head><title>Elements - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><div><h1 class="weight-700 mb-4">Elements</h1><h3 class="weight-700 mb-4" id="typography">Typography</h3><h4 class="weight-700 mb-3" style="color: #bdbdbd">Headings</h4><div class="mb-5"><pre><code class="php">h1.display-4 // Display heading</code></pre><h1 class="display-4">Short display headline</h1><pre><code class="php">h1 // Heading 1</code></pre><h1>Medium length headline</h1><pre><code class="php">h2 // Heading 2</code></pre><h2>Medium length headline</h2><pre><code class="php">h3 // Heading 3</code></pre><h3>Medium length headline</h3><pre><code class="php">h4 // Heading 4</code></pre><h4>Medium length headline</h4><pre><code class="php">h5 // Heading 5</code></pre><h5>Medium length headline</h5></div><h4 class="weight-700 mb-3" style="color: #bdbdbd">Texts</h4><div class="mb-5"><pre><code class="php">blockquote.weight-500 // Blockquote</code></pre><blockquote class="weight-500">Medium length headline</blockquote><pre><code class="php">p.small // Small text</code></pre><p class="small">Medium length headline</p><pre><code class="php">p // Default text</code></pre><p>Medium length headline</p><pre><code class="php">p.large // Large text</code></pre><p class="large">Medium length headline</p></div><h3 class="weight-700 mb-4" id="links">Links</h3><div class="mb-5"><pre><code class="php">a.small // Small link</code></pre><p><a class="mr-3" href="">Learn more</a><a class="text-dark mr-3" href="">Learn more</a><a class="text-danger mr-3" href="">Learn more</a></p><pre><code class="php">a.large // Large link</code></pre><p><a class="large mr-3" href="">Learn more</a><a class="large text-dark mr-3" href="">Learn more</a><a class="large text-danger mr-3" href="">Learn more</a></p><pre><code class="php">a.action-link // Action link</code></pre><p><a class="action-link mr-3" href="">Learn more</a><a class="action-link text-dark mr-3" href="">Learn more</a><a class="action-link text-danger mr-3" href="">Learn more</a></p><pre><code class="php">a.weight-500.span // Underlined medium link</code></pre><p><a class="weight-500 mr-3" href=""><span>Learn more</span></a><a class="weight-500 text-dark mr-3" href=""><span>Learn more</span></a><a class="weight-500 text-danger mr-3" href=""><span>Learn more</span></a></p></div><h3 class="weight-700 mb-4" id="buttons">Buttons</h3><pre><code class="php">// Primary buttons
+button.btn.btn-primary.btn-lg Action
+button.btn.btn-primary Action
+button.btn.btn-primary.btn-sm Action
+
+// Outline buttons
+button.btn.btn-outline-primary.btn-lg Action
+button.btn.btn-outline-primary Action
+button.btn.btn-outline-primary.btn-sm Action</code></pre><div class="row mb-5"><div class="col-6"><p class="d-flex align-items-start"><button class="btn btn-primary btn-lg">Action</button><span>&nbsp;</span><button class="btn btn-primary">Action</button><span>&nbsp;</span><button class="btn btn-primary btn-sm">Action</button></p><p class="d-flex align-items-start"><button class="btn btn-primary btn-lg" disabled="true">Action</button><span>&nbsp;</span><button class="btn btn-primary" disabled="true">Action</button><span>&nbsp;</span><button class="btn btn-primary btn-sm" disabled="true">Action</button></p></div><div class="col-6"><p class="d-flex align-items-start"><button class="btn btn-outline-primary btn-lg">Action</button><span>&nbsp;</span><button class="btn btn-outline-primary">Action</button><span>&nbsp;</span><button class="btn btn-outline-primary btn-sm">Action</button></p><p class="d-flex align-items-start"><button class="btn btn-outline-primary btn-lg" disabled="true">Action</button><span>&nbsp;</span><button class="btn btn-outline-primary" disabled="true">Action</button><span>&nbsp;</span><button class="btn btn-outline-primary btn-sm" disabled="true">Action</button></p></div></div><h4 class="weight-700 mb-3" style="color: #bdbdbd">Button groups</h4><pre><code class="php">// Primary buttons group
+.btn-group
+  button.btn.btn-primary Action
+  button.btn.btn-primary Action
+  button.btn.btn-primary Action
+
+// Outline buttons group
+.btn-group
+  button.btn.btn-outline-primary Action
+  button.btn.btn-outline-primary Action
+  button.btn.btn-outline-primary Action
+</code></pre><div class="row mb-5"><div class="col-6"><div class="btn-group"><button class="btn btn-outline-primary">Action</button><button class="btn btn-outline-primary">Action</button><button class="btn btn-outline-primary">Action</button></div></div><div class="col-6"><div class="btn-group"><button class="btn btn-primary">Action</button><button class="btn btn-primary">Action</button><button class="btn btn-primary">Action</button></div></div></div><h3 class="weight-700 mb-4" id="forms">Forms</h3><h4 class="weight-700 mb-3" style="color: #bdbdbd">Inputs</h4><pre><code class="php">input.form-control(placeholder='Default')
+input.form-control.form-control-sm(placeholder='Default') // Small input
+input.form-control.form-control-lg(placeholder='Default') // Large input
+input.form-control.is-invalid(placeholder='Error' value='Error') // Not valid
+</code></pre><div class="row mb-2"><div class="col-4"><input class="form-control form-control-sm" placeholder="Default"/></div><div class="col-4"><input class="form-control form-control-sm" placeholder="Disabled" disabled="true"/></div><div class="col-4"><input class="form-control form-control-sm is-invalid" placeholder="Error" value="Error"/></div></div><div class="row mb-2"><div class="col-4"><input class="form-control" placeholder="Default"/></div><div class="col-4"><input class="form-control" placeholder="Disabled" disabled="true"/></div><div class="col-4"><input class="form-control is-invalid" placeholder="Error" value="Error"/></div></div><div class="row mb-5"><div class="col-4"><input class="form-control form-control-lg" placeholder="Default"/></div><div class="col-4"><input class="form-control form-control-lg" placeholder="Disabled" disabled="true"/></div><div class="col-4"><input class="form-control form-control-lg is-invalid" placeholder="Error" value="Error"/></div></div><h4 class="weight-700 mb-3" style="color: #bdbdbd">Input groups</h4><div class="row mb-5"><div class="col-4"><div class="input-group"><input class="form-control form-control-sm" placeholder="Default"/><div class="input-group-append"><button class="btn btn-primary">Action</button></div></div></div><div class="col-4"><div class="input-group"><input class="form-control form-control-sm" placeholder="Default" disabled="true"/><div class="input-group-append"><button class="btn btn-primary" disabled="true">Action</button></div></div></div><div class="col-4"><div class="input-group"><input class="form-control form-control-sm is-invalid" placeholder="Default" value="Error"/><div class="input-group-append"><button class="btn btn-primary">Action</button></div></div></div></div><h4 class="weight-700 mb-3" style="color: #bdbdbd">Checkboxes & Radiobuttons</h4><pre><code class="php">// Checkbox
+label.custom-checkbox
+  input(type='checkbox' checked='true').custom-control-input
+  .custom-control-label Default Checkbox
+
+// Radiobutton
+label.custom-checkbox
+  input(type='checkbox' disabled='true').custom-control-input
+  .custom-control-label Default Checkbox
+</code></pre><div class="row mb-5"><div class="col-6"><div class="mb-2"><div class="custom-control"><label class="custom-checkbox"><input class="custom-control-input" type="checkbox" checked="true"/><div class="custom-control-label">Default Checkbox</div></label></div></div><div class="mb-0"><div class="custom-control"><label class="custom-checkbox"><input class="custom-control-input" type="checkbox" disabled="true"/><div class="custom-control-label">Default Checkbox</div></label></div></div></div><div class="col-6"><div class="mb-2"><div class="custom-control"><label class="custom-radio"><input class="custom-control-input" type="radio" name="radio" checked="true"/><div class="custom-control-label">Default Radiobutton</div></label></div></div><div class="mb-0"><div class="custom-control"><label class="custom-radio"><input class="custom-control-input" type="radio" name="radio" disabled="true"/><div class="custom-control-label">Default Radiobutton</div></label></div></div></div></div><h4 class="weight-700 mb-3" style="color: #bdbdbd">Select</h4><pre><code class="php">// Select
+.custom-select
+  select(placeholder='Group')
+    option(value='1') Topic One
+    option(value='2') Topic Two
+
+// Large select
+.custom-select.custom-select-lg
+  select(placeholder='Group')
+    ...
+
+// Small select
+.custom-select.custom-select-sm
+  select(placeholder='Group')
+    ...
+</code></pre><div class="row mb-5"><div class="col-4"><div class="custom-select custom-select-sm"><select placeholder="Group"><option value="1">Topic One</option><option value="2">Topic Two</option><option value="3">Topic Three</option><option value="4">Topic Four</option></select></div></div><div class="col-4"><div class="custom-select"><select placeholder="Group"><option value="1">Topic One</option><option value="2">Topic Two</option><option value="3">Topic Three</option><option value="4">Topic Four</option></select></div></div><div class="col-4"><div class="custom-select custom-select-lg"><select placeholder="Group"><option value="1">Topic One</option><option value="2">Topic Two</option><option value="3">Topic Three</option><option value="4">Topic Four</option></select></div></div></div><h3 class="weight-700 mb-4" id="tabs">Tabs & Breadcrumbs</h3><pre><code class="php">// Tabs
+.nav.nav-tabs.weight-500
+  .nav-item
+    a(href="").nav-link.active Tab one
+  .nav-item
+    a(href="").nav-link Tab four
+</code></pre><div class="row mb-5"><div class="col-12"><div class="mb-2"><div class="nav nav-tabs weight-500"><div class="nav-item"><a class="nav-link active" href="">Tab one</a></div><div class="nav-item"><a class="nav-link" href="">Tab two</a></div><div class="nav-item"><a class="nav-link" href="">Tab three</a></div></div></div><div><pre><code class="php">// Breadcrumbs
+ol.breadcrumb
+  li.breadcrumb-item
+    a(href="").text-dark
+      span First
+
+  li.breadcrumb-item.active // Active
+    span Second
+</code></pre><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-dark" href=""><span>First</span></a></li><li class="breadcrumb-item"><a class="text-dark" href=""><span>Second</span></a></li><li class="breadcrumb-item active"><span>Third</span></li></ol></div></div></div><h3 class="weight-700 mb-4" id="lists">Lists</h3><div class="row mb-5"><div class="col-6"><div class="border-bottom py-2"><h5 class="caret-right mb-0">Action</h5></div><div class="border-bottom py-2"><h5 class="caret-right mb-0">Action</h5></div><div class="border-bottom py-2"><h5 class="caret-right mb-0">Action</h5></div></div></div><h4 class="weight-700 mb-3" style="color: #bdbdbd">Custom lists</h4><pre><code class="php">ul.custom-list
+  li First
+  li Second
+  ...
+
+ol.custom-list
+  li First
+  li Second
+  ...
+</code></pre><div class="row mb-5"><div class="col-6"><ul class="custom-list"><li>First action</li><li>Second action</li><li>Third action</li></ul></div><div class="col-6"><ol class="custom-list"><li>First action</li><li>Second action</li><li>Third action</li></ol></div></div><h3 class="weight-700 mb-4" id="modals">Modals</h3><div class="row"><div class="col-12"><div class="modal-dialog" role="document"><div class="modal-content"><div class="close"><img src="./assets/glyphs/close.svg" width="24"/></div><div class="modal-body text-center"><h2>Long headline on two lines to turn your visitors into users</h2><p class="mb-2">Separated they live in Bookmarks right at the coast of the famous Semantics</p><a class="action-link" href=""><span>Action</span></a></div></div></div></div></div><div class="row"><div class="col-12"><div class="modal-dialog" role="document"><div class="modal-content"><div class="close"><img src="./assets/glyphs/close.svg" width="24"/></div><div class="modal-body text-center"><h2>Long headline on two lines to turn your visitors into users</h2><p class="mb-2">Separated they live in Bookmarks right at the coast of the famous Semantics</p><div class="d-flex justify-content-center"><div class="px-1"><a class="btn btn-primary" href="">Action</a></div><div class="px-1"><a class="btn btn-outline-primary" href="">Action</a></div></div></div></div></div></div></div><div class="row"><div class="col-12"><div class="modal-dialog" role="document"><div class="modal-content"><div class="close"><img src="./assets/glyphs/close.svg" width="24"/></div><div class="modal-body"><h2>Long headline on two lines to turn your visitors into users</h2><p class="mb-4">By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.</p><a class="btn btn-primary" href="">Action</a></div></div></div></div></div><div class="row"><div class="col-12"><div class="modal-dialog" role="document"><div class="modal-content"><div class="close"><img src="./assets/glyphs/close.svg" width="24"/></div><div class="modal-body"><div class="row justify-content-center"><div class="col-10"><h2 class="text-center">Short headline</h2><form><div class="form-group"><input class="form-control form-control-lg" type="text" placeholder="Email"/></div><div class="form-group"><input class="form-control form-control-lg" type="password" placeholder="Password"/></div><div class="form-group custom-control"><label class="custom-checkbox mb-0"><input class="custom-control-input" type="checkbox"/><div class="custom-control-label small">Subscribe to the newsletter</div></label></div><button class="btn btn-lg btn-primary btn-block">Action</button></form></div></div></div></div></div></div></div></div></div></div></div></body></html>
