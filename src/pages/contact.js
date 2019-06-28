@@ -33,9 +33,9 @@ class Contact extends React.Component {
               </button>
             </div>
           </div>
-          <h2 className="text-center text-black-50 font-weight-light py-5">or</h2>
+          {/* <h2 className="text-center text-black-50 font-weight-light py-5">or</h2>
           <h2 className="text-center mt-0">Send an old-fashioned message</h2>
-          <ContactForm />
+          <ContactForm /> */}
         </div>
       </Layout>
     )

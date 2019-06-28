@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
+
+import Modal from 'components/Modal'
+
 class Pricing extends React.Component {
   render() {
     const { location, title } = this.props
@@ -12,19 +16,26 @@ class Pricing extends React.Component {
       >
         <div className="col-12 col-md-6">
           <div className="row justify-content-around">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-6">
               <div className="py-5 py-md-0">
                 <h3>Standard</h3>
                 <div className="price-medium mb-3">
                   €0<span className="price-unit ml-1">/ mo</span>
                 </div>
                 <p className="mb-4">
-                  Basic quality voices. One voice option per language. Max. 5
-                  minutes per article. Some advertisements.
+                  <ul className="list-unstyled">
+                    <li>Basic quality voices</li>
+                    <li>One voice per language</li>
+                    <li>Max. 5 minutes per article</li>
+                    <li>Some advertisements</li>
+                  </ul>
                 </p>
-                <button className="btn btn-primary btn-lg font-weight-semibold">
+                <a
+                  className="btn btn-primary btn-lg font-weight-semibold"
+                  href={APPLE_APP_STORE_URL}
+                >
                   Get started for free
-                </button>
+                </a>
               </div>
               <div className="border-bottom d-md-none"></div>
             </div>
@@ -33,42 +44,54 @@ class Pricing extends React.Component {
         <div className="border-right d-none d-md-block"></div>
         <div className="col-12 col-md-6 justify-content-around">
           <div className="row justify-content-around">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-6">
               <div className="py-5 py-md-0">
                 <h3>Premium</h3>
                 <div className="price-medium mb-3">
                   €4,99<span className="price-unit ml-1">/ mo</span>
                 </div>
                 <p className="mb-4">
-                  50+ Higher Quality voices. Multiple voice options per
-                  language. No article limits. No advertisements.
+                  <ul className="list-unstyled">
+                    <li>50+ High Quality voices</li>
+                    <li>Multiple voices per language</li>
+                    <li>Max. 15 minutes per article</li>
+                    <li>No advertisements</li>
+                  </ul>
                 </p>
-                <button className="btn btn-primary btn-lg font-weight-semibold">
+                <a
+                  className="btn btn-primary btn-lg font-weight-semibold"
+                  href={APPLE_APP_STORE_URL}
+                >
                   Get started for free
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </div>
         {/* <div className="border-right d-none d-md-block"></div>
-        <div className="col-12 col-md-6 justify-content-around">
+        <div className="col-12 col-md-4 justify-content-around">
           <div className="row justify-content-around">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-9">
               <div className="py-5 py-md-0">
                 <h3>Unlimited</h3>
                 <div className="price-medium mb-3">
                   €9,99<span className="price-unit ml-1">/ mo</span>
                 </div>
-                <p className="mb-4">
-                  Everything from Premium. Unlimited listening, no article limits. Download complete playlist offline.
+                <p className="mb-4 text-left">
+                  <ul>
+                    <li>All Premium features</li>
+                    <li>Unlimited minutes per article *</li>
+                  </ul>
                 </p>
-                <button className="btn btn-primary btn-lg font-weight-semibold">
-                  Get started for free
+                <button className="btn btn-secondary btn-lg font-weight-semibold" disabled>
+                  Available later
                 </button>
+
+                <small className="small text-black-50 d-block mt-2">* within our Fair Use Policy</small>
               </div>
             </div>
-          </div> */}
-        {/* </div> */}
+          </div>
+        </div> */}
       </div>
     )
   }

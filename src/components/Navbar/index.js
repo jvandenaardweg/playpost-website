@@ -3,11 +3,23 @@ import { Link } from 'gatsby'
 import './style.scss'
 import Icon from 'components/Icon'
 
+import { scrollIt } from '../../utils/scroll'
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
 // import Logo from '../../../static/svg/logo.svg'
 
 class Navbar extends React.PureComponent {
   state = {
     isMobileMenuOpen: false,
+  }
+
+  handleOnClickFeatures = event => {
+    event.preventDefault()
+    scrollIt(document.getElementById('features'))
+  }
+
+  handleOnClickPricing = event => {
+    event.preventDefault()
+    scrollIt(document.getElementById('pricing'))
   }
 
   handleToggleMobileMenu = event => {
@@ -63,9 +75,13 @@ class Navbar extends React.PureComponent {
                       : 'nav-item'
                   }
                 >
-                  <Link className="nav-link text-white" to="/#features">
+                  <a
+                    className="nav-link text-white"
+                    href=""
+                    onClick={this.handleOnClickFeatures}
+                  >
                     Features
-                  </Link>
+                  </a>
                 </div>
                 <div
                   className={
@@ -74,9 +90,13 @@ class Navbar extends React.PureComponent {
                       : 'nav-item'
                   }
                 >
-                  <Link className="nav-link text-white" to="/#pricing">
+                  <a
+                    className="nav-link text-white"
+                    href=""
+                    onClick={this.handleOnClickPricing}
+                  >
                     Pricing
-                  </Link>
+                  </a>
                 </div>
                 <div
                   className={
@@ -97,7 +117,10 @@ class Navbar extends React.PureComponent {
               </a>
             </div>
             <div className="ml-auto d-none d-lg-block">
-              <a className="btn btn-lg btn-white font-weight-semibold" href="">
+              <a
+                className="btn btn-lg btn-white font-weight-semibold"
+                href={APPLE_APP_STORE_URL}
+              >
                 Get iPhone App
               </a>
             </div>

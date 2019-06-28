@@ -34,12 +34,14 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, hideFooter } = this.props
     return (
       <div>
         <Navbar title={siteMetadata.title} {...this.props} />
         {children}
-        <Footer title={siteMetadata.title} author={siteMetadata.author} />
+        {!hideFooter && (
+          <Footer title={siteMetadata.title} author={siteMetadata.author} />
+        )}
         <CookieConsent
           location="bottom"
           buttonText="OK"

@@ -3,8 +3,15 @@ import { Link } from 'gatsby'
 import './style.scss'
 
 import coverImage from '../../../static/img/example-cover.png'
+import { scrollIt } from '../../utils/scroll'
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
 
 class Cover extends React.Component {
+  handleOnClick = event => {
+    event.preventDefault()
+    scrollIt(document.getElementById('newsletter'))
+  }
+
   render() {
     const { location, title } = this.props
 
@@ -25,7 +32,7 @@ class Cover extends React.Component {
                 <div className="col-12 col-lg-5 mb-2 mb-md-2 mb-lg-0">
                   <a
                     className="btn btn-block btn-lg btn-white font-weight-semibold"
-                    href=""
+                    href={APPLE_APP_STORE_URL}
                   >
                     Get iPhone App
                   </a>
@@ -33,7 +40,11 @@ class Cover extends React.Component {
                 <div className="col-12 col-lg-6 text-center text-md-left text-white">
                   <div className="small ml-md-6">
                     Android App will be available later this year.
-                    <a className="text-white font-weight-bold" href="#newsletter">
+                    <a
+                      className="text-white font-weight-bold"
+                      href=""
+                      onClick={this.handleOnClick}
+                    >
                       <span>&nbsp;Subscribe for updates</span>
                     </a>
                   </div>

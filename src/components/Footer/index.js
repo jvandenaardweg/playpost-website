@@ -1,5 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
+
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
 import './style.scss'
 
 const Footer = ({ author, title }) => (
@@ -13,9 +15,9 @@ const Footer = ({ author, title }) => (
             <br />
             Amsterdam, The Netherlands
             <br />
-            <a className="text-muted" href="">
-              <span>info@playpost.app</span>
-            </a>
+            <Link className="text-muted" to="/contact">
+              <span>Contact us</span>
+            </Link>
           </p>
           <div className="mt-3 d-lg-none">
             <a className="transparent-link mr-2" href="">
@@ -68,12 +70,12 @@ const Footer = ({ author, title }) => (
         </div>
         <div className="col-12 col-lg-4">
           <div className="border-top pt-4 d-lg-none"></div>
-          <h4>Subscribe</h4>
+          <h4>Subscribe to our newsletter</h4>
           <div className="form-group input-group input-group-lg">
             <input
               className="form-control form-control-lg"
               type="text"
-              placeholder="Enter your email address"
+              placeholder="Your e-mail address"
             />
             <div className="input-group-control">
               <a className="transparent-invert-link" href="">
@@ -88,7 +90,7 @@ const Footer = ({ author, title }) => (
         <div className="col-6 col-lg-2">
           <h4>Mobile apps</h4>
           <div className="mb-2">
-            <a href="">
+            <a href={APPLE_APP_STORE_URL}>
               <svg
                 width="123"
                 height="38"
@@ -113,7 +115,7 @@ const Footer = ({ author, title }) => (
               </svg>
             </a>
           </div>
-          <div className="mb-0">
+          {/* <div className="mb-0">
             <a href="">
               <svg
                 width="123"
@@ -201,17 +203,16 @@ const Footer = ({ author, title }) => (
                 </g>
               </svg>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="border-top d-lg-none"></div>
       <div className="d-block d-lg-flex justify-content-between py-3 py-lg-2">
         <div className="small mb-2 mb-lg-0">
           <span className="text-muted mr-5">
-            &copy; 2019 Playpost. All right reserved. Made with love in
-            Amsterdam by{' '}
+            &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
             <a href="https://www.linkedin.com/in/jvandenaardweg/">
-              Jordy van den Aardweg
+              Jordy van den Aardweg (available for hire)
             </a>
             .
           </span>

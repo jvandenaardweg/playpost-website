@@ -17,7 +17,10 @@ class Voices extends React.Component {
     const { isVisibleSamples } = this.state
 
     return (
-      <div className="row justify-content-between align-items-center py-5" id="voices">
+      <div
+        className="row justify-content-between align-items-center py-5"
+        id="voices"
+      >
         <div className="col-12 col-md-6 pl-md-0 mb-4 mb-md-0 position-relative">
           <VoiceSample
             src="https://storage.playpost.app/voices/8a0b8297-5070-4733-a424-933adf568ed2.wav"
@@ -67,7 +70,7 @@ class Voices extends React.Component {
           <p className="mb-2">
             The most advanced text to speech synthesis solutions to speak text
             to you and sound natural and pleasant to listen to. Personalize the
-            experience by using a variety of voices.{' '}
+            experience by using a variety of voices.<br /><br />
             <a
               className="action-link"
               href="#"

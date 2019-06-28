@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatstrap',
-    description: 'Gatsby starter for bootstrap a blog',
-    siteUrl: 'https://gatstrap.netlify.com',
-    author: 'jaxx2104',
-    twitter: 'jaxx2104',
+    title: 'Playpost',
+    description: 'Instant podcasts of every article',
+    siteUrl: 'https://playpost.app',
+    author: 'Jordy van den Aardweg',
+    twitter: 'playpostapp',
   },
   pathPrefix: '/',
   plugins: [

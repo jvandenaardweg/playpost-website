@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
 import playlistImage from '../../../static/img/example-playlist.png'
 
 class Features extends React.Component {
@@ -17,7 +18,8 @@ class Features extends React.Component {
             Semantics, large language ocean Separated they live in Bookmarks
             right at the coast
           </p>
-          <ul className="custom-list mb-0">
+
+          <ul className="custom-list mb-4">
             <li className="font-weight-semibold">
               Archive already listened articles
             </li>
@@ -31,6 +33,9 @@ class Features extends React.Component {
               Drag and drop to re-order your playlist
             </li> */}
           </ul>
+          <a className="action-link" href={APPLE_APP_STORE_URL}>
+            <span>Get started with the iPhone app</span>
+          </a>
         </div>
         <div className="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0">
           <img className="w-100" src={playlistImage} alt="Playpost playlist" />
