@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import './style.scss'
 import Icon from 'components/Icon'
 
@@ -13,13 +13,25 @@ class Navbar extends React.PureComponent {
   }
 
   handleOnClickFeatures = event => {
+    const { location } = this.props
     event.preventDefault()
-    scrollIt(document.getElementById('features'))
+
+    if (location.pathname === '/') {
+      return scrollIt(document.getElementById('pricing'))
+    }
+
+    return navigate('/#features')
   }
 
   handleOnClickPricing = event => {
+    const { location } = this.props
     event.preventDefault()
-    scrollIt(document.getElementById('pricing'))
+
+    if (location.pathname === '/') {
+      return scrollIt(document.getElementById('pricing'))
+    }
+
+    return navigate('/#pricing')
   }
 
   handleToggleMobileMenu = event => {
@@ -51,7 +63,7 @@ class Navbar extends React.PureComponent {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                class="feather feather-menu"
+                className="feather feather-menu"
               >
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -105,13 +117,13 @@ class Navbar extends React.PureComponent {
                       : 'nav-item'
                   }
                 >
-                  <a
+                  <Link
                     className="nav-link text-white"
-                    href=""
+                    to="/#pricing"
                     onClick={this.handleOnClickPricing}
                   >
                     Pricing
-                  </a>
+                  </Link>
                 </div>
                 <div
                   className={

@@ -22,14 +22,12 @@ class Pricing extends React.Component {
                 <div className="price-medium mb-3">
                   €0<span className="price-unit ml-1">/ mo</span>
                 </div>
-                <p className="mb-4">
-                  <ul className="list-unstyled">
-                    <li>Basic quality voices</li>
-                    <li>One voice per language</li>
-                    <li>Max. 5 minutes per article</li>
-                    <li>Some advertisements</li>
-                  </ul>
-                </p>
+                <ul className="list-unstyled mb-4">
+                  <li>Basic quality voices</li>
+                  <li>One voice per language</li>
+                  <li>Max. 5 minutes per article</li>
+                  <li>Some advertisements</li>
+                </ul>
                 <a
                   className="btn btn-primary btn-lg font-weight-semibold"
                   href={APPLE_APP_STORE_URL}
@@ -50,14 +48,12 @@ class Pricing extends React.Component {
                 <div className="price-medium mb-3">
                   €4,99<span className="price-unit ml-1">/ mo</span>
                 </div>
-                <p className="mb-4">
-                  <ul className="list-unstyled">
-                    <li>50+ High Quality voices</li>
-                    <li>Multiple voices per language</li>
-                    <li>Max. 15 minutes per article</li>
-                    <li>No advertisements</li>
-                  </ul>
-                </p>
+                <ul className="list-unstyled mb-4">
+                  <li>50+ High Quality voices</li>
+                  <li>Multiple voices per language</li>
+                  <li>Max. 15 minutes per article</li>
+                  <li>No advertisements</li>
+                </ul>
                 <a
                   className="btn btn-primary btn-lg font-weight-semibold"
                   href={APPLE_APP_STORE_URL}

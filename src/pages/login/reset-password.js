@@ -8,7 +8,8 @@ class ResetPassword extends React.Component {
 
     let resetPasswordToken = ''
 
-    const windowLocationPathNames = window.location.pathname.split('/')
+    const windowLocationPathNames =
+      typeof window !== 'undefined' && window.location.pathname.split('/')
 
     if (windowLocationPathNames.length) {
       resetPasswordToken =

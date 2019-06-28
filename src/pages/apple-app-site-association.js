@@ -6,7 +6,7 @@ class AppleAppSiteAssociation extends React.Component {
   render() {
     const { location, title } = this.props
 
-    return {
+    const data = {
       webcredentials: {
         apps: ['8GH8GLAMTU.com.aardwegmedia.playpost'],
       },
@@ -29,6 +29,8 @@ class AppleAppSiteAssociation extends React.Component {
         ],
       },
     }
+
+    return null
   }
 }
 
