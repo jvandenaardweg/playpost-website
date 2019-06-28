@@ -2,6 +2,7 @@ import React from 'react'
 import emergence from 'emergence.js'
 import CookieConsent from 'react-cookie-consent'
 import { Link } from 'gatsby'
+import Drift from 'react-driftjs'
 
 import Navbar from 'components/Navbar'
 import Footer from 'components/Footer'
@@ -16,17 +17,6 @@ import 'font-awesome/css/font-awesome.css'
 class Layout extends React.Component {
   componentDidMount() {
     emergence.init()
-
-    window.$crisp = []
-    window.CRISP_WEBSITE_ID = '368ddcc6-ea57-4267-8a5b-f4f1fc84424e'
-
-    // (function() {
-    var d = document
-    var s = d.createElement('script')
-
-    s.src = 'https://client.crisp.chat/l.js'
-    s.async = 1
-    d.getElementsByTagName('head')[0].appendChild(s)
   }
 
   componentDidUpdate() {
@@ -37,6 +27,7 @@ class Layout extends React.Component {
     const { children, hideFooter } = this.props
     return (
       <div>
+        <Drift appId="hrvni23275hv" />
         <Navbar title={siteMetadata.title} {...this.props} />
         {children}
         {!hideFooter && (

@@ -47,23 +47,23 @@ const Footer = ({ author, title }) => (
           <h4>First column</h4>
           <div className="small">
             <div className="mb-1">
-              <Link className="text-dark" to="/about">
-                <span>About</span>
-              </Link>
-            </div>
-            <div className="mb-1">
-              <Link className="text-dark" to="/faq">
-                <span>FAQ</span>
+              <Link className="text-dark" to="/">
+                <span>Home</span>
               </Link>
             </div>
             <div className="mb-1">
               <Link className="text-dark" to="/privacy">
-                <span>Privacy</span>
+                <span>Privacy Policy</span>
               </Link>
             </div>
             <div className="mb-1">
-              <Link className="text-dark" to="/contact">
-                <span>Contact</span>
+              <Link className="text-dark" to="/privacy">
+                <span>Terms and Conditions</span>
+              </Link>
+            </div>
+            <div className="mb-1">
+              <Link className="text-dark" to="/support">
+                <span>Support</span>
               </Link>
             </div>
           </div>

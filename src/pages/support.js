@@ -1,15 +1,16 @@
 import React from 'react'
-import { Link } from 'gatsby'
-// import './style.scss'
 
 import Layout from 'components/Layout'
 import CenterHeader from 'components/CenterHeader'
-import ContactForm from 'components/ContactForm'
 
-class Contact extends React.Component {
+class Support extends React.Component {
+  componentDidMount() {
+    typeof window !== 'undefined' && window.drift && window.drift.api.openChat()
+  }
+
   openChat = event => {
     event.preventDefault()
-    $crisp.push(['do', 'chat:open'])
+    typeof window !== 'undefined' && window.drift && window.drift.api.openChat()
   }
 
   render() {
@@ -33,13 +34,10 @@ class Contact extends React.Component {
               </button>
             </div>
           </div>
-          {/* <h2 className="text-center text-black-50 font-weight-light py-5">or</h2>
-          <h2 className="text-center mt-0">Send an old-fashioned message</h2>
-          <ContactForm /> */}
         </div>
       </Layout>
     )
   }
 }
 
-export default Contact
+export default Support

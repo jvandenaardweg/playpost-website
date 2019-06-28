@@ -18,8 +18,6 @@ export default class HTML extends React.Component {
             sizes="180x180"
           />
           <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
-          <link rel="preconnect" href="https://client.relay.crisp.chat" />
-          <link rel="preconnect" href="https://crisp.chat" />
           <link rel="preconnect" href="https://www.google.com" />
           <link rel="preconnect" href="https://marketingplatform.google.com" />
         </head>

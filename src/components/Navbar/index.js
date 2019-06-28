@@ -40,6 +40,11 @@ class Navbar extends React.PureComponent {
     this.setState({ isMobileMenuOpen: !isMobileMenuOpen })
   }
 
+  handleOnClickContact = event => {
+    event.preventDefault()
+    typeof window !== 'undefined' && window.drift.api.openChat()
+  }
+
   render() {
     const { location, title } = this.props
     const { isMobileMenuOpen } = this.state
@@ -132,9 +137,13 @@ class Navbar extends React.PureComponent {
                       : 'nav-item'
                   }
                 >
-                  <Link className="nav-link text-white" to="/contact">
+                  <a
+                    className="nav-link text-white"
+                    href=""
+                    onClick={this.handleOnClickContact}
+                  >
                     Contact
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

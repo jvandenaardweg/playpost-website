@@ -48,15 +48,53 @@ class CustomerResponses extends React.Component {
                         All base UI elements are made using Nested Symbols”
                       </p>
                       <img
-                        className="rounded mb-2"
-                        src="<%= require('./assets/pictures/userpic.png') %>"
+                        className="rounded-circle mb-2"
+                        src="https://placehold.it/60x60"
                         width="60"
                         height="60"
                       />
                       <div className="d-flex justify-content-between align-items-end">
                         <div>
                           <p className="mb-0">
-                            <span className="weight-500">Name Surname</span>
+                            <span className="font-weight-semibold">
+                              Name Surname
+                            </span>
+                          </p>
+                          <p className="small mb-0">Founder, Acme Company</p>
+                        </div>
+                        <div>
+                          <a className="transparent-invert-link ml-2" href="">
+                            {/* <%= require('./assets/glyphs/facebook.svg') %> */}
+                          </a>
+                          <a className="transparent-invert-link ml-2" href="">
+                            {/* <%= require('./assets/glyphs/twitter.svg') %> */}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
+                <div className="card shadow-sm">
+                    <div className="card-body">
+                      <p className="mb-4">
+                        “All base UI elements are made using Nested Symbols and
+                        shared styles that are logically connected. Gorgeous,
+                        high-quality video sharing on desktop, mobile, tablet.
+                        All base UI elements are made using Nested Symbols”
+                      </p>
+                      <img
+                        className="rounded-circle mb-2"
+                        src="https://placehold.it/60x60"
+                        width="60"
+                        height="60"
+                      />
+                      <div className="d-flex justify-content-between align-items-end">
+                        <div>
+                          <p className="mb-0">
+                            <span className="font-weight-semibold">
+                              Name Surname
+                            </span>
                           </p>
                           <p className="small mb-0">Founder, Acme Company</p>
                         </div>
@@ -82,49 +120,17 @@ class CustomerResponses extends React.Component {
                         All base UI elements are made using Nested Symbols”
                       </p>
                       <img
-                        className="rounded mb-2"
-                        src="<%= require('./assets/pictures/userpic.png') %>"
+                        className="rounded-circle mb-2"
+                        src="https://placehold.it/60x60"
                         width="60"
                         height="60"
                       />
                       <div className="d-flex justify-content-between align-items-end">
                         <div>
                           <p className="mb-0">
-                            <span className="weight-500">Name Surname</span>
-                          </p>
-                          <p className="small mb-0">Founder, Acme Company</p>
-                        </div>
-                        <div>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/facebook.svg') %> */}
-                          </a>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/twitter.svg') %> */}
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
-                  <div className="card shadow-sm">
-                    <div className="card-body">
-                      <p className="mb-4">
-                        “All base UI elements are made using Nested Symbols and
-                        shared styles that are logically connected. Gorgeous,
-                        high-quality video sharing on desktop, mobile, tablet.
-                        All base UI elements are made using Nested Symbols”
-                      </p>
-                      <img
-                        className="rounded mb-2"
-                        src="<%= require('./assets/pictures/userpic.png') %>"
-                        width="60"
-                        height="60"
-                      />
-                      <div className="d-flex justify-content-between align-items-end">
-                        <div>
-                          <p className="mb-0">
-                            <span className="weight-500">Name Surname</span>
+                            <span className="font-weight-semibold">
+                              Name Surname
+                            </span>
                           </p>
                           <p className="small mb-0">Founder, Acme Company</p>
                         </div>
