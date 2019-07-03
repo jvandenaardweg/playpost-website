@@ -1,6 +1,5 @@
-import { graphql } from 'gatsby'
 import React from 'react'
-import get from 'lodash/get'
+import { Helmet } from 'react-helmet'
 
 import Layout from 'components/Layout'
 import Cover from 'components/Cover'
@@ -13,9 +12,21 @@ import CustomerResponses from 'components/CustomerResponses'
 import NewsletterLarge from 'components/NewsletterLarge'
 
 const Index = ({ data, location }) => {
-  // const posts = get(data, 'remark.posts')
+  const pageDescription =
+    'Turn every article on the web into audio using industry leading high quality voices. So you can listen to it just like Podcasts and Audiobooks.'
+  const pageTitle = 'Playpost - Instant podcasts of every article'
+
   return (
     <Layout location={location}>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta name="twitter:card" content={pageTitle} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+      </Helmet>
       <Cover />
       <div className="container" id="features">
         <Intro />
@@ -23,7 +34,7 @@ const Index = ({ data, location }) => {
         <Features />
         <FeatureShare />
         <Pricing />
-        <CustomerResponses />
+        {/* <CustomerResponses /> */}
         <NewsletterLarge />
       </div>
     </Layout>
@@ -31,42 +42,3 @@ const Index = ({ data, location }) => {
 }
 
 export default Index
-
-// export const pageQuery = graphql`
-//   query IndexQuery {
-//     site {
-//       meta: siteMetadata {
-//         title
-//         description
-//         url: siteUrl
-//         author
-//         twitter
-//       }
-//     }
-//     remark: allMarkdownRemark(
-//       sort: { fields: [frontmatter___date], order: DESC }
-//     ) {
-//       posts: edges {
-//         post: node {
-//           html
-//           frontmatter {
-//             layout
-//             title
-//             path
-//             category
-//             tags
-//             description
-//             date(formatString: "YYYY/MM/DD")
-//             image {
-//               childImageSharp {
-//                 fixed(width: 500) {
-//                   ...GatsbyImageSharpFixed_withWebp
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

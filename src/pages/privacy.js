@@ -1,173 +1,202 @@
 import React from 'react'
-import { Link } from 'gatsby'
-// import './style.scss'
+import { Helmet } from 'react-helmet'
 
 import Layout from 'components/Layout'
 import CenterHeader from 'components/CenterHeader'
+import Badge from 'components/Badge/index'
 
 class Privacy extends React.Component {
   render() {
     const { location, title } = this.props
+    const pageTitle = 'Privacy Policy'
+    const pageDescription =
+      'We value privacy and respect yours. This Privacy Policy describes how Playpost collects, uses and discloses information, and what choices you have with respect to the information.'
 
     return (
       <Layout location={location}>
-        <CenterHeader
-          title="Privacy Policy"
-          description="We value privacy and respect yours. This Privacy Policy describes how Playpost collects, uses and discloses information, and what choices you have with respect to the information."
-        />
-        <div className="container">
-          <p>Last update: 19-04-2019 14:19</p>
-          <p>
-            {' '}
-            Aardweg Media built the Playpost app as a Commercial app. This
-            SERVICE is provided by Aardweg Media at no cost and is intended for
-            use as is.
-          </p>
-          <p>
-            This page is used to inform visitors regarding our policies with the
-            collection, use, and disclosure of Personal Information if anyone
-            decided to use our Service.
-          </p>
-          <p>
-            If you choose to use our Service, then you agree to the collection
-            and use of information in relation to this policy. The Personal
-            Information that we collect is used for providing and improving the
-            Service. We will not use or share your information with anyone
-            except as described in this Privacy Policy.
-          </p>
-          <p>
-            The terms used in this Privacy Policy have the same meanings as in
-            our Terms and Conditions, which is accessible at Playpost unless
-            otherwise defined in this Privacy Policy.
-          </p>
-          <h2>Information Collection and Use</h2>
-          <p>
-            For a better experience, while using our Service, we may require you
-            to provide us with certain personally identifiable information. The
-            information that we request will be retained by us and used as
-            described in this privacy policy.
-          </p>
-          <p>
-            The app does use third party services that may collect information
-            used to identify you.
-          </p>
-          <div>
-            <p>
-              Link to privacy policy of third party service providers used by
-              the app
-            </p>
-            <ul>
-              <li>
-                <a
-                  href="https://www.salesforce.com/company/privacy/"
-                  target="_blank"
-                >
-                  Heroku (a Salesforce company)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://azure.microsoft.com/nl-nl/privacy-data-management/"
-                  target="_blank"
-                >
-                  App Center (Microsoft)
-                </a>
-              </li>
-              <li>
-                <a href="https://mailchimp.com/legal/privacy/" target="_blank">
-                  MailChimp
-                </a>
-              </li>
-            </ul>
+        <Helmet>
+          <title>{pageTitle} - Playpost</title>
+          <meta name="description" content={pageDescription} />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
+          <meta name="twitter:card" content={pageTitle} />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={pageDescription} />
+          <meta name="robots" content="noindex,follow" />
+        </Helmet>
+        <CenterHeader title={pageTitle} description={pageDescription} />
+        <div className="container mb-4">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <Badge label="Updated: 01-07-2019 14:19" />
+              <p>
+                This policy sets out our privacy practices and explains how we
+                handle the information we collect when you visit and use our
+                sites, services, mobile applications, products, and content
+                (“Services”).
+              </p>
+              <p>
+                The terms used in this Privacy Policy have the same meanings as
+                in our Terms &amp; Conditions, which is accessible at Playpost
+                unless otherwise defined in this Privacy Policy.
+              </p>
+
+              <h2>What we may collect</h2>
+              <p>
+                We collect information about what Playpost pages you access,
+                information about your mobile device (such as device or browser
+                type), information you send us (such as an email address used to
+                register or communicate with us), and referral information.
+              </p>
+              <p>
+                When you use Playpost Services, we may collect and store your
+                Internet Protocol address. We may use this information to fight
+                spam and other abuse; to personalize Playpost Services; or to
+                generate aggregate, non-identifying information about how people
+                use Playpost Services.
+              </p>
+              <p>
+                When you create your Playpost account, we collect your e-mail
+                address, username and password (encrypted).
+              </p>
+              <h2>Email from Playpost</h2>
+              <p>
+                Sometimes we’ll send administrative emails about account or
+                service changes, or new policies. You can’t opt out of them. You
+                can always opt out of non-administrative emails such as
+                newsletters.
+              </p>
+              <p>
+                We won’t email you to ask for your password or other account
+                information. If you receive such an email, send it to us so we
+                can investigate.
+              </p>
+              <h2>Disclosure of your information</h2>
+              <p>
+                As a rule, we don’t share your personal information outside the
+                company.
+              </p>
+              <p>We won’t sell your personal information.</p>
+              <p>
+                We may share your personal information with third parties in
+                limited circumstances, including: (1) with your consent; (2) to
+                a vendor or partner who meets our data protection standards; or
+                (3) when we have a good faith belief it is required by law, such
+                as pursuant to a subpoena or other legal process.
+              </p>
+              <p>
+                If we’re going to share your information in response to legal
+                process, we’ll give you advance notice so you can challenge it
+                (for example by seeking court intervention), unless we’re
+                prohibited from doing so by law or court order. We will object
+                to requests for information about users of our site that we
+                believe to be improper.
+              </p>
+              <p>
+                If we merge with another company such that your information will
+                become subject to a different privacy policy, we’ll notify you
+                before the transfer. You can opt out of the new policy by
+                deleting your account during the notice period.
+              </p>
+              <h2>Cookies</h2>
+              <p>
+                We might use cookies and similar technologies such as pixels and
+                storage to recognize you when you return to our Services. We use
+                them in various ways, for example to log you in, remember your
+                preferences, evaluate email effectiveness, show relevant ads,
+                and personalize information.
+              </p>
+              <p>
+                Some third-party services that we use may place their own
+                cookies in your browser.
+              </p>
+
+              <p>
+                If you turn cookies off, Some of the features that make your
+                site experience more efficient may not function properly.Some of
+                the features that make your site experience more efficient and
+                may not function properly.
+              </p>
+
+              <h3>Third party cookies</h3>
+              <p>
+                Third party advertising and analytics cookies, which are placed
+                by or on behalf of independent advertisers who are advertising
+                on our site. These cookies may be placed within the
+                advertisement and elsewhere on our site. They are anonymous –
+                they cannot identify individuals. They are used for statistical
+                analysis by allowing the advertiser to count how many people
+                have seen their advertisement or have seen it more than once.
+                They might also allow the advertiser to tailor advertising to
+                you when you visit other websites.{' '}
+              </p>
+              <p>
+                We have no access to third party cookies and third party
+                organisations have no access to ours. The third party
+                organisations that place cookies have their own strict privacy
+                policies.{' '}
+              </p>
+
+              <h2>Data Storage</h2>
+              <p>
+                Playpost uses third-party vendors and hosting partners, for
+                hardware, software, networking, storage, and related technology
+                we need to run Playpost. We maintain two types of logs: server
+                logs and event logs. Our data is hosted in the European Union
+                (EU) and subjected to EU Privacy laws.
+              </p>
+              <h2>
+                Modifying your personal information or deleting your account
+              </h2>
+              <p>
+                If you have a Playpost account, you can access and modify your
+                personal information. If you want to delete your account, you
+                can do that within our App yourself.
+              </p>
+              <p>
+                To protect information from accidental or malicious destruction,
+                we may not immediately delete residual copies from our active
+                servers and may not remove information from our backup systems.
+              </p>
+              <p>
+                If you delete your account, your account and content may be
+                unrecoverable.
+              </p>
+              <h2>Data security</h2>
+              <p>
+                We use encryption (HTTPS/TLS) to protect data transmitted to and
+                from our site. However, no data transmission over the Internet
+                is 100% secure, so we can’t guarantee security. You use the
+                Service at your own risk, and you’re responsible for taking
+                reasonable measures to secure your account (like using a strong
+                password).
+              </p>
+
+              <h2>Children’s Privacy</h2>
+              <p>
+                These Services do not address anyone under the age of 13. We do
+                not knowingly collect personally identifiable information from
+                children under 13. In the case we discover that a child under 13
+                has provided us with personal information, we immediately delete
+                this from our servers. If you are a parent or guardian and you
+                are aware that your child has provided us with personal
+                information, please contact us so that we will be able to do
+                necessary actions.
+              </p>
+              <h2>Changes to this Policy</h2>
+              <p>
+                Playpost may periodically update this Policy. We’ll notify you
+                about significant changes to it. The most current version of the
+                policy will always be here.
+              </p>
+
+              <h2>Contact Us</h2>
+              <p>
+                If you have any questions or suggestions about our Privacy
+                Policy, do not hesitate to contact us.
+              </p>
+            </div>
           </div>
-          <h2>Log Data</h2>
-          <p>
-            {' '}
-            We want to inform you that whenever you use our Service, in a case
-            of an error in the app we collect data and information (through
-            third party products) on your phone called Log Data. This Log Data
-            may include information such as your device Internet Protocol (“IP”)
-            address, device name, operating system version, the configuration of
-            the app when utilizing our Service, the time and date of your use of
-            the Service, and other statistics.
-          </p>
-          <h2>Cookies</h2>
-          <p>
-            Cookies are files with a small amount of data that are commonly used
-            as anonymous unique identifiers. These are sent to your browser from
-            the websites that you visit and are stored on your device's internal
-            memory.
-          </p>
-          <p>
-            This Service does not use these “cookies” explicitly. However, the
-            app may use third party code and libraries that use “cookies” to
-            collect information and improve their services. You have the option
-            to either accept or refuse these cookies and know when a cookie is
-            being sent to your device. If you choose to refuse our cookies, you
-            may not be able to use some portions of this Service.
-          </p>
-          <h2>Service Providers</h2>
-          <p>
-            {' '}
-            We may employ third-party companies and individuals due to the
-            following reasons:
-          </p>
-          <ul>
-            <li>To facilitate our Service;</li>
-            <li>To provide the Service on our behalf;</li>
-            <li>To perform Service-related services; or</li>
-            <li>To assist us in analyzing how our Service is used.</li>
-          </ul>
-          <p>
-            {' '}
-            We want to inform users of this Service that these third parties
-            have access to your Personal Information. The reason is to perform
-            the tasks assigned to them on our behalf. However, they are
-            obligated not to disclose or use the information for any other
-            purpose.
-          </p>
-          <h2>Security</h2>
-          <p>
-            {' '}
-            We value your trust in providing us your Personal Information, thus
-            we are striving to use commercially acceptable means of protecting
-            it. But remember that no method of transmission over the internet,
-            or method of electronic storage is 100% secure and reliable, and we
-            cannot guarantee its absolute security.
-          </p>
-          <h2>Links to Other Sites</h2>
-          <p>
-            This Service may contain links to other sites. If you click on a
-            third-party link, you will be directed to that site. Note that these
-            external sites are not operated by us. Therefore, we strongly advise
-            you to review the Privacy Policy of these websites. We have no
-            control over and assume no responsibility for the content, privacy
-            policies, or practices of any third-party sites or services.
-          </p>
-          <h2>Children’s Privacy</h2>
-          <p>
-            These Services do not address anyone under the age of 13. We do not
-            knowingly collect personally identifiable information from children
-            under 13. In the case we discover that a child under 13 has provided
-            us with personal information, we immediately delete this from our
-            servers. If you are a parent or guardian and you are aware that your
-            child has provided us with personal information, please contact us
-            so that we will be able to do necessary actions.
-          </p>
-          <h2>Changes to This Privacy Policy</h2>
-          <p>
-            {' '}
-            We may update our Privacy Policy from time to time. Thus, you are
-            advised to review this page periodically for any changes. We will
-            notify you of any changes by posting the new Privacy Policy on this
-            page. These changes are effective immediately after they are posted
-            on this page.
-          </p>
-          <h2>Contact Us</h2>
-          <p>
-            If you have any questions or suggestions about our Privacy Policy,
-            do not hesitate to contact us.
-          </p>
         </div>
       </Layout>
     )

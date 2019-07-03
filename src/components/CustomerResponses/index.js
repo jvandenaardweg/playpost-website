@@ -17,6 +17,11 @@ class CustomerResponses extends React.Component {
     })
   }
 
+  handleOnClickShareFeedback = event => {
+    event.preventDefault()
+    typeof window !== 'undefined' && window.drift.api.openChat()
+  }
+
   render() {
     const { location, title } = this.props
 
@@ -27,9 +32,13 @@ class CustomerResponses extends React.Component {
             <div className="col-12 col-md-8">
               <h4 className="text-black-50">Tagline</h4>
               <h1 className="display-4">Our customers love it</h1>
-              <Link className="action-link" to="/contact">
+              <a
+                className="action-link"
+                href=""
+                onClick={this.handleOnClickShareFeedback}
+              >
                 <span>Share your feedback</span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -75,7 +84,7 @@ class CustomerResponses extends React.Component {
                   </div>
                 </div>
                 <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
-                <div className="card shadow-sm">
+                  <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
                         “All base UI elements are made using Nested Symbols and

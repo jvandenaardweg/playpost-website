@@ -152,3 +152,29 @@ ul li {
     padding-left: 40px;
   }
 }
+
+.custom-ordered-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    counter-increment: step-counter;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 35px;
+
+    &:before {
+      position: absolute;
+      left: -5px;
+      content: counter(step-counter);
+      margin-right: 5px;
+      font-size: 80%;
+      background-color: $gray-200;
+      color: $black;
+      font-weight: $font-weight-bold;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+  }
+}

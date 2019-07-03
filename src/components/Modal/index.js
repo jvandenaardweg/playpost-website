@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import './style.scss'
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
 
 class Modal extends React.Component {
   render() {
@@ -26,13 +27,15 @@ class Modal extends React.Component {
           <div className="modal-body text-center">
             <h2>Available in the Apple App Store</h2>
             <p className="mb-2">
-              Our app is available in the Apple App Store to download for free.
+              Our app is currently only available in the Apple App Store to
+              download for free. When starting the app for the first time, you
+              can create your account and automatically enjoy the free features.
             </p>
             <div className="d-flex justify-content-center">
               <div className="px-1">
                 <a
                   className="btn btn-primary btn-lg font-weight-semibold"
-                  href=""
+                  href={APPLE_APP_STORE_URL}
                 >
                   Get iPhone App
                 </a>

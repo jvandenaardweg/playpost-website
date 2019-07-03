@@ -26,7 +26,7 @@ class FeatureShare extends React.Component {
             Semantics, large language ocean Separated they live in Bookmarks
             right at the coast
           </p>
-          <ol className="custom-list mb-0">
+          <ol className="custom-ordered-list mb-0">
             <li className="font-weight-semibold">
               Tap the “Share” icon in your other Apps
             </li>

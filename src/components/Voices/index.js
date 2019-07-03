@@ -66,11 +66,13 @@ class Voices extends React.Component {
         </div>
         <div className="col-12 col-md-5">
           <h4 className="text-black-50">Sounds natural</h4>
-          <h2>50+ naturally sounding voices by Artificial Intelligence</h2>
+          <h2>90+ naturally sounding voices by Artificial Intelligence</h2>
           <p className="mb-2">
             The most advanced text to speech synthesis solutions to speak text
             to you and sound natural and pleasant to listen to. Personalize the
-            experience by using a variety of voices.<br /><br />
+            experience by using a variety of voices.
+            <br />
+            <br />
             <a
               className="action-link"
               href="#"
@@ -194,7 +196,8 @@ class Voices extends React.Component {
               </div>
               <h4 className="font-weight-semibold mb-1">Voice customization</h4>
               <div className="small">
-                Male ánd female voices, with different accents like British, American or Australian.
+                Male ánd female voices, with different accents like British,
+                American or Australian.
               </div>
             </div>
             <div className="col-6">

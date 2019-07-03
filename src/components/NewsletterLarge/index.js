@@ -15,7 +15,8 @@ class NewsletterLarge extends React.Component {
             </h1>
             <p className="mb-4">
               Join our newsletter to stay up to date on features and releases.{' '}
-              Be the first to know about our Android App's release date. Or when we support new languages and add new voices.
+              Be the first to know about our Android App's release date. Or when
+              we support new languages and add new voices.
             </p>
           </div>
         </div>
@@ -53,8 +54,12 @@ class NewsletterLarge extends React.Component {
             <p className="small mb-0 text-black-50">
               By subscribing you confirm that you agree with our
               <br />
+              <Link className="text-dark weight-500" to="/privacy">
+                <span>Privacy Policy</span>
+              </Link>{' '}
+              and{' '}
               <Link className="text-dark weight-500" to="/terms">
-                <span>Terms and Conditions</span>
+                <span>Terms &amp; Conditions</span>
               </Link>
             </p>
           </div>
