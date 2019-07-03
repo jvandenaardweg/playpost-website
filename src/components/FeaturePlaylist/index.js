@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import { APPLE_APP_STORE_URL } from '../../constants/urls'
 import playlistImage from '../../../static/img/example-playlist.png'
 
-class Features extends React.Component {
+class FeaturePlaylist extends React.Component {
   render() {
     const { location, title } = this.props
 
@@ -45,4 +45,4 @@ class Features extends React.Component {
   }
 }
 
-export default Features
+export default FeaturePlaylist

@@ -9,9 +9,9 @@ class NewsletterLarge extends React.Component {
       <div className="py-5" id="newsletter">
         <div className="row justify-content-center text-center pt-3">
           <div className="col-12 col-md-8">
-            <h4 className="text-black-50">New features and releases</h4>
+            <h4 className="text-black-50">What about an Android App?</h4>
             <h1 className="display-4 mb-4">
-              Subscribe for Android App release date
+              Subscribe for new features and updates
             </h1>
             <p className="mb-4">
               Join our newsletter to stay up to date on features and releases.{' '}
@@ -42,7 +42,7 @@ class NewsletterLarge extends React.Component {
               />
               <div className="input-group-append">
                 <button
-                  className="btn btn-primary btn-block font-weight-semibold"
+                  className="btn btn-primary btn-lg font-weight-semibold"
                   type="submit"
                   name="subscribe"
                   id="mc-embedded-subscribe"

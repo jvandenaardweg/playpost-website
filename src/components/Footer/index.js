@@ -85,7 +85,51 @@ const Footer = ({ author, title }) => {
           <div className="col-12 col-lg-4">
             <div className="border-top pt-4 d-lg-none"></div>
             <h4>Subscribe to our newsletter</h4>
-            <div className="form-group input-group input-group-lg">
+
+            <form
+              className="form-group input-group input-group-lg"
+              action="https://aardwegmedia.us2.list-manage.com/subscribe/post?u=24cd841bc54c2cceb6801291c&amp;id=714d3d1c6d"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank"
+              noValidate=""
+            >
+              <input
+                className="form-control form-control-lg"
+                placeholder="Placeholder"
+                name="EMAIL"
+                type="email"
+                id="mce-EMAIL"
+                aria-describedby="emailHelp"
+                placeholder="Your email address"
+              />
+              <div className="input-group-control">
+                <button
+                  className="btn"
+                  type="submit"
+                  name="subscribe"
+                  id="mc-embedded-subscribe"
+                >
+                  <span className="transparent-invert-link">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="#000"
+                        d="M15.35 17.5l-3.396-2.285-1.369 1.148-.556-2.444 5.93-5.193-7.11 4.084L5.5 10.394l13-3.894z"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </form>
+
+            {/* <div className="form-group input-group input-group-lg">
               <input
                 className="form-control form-control-lg"
                 type="text"
@@ -107,7 +151,7 @@ const Footer = ({ author, title }) => {
                   </svg>
                 </a>
               </div>
-            </div>
+            </div> */}
             <p className="small text-muted mb-0">
               Join our newsletter to stay up to date on features and releases
             </p>

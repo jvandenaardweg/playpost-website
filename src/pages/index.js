@@ -5,10 +5,10 @@ import Layout from 'components/Layout'
 import Cover from 'components/Cover'
 import Intro from 'components/Intro'
 import Voices from 'components/Voices'
-import Features from 'components/Features'
+import FeaturePlaylist from 'components/FeaturePlaylist'
 import FeatureShare from 'components/FeatureShare'
 import Pricing from 'components/Pricing'
-import CustomerResponses from 'components/CustomerResponses'
+// import CustomerResponses from 'components/CustomerResponses'
 import NewsletterLarge from 'components/NewsletterLarge'
 
 const Index = ({ data, location }) => {
@@ -31,7 +31,7 @@ const Index = ({ data, location }) => {
       <div className="container" id="features">
         <Intro />
         <Voices />
-        <Features />
+        <FeaturePlaylist />
         <FeatureShare />
         <Pricing />
         {/* <CustomerResponses /> */}
