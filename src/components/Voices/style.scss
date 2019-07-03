@@ -1,0 +1,48 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+.voices {
+  .voices-background {
+    width: 160%;
+    max-width: 160%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 0;
+    margin: auto;
+    z-index: 0;
+
+    @include media-breakpoint-up(sm) {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .voices-background-container {
+    @include media-breakpoint-down(sm) {
+      overflow: hidden;
+
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .voice-sample {
+      margin-bottom: 1.5rem;
+
+      @include media-breakpoint-up(sm) {
+        margin-bottom: 0;
+      }
+
+      @include media-breakpoint-down(xs) {
+        &:nth-child(4) {
+          display: none;
+        }
+      }
+    }
+  }
+}
