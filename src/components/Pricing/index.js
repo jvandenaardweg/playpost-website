@@ -29,7 +29,7 @@ class Pricing extends React.Component {
         <div className="col-12 col-md-4">
           <div className="row justify-content-around">
             <div className="col-12 col-lg-9">
-              <div className="py-5 py-md-0">
+              <div className="py-2 py-md-0">
                 <h3>Free</h3>
                 <div className="price-medium mb-3">
                   €0<span className="price-unit ml-1">/ mo</span>
@@ -61,7 +61,7 @@ class Pricing extends React.Component {
         <div className="col-12 col-md-4 justify-content-around">
           <div className="row justify-content-around">
             <div className="col-12 col-lg-9">
-              <div className="py-5 py-md-0">
+              <div className="py-2 py-md-0">
                 <h3>Premium</h3>
                 <div className="price-medium mb-3">
                   €4,99<span className="price-unit ml-1">/ mo</span>
@@ -92,7 +92,7 @@ class Pricing extends React.Component {
         <div className="col-12 col-md-4 justify-content-around">
           <div className="row justify-content-around">
             <div className="col-12 col-lg-9">
-              <div className="py-5 py-md-0">
+              <div className="py-2 py-md-0">
                 <h3>Plus</h3>
                 <div className="price-medium mb-3">
                   €9,99<span className="price-unit ml-1">/ mo</span>

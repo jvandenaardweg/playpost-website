@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import './style.scss'
+import { scrollIt } from '../../utils/scroll'
 
 import backgroundVoicesImage from '../../../static/img/background-voices.png'
 import VoiceSample from 'components/VoiceSample/index'
@@ -14,6 +15,12 @@ class Voices extends React.Component {
     event.preventDefault()
     this.setState({ isVisibleSamples: !this.state.isVisibleSamples })
   }
+
+  handleOnClickMoreToCome = event => {
+    event.preventDefault()
+    scrollIt(document.getElementById('newsletter'))
+  }
+
   render() {
     const { isVisibleSamples } = this.state
 
@@ -192,7 +199,7 @@ class Voices extends React.Component {
           /> */}
 
           <div className="row">
-            <div className="col-6">
+            <div className="col-12 col-sm-6">
               <div className="icon">
                 <svg width="32" height="24" xmlns="http://www.w3.org/2000/svg">
                   <g
@@ -215,7 +222,7 @@ class Voices extends React.Component {
                 American or Australian.
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-12 col-sm-6">
               <div className="icon">
                 <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
                   <g
@@ -235,7 +242,13 @@ class Voices extends React.Component {
               <h4 className="font-weight-semibold mb-1">Multiple languages</h4>
               <div className="small">
                 Not just English, but also; German, French, Dutch and Spanish.{' '}
-                <strong>More to come!</strong>
+                <a
+                  href=""
+                  onClick={this.handleOnClickMoreToCome}
+                  className="font-weight-bold text-dark"
+                >
+                  More to come!
+                </a>
               </div>
             </div>
           </div>
