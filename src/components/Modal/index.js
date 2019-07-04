@@ -4,11 +4,31 @@ import './style.scss'
 import { APPLE_APP_STORE_URL } from '../../constants/urls'
 
 class Modal extends React.Component {
+  modalRef = React.createRef()
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickEvent)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickEvent)
+  }
+
+  handleClickEvent = event => {
+    if (
+      this.modalRef &&
+      this.modalRef.current &&
+      !this.modalRef.current.contains(event.target)
+    ) {
+      this.props.onClose()
+    }
+  }
+
   render() {
     const { location, title, onClose } = this.props
 
     return (
-      <div className="modal-dialog" role="document">
+      <div className="modal-dialog" role="document" ref={this.modalRef}>
         <div className="modal-content">
           <div className="close" onClick={() => onClose()}>
             <svg
