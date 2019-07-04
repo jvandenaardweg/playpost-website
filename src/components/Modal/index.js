@@ -27,10 +27,11 @@ class Modal extends React.Component {
           <div className="modal-body text-center">
             <h2>Available in the Apple App Store</h2>
             <p className="mb-2">
-              Our app is currently only available in the Apple App Store to
-              download for free. When starting the app for the first time, you
-              can create your account and automatically enjoy the free features.
+              Our app is available in the Apple App Store to download for free!
+              Download the app and automatically enjoy the free features.
+              Premium and Plus subscriptions can be bought within the App.
             </p>
+
             <div className="d-flex justify-content-center">
               <div className="px-1">
                 <a
