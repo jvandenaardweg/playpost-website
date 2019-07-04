@@ -76,6 +76,11 @@ const Footer = ({ author, title }) => {
                 </Link>
               </div>
               <div className="mb-1">
+                <Link className="text-dark" to="/crawler">
+                  <span>Crawler</span>
+                </Link>
+              </div>
+              <div className="mb-1">
                 <Link className="text-dark" to="/support">
                   <span>Support</span>
                 </Link>
