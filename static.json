@@ -1,5 +1,5 @@
 {
-  "root": "dist/",
+  "root": "public/",
   "clean_urls": true,
   "redirects": {
     "/apple-app-site-association": {
@@ -9,5 +9,23 @@
   },
   "routes": {
     "/login/reset-password/*": "/reset-password.html"
-  }
+  },
+  "headers": {
+    "/**/": {
+      "Cache-Control": "public, max-age=0, must-revalidate"
+    },
+    "/**.css": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/**.js": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/static/**": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "/icons/*.png": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    }
+  },
+  "error_page": "404.html"
 }

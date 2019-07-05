@@ -25,44 +25,44 @@ module.exports = {
     //     },
     //   },
     // },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/posts/`,
-        name: 'posts',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/images/`,
-        name: 'images',
-      },
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 750,
-              linkImagesToOriginal: false,
-              wrapperStyle: 'margin-bottom: 1.0725rem;',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: {
-              wrapperStyle: 'margin-bottom: 1.0725rem',
-            },
-          },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
-        ],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     path: `${__dirname}/content/posts/`,
+    //     name: 'posts',
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     path: `${__dirname}/content/images/`,
+    //     name: 'images',
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-transformer-remark',
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: 'gatsby-remark-images',
+    //         options: {
+    //           maxWidth: 750,
+    //           linkImagesToOriginal: false,
+    //           wrapperStyle: 'margin-bottom: 1.0725rem;',
+    //         },
+    //       },
+    //       {
+    //         resolve: 'gatsby-remark-responsive-iframe',
+    //         options: {
+    //           wrapperStyle: 'margin-bottom: 1.0725rem',
+    //         },
+    //       },
+    //       'gatsby-remark-prismjs',
+    //       'gatsby-remark-copy-linked-files',
+    //       'gatsby-remark-smartypants',
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -94,6 +94,13 @@ module.exports = {
         mergeSecurityHeaders: true,
         mergeLinkHeaders: true,
         mergeCachingHeaders: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files',
+      options: {
+        source: `${__dirname}/src/apple-app-site-association.json`,
+        destination: '/apple-app-site-association.json',
       },
     },
     'gatsby-plugin-catch-links',
