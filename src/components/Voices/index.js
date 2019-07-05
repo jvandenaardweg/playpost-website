@@ -34,7 +34,7 @@ class Voices extends React.Component {
           style={{ minHeight: 400 }}
         >
           <VoiceSample
-            src="https://storage.playpost.app/voices/8a0b8297-5070-4733-a424-933adf568ed2.wav"
+            src={require('../../../static/audio/preview-richard.wav')}
             label="Richard (American)"
             language="English"
             accent="American English"
@@ -43,7 +43,7 @@ class Voices extends React.Component {
             iconComponent={<IconMaleWestern />}
           />
           <VoiceSample
-            src="https://storage.playpost.app/voices/1d6ae8a7-a745-4216-8e56-92b1f11a7e75.wav"
+            src={require('../../../static/audio/preview-jack.wav')}
             label="Jack (British)"
             language="English"
             accent="British English"
@@ -52,7 +52,7 @@ class Voices extends React.Component {
             iconComponent={<IconMaleRedhead />}
           />
           <VoiceSample
-            src="https://storage.playpost.app/voices/2945b5e5-ec8a-4851-bdf6-2e41dcfe6202.wav"
+            src={require('../../../static/audio/preview-maya.wav')}
             label="Maya (Spanish)"
             language="Spanish"
             gender="Female"
@@ -62,7 +62,7 @@ class Voices extends React.Component {
             iconComponent={<IconFemaleWestern />}
           />
           <VoiceSample
-            src="https://storage.playpost.app/voices/1d6e122d-e102-4de1-9dba-a0b840763858.wav"
+            src={require('../../../static/audio/preview-emily.wav')}
             label="Emily (American)"
             language="English"
             accent="American English"
@@ -72,7 +72,7 @@ class Voices extends React.Component {
           />
 
           <VoiceSample
-            src="https://storage.playpost.app/voices/ca0e586e-0128-47b5-8a4e-eed168ac4cca.wav"
+            src={require('../../../static/audio/preview-vivaan.wav')}
             label="Vivaan (Indian English)"
             language="English"
             accent="Indian English"
@@ -108,66 +108,66 @@ class Voices extends React.Component {
 
           <div className={!isVisibleSamples ? 'd-none' : ''}>
             <VoiceSample
-              src="https://storage.playpost.app/voices/8a0b8297-5070-4733-a424-933adf568ed2.wav"
+              src={require('../../../static/audio/preview-richard.wav')}
               label="Richard (American)"
               language="English"
               accent="American"
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/1d6ae8a7-a745-4216-8e56-92b1f11a7e75.wav"
+              src={require('../../../static/audio/preview-jack.wav')}
               label="Jack (British)"
               language="English"
               accent="British"
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/1d6e122d-e102-4de1-9dba-a0b840763858.wav"
+              src={require('../../../static/audio/preview-emily.wav')}
               label="Emily (American)"
               language="English"
               accent="American"
               gender="Female"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/24f93f2e-824c-4eb6-a617-fb12d02fdae4.wav"
+              src={require('../../../static/audio/preview-richard.albert')}
               label="Albert (German)"
               language="German"
               accent=""
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/32d5c10d-56bc-4509-bad1-8f7b223c8602.wav"
+              src={require('../../../static/audio/preview-noah.wav')}
               label="Noah (Australian)"
               language="English"
               accent="Australian"
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/5f42e3bc-0db3-4f2c-84b2-5cc348a60610.wav"
+              src={require('../../../static/audio/preview-armand.wav')}
               label="Armand (French)"
               language="French"
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/df71540d-eacf-4b63-91c7-677f95c941f4.wav"
+              src={require('../../../static/audio/preview-koen.wav')}
               label="Koen (Dutch)"
               language="Dutch"
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/ca0e586e-0128-47b5-8a4e-eed168ac4cca.wav"
+              src={require('../../../static/audio/preview-vivaan.wav')}
               label="Vivaan (Indian English)"
               language="Indian English"
               gender="Male"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/2945b5e5-ec8a-4851-bdf6-2e41dcfe6202.wav"
+              src={require('../../../static/audio/preview-maya.wav')}
               label="Maya (Spanish)"
               language="Spanish"
               gender="Female"
             />
             <VoiceSample
-              src="https://storage.playpost.app/voices/eda85a99-619d-4d13-ac3b-ab5203cf3134.mp3"
+              src={require('../../../static/audio/preview-enrique.wav')}
               label="Enrique (Spanish)"
               language="Spanish"
             />
