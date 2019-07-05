@@ -5,6 +5,14 @@
     "/apple-app-site-association": {
       "url": "/apple-app-site-association.json",
       "status": 302
+    },
+    "/privacy-policy": {
+      "url": "/privacy",
+      "status": 302
+    },
+    "/terms-of-use": {
+      "url": "/terms",
+      "status": 302
     }
   },
   "routes": {
