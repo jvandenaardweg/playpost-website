@@ -1,0 +1,19 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+.cookie-consent {
+  background: #fff;
+  color: #000;
+  border: 1px #ddd solid;
+  z-index: 999999999;
+
+  @include media-breakpoint-up(md) {
+    width: 350px;
+    margin-left: 20px;
+    margin-right: 20px;
+    right: 20px;
+    left: auto;
+    padding: 0;
+  }
+}
