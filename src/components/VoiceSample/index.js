@@ -30,10 +30,10 @@ class VoiceSample extends React.Component {
         this.setState({ isPlaying: false, isLoading: false })
       },
       onstop: () => {
-        this.setState({ isPlaying: false, isLoading: false })
+        this.setState({ isPlaying: false })
       },
       onend: () => {
-        this.setState({ isPlaying: false, isLoading: false })
+        this.setState({ isPlaying: false })
       },
       onload: () => {
         this.setState({ isPlaying: false, isLoading: true })
@@ -108,7 +108,7 @@ class VoiceSample extends React.Component {
         >
           {isLoading && !isPlaying && (
             <svg
-              class="lds-spinner"
+              className="lds-spinner"
               width="22"
               height="22"
               xmlns="http://www.w3.org/2000/svg"
