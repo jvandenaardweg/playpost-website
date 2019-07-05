@@ -43,7 +43,6 @@ export default class HTML extends React.Component {
           <meta property="og:type" content="website" />
           <link rel="preconnect" href="https://www.google.com" />
           <link rel="preconnect" href="https://marketingplatform.google.com" />
-          <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
         </head>
         <body>
           <div
