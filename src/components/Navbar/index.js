@@ -18,6 +18,8 @@ class Navbar extends React.PureComponent {
     const { location } = this.props
     event.preventDefault()
 
+    this.setState({ isMobileMenuOpen: false })
+
     if (location.pathname === '/') {
       return scrollIt(document.getElementById('features'))
     }
@@ -28,6 +30,8 @@ class Navbar extends React.PureComponent {
   handleOnClickPricing = event => {
     const { location } = this.props
     event.preventDefault()
+
+    this.setState({ isMobileMenuOpen: false })
 
     if (location.pathname === '/') {
       return scrollIt(document.getElementById('pricing'))
@@ -44,6 +48,9 @@ class Navbar extends React.PureComponent {
 
   handleOnClickContact = event => {
     event.preventDefault()
+
+    this.setState({ isMobileMenuOpen: false })
+
     typeof window !== 'undefined' && window.drift.api.openChat()
   }
 
@@ -56,7 +63,7 @@ class Navbar extends React.PureComponent {
         <div className="container">
           <div className="navbar navbar-expand-lg">
             <span
-              className="navbar-toggler mr-1"
+              className="navbar-toggler position-absolute"
               data-id="headers-1-sidebar-toggle"
               onClick={this.handleToggleMobileMenu}
             >
@@ -77,7 +84,7 @@ class Navbar extends React.PureComponent {
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </span>
-            <div className="mr-5 d-flex">
+            <div className="d-flex justify-content-center flex-grow-1">
               <Link to="/">
                 <svg
                   width="149"
@@ -102,13 +109,7 @@ class Navbar extends React.PureComponent {
                     Home
                   </Link>
                 </div>
-                <div
-                  className={
-                    location.pathname === '/about'
-                      ? 'nav-item active'
-                      : 'nav-item'
-                  }
-                >
+                <div className="nav-item">
                   <a
                     className="nav-link text-white"
                     href=""
@@ -117,13 +118,7 @@ class Navbar extends React.PureComponent {
                     Features
                   </a>
                 </div>
-                <div
-                  className={
-                    location.pathname === '/faq'
-                      ? 'nav-item active'
-                      : 'nav-item'
-                  }
-                >
+                <div className="nav-item">
                   <Link
                     className="nav-link text-white"
                     to="/#pricing"
@@ -132,13 +127,7 @@ class Navbar extends React.PureComponent {
                     Pricing
                   </Link>
                 </div>
-                <div
-                  className={
-                    location.pathname === '/contact'
-                      ? 'nav-item active'
-                      : 'nav-item'
-                  }
-                >
+                <div className="nav-item">
                   <a
                     className="nav-link text-white"
                     href=""
@@ -176,57 +165,50 @@ class Navbar extends React.PureComponent {
                   data-id="headers-1-sidebar-close"
                   onClick={this.handleToggleMobileMenu}
                 >
-                  {/* <%= require('./assets/glyphs/close.svg') %> */}
-                  close
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="#000"
+                      fillRule="evenodd"
+                      d="M12 10.609L18.609 4 20 5.391 13.391 12 20 18.609 18.609 20 12 13.391 5.391 20 4 18.609 10.609 12 4 5.391 5.391 4z"
+                    />
+                  </svg>
                 </a>
                 <div className="navbar-nav">
                   <div className="nav-item">
-                    <a className="nav-link text-dark" href="">
-                      First
+                    <Link className="nav-link text-dark" to="/">
+                      Home
+                    </Link>
+                  </div>
+                  <div className="nav-item">
+                    <a
+                      className="nav-link text-dark"
+                      href=""
+                      onClick={this.handleOnClickFeatures}
+                    >
+                      Features
                     </a>
                   </div>
                   <div className="nav-item">
-                    <a className="nav-link text-dark" href="">
-                      Second
-                    </a>
-                  </div>
-                  <div className="nav-item">
-                    <a className="nav-link text-dark" href="">
-                      Third
-                    </a>
+                    <Link
+                      className="nav-link text-dark"
+                      to="/#pricing"
+                      onClick={this.handleOnClickPricing}
+                    >
+                      Pricing
+                    </Link>
                   </div>
                   <div className="nav-item dropdown">
                     <a
-                      className="nav-link text-dark dropdown-toggle"
+                      className="nav-link text-dark"
                       href=""
-                      id="headers-1-dropdown"
-                      data-toggle="dropdown"
+                      onClick={this.handleOnClickContact}
                     >
-                      Fourth
-                    </a>
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="headers-1-dropdown"
-                    >
-                      <a className="dropdown-item" href="">
-                        Action 1
-                      </a>
-                      <a className="dropdown-item" href="">
-                        Action 2
-                      </a>
-                      <a className="dropdown-item" href="">
-                        Action 3
-                      </a>
-                    </div>
-                  </div>
-                  <div className="nav-item">
-                    <a className="nav-link text-dark" href="">
-                      Fifth
-                    </a>
-                  </div>
-                  <div className="nav-item">
-                    <a className="nav-link text-dark" href="">
-                      Sixth
+                      Contact
                     </a>
                   </div>
                 </div>
@@ -253,12 +235,12 @@ class Navbar extends React.PureComponent {
                   <span className="d-block d-xl-inline text-muted mb-1 mb-xl-0 mr-2">
                     &copy; 2019 Playpost. All right reserved.
                   </span>
-                  <a className="text-muted mr-2" href="">
+                  <Link className="text-muted mr-2" to="/privacy">
                     <span>Privacy Policy</span>
-                  </a>
-                  <a className="text-muted" href="">
-                    <span>Terms of Service</span>
-                  </a>
+                  </Link>
+                  <Link className="text-muted" to="/terms">
+                    <span>Terms &amp; Conditions</span>
+                  </Link>
                 </p>
               </div>
             </div>
