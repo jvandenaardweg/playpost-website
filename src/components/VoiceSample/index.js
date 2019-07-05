@@ -22,7 +22,7 @@ class VoiceSample extends React.Component {
       loop: false,
       volume: 0.5,
       preload: false,
-      html5: true,
+      // html5: true, // seems to not work on safari/chrome mobile
       onplay: () => {
         this.setState({ isPlaying: true, isLoading: false })
       },
@@ -38,6 +38,8 @@ class VoiceSample extends React.Component {
       onload: () => {
         this.setState({ isPlaying: false, isLoading: true })
       },
+      onloaderror: (soundId, error) =>
+        console.error('Error while loading preview', soundId, error),
     })
 
     // Put all the sounds on the window, so we can pause all others when we start playing one
