@@ -179,3 +179,15 @@ ul li {
 .input-group-lg > .form-control:not(textarea) {
   height: calc(1.5em + 1.4rem + 2px);
 }
+
+.logo {
+  margin-right: 2rem;
+  position: relative;
+  top: 1px;
+
+  @include media-breakpoint-down(md) {
+    justify-content: center;
+    flex-grow: 1;
+    margin-right: 0;
+  }
+}

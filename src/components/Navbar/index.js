@@ -84,7 +84,7 @@ class Navbar extends React.PureComponent {
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </span>
-            <div className="d-flex justify-content-center flex-grow-1">
+            <div className="d-flex logo">
               <Link to="/">
                 <svg
                   width="149"
