@@ -1,0 +1,25 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+@import 'scss/colors.scss';
+@import 'scss/fonts.scss';
+
+.icon {
+  max-width: 400px;
+  margin-top: 2rem;
+
+  svg {
+    font-size: $display4-size;
+    margin-bottom: 20px;
+
+    &[data-emergence='visible'] {
+      opacity: 1;
+      animation: bounceIn 2s;
+    }
+
+    &[data-emergence='hidden'] {
+      opacity: 0;
+    }
+  }
+}

@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Pricing</h3><h4 class="mb-3">pricing-1</h4><img src='../assets/components/light/pricing-1.png' data-img='pricing-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;div class=&quot;price-medium mb-3&quot;&gt;$59&lt;span class=&quot;price-unit ml-2&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+    &lt;p class=&quot;lead mb-3&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.text-center.py-5
+  .col-12.col-md-6.col-lg-4
+    .price-medium.mb-3 $59
+      span.price-unit.ml-2 / mo
+    p.lead.mb-3 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar
+    button.btn.btn-primary Action</code></pre></div><h4 class="mb-3">pricing-2</h4><img src='../assets/components/light/pricing-2.png' data-img='pricing-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-around flex-md-nowrap text-center py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-lg-8&quot;&gt;
+        &lt;div class=&quot;py-5 py-md-0&quot;&gt;
+          &lt;h3&gt;Personal&lt;/h3&gt;
+          &lt;div class=&quot;price-medium mb-3&quot;&gt;$29&lt;span class=&quot;price-unit ml-1&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p class=&quot;mb-4&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;&lt;button class=&quot;btn btn-outline-primary&quot;&gt;Action&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;border-bottom d-md-none&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;border-right d-none d-md-block&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6 justify-content-around&quot;&gt;
+    &lt;div class=&quot;row justify-content-around&quot;&gt;
+      &lt;div class=&quot;col-12 col-lg-8&quot;&gt;
+        &lt;div class=&quot;py-5 py-md-0&quot;&gt;
+          &lt;h3&gt;Unlimited&lt;/h3&gt;
+          &lt;div class=&quot;price-medium mb-3&quot;&gt;$59&lt;span class=&quot;price-unit ml-1&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p class=&quot;mb-4&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Action&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-around.flex-md-nowrap.text-center.py-md-5
+  .col-12.col-md-6
+    .row.justify-content-around
+      .col-12.col-lg-8
+        .py-5.py-md-0
+          h3 Personal
+          .price-medium.mb-3 $29
+            span.price-unit.ml-1 / mo
+          p.mb-4 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar
+          button.btn.btn-outline-primary Action
+        .border-bottom.d-md-none
+  .border-right.d-none.d-md-block
+  .col-12.col-md-6.justify-content-around
+    .row.justify-content-around
+      .col-12.col-lg-8
+        .py-5.py-md-0
+          h3 Unlimited
+          .price-medium.mb-3 $59
+            span.price-unit.ml-1 / mo
+          p.mb-4 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar
+          button.btn.btn-primary Action</code></pre></div><h4 class="mb-3">pricing-3</h4><img src='../assets/components/light/pricing-3.png' data-img='pricing-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-between text-center py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;py-5 py-md-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-3.svg&quot; width=&quot;40&quot; /&gt;
+      &lt;h3&gt;Beginner&lt;/h3&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;All base UI elements are made using Nested Symbols and shared styles that are&lt;/p&gt;
+      &lt;div class=&quot;price-small mb-3&quot;&gt;$29&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-outline-primary&quot;&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;py-5 py-md-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-6.svg&quot; width=&quot;40&quot; /&gt;
+      &lt;h3&gt;Personal&lt;/h3&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;All base UI elements are made using Nested Symbols and shared styles that are&lt;/p&gt;
+      &lt;div class=&quot;price-small mb-3&quot;&gt;$59&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-primary&quot;&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;py-5 py-md-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-4.svg&quot; width=&quot;40&quot; /&gt;
+      &lt;h3&gt;Unlimited&lt;/h3&gt;
+      &lt;p class=&quot;mb-3&quot;&gt;All base UI elements are made using Nested Symbols and shared styles that are&lt;/p&gt;
+      &lt;div class=&quot;price-small mb-3&quot;&gt;$79&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-outline-primary&quot;&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-between.text-center.py-md-5
+  .col-12.col-md-4
+    .py-5.py-md-0
+      img(src="./assets/glyphs/rectangle-3.svg" width="40").mb-3
+      h3 Beginner
+      p.mb-3 All base UI elements are made using Nested Symbols and shared styles that are
+      .price-small.mb-3 $29
+        span.price-unit / mo
+      button.btn.btn-outline-primary Action
+  .col-12.col-md-4
+    .py-5.py-md-0
+      img(src="./assets/glyphs/rectangle-6.svg" width="40").mb-3
+      h3 Personal
+      p.mb-3 All base UI elements are made using Nested Symbols and shared styles that are
+      .price-small.mb-3 $59
+        span.price-unit / mo
+      button.btn.btn-primary Action
+  .col-12.col-md-4
+    .py-5.py-md-0
+      img(src="./assets/glyphs/rectangle-4.svg" width="40").mb-3
+      h3 Unlimited
+      p.mb-3 All base UI elements are made using Nested Symbols and shared styles that are
+      .price-small.mb-3 $79
+        span.price-unit / mo
+      button.btn.btn-outline-primary Action</code></pre></div><h4 class="mb-3">pricing-4</h4><img src='../assets/components/light/pricing-4.png' data-img='pricing-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center align-items-stretch py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm h-100&quot;&gt;
+      &lt;div class=&quot;card-body d-flex flex-column justify-content-between h-100&quot;&gt;
+        &lt;div class=&quot;mb-3&quot;&gt;
+          &lt;div class=&quot;text-right mb-2&quot;&gt;&lt;img src=&quot;./assets/glyphs/rectangle-1.svg&quot; width=&quot;52&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;price-medium mb-2&quot;&gt;$29&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p class=&quot;mb-3&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar,&lt;/p&gt;
+          &lt;div class=&quot;mb-3 border-top&quot;&gt;&lt;/div&gt;
+          &lt;h4&gt;Feature two&lt;/h4&gt;
+          &lt;ul class=&quot;mb-0&quot;&gt;
+            &lt;li&gt;Showcase and embed your work&lt;/li&gt;
+            &lt;li&gt;Publish across social channels&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;mb-2&quot;&gt;&lt;button class=&quot;btn btn-lg btn-block btn-primary&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;small text-center&quot;&gt;Separated they live in right. &lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6 col-lg-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm h-100&quot;&gt;
+      &lt;div class=&quot;card-body d-flex flex-column justify-content-between h-100&quot;&gt;
+        &lt;div class=&quot;mb-3&quot;&gt;
+          &lt;div class=&quot;text-right mb-2&quot;&gt;&lt;img src=&quot;./assets/glyphs/rectangle-6.svg&quot; width=&quot;52&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;price-medium mb-2&quot;&gt;$29&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p class=&quot;mb-3&quot;&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar,&lt;/p&gt;
+          &lt;div class=&quot;mb-3 border-top&quot;&gt;&lt;/div&gt;
+          &lt;h4&gt;Feature two&lt;/h4&gt;
+          &lt;ul class=&quot;mb-0&quot;&gt;
+            &lt;li&gt;Showcase and embed your work&lt;/li&gt;
+            &lt;li&gt;Publish across social channels&lt;/li&gt;
+            &lt;li&gt;Agree to subscribe to newsletters&lt;/li&gt;
+            &lt;li&gt;Premium support&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;mb-2&quot;&gt;&lt;button class=&quot;btn btn-lg btn-block btn-primary&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;small text-center&quot;&gt;Separated they live in right. &lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.align-items-stretch.py-5
+  .col-12.col-md-6.col-lg-4.mb-3.mb-md-0
+    .card.shadow-sm.h-100
+      .card-body.d-flex.flex-column.justify-content-between.h-100
+        .mb-3
+          .text-right.mb-2
+            img(src="./assets/glyphs/rectangle-1.svg" width="52")
+          .price-medium.mb-2 $29
+            span.price-unit / mo
+          p.mb-3 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar,
+          .mb-3.border-top
+          h4 Feature two
+          ul.mb-0
+            li Showcase and embed your work
+            li Publish across social channels
+        div
+          .mb-2
+            button.btn.btn-lg.btn-block.btn-primary Action
+          .small.text-center Separated they live in right.
+            = ' '
+            a(href="").weight-500.action-link
+              span Link
+  .col-12.col-md-6.col-lg-4
+    .card.shadow-sm.h-100
+      .card-body.d-flex.flex-column.justify-content-between.h-100
+        .mb-3
+          .text-right.mb-2
+            img(src="./assets/glyphs/rectangle-6.svg" width="52")
+          .price-medium.mb-2 $29
+            span.price-unit / mo
+          p.mb-3 Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar,
+          .mb-3.border-top
+          h4 Feature two
+          ul.mb-0
+            li Showcase and embed your work
+            li Publish across social channels
+            li Agree to subscribe to newsletters
+            li Premium support
+        div
+          .mb-2
+            button.btn.btn-lg.btn-block.btn-primary Action
+          .small.text-center Separated they live in right.
+            = ' '
+            a(href="").weight-500.action-link
+              span Link</code></pre></div><h4 class="mb-3">pricing-5</h4><img src='../assets/components/light/pricing-5.png' data-img='pricing-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;d-flex flex-column&quot;&gt;
+        &lt;div&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h4&gt;Beginner&lt;/h4&gt;
+            &lt;div class=&quot;price-small mb-2&quot;&gt;$19&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+            &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;d-flex flex-column&quot;&gt;
+        &lt;div&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h4&gt;Personal&lt;/h4&gt;
+            &lt;div class=&quot;price-small mb-2&quot;&gt;$29&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+            &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;d-flex flex-column&quot;&gt;
+        &lt;div&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h4&gt;Unlimited&lt;/h4&gt;
+            &lt;div class=&quot;price-small mb-2&quot;&gt;$79&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+            &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      .d-flex.flex-column
+        div
+          img(src="./assets/pictures/image-410x250.png").w-100
+          .card-body
+            h4 Beginner
+            .price-small.mb-2 $19
+              span.price-unit / mo
+            p Separated they live in Bookmarks right at the coast of the famous Semantics
+            button.btn.btn-lg.btn-primary.btn-block Action
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      .d-flex.flex-column
+        div
+          img(src="./assets/pictures/image-410x250.png").w-100
+          .card-body
+            h4 Personal
+            .price-small.mb-2 $29
+              span.price-unit / mo
+            p Separated they live in Bookmarks right at the coast of the famous Semantics
+            button.btn.btn-lg.btn-primary.btn-block Action
+  .col-12.col-md-4
+    .card.shadow-sm
+      .d-flex.flex-column
+        div
+          img(src="./assets/pictures/image-410x250.png").w-100
+          .card-body
+            h4 Unlimited
+            .price-small.mb-2 $79
+              span.price-unit / mo
+            p Separated they live in Bookmarks right at the coast of the famous Semantics
+            button.btn.btn-lg.btn-primary.btn-block Action</code></pre></div><h4 class="mb-3">pricing-6</h4><img src='../assets/components/light/pricing-6.png' data-img='pricing-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;d-flex flex-column&quot;&gt;
+        &lt;div class=&quot;card-body py-10&quot;&gt;
+          &lt;h4&gt;Beginner&lt;/h4&gt;
+          &lt;div class=&quot;price-small mb-3&quot;&gt;$38&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p&gt;Design emails without HTML. We made it super easy for you to create&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block mb-2&quot;&gt;Action&lt;/button&gt;
+          &lt;div class=&quot;small text-muted&quot;&gt;By signing in you agree with the Terms and Conditions&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;d-flex flex-column&quot;&gt;
+        &lt;div class=&quot;card-body py-10&quot;&gt;
+          &lt;h4&gt;Personal&lt;/h4&gt;
+          &lt;div class=&quot;price-small mb-3&quot;&gt;$68&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p&gt;Design emails without HTML. We made it super easy for you to create&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block mb-2&quot;&gt;Action&lt;/button&gt;
+          &lt;div class=&quot;small text-muted&quot;&gt;By signing in you agree with the Terms and Conditions&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;d-flex flex-column&quot;&gt;
+        &lt;div class=&quot;card-body py-10&quot;&gt;
+          &lt;h4&gt;Unlimited&lt;/h4&gt;
+          &lt;div class=&quot;price-small mb-3&quot;&gt;$78&lt;span class=&quot;price-unit&quot;&gt;/ mo&lt;/span&gt;&lt;/div&gt;
+          &lt;p&gt;Design emails without HTML. We made it super easy for you to create&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block mb-2&quot;&gt;Action&lt;/button&gt;
+          &lt;div class=&quot;small text-muted&quot;&gt;By signing in you agree with the Terms and Conditions&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.py-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      .d-flex.flex-column
+        .card-body.py-10
+          h4 Beginner
+          .price-small.mb-3 $38
+            span.price-unit / mo
+          p Design emails without HTML. We made it super easy for you to create
+          button.btn.btn-lg.btn-primary.btn-block.mb-2 Action
+          .small.text-muted By signing in you agree with the Terms and Conditions
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      .d-flex.flex-column
+        .card-body.py-10
+          h4 Personal
+          .price-small.mb-3 $68
+            span.price-unit / mo
+          p Design emails without HTML. We made it super easy for you to create
+          button.btn.btn-lg.btn-primary.btn-block.mb-2 Action
+          .small.text-muted By signing in you agree with the Terms and Conditions
+  .col-12.col-md-4
+    .card.shadow-sm
+      .d-flex.flex-column
+        .card-body.py-10
+          h4 Unlimited
+          .price-small.mb-3 $78
+            span.price-unit / mo
+          p Design emails without HTML. We made it super easy for you to create
+          button.btn.btn-lg.btn-primary.btn-block.mb-2 Action
+          .small.text-muted By signing in you agree with the Terms and Conditions</code></pre></div><h4 class="mb-3">pricing-7</h4><img src='../assets/components/light/pricing-7.png' data-img='pricing-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;d-flex justify-content-around pt-5 mb-4&quot;&gt;
+  &lt;div class=&quot;nav nav-tabs weight-500&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active&quot; href=&quot;&quot;&gt;Monthly&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;&quot;&gt;Yearly&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row justify-content-center pb-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm h-100&quot;&gt;
+      &lt;div class=&quot;card-body d-flex flex-column&quot;&gt;
+        &lt;div&gt;
+          &lt;h4 class=&quot;text-right mb-4&quot;&gt;Beginner&lt;/h4&gt;
+          &lt;div class=&quot;price-medium mb-4&quot;&gt;$20&lt;span class=&quot;price-unit&quot;&gt;/ month&lt;/span&gt;&lt;/div&gt;
+          &lt;p&gt;By creating an Account on our service, you agree to subscribe&lt;/p&gt;
+          &lt;ul class=&quot;mb-4&quot;&gt;
+            &lt;li&gt;Showcase and embed your work&lt;/li&gt;
+            &lt;li&gt;Publish across social channels&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;mt-auto&quot;&gt;&lt;button class=&quot;btn btn-lg btn-block btn-primary&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm h-100&quot;&gt;
+      &lt;div class=&quot;card-body d-flex flex-column&quot;&gt;
+        &lt;div&gt;
+          &lt;h4 class=&quot;text-right mb-4&quot;&gt;Personal&lt;/h4&gt;
+          &lt;div class=&quot;price-medium mb-4&quot;&gt;$29&lt;span class=&quot;price-unit&quot;&gt;/ month&lt;/span&gt;&lt;/div&gt;
+          &lt;p&gt;By creating an Account on our service, you agree to subscribe&lt;/p&gt;
+          &lt;ul class=&quot;mb-4&quot;&gt;
+            &lt;li&gt;Showcase and embed your work&lt;/li&gt;
+            &lt;li&gt;Publish across social channels&lt;/li&gt;
+            &lt;li&gt;Sell your videos worldwide&lt;/li&gt;
+            &lt;li&gt;Premium support&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;mt-auto&quot;&gt;&lt;button class=&quot;btn btn-lg btn-block btn-primary&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm h-100&quot;&gt;
+      &lt;div class=&quot;card-body d-flex flex-column&quot;&gt;
+        &lt;div&gt;
+          &lt;h4 class=&quot;text-right mb-4&quot;&gt;Unlimited&lt;/h4&gt;
+          &lt;div class=&quot;price-medium mb-4&quot;&gt;$79&lt;span class=&quot;price-unit&quot;&gt;/ month&lt;/span&gt;&lt;/div&gt;
+          &lt;p&gt;By creating an Account on our service, you agree to subscribe&lt;/p&gt;
+          &lt;ul class=&quot;mb-4&quot;&gt;
+            &lt;li&gt;Showcase and embed your work&lt;/li&gt;
+            &lt;li&gt;Publish across social channels&lt;/li&gt;
+            &lt;li&gt;Sell your videos worldwide&lt;/li&gt;
+            &lt;li&gt;Premium support&lt;/li&gt;
+            &lt;li&gt;Analytics&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;mt-auto&quot;&gt;&lt;button class=&quot;btn btn-lg btn-block btn-primary&quot;&gt;Action&lt;/button&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.d-flex.justify-content-around.pt-5.mb-4
+  .nav.nav-tabs.weight-500
+    .nav-item
+      a(href='').nav-link.active Monthly
+    .nav-item
+      a(href='').nav-link Yearly
+.row.justify-content-center.pb-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm.h-100
+      .card-body.d-flex.flex-column
+        div
+          h4.text-right.mb-4 Beginner
+          .price-medium.mb-4 $20
+            span.price-unit / month
+          p By creating an Account on our service, you agree to subscribe
+          ul.mb-4
+            li Showcase and embed your work
+            li Publish across social channels
+        .mt-auto
+          button.btn.btn-lg.btn-block.btn-primary Action
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm.h-100
+      .card-body.d-flex.flex-column
+        div
+          h4.text-right.mb-4 Personal
+          .price-medium.mb-4 $29
+            span.price-unit / month
+          p By creating an Account on our service, you agree to subscribe
+          ul.mb-4
+            li Showcase and embed your work
+            li Publish across social channels
+            li Sell your videos worldwide
+            li Premium support
+        .mt-auto
+          button.btn.btn-lg.btn-block.btn-primary Action
+  .col-12.col-md-4
+    .card.shadow-sm.h-100
+      .card-body.d-flex.flex-column
+        div
+          h4.text-right.mb-4 Unlimited
+          .price-medium.mb-4 $79
+            span.price-unit / month
+          p By creating an Account on our service, you agree to subscribe
+          ul.mb-4
+            li Showcase and embed your work
+            li Publish across social channels
+            li Sell your videos worldwide
+            li Premium support
+            li Analytics
+        .mt-auto
+          button.btn.btn-lg.btn-block.btn-primary Action</code></pre></div><h4 class="mb-3">pricing-8</h4><img src='../assets/components/light/pricing-8.png' data-img='pricing-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Beginner&lt;/h4&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Design emails without HTML we made it super&lt;/p&gt;
+        &lt;div class=&quot;price-medium mb-3&quot;&gt;Free&lt;/div&gt;
+        &lt;p class=&quot;mb-4&quot;&gt;Design details&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Personal&lt;/h4&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Design emails without HTML we made it super&lt;/p&gt;
+        &lt;div class=&quot;price-medium mb-3&quot;&gt;$9&lt;/div&gt;
+        &lt;p class=&quot;mb-4&quot;&gt;Design details&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Unlimited&lt;/h4&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Design emails without HTML we made it super&lt;/p&gt;
+        &lt;div class=&quot;price-medium mb-3&quot;&gt;$26&lt;/div&gt;
+        &lt;p class=&quot;mb-4&quot;&gt;Design details&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Corporate&lt;/h4&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Design emails without HTML we made it super&lt;/p&gt;
+        &lt;div class=&quot;price-medium mb-3&quot;&gt;$38&lt;/div&gt;
+        &lt;p class=&quot;mb-4&quot;&gt;Design details&lt;/p&gt;&lt;button class=&quot;btn btn-lg btn-primary btn-block&quot;&gt;Action&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.py-5
+  .col-12.col-md-3.mb-3.mb-md-0
+    .card.shadow-sm
+      .card-body
+        h4 Beginner
+        p.mb-3 Design emails without HTML we made it super
+        .price-medium.mb-3 Free
+        p.mb-4 Design details
+        button.btn.btn-lg.btn-primary.btn-block Action
+  .col-12.col-md-3.mb-3.mb-md-0
+    .card.shadow-sm
+      .card-body
+        h4 Personal
+        p.mb-3 Design emails without HTML we made it super
+        .price-medium.mb-3 $9
+        p.mb-4 Design details
+        button.btn.btn-lg.btn-primary.btn-block Action
+  .col-12.col-md-3.mb-3.mb-md-0
+    .card.shadow-sm
+      .card-body
+        h4 Unlimited
+        p.mb-3 Design emails without HTML we made it super
+        .price-medium.mb-3 $26
+        p.mb-4 Design details
+        button.btn.btn-lg.btn-primary.btn-block Action
+  .col-12.col-md-3
+    .card.shadow-sm
+      .card-body
+        h4 Corporate
+        p.mb-3 Design emails without HTML we made it super
+        .price-medium.mb-3 $38
+        p.mb-4 Design details
+        button.btn.btn-lg.btn-primary.btn-block Action</code></pre></div></div></div></div></body></html>

@@ -1,0 +1,814 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Gallery</h3><h4 class="mb-3">gallery-1</h4><img src='../assets/components/light/gallery-1.png' data-img='gallery-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;py-4&quot;&gt;
+  &lt;div class=&quot;images-ratio ratio-2-1&quot; style=&quot;background-image: url(./assets/pictures/image-1110x540.png)&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.py-4
+  .images-ratio.ratio-2-1(style='background-image: url(./assets/pictures/image-1110x540.png)')</code></pre></div><h4 class="mb-3">gallery-2</h4><img src='../assets/components/light/gallery-2.png' data-img='gallery-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-md-6 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-6 gallery-item mb-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-md-6.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-6.gallery-item.mb-0
+    img(src="./assets/pictures/image-540x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-3</h4><img src='../assets/components/light/gallery-3.png' data-img='gallery-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-md-4 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item mb-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-md-4.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item.mb-0
+    img(src="./assets/pictures/image-540x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-4</h4><img src='../assets/components/light/gallery-4.png' data-img='gallery-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-md-4 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 gallery-item mb-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-md-4.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-md-4.gallery-item.mb-0
+    img(src="./assets/pictures/image-540x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-5</h4><img src='../assets/components/light/gallery-5.png' data-img='gallery-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-0
+    img(src="./assets/pictures/image-540x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-6</h4><img src='../assets/components/light/gallery-6.png' data-img='gallery-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 gallery-item mb-md-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-12.col-md-3.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100
+  .col-12.col-md-3.gallery-item.mb-md-0
+    img(src="./assets/pictures/image-540x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-7</h4><img src='../assets/components/light/gallery-7.png' data-img='gallery-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;gallery-item mb-md-0&quot;&gt;
+      &lt;div class=&quot;images-ratio ratio-4-5&quot; style=&quot;background-image: url(./assets/pictures/image-540x620.png)&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;gallery-item&quot;&gt;
+      &lt;div class=&quot;images-ratio ratio-4-2&quot; style=&quot;background-image: url(./assets/pictures/image-540x295.png)&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;gallery-item mb-0&quot;&gt;
+      &lt;div class=&quot;images-ratio ratio-4-2&quot; style=&quot;background-image: url(./assets/pictures/image-540x295.png)&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-12.col-md-6
+    .gallery-item.mb-md-0
+      .images-ratio.ratio-4-5(style='background-image: url(./assets/pictures/image-540x620.png)')
+  .col-12.col-md-6
+    .gallery-item
+      .images-ratio.ratio-4-2(style='background-image: url(./assets/pictures/image-540x295.png)')
+    .gallery-item.mb-0
+      .images-ratio.ratio-4-2(style='background-image: url(./assets/pictures/image-540x295.png)')</code></pre></div><h4 class="mb-3">gallery-8</h4><img src='../assets/components/light/gallery-8.png' data-img='gallery-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;gallery-item&quot;&gt;&lt;img class=&quot;w-100 mb-8&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+    &lt;div class=&quot;gallery-item mb-md-0&quot;&gt;
+      &lt;div class=&quot;images-ratio ratio-4-2&quot; style=&quot;background-image: url(./assets/pictures/image-540x295.png)&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;gallery-item&quot;&gt;
+      &lt;div class=&quot;images-ratio ratio-4-2&quot; style=&quot;background-image: url(./assets/pictures/image-540x295.png)&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;gallery-item mb-0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-4
+  .col-12.col-md-6
+    .gallery-item
+      img(src="./assets/pictures/image-540x540.png").w-100.mb-8
+    .gallery-item.mb-md-0
+      .images-ratio.ratio-4-2(style='background-image: url(./assets/pictures/image-540x295.png)')
+  .col-12.col-md-6
+    .gallery-item
+      .images-ratio.ratio-4-2(style='background-image: url(./assets/pictures/image-540x295.png)')
+    .gallery-item.mb-0
+      img(src="./assets/pictures/image-540x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-9</h4><img src='../assets/components/light/gallery-9.png' data-img='gallery-9.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row no-gutters py-4&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.no-gutters.py-4
+  .col-12.col-md-6
+    img(src="./assets/pictures/image-555x540.png").w-100
+  .col-12.col-md-6
+    img(src="./assets/pictures/image-555x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-10</h4><img src='../assets/components/light/gallery-10.png' data-img='gallery-10.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row no-gutters py-4&quot; style=&quot;margin-right: -1px&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot; style=&quot;padding: 0 1px 1px 0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot; style=&quot;padding: 0 1px 1px 0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot; style=&quot;padding: 0 1px 1px 0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x540.png&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot; style=&quot;padding: 0 1px 1px 0&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-555x540.png&quot; /&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.no-gutters.py-4(style='margin-right: -1px')
+  .col-12.col-md-6(style='padding: 0 1px 1px 0')
+    img(src="./assets/pictures/image-555x540.png").w-100
+  .col-12.col-md-6(style='padding: 0 1px 1px 0')
+    img(src="./assets/pictures/image-555x540.png").w-100
+  .col-12.col-md-6(style='padding: 0 1px 1px 0')
+    img(src="./assets/pictures/image-555x540.png").w-100
+  .col-12.col-md-6(style='padding: 0 1px 1px 0')
+    img(src="./assets/pictures/image-555x540.png").w-100</code></pre></div><h4 class="mb-3">gallery-11</h4><img src='../assets/components/light/gallery-11.png' data-img='gallery-11.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;swiper&quot;&gt;
+  &lt;div class=&quot;swiper-container&quot; id=&quot;slider-gallery-11&quot;&gt;
+    &lt;div class=&quot;swiper-wrapper&quot;&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;
+        &lt;div class=&quot;images-ratio ratio-16-9&quot; style=&quot;background-image: url(./assets/pictures/image-1440x600.png)&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;
+        &lt;div class=&quot;images-ratio ratio-16-9&quot; style=&quot;background-image: url(./assets/pictures/image-1440x600.png)&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;swiper-slide&quot;&gt;
+        &lt;div class=&quot;images-ratio ratio-16-9&quot; style=&quot;background-image: url(./assets/pictures/image-1440x600.png)&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;swiper-pagination&quot; id=&quot;slider-gallery-11-pagination&quot;&gt;&lt;/div&gt;&lt;a class=&quot;carousel-control-prev&quot; id=&quot;slider-gallery-11-prev&quot; href=&quot;&quot;&gt;
+    &lt;div class=&quot;carousel-control-prev-icon&quot;&gt;&lt;/div&gt;
+  &lt;/a&gt;&lt;a class=&quot;carousel-control-next&quot; id=&quot;slider-gallery-11-next&quot; href=&quot;&quot;&gt;
+    &lt;div class=&quot;carousel-control-next-icon&quot;&gt;&lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;&lt;!-- Script--&gt;
+&lt;script&gt;
+  var mySwiper11 = new Swiper(&#39;#slider-gallery-11&#39;, {
+    speed: 400,
+    navigation: {
+      nextEl: &#39;#slider-gallery-11-next&#39;,
+      prevEl: &#39;#slider-gallery-11-prev&#39;,
+    },
+    pagination: {
+      el: &#39;#slider-gallery-11-pagination&#39;,
+      clickable: true
+    },
+    slidesPerView: &#39;auto&#39;
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.swiper
+  .swiper-container(id='slider-gallery-11')
+    .swiper-wrapper
+      .swiper-slide
+        .images-ratio.ratio-16-9(style='background-image: url(./assets/pictures/image-1440x600.png)')
+      .swiper-slide
+        .images-ratio.ratio-16-9(style='background-image: url(./assets/pictures/image-1440x600.png)')
+      .swiper-slide
+        .images-ratio.ratio-16-9(style='background-image: url(./assets/pictures/image-1440x600.png)')
+  .swiper-pagination(id='slider-gallery-11-pagination')
+  a.carousel-control-prev(id='slider-gallery-11-prev' href='')
+    .carousel-control-prev-icon
+  a.carousel-control-next(id='slider-gallery-11-next' href='')
+    .carousel-control-next-icon
+// Script
+script.
+  var mySwiper11 = new Swiper('#slider-gallery-11', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-gallery-11-next',
+      prevEl: '#slider-gallery-11-prev',
+    },
+    pagination: {
+      el: '#slider-gallery-11-pagination',
+      clickable: true
+    },
+    slidesPerView: 'auto'
+  });</code></pre></div><h4 class="mb-3">gallery-12</h4><img src='../assets/components/light/gallery-12.png' data-img='gallery-12.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;swiper swiper-overflow py-5&quot;&gt;
+  &lt;div class=&quot;container position-relative&quot;&gt;
+    &lt;div class=&quot;swiper-container row&quot; id=&quot;slider-gallery-12&quot;&gt;
+      &lt;div class=&quot;swiper-wrapper&quot;&gt;
+        &lt;div class=&quot;swiper-slide&quot;&gt;
+          &lt;div class=&quot;col-12&quot;&gt;
+            &lt;div class=&quot;images-ratio ratio-2-1&quot; style=&quot;background-image: url(./assets/pictures/image-1110x540.png)&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;swiper-slide&quot;&gt;
+          &lt;div class=&quot;col-12&quot;&gt;
+            &lt;div class=&quot;images-ratio ratio-2-1&quot; style=&quot;background-image: url(./assets/pictures/image-1110x540.png)&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;swiper-slide&quot;&gt;
+          &lt;div class=&quot;col-12&quot;&gt;
+            &lt;div class=&quot;images-ratio ratio-2-1&quot; style=&quot;background-image: url(./assets/pictures/image-1110x540.png)&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;a class=&quot;carousel-control-prev carousel-control-outside&quot; id=&quot;slider-gallery-12-prev&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-prev-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;&lt;a class=&quot;carousel-control-next carousel-control-outside&quot; id=&quot;slider-gallery-12-next&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-next-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;!-- Script--&gt;
+&lt;script&gt;
+  var mySwiper12 = new Swiper(&#39;#slider-gallery-12&#39;, {
+    speed: 400,
+    navigation: {
+      nextEl: &#39;#slider-gallery-12-next&#39;,
+      prevEl: &#39;#slider-gallery-12-prev&#39;,
+    },
+    pagination: {
+      el: &#39;#slider-gallery-12-pagination&#39;,
+      clickable: true
+    },
+    slidesPerView: &#39;auto&#39;
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.swiper.swiper-overflow.py-5
+  .container.position-relative
+    .swiper-container.row(id='slider-gallery-12')
+      .swiper-wrapper
+        .swiper-slide
+          .col-12
+            .images-ratio.ratio-2-1(style='background-image: url(./assets/pictures/image-1110x540.png)')
+        .swiper-slide
+          .col-12
+            .images-ratio.ratio-2-1(style='background-image: url(./assets/pictures/image-1110x540.png)')
+        .swiper-slide
+          .col-12
+            .images-ratio.ratio-2-1(style='background-image: url(./assets/pictures/image-1110x540.png)')
+    a.carousel-control-prev.carousel-control-outside(id='slider-gallery-12-prev' href='')
+      .carousel-control-prev-icon
+    a.carousel-control-next.carousel-control-outside(id='slider-gallery-12-next' href='')
+      .carousel-control-next-icon
+// Script
+script.
+  var mySwiper12 = new Swiper('#slider-gallery-12', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-gallery-12-next',
+      prevEl: '#slider-gallery-12-prev',
+    },
+    pagination: {
+      el: '#slider-gallery-12-pagination',
+      clickable: true
+    },
+    slidesPerView: 'auto'
+  });</code></pre></div><h4 class="mb-3">gallery-13</h4><img src='../assets/components/light/gallery-13.png' data-img='gallery-13.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+    &lt;div class=&quot;col-12 col-md-8 col-lg-6&quot;&gt;
+      &lt;div class=&quot;swiper has-outside-pagination&quot;&gt;
+        &lt;div class=&quot;swiper-container&quot; id=&quot;slider-gallery-13&quot;&gt;
+          &lt;div class=&quot;swiper-wrapper&quot;&gt;
+            &lt;div class=&quot;swiper-slide&quot;&gt;
+              &lt;div class=&quot;images-ratio ratio-4-3&quot; style=&quot;background-image: url(./assets/pictures/image-555x380.png)&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;swiper-slide&quot;&gt;
+              &lt;div class=&quot;images-ratio ratio-4-3&quot; style=&quot;background-image: url(./assets/pictures/image-555x380.png)&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;swiper-slide&quot;&gt;
+              &lt;div class=&quot;images-ratio ratio-4-3&quot; style=&quot;background-image: url(./assets/pictures/image-555x380.png)&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;swiper-pagination swiper-pagination-outside&quot; id=&quot;slider-gallery-13-pagination&quot;&gt;&lt;/div&gt;&lt;a class=&quot;carousel-control-prev carousel-control-outside&quot; id=&quot;slider-gallery-13-prev&quot; href=&quot;&quot;&gt;
+          &lt;div class=&quot;carousel-control-prev-icon&quot;&gt;&lt;/div&gt;
+        &lt;/a&gt;&lt;a class=&quot;carousel-control-next carousel-control-outside&quot; id=&quot;slider-gallery-13-next&quot; href=&quot;&quot;&gt;
+          &lt;div class=&quot;carousel-control-next-icon&quot;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;!-- Script--&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  var mySwiper13 = new Swiper(&#39;#slider-gallery-13&#39;, {
+    speed: 400,
+    navigation: {
+      nextEl: &#39;#slider-gallery-13-next&#39;,
+      prevEl: &#39;#slider-gallery-13-prev&#39;,
+    },
+    pagination: {
+      el: &#39;#slider-gallery-13-pagination&#39;,
+      clickable: true
+    },
+    slidesPerView: &#39;auto&#39;
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.container
+  .row.justify-content-center.py-5
+    .col-12.col-md-8.col-lg-6
+      .swiper.has-outside-pagination
+        .swiper-container(id='slider-gallery-13')
+          .swiper-wrapper
+            .swiper-slide
+              .images-ratio.ratio-4-3(style='background-image: url(./assets/pictures/image-555x380.png)')
+            .swiper-slide
+              .images-ratio.ratio-4-3(style='background-image: url(./assets/pictures/image-555x380.png)')
+            .swiper-slide
+              .images-ratio.ratio-4-3(style='background-image: url(./assets/pictures/image-555x380.png)')
+        .swiper-pagination.swiper-pagination-outside(id='slider-gallery-13-pagination')
+        a.carousel-control-prev.carousel-control-outside(id='slider-gallery-13-prev' href='')
+          .carousel-control-prev-icon
+        a.carousel-control-next.carousel-control-outside(id='slider-gallery-13-next' href='')
+          .carousel-control-next-icon
+  // Script
+script.
+  var mySwiper13 = new Swiper('#slider-gallery-13', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-gallery-13-next',
+      prevEl: '#slider-gallery-13-prev',
+    },
+    pagination: {
+      el: '#slider-gallery-13-pagination',
+      clickable: true
+    },
+    slidesPerView: 'auto'
+  });</code></pre></div><h4 class="mb-3">gallery-14</h4><img src='../assets/components/light/gallery-14.png' data-img='gallery-14.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;swiper swiper-overflow py-5&quot;&gt;
+  &lt;div class=&quot;container position-relative&quot;&gt;
+    &lt;div class=&quot;swiper-container row&quot; id=&quot;slider-gallery-14&quot;&gt;
+      &lt;div class=&quot;swiper-wrapper&quot;&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-6&quot;&gt;
+          &lt;div class=&quot;images-ratio ratio-4-3&quot; style=&quot;background-image: url(./assets/pictures/image-555x380.png)&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-6&quot;&gt;
+          &lt;div class=&quot;images-ratio ratio-4-3&quot; style=&quot;background-image: url(./assets/pictures/image-555x380.png)&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-6&quot;&gt;
+          &lt;div class=&quot;images-ratio ratio-4-3&quot; style=&quot;background-image: url(./assets/pictures/image-555x380.png)&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;a class=&quot;carousel-control-prev carousel-control-outside&quot; id=&quot;slider-gallery-14-prev&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-prev-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;&lt;a class=&quot;carousel-control-next carousel-control-outside&quot; id=&quot;slider-gallery-14-next&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-next-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;!-- Script--&gt;
+&lt;script&gt;
+  var mySwiper14 = new Swiper(&#39;#slider-gallery-14&#39;, {
+    speed: 400,
+    navigation: {
+      nextEl: &#39;#slider-gallery-14-next&#39;,
+      prevEl: &#39;#slider-gallery-14-prev&#39;,
+    },
+    pagination: {
+      el: &#39;#slider-gallery-14-pagination&#39;,
+      clickable: true
+    },
+    slidesPerView: &#39;auto&#39;
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.swiper.swiper-overflow.py-5
+  .container.position-relative
+    .swiper-container.row(id='slider-gallery-14')
+      .swiper-wrapper
+        .swiper-slide.col-11.col-md-6
+          .images-ratio.ratio-4-3(style='background-image: url(./assets/pictures/image-555x380.png)')
+        .swiper-slide.col-11.col-md-6
+          .images-ratio.ratio-4-3(style='background-image: url(./assets/pictures/image-555x380.png)')
+        .swiper-slide.col-11.col-md-6
+          .images-ratio.ratio-4-3(style='background-image: url(./assets/pictures/image-555x380.png)')
+    a.carousel-control-prev.carousel-control-outside(id='slider-gallery-14-prev' href='')
+      .carousel-control-prev-icon
+    a.carousel-control-next.carousel-control-outside(id='slider-gallery-14-next' href='')
+      .carousel-control-next-icon
+// Script
+script.
+  var mySwiper14 = new Swiper('#slider-gallery-14', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-gallery-14-next',
+      prevEl: '#slider-gallery-14-prev',
+    },
+    pagination: {
+      el: '#slider-gallery-14-pagination',
+      clickable: true
+    },
+    slidesPerView: 'auto'
+  });</code></pre></div><h4 class="mb-3">gallery-15</h4><img src='../assets/components/light/gallery-15.png' data-img='gallery-15.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;swiper swiper-overflow py-5&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;swiper-container row&quot; id=&quot;slider-gallery-15&quot;&gt;
+      &lt;div class=&quot;swiper-wrapper&quot;&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-4&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;a class=&quot;carousel-control-prev carousel-control-outside&quot; id=&quot;slider-gallery-15-prev&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-prev-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;&lt;a class=&quot;carousel-control-next carousel-control-outside&quot; id=&quot;slider-gallery-15-next&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-next-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;!-- Script--&gt;
+&lt;script&gt;
+  var mySwiper15 = new Swiper(&#39;#slider-gallery-15&#39;, {
+    speed: 400,
+    navigation: {
+      nextEl: &#39;#slider-gallery-15-next&#39;,
+      prevEl: &#39;#slider-gallery-15-prev&#39;,
+    },
+    pagination: {
+      el: &#39;#slider-gallery-15-pagination&#39;,
+      clickable: true
+    },
+    slidesPerView: &#39;auto&#39;
+  });
+  $(mySwiper15.slides).each(function() {
+    $(this).on(&#39;click&#39;, function() {
+      if (mySwiper15.activeIndex &gt;= $(this).index()) {
+        mySwiper15.slidePrev();
+      } else {
+        mySwiper15.slideNext();
+      }
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.swiper.swiper-overflow.py-5
+  .container
+    .swiper-container.row(id='slider-gallery-15')
+      .swiper-wrapper
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-4
+          img(src="./assets/pictures/image-540x540.png").w-100
+    a.carousel-control-prev.carousel-control-outside(id='slider-gallery-15-prev' href='')
+      .carousel-control-prev-icon
+    a.carousel-control-next.carousel-control-outside(id='slider-gallery-15-next' href='')
+      .carousel-control-next-icon
+// Script
+script.
+  var mySwiper15 = new Swiper('#slider-gallery-15', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-gallery-15-next',
+      prevEl: '#slider-gallery-15-prev',
+    },
+    pagination: {
+      el: '#slider-gallery-15-pagination',
+      clickable: true
+    },
+    slidesPerView: 'auto'
+  });
+  $(mySwiper15.slides).each(function () {
+    $(this).on('click', function () {
+      if (mySwiper15.activeIndex >= $(this).index()) {
+        mySwiper15.slidePrev();
+      } else {
+        mySwiper15.slideNext();
+      }
+    });
+  });</code></pre></div><h4 class="mb-3">gallery-16</h4><img src='../assets/components/light/gallery-16.png' data-img='gallery-16.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;swiper swiper-overflow py-5&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;swiper-container row&quot; id=&quot;slider-gallery-16&quot;&gt;
+      &lt;div class=&quot;swiper-wrapper&quot;&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;swiper-slide col-11 col-md-3&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-540x540.png&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;a class=&quot;carousel-control-prev carousel-control-outside&quot; id=&quot;slider-gallery-16-prev&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-prev-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;&lt;a class=&quot;carousel-control-next carousel-control-outside&quot; id=&quot;slider-gallery-16-next&quot; href=&quot;&quot;&gt;
+      &lt;div class=&quot;carousel-control-next-icon&quot;&gt;&lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;!-- Script--&gt;
+&lt;script&gt;
+  var mySwiper16 = new Swiper(&#39;#slider-gallery-16&#39;, {
+    speed: 400,
+    navigation: {
+      nextEl: &#39;#slider-gallery-16-next&#39;,
+      prevEl: &#39;#slider-gallery-16-prev&#39;,
+    },
+    pagination: {
+      el: &#39;#slider-gallery-16-pagination&#39;,
+      clickable: true
+    },
+    slidesPerView: &#39;auto&#39;,
+    slideToClickedSlide: true
+  });
+  $(mySwiper16.slides).each(function() {
+    $(this).on(&#39;click&#39;, function() {
+      if (mySwiper16.activeIndex &gt;= $(this).index()) {
+        mySwiper16.slidePrev();
+      } else {
+        mySwiper16.slideNext();
+      }
+    });
+  });
+&lt;/script&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.swiper.swiper-overflow.py-5
+  .container
+    .swiper-container.row(id='slider-gallery-16')
+      .swiper-wrapper
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+        .swiper-slide.col-11.col-md-3
+          img(src="./assets/pictures/image-540x540.png").w-100
+    a.carousel-control-prev.carousel-control-outside(id='slider-gallery-16-prev' href='')
+      .carousel-control-prev-icon
+    a.carousel-control-next.carousel-control-outside(id='slider-gallery-16-next' href='')
+      .carousel-control-next-icon
+// Script
+script.
+  var mySwiper16 = new Swiper('#slider-gallery-16', {
+    speed: 400,
+    navigation: {
+      nextEl: '#slider-gallery-16-next',
+      prevEl: '#slider-gallery-16-prev',
+    },
+    pagination: {
+      el: '#slider-gallery-16-pagination',
+      clickable: true
+    },
+    slidesPerView: 'auto',
+    slideToClickedSlide: true
+  });
+  $(mySwiper16.slides).each(function () {
+    $(this).on('click', function () {
+      if (mySwiper16.activeIndex >= $(this).index()) {
+        mySwiper16.slidePrev();
+      } else {
+        mySwiper16.slideNext();
+      }
+    });
+  });</code></pre></div></div></div></div></body></html>

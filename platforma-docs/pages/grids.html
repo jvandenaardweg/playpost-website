@@ -1,0 +1,1115 @@
+<!DOCTYPE html><html lang="en"><head><title>Components - Platforma 2 Bootstrap</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><link rel="stylesheet" href="../css/documentation.css"/><link rel="stylesheet" href="../css/light.css" id="css"/><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css")--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script></head><script>function CopyToClipboard(el) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(el);
+    range.select().createTextRange();
+    document.execCommand('copy');
+
+  } else if (window.getSelection) {
+    window.getSelection().removeAllRanges();
+
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+  }
+}
+
+function setTheme(theme, cssLink) {
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('cssLink', cssLink);
+
+  $('body').attr('class', theme);
+  $('#css').attr('href', cssLink);
+  $('img[data-img]').each(function () {
+    $(this).attr('src', '../assets/components/' + theme + '/' + $(this).attr('data-img'));
+  });
+}
+
+$(function () {
+  var theme = localStorage.getItem('theme');
+  var cssLink = localStorage.getItem('cssLink');
+
+  if (theme) {
+    setTheme(theme, cssLink);
+  }
+
+  $('a[data-toggle=menu]').click(function (e) {
+    e.preventDefault();
+    $('[data-role=submenu]').hide();
+    $(this).parent().next('.navbar-nav').show();
+  });
+
+  $('.dcm-theme-selector__item').click(function() {
+    var link = $(this).attr('data-href');
+    var theme = $(this).attr('data-theme');
+
+    setTheme(theme, link);
+  });
+
+  $('.btn[data-action=switch]').click(function(e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    var selectedBlock = wrapper.find('[data-role=' + target + ']');
+
+    wrapper.find('[data-target]').removeClass('active');
+    $(this).addClass('active');
+    wrapper.find('[data-role]').hide();
+    wrapper.find('[data-action=copy]').attr('data-target', target);
+    selectedBlock.show();
+  });
+
+  $('.dcm-copy__button[data-action=copy]').click(function (e) {
+    e.preventDefault();
+
+    var target = $(this).attr('data-target');
+    var wrapper = $(this).closest('[data-role=code-wrapper]');
+    CopyToClipboard(wrapper.find('[data-role=' + target + ']')[0]);
+  });
+
+  hljs.initHighlightingOnLoad();
+});
+</script><body><div class="dcm-header border-bottom"><div class="dcm-logo">Platforma 2</div><div class="dcm-theme-selector"><div class="dcm-theme-selector__item dcm-theme-light" data-href="../css/light.css" data-theme="light">Light</div><div class="dcm-theme-selector__item dcm-theme-blueprint" data-href="../css/blueprint.css" data-theme="blueprint">Blueprint</div><div class="dcm-theme-selector__item dcm-theme-dark" data-href="../css/dark.css" data-theme="dark">Dark</div></div></div><div class="container py-4"><div class="row align-items-stretch"><div class="col-4"><div class="row no-gutters h-100"><div class="col-9 border-right"><div class="navbar-nav dcm-navbar weight-500" style="position: fixed; top: 100px"><div class="nav-item"><a class="nav-link text-dark" href="index.html" data-toggle="menu">Documentation</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none;"><div class="nav-item"><a class="nav-link text-dark" href="index.html#introduction">Introduction</a><a class="nav-link text-dark" href="index.html#pug">PUG/SASS Version</a><a class="nav-link text-dark" href="index.html#html">HTML/CSS Version</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="" data-toggle="menu">Components</a></div><div class="navbar-nav pl-2 small weight-500"><div class="nav-item"><a class="nav-link text-dark" href="left.html">Left</a><a class="nav-link text-dark" href="right.html">Right</a><a class="nav-link text-dark" href="center.html">Center</a><a class="nav-link text-dark" href="covers.html">Covers</a><a class="nav-link text-dark" href="grids.html">Grids</a><a class="nav-link text-dark" href="texts.html">Texts</a><a class="nav-link text-dark" href="gallery.html">Gallery</a><a class="nav-link text-dark" href="forms.html">Forms</a><a class="nav-link text-dark" href="pricing.html">Pricing</a><a class="nav-link text-dark" href="customers.html">Customers</a><a class="nav-link text-dark" href="menu.html">Menu</a><a class="nav-link text-dark" href="footers.html">Footers</a></div></div><div class="nav-item"><a class="nav-link text-dark" href="elements.html" data-toggle="menu">Elements</a></div><div class="navbar-nav pl-2 small weight-500" data-role="submenu" style="display: none"><div class="nav-item"><a class="nav-link text-dark" href="elements.html#typography">Typography</a><a class="nav-link text-dark" href="elements.html#links">Links</a><a class="nav-link text-dark" href="elements.html#buttons">Buttons</a><a class="nav-link text-dark" href="elements.html#forms">Forms</a><a class="nav-link text-dark" href="elements.html#tabs">Tabs & Breadcrumbs</a><a class="nav-link text-dark" href="elements.html#modals">Modals</a></div></div></div></div></div></div><div class="col-8 pt-2"><h1 class="mb-4">Components</h1><h3 class="weight-700 mb-4">Grids</h3><h4 class="mb-3">grids-1</h4><img src='../assets/components/light/grids-1.png' data-img='grids-1.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center flex-md-nowrap py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-center&quot;&gt;
+      &lt;div class=&quot;col-12 col-lg-8&quot;&gt;
+        &lt;div class=&quot;py-5 py-md-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-1.svg&quot; width=&quot;40&quot; /&gt;
+          &lt;h3&gt;Feature one&lt;/h3&gt;
+          &lt;p&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;border-bottom d-md-none&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;border-right d-md-block&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-center&quot;&gt;
+      &lt;div class=&quot;col-12 col-lg-8&quot;&gt;
+        &lt;div class=&quot;py-5 py-md-0&quot;&gt;&lt;img class=&quot;mb-3&quot; src=&quot;./assets/glyphs/rectangle-6.svg&quot; width=&quot;40&quot; /&gt;
+          &lt;h3&gt;Feature two&lt;/h3&gt;
+          &lt;p&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.flex-md-nowrap.py-md-5
+  .col-12.col-md-6
+    .row.justify-content-center
+      .col-12.col-lg-8
+        .py-5.py-md-0
+          img(src="./assets/glyphs/rectangle-1.svg" width="40").mb-3
+          h3 Feature one
+          p Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar
+        .border-bottom.d-md-none
+  .border-right.d-md-block
+  .col-12.col-md-6
+    .row.justify-content-center
+      .col-12.col-lg-8
+        .py-5.py-md-0
+          img(src="./assets/glyphs/rectangle-6.svg" width="40").mb-3
+          h3 Feature two
+          p Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar</code></pre></div><h4 class="mb-3">grids-2</h4><img src='../assets/components/light/grids-2.png' data-img='grids-2.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center flex-md-nowrap py-md-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-center&quot;&gt;
+      &lt;div class=&quot;col-12 col-lg-8&quot;&gt;
+        &lt;div class=&quot;py-5 py-md-0&quot;&gt;
+          &lt;h3&gt;Medium length headline&lt;/h3&gt;
+          &lt;p&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;border-bottom d-md-none&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;border-right d-none d-md-block&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-6&quot;&gt;
+    &lt;div class=&quot;row justify-content-center&quot;&gt;
+      &lt;div class=&quot;col-12 col-lg-8&quot;&gt;
+        &lt;div class=&quot;py-5 py-md-0&quot;&gt;
+          &lt;h3&gt;Medium length headline&lt;/h3&gt;
+          &lt;p&gt;Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.flex-md-nowrap.py-md-5
+  .col-12.col-md-6
+    .row.justify-content-center
+      .col-12.col-lg-8
+        .py-5.py-md-0
+          h3 Medium length headline
+          p Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar
+          a(href="").weight-500.action-link
+            span Read more
+        .border-bottom.d-md-none
+  .border-right.d-none.d-md-block
+  .col-12.col-md-6
+    .row.justify-content-center
+      .col-12.col-lg-8
+        .py-5.py-md-0
+          h3 Medium length headline
+          p Change the color to match your brand or vision, add your logo, choose the perfect thumbnail, remove the playbar
+          a(href="").weight-500.action-link
+            span Read more</code></pre></div><h4 class="mb-3">grids-3</h4><img src='../assets/components/light/grids-3.png' data-img='grids-3.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;
+    &lt;h3&gt;Feature one&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;
+    &lt;h3&gt;Feature two&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;h3&gt;Feature three&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-4.mb-md-0
+    h3 Feature one
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+    a(href="").weight-500.action-link
+      span Read more
+  .col-12.col-md-4.mb-4.mb-md-0
+    h3 Feature two
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+    a(href="").weight-500.action-link
+      span Read more
+  .col-12.col-md-4
+    h3 Feature three
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+    a(href="").weight-500.action-link
+      span Read more</code></pre></div><h4 class="mb-3">grids-4</h4><img src='../assets/components/light/grids-4.png' data-img='grids-4.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;
+    &lt;div class=&quot;d-flex align-items-center mb-2&quot;&gt;&lt;img class=&quot;mr-2&quot; src=&quot;./assets/glyphs/rectangle-4.svg&quot; width=&quot;40&quot; /&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;Feature one&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;
+    &lt;div class=&quot;d-flex align-items-center mb-2&quot;&gt;&lt;img class=&quot;mr-2&quot; src=&quot;./assets/glyphs/rectangle-6.svg&quot; width=&quot;40&quot; /&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;Feature two&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;d-flex align-items-center mb-2&quot;&gt;&lt;img class=&quot;mr-2&quot; src=&quot;./assets/glyphs/rectangle-5.svg&quot; width=&quot;40&quot; /&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;Feature three&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-4.mb-md-0
+    .d-flex.align-items-center.mb-2
+      img(src="./assets/glyphs/rectangle-4.svg" width="40").mr-2
+      h3.mb-0 Feature one
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+  .col-12.col-md-4.mb-4.mb-md-0
+    .d-flex.align-items-center.mb-2
+      img(src="./assets/glyphs/rectangle-6.svg" width="40").mr-2
+      h3.mb-0 Feature two
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+  .col-12.col-md-4
+    .d-flex.align-items-center.mb-2
+      img(src="./assets/glyphs/rectangle-5.svg" width="40").mr-2
+      h3.mb-0 Feature three
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.</code></pre></div><h4 class="mb-3">grids-5</h4><img src='../assets/components/light/grids-5.png' data-img='grids-5.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;
+    &lt;h4&gt;Feature one&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;
+    &lt;h4&gt;Feature two&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;
+    &lt;h4&gt;Feature three&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;
+    &lt;h4&gt;Feature four&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-4.mb-md-0
+    h4 Feature one
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more
+  .col-12.col-md-3.mb-4.mb-md-0
+    h4 Feature two
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more
+  .col-12.col-md-3.mb-4.mb-md-0
+    h4 Feature three
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more
+  .col-12.col-md-3
+    h4 Feature four
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more</code></pre></div><h4 class="mb-3">grids-6</h4><img src='../assets/components/light/grids-6.png' data-img='grids-6.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-2.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature one&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-6.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature two&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-3.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature three&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-5.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature four&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Gorgeous, high-quality video sharing on desktop, mobile, tablet or more&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/glyphs/rectangle-2.svg" width="32").mb-2
+    h4 Feature one
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/glyphs/rectangle-6.svg" width="32").mb-2
+    h4 Feature two
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/glyphs/rectangle-3.svg" width="32").mb-2
+    h4 Feature three
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more
+  .col-12.col-md-3
+    img(src="./assets/glyphs/rectangle-5.svg" width="32").mb-2
+    h4 Feature four
+    .small Gorgeous, high-quality video sharing on desktop, mobile, tablet or more</code></pre></div><h4 class="mb-3">grids-7</h4><img src='../assets/components/light/grids-7.png' data-img='grids-7.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-1.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature one&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-5.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature two&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-4.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature three&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;&lt;img class=&quot;mb-2&quot; src=&quot;./assets/glyphs/rectangle-6.svg&quot; width=&quot;32&quot; /&gt;
+    &lt;h4&gt;Feature four&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/glyphs/rectangle-1.svg" width="32").mb-2
+    h4 Feature one
+    .small
+      p Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language
+      a(href="").weight-500.action-link
+        span Read more
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/glyphs/rectangle-5.svg" width="32").mb-2
+    h4 Feature two
+    .small
+      p Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language
+      a(href="").weight-500.action-link
+        span Read more
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/glyphs/rectangle-4.svg" width="32").mb-2
+    h4 Feature three
+    .small
+      p Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language
+      a(href="").weight-500.action-link
+        span Read more
+  .col-12.col-md-3
+    img(src="./assets/glyphs/rectangle-6.svg" width="32").mb-2
+    h4 Feature four
+    .small
+      p Separated they live in Bookmarksgrove right at the coast of the famous Semantics, large language
+      a(href="").weight-500.action-link
+       span Read more</code></pre></div><h4 class="mb-3">grids-8</h4><img src='../assets/components/light/grids-8.png' data-img='grids-8.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h3 Medium length headline
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+    a(href="").weight-500.action-link
+      span Read more
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h3 Medium length headline
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+    a(href="").weight-500.action-link
+      span Read more
+  .col-12.col-md-4
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h3 Medium length headline
+    p All base UI elements are made using Nested Symbols and shared styles that are logically connected with one another.
+    a(href="").weight-500.action-link
+      span Read more</code></pre></div><h4 class="mb-3">grids-9</h4><img src='../assets/components/light/grids-9.png' data-img='grids-9.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;div class=&quot;d-flex justify-content-between align-items-end mb-1&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;Short headline&lt;/h3&gt;&lt;small&gt;Caption&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Medium length subtitle on one line&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;div class=&quot;d-flex justify-content-between align-items-end mb-1&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;Short headline&lt;/h3&gt;&lt;small&gt;Caption&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Medium length subtitle on one line&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;div class=&quot;d-flex justify-content-between align-items-end mb-1&quot;&gt;
+      &lt;h3 class=&quot;mb-0&quot;&gt;Short headline&lt;/h3&gt;&lt;small&gt;Caption&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Medium length subtitle on one line&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    .d-flex.justify-content-between.align-items-end.mb-1
+      h3.mb-0 Short headline
+      small Caption
+    p Medium length subtitle on one line
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    .d-flex.justify-content-between.align-items-end.mb-1
+      h3.mb-0 Short headline
+      small Caption
+    p Medium length subtitle on one line
+  .col-12.col-md-4
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    .d-flex.justify-content-between.align-items-end.mb-1
+      h3.mb-0 Short headline
+      small Caption
+    p Medium length subtitle on one line</code></pre></div><h4 class="mb-3">grids-10</h4><img src='../assets/components/light/grids-10.png' data-img='grids-10.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are&lt;/p&gt;&lt;small&gt;Caption&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are&lt;/p&gt;&lt;small&gt;Caption&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h3&gt;Medium length headline&lt;/h3&gt;
+    &lt;p&gt;All base UI elements are made using Nested Symbols and shared styles that are&lt;/p&gt;&lt;small&gt;Caption&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.py-5
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h3 Medium length headline
+    p All base UI elements are made using Nested Symbols and shared styles that are
+    small Caption
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h3 Medium length headline
+    p All base UI elements are made using Nested Symbols and shared styles that are
+    small Caption
+  .col-12.col-md-4
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h3 Medium length headline
+    p All base UI elements are made using Nested Symbols and shared styles that are
+    small Caption</code></pre></div><h4 class="mb-3">grids-11</h4><img src='../assets/components/light/grids-11.png' data-img='grids-11.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h2&gt;Short headline&lt;/h2&gt;
+    &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h2&gt;Short headline&lt;/h2&gt;
+    &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h2&gt;Short headline&lt;/h2&gt;
+    &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h2 Short headline
+    p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+    a(href="").weight-500.action-link
+      span Read more
+  .col-12.col-md-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h2 Short headline
+    p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+    a(href="").weight-500.action-link
+      span Read more
+  .col-12.col-md-4
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h2 Short headline
+    p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+    a(href="").weight-500.action-link
+      span Read more</code></pre></div><h4 class="mb-3">grids-12</h4><img src='../assets/components/light/grids-12.png' data-img='grids-12.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Medium length title&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Medium length title&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Medium length title&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Medium length title&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Read more&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Medium length title
+    .small
+      p Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean
+      a(href="").weight-500.action-link
+        span Read more
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Medium length title
+    .small
+      p Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean
+      a(href="").weight-500.action-link
+        span Read more
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Medium length title
+    .small
+      p Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean
+      a(href="").weight-500.action-link
+        span Read more
+  .col-12.col-md-3
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Medium length title
+    .small
+      p Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean
+      a(href="").weight-500.action-link
+        span Read more</code></pre></div><h4 class="mb-3">grids-13</h4><img src='../assets/components/light/grids-13.png' data-img='grids-13.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Long headline on two lines to turn your visitors into users&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Caption&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Long headline on two lines to turn your visitors into users&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Caption&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Long headline on two lines to turn your visitors into users&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Caption&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Long headline on two lines to turn your visitors into users&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;Caption&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Long headline on two lines to turn your visitors into users
+    .small Caption
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Long headline on two lines to turn your visitors into users
+    .small Caption
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Long headline on two lines to turn your visitors into users
+    .small Caption
+  .col-12.col-md-3
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Long headline on two lines to turn your visitors into users
+    .small Caption</code></pre></div><h4 class="mb-3">grids-14</h4><img src='../assets/components/light/grids-14.png' data-img='grids-14.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4 class=&quot;mb-0&quot;&gt;Short headline&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Medium length subtitle&lt;/p&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;$99&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4 class=&quot;mb-0&quot;&gt;Short headline&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Medium length subtitle&lt;/p&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;$99&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4 class=&quot;mb-0&quot;&gt;Short headline&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Medium length subtitle&lt;/p&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;$99&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4 class=&quot;mb-0&quot;&gt;Short headline&lt;/h4&gt;
+    &lt;div class=&quot;small&quot;&gt;
+      &lt;p&gt;Medium length subtitle&lt;/p&gt;
+      &lt;p class=&quot;mb-0&quot;&gt;$99&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4.mb-0 Short headline
+    .small
+      p Medium length subtitle
+      p.mb-0 $99
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4.mb-0 Short headline
+    .small
+      p Medium length subtitle
+      p.mb-0 $99
+  .col-12.col-md-3.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4.mb-0 Short headline
+    .small
+      p Medium length subtitle
+      p.mb-0 $99
+  .col-12.col-md-3
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4.mb-0 Short headline
+    .small
+      p Medium length subtitle
+      p.mb-0 $99</code></pre></div><h4 class="mb-3">grids-15</h4><img src='../assets/components/light/grids-15.png' data-img='grids-15.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;small mb-2&quot;&gt;September 12&lt;/div&gt;
+        &lt;h3&gt;Long headline to turn your visitors into users&lt;/h3&gt;&lt;span class=&quot;small&quot;&gt;Caption&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;small mb-2&quot;&gt;September 12&lt;/div&gt;
+        &lt;h3&gt;Long headline to turn your visitors into users&lt;/h3&gt;&lt;span class=&quot;small&quot;&gt;Caption&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;small mb-2&quot;&gt;September 12&lt;/div&gt;
+        &lt;h3&gt;Long headline to turn your visitors into users&lt;/h3&gt;&lt;span class=&quot;small&quot;&gt;Caption&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-3&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;small mb-2&quot;&gt;September 12&lt;/div&gt;
+        &lt;h3&gt;Long headline to turn your visitors into users&lt;/h3&gt;&lt;span class=&quot;small&quot;&gt;Caption&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-3.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        .small.mb-2 September 12
+        h3 Long headline to turn your visitors into users
+        span.small Caption
+  .col-12.col-md-3.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        .small.mb-2 September 12
+        h3 Long headline to turn your visitors into users
+        span.small Caption
+  .col-12.col-md-3.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        .small.mb-2 September 12
+        h3 Long headline to turn your visitors into users
+        span.small Caption
+  .col-12.col-md-3
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        .small.mb-2 September 12
+        h3 Long headline to turn your visitors into users
+        span.small Caption</code></pre></div><h4 class="mb-3">grids-16</h4><img src='../assets/components/light/grids-16.png' data-img='grids-16.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline to turn your visitors into users&lt;/h2&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline to turn your visitors into users&lt;/h2&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline to turn your visitors into users&lt;/h2&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Harmonious colour themes have built up as the collection has evolved.&lt;/p&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline to turn your visitors into users
+        p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+        a(href="").weight-500
+          span Explore
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline to turn your visitors into users
+        p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+        a(href="").weight-500
+          span Explore
+  .col-12.col-md-4
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline to turn your visitors into users
+        p.mb-3 Harmonious colour themes have built up as the collection has evolved.
+        a(href="").weight-500
+          span Explore</code></pre></div><h4 class="mb-3">grids-17</h4><img src='../assets/components/light/grids-17.png' data-img='grids-17.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline for two, three lines that catch attention&lt;/h2&gt;
+        &lt;div&gt;&lt;span class=&quot;weight-500&quot;&gt;Tagline&lt;/span&gt;&lt;span class=&quot;mx-2&quot;&gt;•&lt;/span&gt;&lt;span&gt;Caption&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline for two, three lines that catch attention&lt;/h2&gt;
+        &lt;div&gt;&lt;span class=&quot;weight-500&quot;&gt;Tagline&lt;/span&gt;&lt;span class=&quot;mx-2&quot;&gt;•&lt;/span&gt;&lt;span&gt;Caption&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline for two, three lines that catch attention&lt;/h2&gt;
+        &lt;div&gt;&lt;span class=&quot;weight-500&quot;&gt;Tagline&lt;/span&gt;&lt;span class=&quot;mx-2&quot;&gt;•&lt;/span&gt;&lt;span&gt;Caption&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.py-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline for two,  three lines that catch attention
+        div
+          span.weight-500 Tagline
+          span.mx-2 •
+          span Caption
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline for two,  three lines that catch attention
+        div
+          span.weight-500 Tagline
+          span.mx-2 •
+          span Caption
+  .col-12.col-md-4
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline for two,  three lines that catch attention
+        div
+          span.weight-500 Tagline
+          span.mx-2 •
+          span Caption</code></pre></div><h4 class="mb-3">grids-18</h4><img src='../assets/components/light/grids-18.png' data-img='grids-18.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Tagline&lt;/h4&gt;
+        &lt;h2&gt;Long headline for two lines for attention&lt;/h2&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Tagline&lt;/h4&gt;
+        &lt;h2&gt;Long headline for two lines for attention&lt;/h2&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h4&gt;Tagline&lt;/h4&gt;
+        &lt;h2&gt;Long headline for two lines for attention&lt;/h2&gt;&lt;a class=&quot;weight-500&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.py-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h4 Tagline
+        h2 Long headline for two lines for attention
+        a(href="").weight-500
+          span Explore
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h4 Tagline
+        h2 Long headline for two lines for attention
+        a(href="").weight-500
+          span Explore
+  .col-12.col-md-4
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h4 Tagline
+        h2 Long headline for two lines for attention
+        a(href="").weight-500
+          span Explore</code></pre></div><h4 class="mb-3">grids-19</h4><img src='../assets/components/light/grids-19.png' data-img='grids-19.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h3&gt;Long headline on two lines to turn your visitors into users&lt;/h3&gt;
+        &lt;p class=&quot;mb-0&quot;&gt;Value&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h3&gt;Long headline on two lines to turn your visitors into users&lt;/h3&gt;
+        &lt;p class=&quot;mb-0&quot;&gt;Value&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-4&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h3&gt;Long headline on two lines to turn your visitors into users&lt;/h3&gt;
+        &lt;p class=&quot;mb-0&quot;&gt;Value&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.py-5
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h3 Long headline on two lines to turn your visitors into users
+        p.mb-0 Value
+  .col-12.col-md-4.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h3 Long headline on two lines to turn your visitors into users
+        p.mb-0 Value
+  .col-12.col-md-4
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h3 Long headline on two lines to turn your visitors into users
+        p.mb-0 Value</code></pre></div><h4 class="mb-3">grids-20</h4><img src='../assets/components/light/grids-20.png' data-img='grids-20.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row text-center justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-5 mb-3 mb-md-0&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline to turn your visitors into users&lt;/h2&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Separated they live in Bookmarks right at the coast of the famous Semantics&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-5&quot;&gt;
+    &lt;div class=&quot;card shadow-sm&quot;&gt;&lt;img class=&quot;w-100&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+      &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h2&gt;Long headline to turn your visitors into users&lt;/h2&gt;
+        &lt;p class=&quot;mb-3&quot;&gt;Separated they live in Bookmarks right at the coast of the famous Semantics&lt;/p&gt;&lt;a class=&quot;weight-500 action-link&quot; href=&quot;&quot;&gt;&lt;span&gt;Explore&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.text-center.justify-content-center.py-5
+  .col-12.col-md-5.mb-3.mb-md-0
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline to turn your visitors into users
+        p.mb-3 Separated they live in Bookmarks right at the coast of the famous Semantics
+        a(href="").weight-500.action-link
+          span Explore
+  .col-12.col-md-5
+    .card.shadow-sm
+      img(src="./assets/pictures/image-410x250.png").w-100
+      .card-body
+        h2 Long headline to turn your visitors into users
+        p.mb-3 Separated they live in Bookmarks right at the coast of the famous Semantics
+        a(href="").weight-500.action-link
+          span Explore</code></pre></div><h4 class="mb-3">grids-21</h4><img src='../assets/components/light/grids-21.png' data-img='grids-21.png' class="d-block border w-100 mb-4" /><div class="mb-5" data-role="code-wrapper">
+<div class="dcm-controls mb-2">
+  <div class="btn-group">
+    <button class="btn btn-outline-dark dcm-tab active" data-action="switch" data-target="html">HTML</button>
+    <button class="btn btn-outline-dark dcm-tab" data-action="switch" data-target="pug">PUG</button>
+  </div>
+  <div class="dcm-copy">
+    <a href="" class="btn btn-outline-dark dcm-copy__button" data-action="copy" data-target="html"></a>
+  </div>
+</div>
+<pre data-role='html'><code class="html">&lt;div class=&quot;row justify-content-center py-5&quot;&gt;
+  &lt;div class=&quot;col-12 col-md-5 col-lg-4 mb-4 mb-md-0&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h2&gt;Long headline on two lines to turn your visitors into users&lt;/h2&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;The company invested $4 billion in a robotics and AI research institute to create safer&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col-12 col-md-5 col-lg-4&quot;&gt;&lt;img class=&quot;w-100 mb-3&quot; src=&quot;./assets/pictures/image-410x250.png&quot; /&gt;
+    &lt;h4&gt;Tagline&lt;/h4&gt;
+    &lt;h2&gt;Long headline on two lines to turn your visitors into users&lt;/h2&gt;
+    &lt;p class=&quot;mb-0&quot;&gt;The company invested $4 billion in a robotics and AI research institute to create safer&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre data-role='pug' style="display: none;"><code class="html">.row.justify-content-center.py-5
+  .col-12.col-md-5.col-lg-4.mb-4.mb-md-0
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Tagline
+    h2 Long headline on two lines to turn your visitors into users
+    p.mb-0 The company invested $4 billion in a robotics and AI research institute to create safer
+  .col-12.col-md-5.col-lg-4
+    img(src="./assets/pictures/image-410x250.png").w-100.mb-3
+    h4 Tagline
+    h2 Long headline on two lines to turn your visitors into users
+    p.mb-0 The company invested $4 billion in a robotics and AI research institute to create safer</code></pre></div></div></div></div></body></html>

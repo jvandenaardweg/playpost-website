@@ -1,0 +1,181 @@
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+
+// Start with assigning color names to specific hex values.
+//
+// Color system
+//
+@import './colors.scss';
+
+// Reassign color vars to semantic color scheme
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800,
+) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-rounded: true !default;
+$enable-shadows: true !default;
+$enable-gradients: false !default;
+$enable-transitions: false !default;
+$enable-hover-media-query: false !default;
+$enable-grid-classes: true !default;
+$enable-print-styles: true !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 640px,
+//   lg: 710px,
+//   xl: 780px,
+// ) !default;
+
+$container-max-widths: (
+  sm: 768px,
+  md: 992px,
+  lg: 1100px,
+  xl: 1240px,
+) !default;
+
+$grid-gutter-width: 30px !default;
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white !default;
+$body-color: $gray-700 !default;
+$inverse-bg: $gray-900 !default;
+$inverse-color: $gray-600 !default;
+
+// Links
+//
+// Style anchor elements.
+$link-decoration: none !default;
+$link-hover-decoration: none !default;
+
+// Fonts
+//
+@import './fonts.scss';
+
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import './platforma-light.scss';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+img {
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+.bg-tint {
+  background-color: $blue;
+}
+
+.font-weight-semibold {
+  font-weight: 600 !important;
+}
+
+ul li {
+  margin-bottom: 0.75rem;
+}
+
+.text-white-80 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.btn {
+  border-radius: 0.3rem;
+}
+
+.icon {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.py-6 {
+  padding-top: 5rem !important;
+}
+
+.py-6 {
+  padding-bottom: 5rem !important;
+}
+
+.py-7 {
+  padding-top: 6.25rem !important;
+}
+
+.py-7 {
+  padding-bottom: 6.25rem !important;
+}
+
+.container {
+  // width: 100%;
+  // padding-right: 15px;
+  // padding-left: 15px;
+  // margin-right: auto;
+  // margin-left: auto;
+
+  @include media-breakpoint-up(md) {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.custom-ordered-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    counter-increment: step-counter;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 35px;
+
+    &:before {
+      position: absolute;
+      left: -5px;
+      content: counter(step-counter);
+      margin-right: 5px;
+      font-size: 80%;
+      background-color: $gray-200;
+      color: $black;
+      font-weight: $font-weight-bold;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+  }
+}
+
+.input-group > .form-control:not(textarea),
+.input-group-lg > .form-control:not(textarea) {
+  height: calc(1.5em + 1.4rem + 2px);
+}
