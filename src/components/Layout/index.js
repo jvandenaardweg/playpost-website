@@ -17,6 +17,12 @@ import 'font-awesome/css/font-awesome.css'
 class Layout extends React.Component {
   componentDidMount() {
     emergence.init()
+
+    typeof window !== 'undefined' &&
+      window.drift.on('ready', (api, payload) => {
+        api.hideWelcomeMessage()
+        // api.hideWelcomeMessage()
+      })
   }
 
   componentDidUpdate() {
@@ -27,7 +33,7 @@ class Layout extends React.Component {
     const { children, hideFooter } = this.props
     return (
       <div>
-        <Drift appId="hrvni23275hv" />
+        <Drift appId="hrvni23275hv" c />
         <Navbar title={siteMetadata.title} {...this.props} />
         {children}
         {!hideFooter && (

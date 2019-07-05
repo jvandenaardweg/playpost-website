@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import { APPLE_APP_STORE_URL } from '../../constants/urls'
 import './style.scss'
@@ -164,7 +165,7 @@ const Footer = ({ author, title }) => {
           <div className="col-6 col-lg-2">
             <h4>Mobile apps</h4>
             <div className="mb-2">
-              <a href={APPLE_APP_STORE_URL}>
+              <OutboundLink href={APPLE_APP_STORE_URL}>
                 <svg
                   width="123"
                   height="38"
@@ -187,7 +188,7 @@ const Footer = ({ author, title }) => {
                     />
                   </g>
                 </svg>
-              </a>
+              </OutboundLink>
             </div>
             {/* <div className="mb-0">
               <a href="">

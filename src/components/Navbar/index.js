@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
+
 import './style.scss'
 import Icon from 'components/Icon'
 
@@ -17,7 +19,7 @@ class Navbar extends React.PureComponent {
     event.preventDefault()
 
     if (location.pathname === '/') {
-      return scrollIt(document.getElementById('pricing'))
+      return scrollIt(document.getElementById('features'))
     }
 
     return navigate('/#features')
@@ -153,12 +155,12 @@ class Navbar extends React.PureComponent {
               </a>
             </div>
             <div className="ml-auto d-none d-lg-block">
-              <a
+              <OutboundLink
                 className="btn btn-lg btn-white font-weight-semibold"
                 href={APPLE_APP_STORE_URL}
               >
                 Get iPhone App
-              </a>
+              </OutboundLink>
             </div>
           </div>
           <div

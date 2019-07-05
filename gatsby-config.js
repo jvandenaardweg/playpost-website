@@ -8,6 +8,15 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-258356-39',
+        head: false,
+        anonymize: true,
+        respectDNT: false,
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-react-svg',
     //   options: {
@@ -77,12 +86,6 @@ module.exports = {
             type: 'image/png',
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: '',
       },
     },
     {

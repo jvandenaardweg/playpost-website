@@ -50,7 +50,7 @@ class Pricing extends React.Component {
                   Get started for free
                 </a>
                 <small className="small text-black-50 d-block mt-2">
-                  about 5 articles to audio per month
+                  about 5+ articles to audio per month
                 </small>
               </div>
               <div className="border-bottom d-md-none"></div>
@@ -82,7 +82,7 @@ class Pricing extends React.Component {
                   Get started for free
                 </a>
                 <small className="small text-black-50 d-block mt-2">
-                  about 25 articles to audio per month
+                  about 25+ articles to audio per month
                 </small>
               </div>
             </div>
@@ -113,7 +113,7 @@ class Pricing extends React.Component {
                   Get started for free
                 </a>
                 <small className="small text-black-50 d-block mt-2">
-                  about 65 articles to audio per month
+                  about 65+ articles to audio per month
                 </small>
               </div>
             </div>

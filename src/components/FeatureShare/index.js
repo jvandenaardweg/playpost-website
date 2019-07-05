@@ -22,9 +22,10 @@ class FeatureShare extends React.Component {
             Easily save articles to your playlist from every app on your phone
           </h2>
           <p>
-            Separated they live in Bookmarks right at the coast of the famous
-            Semantics, large language ocean Separated they live in Bookmarks
-            right at the coast
+            During installation of Playpost, a share button is added to every
+            app. So you can share articles from one app, to your Playpost
+            playlist. on your phone to share articles to your playlist. Just
+            open your article and press share.
           </p>
           <ol className="custom-ordered-list mb-0">
             <li className="font-weight-semibold">
