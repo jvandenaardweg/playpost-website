@@ -167,7 +167,7 @@ class Voices extends React.Component {
               gender="Female"
             />
             <VoiceSample
-              src={require('../../../static/audio/preview-enrique.wav')}
+              src={require('../../../static/audio/preview-enrique.mp3')}
               label="Enrique (Spanish)"
               language="Spanish"
             />
