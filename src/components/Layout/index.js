@@ -39,7 +39,7 @@ class Layout extends React.Component {
         {!hideFooter && (
           <Footer title={siteMetadata.title} author={siteMetadata.author} />
         )}
-        <CookieConsent
+        {/* <CookieConsent
           location="bottom"
           buttonText="OK"
           cookieName="playpostConsent"
@@ -67,7 +67,7 @@ class Layout extends React.Component {
           }}
           contentStyle={{ padding: '24px', margin: 0 }}
           expires={365}
-        >
+        > */}
           <p>
             Playpost uses cookies to allow us to better understand how the site
             is used. By continuing to use this site, you consent to this policy.
