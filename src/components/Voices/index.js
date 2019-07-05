@@ -129,7 +129,7 @@ class Voices extends React.Component {
               gender="Female"
             />
             <VoiceSample
-              src={require('../../../static/audio/preview-richard.albert')}
+              src={require('../../../static/audio/preview-albert.wav')}
               label="Albert (German)"
               language="German"
               accent=""
