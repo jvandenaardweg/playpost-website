@@ -1,0 +1,9 @@
+{
+  "main.js": "render-page.js",
+  "main.js.map": "render-page.js.map",
+  "static/background-voices.png": "static/background-voices-6e486505410f6b296395a99962c1dd90.png",
+  "static/example-apps.png": "static/example-apps-73b865dcad3b34a9e738f15162043d90.png",
+  "static/example-cover.png": "static/example-cover-be40a24bcbc7a15b500a29497d7441c3.png",
+  "static/example-playlist.png": "static/example-playlist-2abe635fe7aa832c77f56a219448314d.png",
+  "static/example-voices.png": "static/example-voices-d3788b5681f8c8823f3444711df3e9f5.png"
+}
