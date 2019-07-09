@@ -102,6 +102,6 @@
     "lint:textfix": "textlint --fix src/pages/**/index.md",
     "precommit": "lint-staged",
     "test": "prettier --write \"**/*.+(js|jsx|json|css|scss)\"",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run deploy"
   }
 }

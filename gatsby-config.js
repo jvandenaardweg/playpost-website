@@ -6,6 +6,7 @@ module.exports = {
     author: 'Jordy van den Aardweg',
     twitter: 'playpostapp',
   },
+  assetPrefix: 'https://playpost.app',
   pathPrefix: '/',
   plugins: [
     {
