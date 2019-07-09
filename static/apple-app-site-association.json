@@ -1,8 +1,6 @@
 {
   "webcredentials": {
-    "apps": [
-      "8GH8GLAMTU.com.aardwegmedia.playpost"
-    ]
+    "apps": ["8GH8GLAMTU.com.aardwegmedia.playpost"]
   },
   "applinks": {
     "apps": [],
@@ -10,7 +8,6 @@
       {
         "appID": "8GH8GLAMTU.com.aardwegmedia.playpost",
         "paths": [
-          "*",
           "/login/*",
           "/signup/*",
           "/playlist/*",
