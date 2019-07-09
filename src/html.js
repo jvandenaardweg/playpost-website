@@ -49,6 +49,10 @@ export default class HTML extends React.Component {
           <meta property="og:description" content={description} />
           <meta property="fb:app_id" content="557260604800637" />
           <meta property="og:type" content="website" />
+          <meta
+            name="apple-itunes-app"
+            content="app-id=1460663960, app-argument=playpost://playlist"
+          ></meta>
           <link rel="preconnect" href="https://www.google.com" />
           <link rel="preconnect" href="https://marketingplatform.google.com" />
         </head>
