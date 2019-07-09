@@ -27,7 +27,7 @@ export default class HTML extends React.Component {
             rel="icon"
             type="image/x-icon"
           />
-          <meta name="twitter:app" value="summary" />
+          <meta name="twitter:card" value="app" />
           <meta name="twitter:site" content="@playpostapp" />
           <meta name="description" content={description} />
           <meta name="twitter:app:name:iphone" content="Playpost" />
