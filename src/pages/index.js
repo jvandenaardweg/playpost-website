@@ -23,7 +23,6 @@ const Index = ({ data, location }) => {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta name="twitter:card" content={pageTitle} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
       </Helmet>
