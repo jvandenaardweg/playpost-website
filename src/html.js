@@ -15,7 +15,6 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>{title}</title>
           {this.props.headComponents}
           <link
             href={require('../static/img/apple-touch-icon.png')}
