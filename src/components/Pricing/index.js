@@ -37,7 +37,6 @@ class Pricing extends React.Component {
                 <ul className="list-unstyled mb-4">
                   <li>Basic quality voices</li>
                   <li>One voice per language</li>
-                  <li>Max. 5 minutes per article</li>
                   <li>Max. 30 minutes per month</li>
                   <li>Unlimited playlist items</li>
                   <li>Some advertisements</li>
@@ -69,7 +68,6 @@ class Pricing extends React.Component {
                 <ul className="list-unstyled mb-4">
                   <li>30+ High Quality voices</li>
                   <li>Multiple voices per language</li>
-                  <li>Max. 15 minutes per article</li>
                   <li>Max. 120 minutes per month</li>
                   <li>Unlimited playlist items</li>
                   <li>No advertisements</li>
@@ -100,7 +98,6 @@ class Pricing extends React.Component {
                 <ul className="list-unstyled mb-4">
                   <li>90+ High Quality voices</li>
                   <li>Multiple voices per language</li>
-                  <li>Max. 25 minutes per article</li>
                   <li>Max. 300 minutes per month</li>
                   <li>Unlimited playlist items</li>
                   <li>No advertisements</li>
