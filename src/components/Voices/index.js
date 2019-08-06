@@ -99,7 +99,8 @@ class Voices extends React.Component {
             New languages are added on a regular basis. We plan on supporting
             all major languages, including yours. Playpost currently supports
             the following languages: English, French, German, Spanish, Hindi,
-            Dutch, Portuguese, Polish and Russian.
+            Dutch, Chinese (Mandarin), Indonesian, Portuguese, Polish and
+            Russian.
             <br />
             <br />
             <a
