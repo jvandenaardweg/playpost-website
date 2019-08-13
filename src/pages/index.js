@@ -32,7 +32,7 @@ const Index = ({ data, location }) => {
         <Voices />
         <FeaturePlaylist />
         <FeatureShare />
-        <Pricing />
+        {/* <Pricing /> */}
         {/* <CustomerResponses /> */}
         <NewsletterLarge />
       </div>

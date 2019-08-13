@@ -35,8 +35,11 @@ class FeaturePlaylist extends React.Component {
               Drag and drop to re-order your playlist
             </li> */}
           </ul>
-          <OutboundLink className="action-link" href={APPLE_APP_STORE_URL}>
-            <span>Get started with the iPhone app</span>
+          <OutboundLink
+            className="btn btn-primary btn-lg font-weight-semibold"
+            href={APPLE_APP_STORE_URL}
+          >
+            Get iPhone App
           </OutboundLink>
         </div>
         <div className="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0">

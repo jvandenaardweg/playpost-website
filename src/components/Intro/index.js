@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { scrollIt } from '../../utils/scroll'
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 class Intro extends React.Component {
   handleOnClick = event => {
@@ -28,13 +30,19 @@ class Intro extends React.Component {
             </p>
             <div className="large">
               <span className="mx-2">
-                <a
+                <OutboundLink
+                  className="btn btn-primary btn-lg font-weight-semibold"
+                  href={APPLE_APP_STORE_URL}
+                >
+                  Get free iPhone App
+                </OutboundLink>
+                {/* <a
                   className="weight-500 action-link"
                   href=""
                   onClick={this.handleOnClick}
                 >
                   <span>Show me how</span>
-                </a>
+                </a> */}
               </span>
             </div>
           </div>

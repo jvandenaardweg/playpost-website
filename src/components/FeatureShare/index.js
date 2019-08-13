@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { APPLE_APP_STORE_URL } from '../../constants/urls'
 
 import appsImage from '../../../static/img/example-apps.png'
 
@@ -36,6 +38,13 @@ class FeatureShare extends React.Component {
               The article is saved in your playlist
             </li>
           </ol>
+          <br />
+          <OutboundLink
+            className="btn btn-primary btn-lg font-weight-semibold"
+            href={APPLE_APP_STORE_URL}
+          >
+            Get iPhone App
+          </OutboundLink>
         </div>
       </div>
     )
