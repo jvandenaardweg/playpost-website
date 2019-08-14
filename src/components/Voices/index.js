@@ -88,7 +88,7 @@ class Voices extends React.Component {
         </div>
         <div className="col-12 col-md-5">
           <h4 className="text-black-50">Sounds natural</h4>
-          <h2>90+ naturally sounding voices by Artificial Intelligence</h2>
+          <h2>200+ naturally sounding voices by Artificial Intelligence</h2>
           <p>
             The most advanced text to speech synthesis solutions to speak text
             to you and sound natural and pleasant to listen to. Personalize the
@@ -97,10 +97,14 @@ class Voices extends React.Component {
           <h3 className="mb-1 font-weight-semibold">Supported languages</h3>
           <p className="mb-2">
             New languages are added on a regular basis. We plan on supporting
-            all major languages, including yours. Playpost currently supports
-            the following languages: English, French, German, Spanish, Hindi,
-            Dutch, Chinese (Mandarin), Indonesian, Portuguese, Polish and
-            Russian.
+            all major languages, including yours.
+            <br />
+            <br />
+            Playpost currently supports the following languages:
+            <br />
+            English, French, German, Spanish, Hindi, Dutch, Chinese (Mandarin),
+            Indonesian, Portuguese, Polish, Norwegian, Danish, Czech, Greek,
+            Swedish, Vietnamese, Korean, Finnish, Turkish, Russian and Romanian.
             <br />
             <br />
             <a
