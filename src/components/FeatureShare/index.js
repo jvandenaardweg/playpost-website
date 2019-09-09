@@ -1,14 +1,15 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
-import { APPLE_APP_STORE_URL } from '../../constants/urls'
 
 import appsImage from '../../../static/img/example-apps.png'
+import {
+  GOOGLE_CHROME_EXTENSION_URL,
+  FIREFOX_EXTENSION_URL,
+  OPERA_EXTENSION_URL,
+} from '../../constants/urls'
 
 class FeatureShare extends React.Component {
   render() {
-    const { location, title } = this.props
-
     return (
       <div className="row justify-content-between align-items-center py-5">
         <div className="col-12 col-md-5 pl-md-0 mb-4 mb-md-0">
@@ -20,9 +21,7 @@ class FeatureShare extends React.Component {
         </div>
         <div className="col-12 col-md-5">
           <h4 className="text-black-50">Multiple apps supported</h4>
-          <h2>
-            Easily save articles to your playlist from every app on your phone
-          </h2>
+          <h2>Easily save articles from every app</h2>
           <p>
             During installation of Playpost, a share button is added to every
             app. So you can share articles from one app, to your Playpost
@@ -38,13 +37,19 @@ class FeatureShare extends React.Component {
               The article is saved in your playlist
             </li>
           </ol>
-          <br />
-          <OutboundLink
-            className="btn btn-primary btn-lg font-weight-semibold"
-            href={APPLE_APP_STORE_URL}
-          >
-            Get iPhone App
-          </OutboundLink>
+          <div className="mt-4">
+            <h2>Save from your computer</h2>
+            <p>
+              Use our browser extension for{' '}
+              <OutboundLink href={GOOGLE_CHROME_EXTENSION_URL}>
+                Chrome
+              </OutboundLink>
+              ,{' '}
+              <OutboundLink href={FIREFOX_EXTENSION_URL}>Firefox</OutboundLink>{' '}
+              or <OutboundLink href={OPERA_EXTENSION_URL}>Opera</OutboundLink>{' '}
+              to save articles from your computer to your playlist.
+            </p>
+          </div>
         </div>
       </div>
     )

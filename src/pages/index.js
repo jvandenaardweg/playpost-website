@@ -8,12 +8,13 @@ import Voices from 'components/Voices'
 import FeaturePlaylist from 'components/FeaturePlaylist'
 import FeatureShare from 'components/FeatureShare'
 import Pricing from 'components/Pricing'
-// import CustomerResponses from 'components/CustomerResponses'
+import CustomerResponses from 'components/CustomerResponses'
 import NewsletterLarge from 'components/NewsletterLarge'
+import GetStarted from 'components/GetStarted/index'
 
 const Index = ({ data, location }) => {
   const pageDescription =
-    'Turn every article on the web into audio using industry leading high quality voices. So you can listen to it just like Podcasts and Audiobooks.'
+    'Turn every article on the web into audio using industry-leading high-quality voices. So you can listen to it just like Podcasts and Audiobooks.'
   const pageTitle = 'Playpost - Instant podcasts of every article'
 
   return (
@@ -33,9 +34,11 @@ const Index = ({ data, location }) => {
         <FeaturePlaylist />
         <FeatureShare />
         {/* <Pricing /> */}
-        {/* <CustomerResponses /> */}
-        <NewsletterLarge />
+        {/* <NewsletterLarge /> */}
       </div>
+      <CustomerResponses />
+
+      <GetStarted />
     </Layout>
   )
 }

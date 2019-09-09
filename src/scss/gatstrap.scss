@@ -46,7 +46,7 @@ $container-max-widths: (
   sm: 768px,
   md: 992px,
   lg: 1100px,
-  xl: 1240px,
+  xl: 1280px,
 ) !default;
 
 $grid-gutter-width: 30px !default;
@@ -129,11 +129,19 @@ ul li {
 }
 
 .py-7 {
-  padding-top: 6.25rem !important;
+  padding-top: 7rem !important;
 }
 
 .py-7 {
-  padding-bottom: 6.25rem !important;
+  padding-bottom: 7rem !important;
+}
+
+.py-8 {
+  padding-top: 8rem !important;
+}
+
+.py-8 {
+  padding-bottom: 8rem !important;
 }
 
 .container {
@@ -185,9 +193,18 @@ ul li {
   position: relative;
   top: 1px;
 
+  svg {
+    width: auto;
+    height: 34px;
+  }
+
   @include media-breakpoint-down(md) {
     justify-content: center;
     flex-grow: 1;
     margin-right: 0;
   }
+}
+
+.font-weight-extra-bold {
+  font-weight: 800 !important;
 }

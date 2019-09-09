@@ -1,72 +1,31 @@
-import { Link } from 'gatsby'
 import React from 'react'
+import { Link } from 'gatsby'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import {
+  APPLE_APP_STORE_URL,
+  GOOGLE_PLAY_STORE_URL,
   GOOGLE_CHROME_EXTENSION_URL,
   FIREFOX_EXTENSION_URL,
   OPERA_EXTENSION_URL,
-  APPLE_APP_STORE_URL,
-  GOOGLE_PLAY_STORE_URL,
-  FACEBOOK_URL,
-  TWITTER_URL,
-  INSTAGRAM_URL,
 } from '../../constants/urls'
-import './style.scss'
 
-const Footer = ({ author, title }) => {
-  function handleOnClickContact(event) {
-    event.preventDefault()
-    typeof window !== 'undefined' && window.drift.api.openChat()
-  }
-
-  return (
-    <div className="bg-dark text-white footer">
-      <div className="container py-7">
-        <div className="row pt-4">
-          <div className="col-12 col-md-6 col-lg-5 mb-4">
-            <h2>Playpost</h2>
-            <div className="row">
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/">
-                  <span>Home</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/privacy">
-                  <span>Privacy Policy</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/terms">
-                  <span>Terms &amp; Conditions</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/acceptable-use-policy">
-                  <span>Acceptable Use Policy</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/crawler">
-                  <span>Crawler</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/support">
-                  <span>Support</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-3 mb-4">
-            <h2>Mobile apps</h2>
-            <div className="row">
-              <div className="mb-2 col-12">
-                <OutboundLink href={APPLE_APP_STORE_URL}>
+class GetStarted extends React.Component {
+  render() {
+    return (
+      <div className="bg-tint">
+        <div className="py-8" id="get-started">
+          <div className="row justify-content-center text-center pt-3">
+            <div className="col-12 col-md-8">
+              <h3 className="text-white-80">Get started</h3>
+              <h1 className="display-4 mb-4 text-white">
+                Download Playpost for free
+              </h1>
+              <div className="align-items-center">
+                <OutboundLink className="ml-1 mr-1" href={APPLE_APP_STORE_URL}>
                   <svg
-                    width="123"
-                    height="38"
+                    width="185"
+                    height="57"
                     viewBox="0 0 123 38"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -87,12 +46,13 @@ const Footer = ({ author, title }) => {
                     </g>
                   </svg>
                 </OutboundLink>
-              </div>
-              <div className="mb-2 col-12">
-                <OutboundLink href={GOOGLE_PLAY_STORE_URL}>
+                <OutboundLink
+                  className="ml-1 mr-1"
+                  href={GOOGLE_PLAY_STORE_URL}
+                >
                   <svg
-                    width="123"
-                    height="38"
+                    width="185"
+                    height="57"
                     viewBox="0 0 123 38"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -177,92 +137,35 @@ const Footer = ({ author, title }) => {
                   </svg>
                 </OutboundLink>
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-2 mb-4">
-            <h2>Extensions</h2>
-            <div className="row">
-              <div className="mb-1 col-12">
+              <div className="text-center text-white mt-2">
+                And install the browser extension on:{' '}
                 <OutboundLink
-                  className="text-white-80"
                   href={GOOGLE_CHROME_EXTENSION_URL}
+                  className="text-white font-weight-semibold"
                 >
-                  <span>Chrome</span>
+                  Chrome
                 </OutboundLink>
-              </div>
-              <div className="mb-1 col-12">
+                ,{' '}
                 <OutboundLink
-                  className="text-white-80"
                   href={FIREFOX_EXTENSION_URL}
+                  className="text-white font-weight-semibold"
                 >
-                  <span>Firefox</span>
-                </OutboundLink>
-              </div>
-              <div className="mb-1 col-12">
+                  Firefox
+                </OutboundLink>{' '}
+                or{' '}
                 <OutboundLink
-                  className="text-white-80"
                   href={OPERA_EXTENSION_URL}
+                  className="text-white font-weight-semibold"
                 >
-                  <span>Opera</span>
-                </OutboundLink>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-2 mb-4">
-            <h2>Socials</h2>
-            <div className="row">
-              <div className="mb-1 col-12">
-                <OutboundLink className="text-white-80" href={FACEBOOK_URL}>
-                  <span>Facebook</span>
-                </OutboundLink>
-              </div>
-              <div className="mb-1 col-12">
-                <OutboundLink className="text-white-80" href={TWITTER_URL}>
-                  <span>Twitter</span>
-                </OutboundLink>
-              </div>
-              <div className="mb-1 col-12">
-                <OutboundLink className="text-white-80" href={INSTAGRAM_URL}>
-                  <span>Instagram</span>
+                  Opera
                 </OutboundLink>
               </div>
             </div>
           </div>
         </div>
-        <div className="border-top d-lg-none"></div>
       </div>
-      <div className="container">
-        <div className="d-block d-lg-flex justify-content-between py-3 py-lg-2 footer__bottom">
-          <div className="small mb-2 mb-lg-0">
-            <span className="text-muted mr-5">
-              &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
-              <OutboundLink
-                className="text-muted"
-                href="https://www.linkedin.com/in/jvandenaardweg/"
-              >
-                <u>Jordy van den Aardweg</u>
-              </OutboundLink>
-              .
-            </span>
-          </div>
-          <div className="small">
-            <Link
-              className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
-              to="/privacy"
-            >
-              <span>Privacy Policy</span>
-            </Link>
-            <Link
-              className="d-block d-lg-inline text-muted ml-lg-2"
-              to="/terms"
-            >
-              <span>Terms &amp; Conditions</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default Footer
+export default GetStarted

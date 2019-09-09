@@ -8,7 +8,7 @@ class CustomerResponses extends React.Component {
 
   componentDidMount() {
     this.swiper = new Swiper(this.swiperRef.current, {
-      speed: 400,
+      speed: 250,
       navigation: {
         nextEl: '#slider-customers-8-next',
         prevEl: '#slider-customers-8-prev',
@@ -26,12 +26,12 @@ class CustomerResponses extends React.Component {
     const { location, title } = this.props
 
     return (
-      <div>
-        <div className="pt-5">
+      <div className="py-7">
+        <div id="customers">
           <div className="row justify-content-center text-center py-3">
             <div className="col-12 col-md-8">
-              <h4 className="text-black-50">Tagline</h4>
-              <h1 className="display-4">Our customers love it</h1>
+              <h4 className="text-black-50">Not convinced yet?</h4>
+              <h1 className="display-4">Our customers love it!</h1>
               <a
                 className="action-link"
                 href=""
@@ -47,109 +47,85 @@ class CustomerResponses extends React.Component {
           <div className="container">
             <div className="swiper-container row" ref={this.swiperRef}>
               <div className="swiper-wrapper">
-                <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
+                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
-                        “All base UI elements are made using Nested Symbols and
-                        shared styles that are logically connected. Gorgeous,
-                        high-quality video sharing on desktop, mobile, tablet.
-                        All base UI elements are made using Nested Symbols”
+                        "The voices are human like so you feel like you listen
+                        to the news. Now I won't waste my time reading articles;
+                        otherwise I listen to them while driving. Brilliant! I
+                        would strongly recommend it."
                       </p>
-                      <img
-                        className="rounded-circle mb-2"
-                        src="https://placehold.it/60x60"
-                        width="60"
-                        height="60"
-                      />
-                      <div className="d-flex justify-content-between align-items-end">
-                        <div>
+                      <div className="media align-items-center">
+                        <div className="media-body">
                           <p className="mb-0">
-                            <span className="font-weight-semibold">
-                              Name Surname
-                            </span>
+                            <span className="font-weight-semibold">NabilNabo</span>
                           </p>
-                          <p className="small mb-0">Founder, Acme Company</p>
-                        </div>
-                        <div>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/facebook.svg') %> */}
-                          </a>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/twitter.svg') %> */}
-                          </a>
+                          <p className="small mb-0 text-black-50">
+                            Apple App Store review
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
+                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
-                        “All base UI elements are made using Nested Symbols and
-                        shared styles that are logically connected. Gorgeous,
-                        high-quality video sharing on desktop, mobile, tablet.
-                        All base UI elements are made using Nested Symbols”
+                        "Such a clever idea and nice app, I love it!"
                       </p>
-                      <img
-                        className="rounded-circle mb-2"
-                        src="https://placehold.it/60x60"
-                        width="60"
-                        height="60"
-                      />
-                      <div className="d-flex justify-content-between align-items-end">
-                        <div>
+                      <div className="media align-items-center">
+                        <div className="media-body">
                           <p className="mb-0">
-                            <span className="font-weight-semibold">
-                              Name Surname
-                            </span>
+                            <span className="font-weight-semibold">Sammy1133</span>
                           </p>
-                          <p className="small mb-0">Founder, Acme Company</p>
-                        </div>
-                        <div>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/facebook.svg') %> */}
-                          </a>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/twitter.svg') %> */}
-                          </a>
+                          <p className="small mb-0 text-black-50">
+                            Apple App Store review
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="swiper-slide col-11 col-md-5 col-lg-4 py-5">
+                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
-                        “All base UI elements are made using Nested Symbols and
-                        shared styles that are logically connected. Gorgeous,
-                        high-quality video sharing on desktop, mobile, tablet.
-                        All base UI elements are made using Nested Symbols”
+                        "Gamechanger! Listening to an article is a very simple
+                        and a smooth process. I've only used text to speech
+                        translations a long time ago and it sounded too much
+                        like a robot, but this definitely exceeded my
+                        expectations!"
                       </p>
-                      <img
-                        className="rounded-circle mb-2"
-                        src="https://placehold.it/60x60"
-                        width="60"
-                        height="60"
-                      />
-                      <div className="d-flex justify-content-between align-items-end">
-                        <div>
+                      <div className="media align-items-center">
+                        <div className="media-body">
                           <p className="mb-0">
-                            <span className="font-weight-semibold">
-                              Name Surname
-                            </span>
+                            <span className="font-weight-semibold">thienngn</span>
                           </p>
-                          <p className="small mb-0">Founder, Acme Company</p>
+                          <p className="small mb-0 text-black-50">
+                            Apple App Store review
+                          </p>
                         </div>
-                        <div>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/facebook.svg') %> */}
-                          </a>
-                          <a className="transparent-invert-link ml-2" href="">
-                            {/* <%= require('./assets/glyphs/twitter.svg') %> */}
-                          </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
+                  <div className="card shadow-sm">
+                    <div className="card-body">
+                      <p className="mb-4">
+                        "Reading any text article as a podcast through an easy
+                        to use app 👌"
+                      </p>
+                      <div className="media align-items-center">
+                        <div className="media-body">
+                          <p className="mb-0">
+                            <span className="font-weight-semibold">Gersom</span>
+                          </p>
+                          <p className="small mb-0 text-black-50">
+                            Apple App Store review
+                          </p>
                         </div>
                       </div>
                     </div>

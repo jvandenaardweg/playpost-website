@@ -17,34 +17,17 @@ class Intro extends React.Component {
       <div className="py-5">
         <div className="row justify-content-center text-center py-5">
           <div className="col-12 col-md-10">
-            <h4 className="text-black-50">Let's show you how to...</h4>
-            <h2 className="display-4">
-              Listen to articles while driving, cycling, jogging, walking…
-            </h2>
-            <p className="lead mb-4">
+            <h4 className="text-black-50 h3">Bookmarking the new way</h4>
+            <h2 className="display-4">Your playlist of articles</h2>
+            <p className="lead">
               The internet is full of interesting <em>long read</em> articles,
               but you don't always have the time to sit down and read them.
               Reality is: We commute. We drive. We walk. We cycle. We workout.
-              We do our everyday chores. What if you could just listen to
-              articles?
+              We do our everyday chores.
             </p>
-            <div className="large">
-              <span className="mx-2">
-                <OutboundLink
-                  className="btn btn-primary btn-lg font-weight-semibold"
-                  href={APPLE_APP_STORE_URL}
-                >
-                  Get free iPhone App
-                </OutboundLink>
-                {/* <a
-                  className="weight-500 action-link"
-                  href=""
-                  onClick={this.handleOnClick}
-                >
-                  <span>Show me how</span>
-                </a> */}
-              </span>
-            </div>
+            <p className="lead mb-4">
+              What if you could just listen to articles?
+            </p>
           </div>
         </div>
       </div>

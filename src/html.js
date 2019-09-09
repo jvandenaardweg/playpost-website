@@ -3,7 +3,7 @@ import React from 'react'
 export default class HTML extends React.Component {
   render() {
     const description =
-      'Turn every article on the web into audio using industry leading high quality voices. So you can listen to it just like Podcasts and Audiobooks.'
+      'Turn every article on the web into audio using industry-leading high-quality voices. So you can listen to it just like Podcasts and Audiobooks.'
 
     const title = 'Playpost - Instant podcasts of every article'
     return (
