@@ -9,7 +9,7 @@ class CustomerResponses extends React.Component {
   componentDidMount() {
     this.swiper = new Swiper(this.swiperRef.current, {
       speed: 250,
-      centeredSlides: true,
+      // centeredSlides: true,
       navigation: {
         nextEl: '#slider-customers-8-next',
         prevEl: '#slider-customers-8-prev',
