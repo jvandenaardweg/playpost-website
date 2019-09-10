@@ -235,9 +235,13 @@ class Navbar extends React.PureComponent {
                   </svg>
                 </a>
                 <div className="navbar-nav">
-                  <div className="nav-item">
+                  <div
+                    className={
+                      location.pathname === '/' ? 'nav-item active' : 'nav-item'
+                    }
+                  >
                     <Link className="nav-link text-dark" to="/">
-                      Home
+                      <span>Home</span>
                     </Link>
                   </div>
                   <div className="nav-item">
@@ -246,25 +250,39 @@ class Navbar extends React.PureComponent {
                       href=""
                       onClick={this.handleOnClickFeatures}
                     >
-                      Features
+                      <span>Features</span>
                     </a>
                   </div>
                   <div className="nav-item">
-                    <Link
+                    <a
                       className="nav-link text-dark"
-                      to="/#pricing"
-                      onClick={this.handleOnClickPricing}
+                      href=""
+                      onClick={this.handleOnClickVoices}
                     >
-                      Pricing
+                      <span>Voices</span>
+                    </a>
+                  </div>
+                  <div className="nav-item">
+                    <a
+                      className="nav-link text-dark"
+                      href=""
+                      onClick={this.handleOnClickCustomers}
+                    >
+                      <span>Customers</span>
+                    </a>
+                  </div>
+                  <div className="nav-item">
+                    <Link className="nav-link text-dark" to="/support">
+                      <span>Support</span>
                     </Link>
                   </div>
-                  <div className="nav-item dropdown">
+                  <div className="nav-item">
                     <a
                       className="nav-link text-dark"
                       href=""
                       onClick={this.handleOnClickContact}
                     >
-                      Contact
+                      <span>Contact</span>
                     </a>
                   </div>
                 </div>
