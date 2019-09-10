@@ -9,6 +9,7 @@ class CustomerResponses extends React.Component {
   componentDidMount() {
     this.swiper = new Swiper(this.swiperRef.current, {
       speed: 250,
+      centeredSlides: true,
       navigation: {
         nextEl: '#slider-customers-8-next',
         prevEl: '#slider-customers-8-prev',
@@ -25,7 +26,6 @@ class CustomerResponses extends React.Component {
   render() {
     return (
       <section className="customers py-8" id="customers">
-
         <div className="container">
           <div className="row justify-content-center text-center mb-3">
             <div className="col-12 col-md-8">
@@ -46,7 +46,7 @@ class CustomerResponses extends React.Component {
           <div className="container">
             <div className="swiper-container row" ref={this.swiperRef}>
               <div className="swiper-wrapper">
-                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
+                <div className="swiper-slide col-12 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
@@ -68,7 +68,7 @@ class CustomerResponses extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
+                <div className="swiper-slide col-12 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
@@ -87,7 +87,7 @@ class CustomerResponses extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
+                <div className="swiper-slide col-12 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
@@ -110,7 +110,7 @@ class CustomerResponses extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="swiper-slide col-11 col-md-5 col-lg-3 py-5">
+                <div className="swiper-slide col-12 col-md-5 col-lg-3 py-5">
                   <div className="card shadow-sm">
                     <div className="card-body">
                       <p className="mb-4">
