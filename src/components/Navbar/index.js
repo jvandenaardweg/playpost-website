@@ -14,6 +14,10 @@ class Navbar extends React.PureComponent {
     isMobileMenuOpen: false,
   }
 
+  handleOnClick = () => {
+    this.setState({ isMobileMenuOpen: false })
+  }
+
   handleOnClickFeatures = event => {
     const { location } = this.props
     event.preventDefault()
@@ -273,7 +277,11 @@ class Navbar extends React.PureComponent {
                       location.pathname === '/' ? 'nav-item active' : 'nav-item'
                     }
                   >
-                    <Link className="nav-link text-dark" to="/publishers">
+                    <Link
+                      className="nav-link text-dark"
+                      to="/publishers"
+                      onClick={this.handleOnClick}
+                    >
                       <span>For publishers</span>
                     </Link>
                   </div>
