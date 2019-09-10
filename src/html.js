@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 export default class HTML extends React.Component {
   render() {
@@ -28,24 +29,10 @@ export default class HTML extends React.Component {
           />
           <meta name="twitter:card" value="summary_large_image" />
           <meta name="twitter:site" content="@playpostapp" />
-          <meta name="description" content={description} />
           <meta name="twitter:app:name:iphone" content="Playpost" />
           <meta name="twitter:app:id:iphone" content="1460663960" />
-          {/* <meta name="twitter:app:url:iphone" content="playpost://" /> */}
           <meta name="twitter:app:name:ipad" content="Playpost" />
           <meta name="twitter:app:id:ipad" content="1460663960" />
-          {/* <meta name="twitter:app:url:ipad" content="playpost://" /> */}
-          {/* <meta name="twitter:app:name:googleplay" content="Cannonball"> */}
-          {/* <meta name="twitter:app:id:googleplay" content="io.fabric.samples.cannonball"> */}
-          {/* <meta name="twitter:app:url:googleplay" content="http://cannonball.fabric.io/poem/5149e249222f9e600a7540ef"> */}
-
-          <meta property="og:title" content={title} />
-          <meta property="og:url" content="https://playpost.app/" />
-          <meta
-            property="og:image"
-            content={require('../static/img/ogimage-v2.png')}
-          />
-          <meta property="og:description" content={description} />
           <meta property="fb:app_id" content="557260604800637" />
           <meta property="og:type" content="website" />
           <meta

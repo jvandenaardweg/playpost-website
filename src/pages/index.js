@@ -24,6 +24,11 @@ const Index = ({ data, location }) => {
         <meta property="og:description" content={pageDescription} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
+        <meta property="og:url" content="https://playpost.app/" />
+        <meta
+          property="og:image"
+          content={require('../../static/img/ogimage-v2.png')}
+        />
       </Helmet>
       <Cover />
       <div className="container" id="features">

@@ -34,6 +34,7 @@ class Publishers extends React.Component {
             property="og:image"
             content={require('../../static/img/ogimage-playpost-for-publishers.png')}
           />
+          <meta property="og:url" content="https://playpost.app/publishers" />
         </Helmet>
         <CenterHeader
           title={pageTitle}

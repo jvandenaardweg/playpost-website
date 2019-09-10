@@ -268,14 +268,14 @@ class Navbar extends React.PureComponent {
                       <span>Voices</span>
                     </a>
                   </div>
-                  <div className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      href=""
-                      onClick={this.handleOnClickReviews}
-                    >
-                      <span>Reviews</span>
-                    </a>
+                  <div
+                    className={
+                      location.pathname === '/' ? 'nav-item active' : 'nav-item'
+                    }
+                  >
+                    <Link className="nav-link text-dark" to="/publishers">
+                      <span>For publishers</span>
+                    </Link>
                   </div>
                   <div className="nav-item">
                     <Link className="nav-link text-dark" to="/support">
