@@ -43,7 +43,7 @@ class FeatureShare extends React.Component {
               <p className="mb-0">
                 Use our browser extension for{' '}
                 <OutboundLink href={GOOGLE_CHROME_EXTENSION_URL}>
-                  Chrome (soon)
+                  Chrome
                 </OutboundLink>
                 ,{' '}
                 <OutboundLink href={FIREFOX_EXTENSION_URL}>Firefox</OutboundLink>{' '}

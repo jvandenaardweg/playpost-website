@@ -145,7 +145,7 @@ class GetStarted extends React.Component {
                   href={GOOGLE_CHROME_EXTENSION_URL}
                   className="text-white font-weight-semibold"
                 >
-                  Chrome (soon)
+                  Chrome
               </OutboundLink>
                 ,{' '}
                 <OutboundLink

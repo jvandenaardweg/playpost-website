@@ -188,7 +188,7 @@ const Footer = ({ author, title }) => {
                   className="text-white-70"
                   href={GOOGLE_CHROME_EXTENSION_URL}
                 >
-                  <span>Chrome (soon)</span>
+                  <span>Chrome</span>
                 </OutboundLink>
               </div>
               <div className="mb-1 col-12">
