@@ -238,7 +238,7 @@ const Footer = ({ author, title }) => {
         </div>
       </div>
       <div className="container">
-        <div className="row footer__bottom">
+        <div className="row">
           <div className="col-12">
             <div className="footer__bottom py-3">
               <div className="small mb-2 mb-lg-0">
