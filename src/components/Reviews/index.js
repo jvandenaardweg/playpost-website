@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Swiper from 'swiper'
 
-class CustomerResponses extends React.Component {
+class Reviews extends React.Component {
   swiperRef = React.createRef()
   swiper = null
 
@@ -25,12 +25,12 @@ class CustomerResponses extends React.Component {
 
   render() {
     return (
-      <section className="customers py-8" id="customers">
+      <section className="reviews py-8" id="reviews">
         <div className="container">
           <div className="row justify-content-center text-center mb-3">
             <div className="col-12 col-md-8">
               <h3 className="text-black-50">Not convinced yet?</h3>
-              <h2 className="display-4">Our customers love it!</h2>
+              <h2 className="display-4">Our users love it!</h2>
               <a
                 className="action-link"
                 href=""
@@ -139,4 +139,4 @@ class CustomerResponses extends React.Component {
   }
 }
 
-export default CustomerResponses
+export default Reviews

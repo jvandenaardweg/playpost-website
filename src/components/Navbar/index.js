@@ -67,17 +67,17 @@ class Navbar extends React.PureComponent {
     return navigate('/#voices')
   }
 
-  handleOnClickCustomers = event => {
+  handleOnClickReviews = event => {
     const { location } = this.props
     event.preventDefault()
 
     this.setState({ isMobileMenuOpen: false })
 
     if (location.pathname === '/') {
-      return scrollIt(document.getElementById('customers'))
+      return scrollIt(document.getElementById('reviews'))
     }
 
-    return navigate('/#customers')
+    return navigate('/#reviews')
   }
 
   handleOnClickGetStarted = event => {
@@ -177,9 +177,9 @@ class Navbar extends React.PureComponent {
                   <a
                     className="nav-link text-white"
                     href=""
-                    onClick={this.handleOnClickCustomers}
+                    onClick={this.handleOnClickReviews}
                   >
-                    <span>Customers</span>
+                    <span>Reviews</span>
                   </a>
                 </div>
                 <div className="nav-item">
@@ -266,9 +266,9 @@ class Navbar extends React.PureComponent {
                     <a
                       className="nav-link text-dark"
                       href=""
-                      onClick={this.handleOnClickCustomers}
+                      onClick={this.handleOnClickReviews}
                     >
-                      <span>Customers</span>
+                      <span>Reviews</span>
                     </a>
                   </div>
                   <div className="nav-item">

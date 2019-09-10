@@ -7,9 +7,7 @@ import Intro from 'components/Intro'
 import Voices from 'components/Voices'
 import FeaturePlaylist from 'components/FeaturePlaylist'
 import FeatureShare from 'components/FeatureShare'
-import Pricing from 'components/Pricing'
-import CustomerResponses from 'components/CustomerResponses'
-import NewsletterLarge from 'components/NewsletterLarge'
+import Reviews from 'components/Reviews'
 import GetStarted from 'components/GetStarted/index'
 
 const Index = ({ data, location }) => {
@@ -33,11 +31,8 @@ const Index = ({ data, location }) => {
         <Voices />
         <FeaturePlaylist />
         <FeatureShare />
-        {/* <Pricing /> */}
-        {/* <NewsletterLarge /> */}
       </div>
-      <CustomerResponses />
-
+      <Reviews />
       <GetStarted />
     </Layout>
   )
