@@ -43,7 +43,7 @@ export default class HTML extends React.Component {
           <meta property="og:url" content="https://playpost.app/" />
           <meta
             property="og:image"
-            content={require('../static/img/ogimage.png')}
+            content={require('../static/img/ogimage-v2.png')}
           />
           <meta property="og:description" content={description} />
           <meta property="fb:app_id" content="557260604800637" />
