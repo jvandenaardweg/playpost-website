@@ -93,8 +93,6 @@ class Navbar extends React.PureComponent {
     return navigate('/#get-started')
   }
 
-
-
   render() {
     const { location, title } = this.props
     const { isMobileMenuOpen } = this.state
@@ -173,16 +171,24 @@ class Navbar extends React.PureComponent {
                     <span>Voices</span>
                   </a>
                 </div>
-                <div className="nav-item">
-                  <a
-                    className="nav-link text-white"
-                    href=""
-                    onClick={this.handleOnClickReviews}
-                  >
-                    <span>Reviews</span>
-                  </a>
+                <div
+                  className={
+                    location.pathname === '/publishers'
+                      ? 'nav-item active'
+                      : 'nav-item'
+                  }
+                >
+                  <Link className="nav-link text-white" to="/publishers">
+                    <span>For publishers</span>
+                  </Link>
                 </div>
-                <div className="nav-item">
+                <div
+                  className={
+                    location.pathname === '/support'
+                      ? 'nav-item active'
+                      : 'nav-item'
+                  }
+                >
                   <Link className="nav-link text-white" to="/support">
                     <span>Support</span>
                   </Link>
@@ -205,7 +211,7 @@ class Navbar extends React.PureComponent {
                 onClick={this.handleOnClickGetStarted}
               >
                 Get started
-                </a>
+              </a>
             </div>
           </div>
           <div

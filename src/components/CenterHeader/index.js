@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Button from 'components/Button/index'
 // import './style.scss'
 
 class CenterHeader extends React.Component {
   render() {
-    const { title, description } = this.props
+    const { title, description, button } = this.props
 
     return (
       <div className="bg-tint mb-5">
@@ -14,6 +15,9 @@ class CenterHeader extends React.Component {
               <div className="col-12 col-md-8">
                 <h1 className="display-4 text-white">{title}</h1>
                 <p className="lead mb-0 text-white-80">{description}</p>
+                {!!this.props.button && (
+                  <div className="mt-4">{this.props.button}</div>
+                )}
               </div>
             </div>
           </div>
