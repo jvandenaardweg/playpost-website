@@ -12,4 +12,9 @@
 
 .footer__bottom {
   border-top: 1px $gray-900 solid;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    justify-content: space-between;
+  }
 }

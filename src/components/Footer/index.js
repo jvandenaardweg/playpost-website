@@ -238,33 +238,35 @@ const Footer = ({ author, title }) => {
         </div>
       </div>
       <div className="container">
-        <div className="row justify-content-between py-3 footer__bottom">
+        <div className="row footer__bottom">
           <div className="col-12">
-            <div className="small mb-2 mb-lg-0">
-              <span className="text-muted">
-                &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
-                <OutboundLink
-                  className="text-muted"
-                  href="https://www.linkedin.com/in/jvandenaardweg/"
+            <div className="footer__bottom py-3">
+              <div className="small mb-2 mb-lg-0">
+                <span className="text-muted">
+                  &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
+                  <OutboundLink
+                    className="text-muted"
+                    href="https://www.linkedin.com/in/jvandenaardweg/"
+                  >
+                    <u>Jordy van den Aardweg</u>
+                  </OutboundLink>
+                  .
+                </span>
+              </div>
+              <div className="small">
+                <Link
+                  className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
+                  to="/privacy"
                 >
-                  <u>Jordy van den Aardweg</u>
-                </OutboundLink>
-                .
-            </span>
-            </div>
-            <div className="small">
-              <Link
-                className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
-                to="/privacy"
-              >
-                <span>Privacy Policy</span>
-              </Link>
-              <Link
-                className="d-block d-lg-inline text-muted ml-lg-2"
-                to="/terms"
-              >
-                <span>Terms &amp; Conditions</span>
-              </Link>
+                  <span>Privacy Policy</span>
+                </Link>
+                <Link
+                  className="d-block d-lg-inline text-muted ml-lg-2"
+                  to="/terms"
+                >
+                  <span>Terms &amp; Conditions</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
