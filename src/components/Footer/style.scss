@@ -1,10 +1,12 @@
-@import 'scss/colors.scss';
+@import '../../scss/variables';
 
 .footer {
-  hr {
-    border-color: $red;
-    border-width: 3px;
-    max-width: 50px;
+  color: $white;
+  background-color: $black;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    text-align: left;
   }
 }
 

@@ -25,81 +25,80 @@ class Voices extends React.Component {
     const { isVisibleSamples } = this.state
 
     return (
-      <div
-        className="row justify-content-between align-items-center py-5 voices"
-        id="voices"
-      >
-        <div
-          className="col-12 col-md-6 pl-md-0 mb-4 mb-md-0 position-relative voices-background-container"
-          style={{ minHeight: 400 }}
-        >
-          <VoiceSample
-            src={require('../../../static/audio/preview-richard.wav')}
-            label="Richard (American)"
-            language="English"
-            accent="American English"
-            gender="Male"
-            style={{ top: '22%', left: '0%' }}
-            iconComponent={<IconMaleWestern />}
-          />
-          <VoiceSample
-            src={require('../../../static/audio/preview-jack.wav')}
-            label="Jack (British)"
-            language="English"
-            accent="British English"
-            gender="Male"
-            style={{ top: '0%', left: '40%' }}
-            iconComponent={<IconMaleRedhead />}
-          />
-          <VoiceSample
-            src={require('../../../static/audio/preview-maya.wav')}
-            label="Maya (Spanish)"
-            language="Spanish"
-            gender="Female"
-            accent=""
-            style={{ top: '38%', left: '54%' }}
-            iconPosition="left"
-            iconComponent={<IconFemaleWestern />}
-          />
-          <VoiceSample
-            src={require('../../../static/audio/preview-emily.wav')}
-            label="Emily (American)"
-            language="English"
-            accent="American English"
-            gender="Female"
-            style={{ top: '54%', left: '7%' }}
-            iconComponent={<IconFemaleWesternBlonde />}
-          />
+      <section className="voices py-8" id="voices">
+        <div className="row justify-content-between align-items-center">
+          <div
+            className="col-12 col-md-6 pl-md-0 mb-4 mb-md-0 position-relative voices-background-container"
+            style={{ minHeight: 400 }}
+          >
+            <VoiceSample
+              src={require('../../../static/audio/preview-richard.wav')}
+              label="Richard (American)"
+              language="English"
+              accent="American English"
+              gender="Male"
+              style={{ top: '22%', left: '0%' }}
+              iconComponent={<IconMaleWestern />}
+            />
+            <VoiceSample
+              src={require('../../../static/audio/preview-jack.wav')}
+              label="Jack (British)"
+              language="English"
+              accent="British English"
+              gender="Male"
+              style={{ top: '0%', left: '40%' }}
+              iconComponent={<IconMaleRedhead />}
+            />
+            <VoiceSample
+              src={require('../../../static/audio/preview-maya.wav')}
+              label="Maya (Spanish)"
+              language="Spanish"
+              gender="Female"
+              accent=""
+              style={{ top: '38%', left: '54%' }}
+              iconPosition="left"
+              iconComponent={<IconFemaleWestern />}
+            />
+            <VoiceSample
+              src={require('../../../static/audio/preview-emily.wav')}
+              label="Emily (American)"
+              language="English"
+              accent="American English"
+              gender="Female"
+              style={{ top: '54%', left: '7%' }}
+              iconComponent={<IconFemaleWesternBlonde />}
+            />
 
-          <VoiceSample
-            src={require('../../../static/audio/preview-vivaan.wav')}
-            label="Vivaan (Indian English)"
-            language="English"
-            accent="Indian English"
-            gender="Male"
-            style={{ top: '76%', left: '45%' }}
-            iconComponent={<IconMaleIndian />}
-          />
-          <img
-            className="voices-background"
-            src={backgroundVoicesImage}
-            alt="Playpost voices"
-          />
-        </div>
-        <div className="col-12 col-md-5">
-          <h4 className="text-black-50 h3">Sounds natural</h4>
-          <h2>200+ naturally sounding voices by Artificial Intelligence</h2>
-          <p>
-            The most advanced text to speech synthesis solutions to speak text
-            to you and sound natural and pleasant to listen to. Personalize the
-            experience by using a variety of voices.
-          </p>
-          <h3 className="mb-1 font-weight-semibold">Supported languages</h3>
-          <p className="mb-2">
-            New languages are added on a regular basis. We plan on supporting
-            all major languages, including yours.
-            <br /><br />
-            {/* <br />
+            <VoiceSample
+              src={require('../../../static/audio/preview-vivaan.wav')}
+              label="Vivaan (Indian English)"
+              language="English"
+              accent="Indian English"
+              gender="Male"
+              style={{ top: '76%', left: '45%' }}
+              iconComponent={<IconMaleIndian />}
+            />
+            <img
+              className="voices-background"
+              src={backgroundVoicesImage}
+              alt="Playpost voices"
+            />
+          </div>
+          <div className="col-12 col-md-5">
+            <h3 className="text-black-50">Sounds natural</h3>
+            <h2>200+ naturally sounding voices by Artificial Intelligence</h2>
+            <p>
+              The most advanced text to speech synthesis solutions to speak text
+              to you and sound natural and pleasant to listen to. Personalize
+              the experience by using a variety of voices.
+            </p>
+            <h3 className="mb-1 font-weight-semibold">Supported languages</h3>
+            <p className="mb-2">
+              New languages are added on a regular basis. We plan on supporting
+              all major languages, including yours.
+              <br />
+              <br />
+              {/* <br />
             Playpost currently supports the following languages:
             <br />
             English, French, German, Spanish, Hindi, Dutch, Chinese (Mandarin),
@@ -107,85 +106,85 @@ class Voices extends React.Component {
             Swedish, Vietnamese, Korean, Finnish, Turkish, Russian and Romanian.
             <br />
             <br /> */}
-            <a
-              className="action-link"
-              href="#"
-              onClick={this.handleOnClickListenSamples}
-            >
-              <span>
-                {isVisibleSamples ? 'Hide samples' : 'Listen to samples'}
-              </span>
-            </a>
-          </p>
+              <a
+                className="action-link"
+                href="#"
+                onClick={this.handleOnClickListenSamples}
+              >
+                <span>
+                  {isVisibleSamples ? 'Hide samples' : 'Listen to samples'}
+                </span>
+              </a>
+            </p>
 
-          <div className={!isVisibleSamples ? 'd-none' : ''}>
-            <VoiceSample
-              src={require('../../../static/audio/preview-richard.wav')}
-              label="Richard (American)"
-              language="English"
-              accent="American"
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-jack.wav')}
-              label="Jack (British)"
-              language="English"
-              accent="British"
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-emily.wav')}
-              label="Emily (American)"
-              language="English"
-              accent="American"
-              gender="Female"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-albert.wav')}
-              label="Albert (German)"
-              language="German"
-              accent=""
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-noah.wav')}
-              label="Noah (Australian)"
-              language="English"
-              accent="Australian"
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-armand.wav')}
-              label="Armand (French)"
-              language="French"
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-koen.wav')}
-              label="Koen (Dutch)"
-              language="Dutch"
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-vivaan.wav')}
-              label="Vivaan (Indian English)"
-              language="Indian English"
-              gender="Male"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-maya.wav')}
-              label="Maya (Spanish)"
-              language="Spanish"
-              gender="Female"
-            />
-            <VoiceSample
-              src={require('../../../static/audio/preview-enrique.mp3')}
-              label="Enrique (Spanish)"
-              language="Spanish"
-            />
-          </div>
+            <div className={!isVisibleSamples ? 'd-none' : ''}>
+              <VoiceSample
+                src={require('../../../static/audio/preview-richard.wav')}
+                label="Richard (American)"
+                language="English"
+                accent="American"
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-jack.wav')}
+                label="Jack (British)"
+                language="English"
+                accent="British"
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-emily.wav')}
+                label="Emily (American)"
+                language="English"
+                accent="American"
+                gender="Female"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-albert.wav')}
+                label="Albert (German)"
+                language="German"
+                accent=""
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-noah.wav')}
+                label="Noah (Australian)"
+                language="English"
+                accent="Australian"
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-armand.wav')}
+                label="Armand (French)"
+                language="French"
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-koen.wav')}
+                label="Koen (Dutch)"
+                language="Dutch"
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-vivaan.wav')}
+                label="Vivaan (Indian English)"
+                language="Indian English"
+                gender="Male"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-maya.wav')}
+                label="Maya (Spanish)"
+                language="Spanish"
+                gender="Female"
+              />
+              <VoiceSample
+                src={require('../../../static/audio/preview-enrique.mp3')}
+                label="Enrique (Spanish)"
+                language="Spanish"
+              />
+            </div>
 
-          {/* <VoiceSample
+            {/* <VoiceSample
             src="https://storage.playpost.app/voices/405ed251-a67e-4b0c-a168-2cb0adffad69.wav"
             label="Hugo (French)"
           />
@@ -210,62 +209,75 @@ class Voices extends React.Component {
             label="Enrique (Spanish)"
           /> */}
 
-          <div className="row">
-            <div className="col-12 col-sm-6">
-              <div className="icon">
-                <svg width="32" height="24" xmlns="http://www.w3.org/2000/svg">
-                  <g
-                    transform="translate(1 1)"
-                    stroke="#06F"
-                    strokeWidth="2"
-                    fill="none"
-                    fillRule="evenodd"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+            <div className="row">
+              <div className="col-12 col-sm-6">
+                <div className="icon">
+                  <svg
+                    width="32"
+                    height="24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle cx="15" cy="11" r="3" />
-                    <path d="M21.36 4.64a9 9 0 0 1 0 12.735M8.64 17.36a9 9 0 0 1 0-12.735M25.605.395c5.856 5.857 5.856 15.353 0 21.21m-21.21 0c-5.856-5.857-5.856-15.353 0-21.21" />
-                  </g>
-                </svg>
+                    <g
+                      transform="translate(1 1)"
+                      stroke="#06F"
+                      strokeWidth="2"
+                      fill="none"
+                      fillRule="evenodd"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="15" cy="11" r="3" />
+                      <path d="M21.36 4.64a9 9 0 0 1 0 12.735M8.64 17.36a9 9 0 0 1 0-12.735M25.605.395c5.856 5.857 5.856 15.353 0 21.21m-21.21 0c-5.856-5.857-5.856-15.353 0-21.21" />
+                    </g>
+                  </svg>
+                </div>
+                <h4 className="font-weight-semibold mb-1">
+                  Voice customization
+                </h4>
+                <div className="small">
+                  Male ánd female voices, with different accents like British,
+                  American or Australian.
+                </div>
               </div>
-              <h4 className="font-weight-semibold mb-1">Voice customization</h4>
-              <div className="small">
-                Male ánd female voices, with different accents like British,
-                American or Australian.
-              </div>
-            </div>
-            <div className="col-12 col-sm-6">
-              <div className="icon">
-                <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                  <g
-                    transform="translate(1 1)"
-                    stroke="#06F"
-                    strokeWidth="2"
-                    fill="none"
-                    fillRule="evenodd"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+              <div className="col-12 col-sm-6">
+                <div className="icon">
+                  <svg
+                    width="32"
+                    height="32"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle cx="15" cy="15" r="15" />
-                    <path d="M0 15h30M15 0a22.95 22.95 0 0 1 6 15 22.95 22.95 0 0 1-6 15 22.95 22.95 0 0 1-6-15 22.95 22.95 0 0 1 6-15z" />
-                  </g>
-                </svg>
-              </div>
-              <h4 className="font-weight-semibold mb-1">Multiple languages</h4>
-              <div className="small">
-                Our goal is supporting all major languages, even yours.{' '}
-                <a
-                  href=""
-                  onClick={this.handleOnClickMoreToCome}
-                  className="font-weight-bold text-dark"
-                >
-                  Subscribe for updates!
-                </a>
+                    <g
+                      transform="translate(1 1)"
+                      stroke="#06F"
+                      strokeWidth="2"
+                      fill="none"
+                      fillRule="evenodd"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="15" cy="15" r="15" />
+                      <path d="M0 15h30M15 0a22.95 22.95 0 0 1 6 15 22.95 22.95 0 0 1-6 15 22.95 22.95 0 0 1-6-15 22.95 22.95 0 0 1 6-15z" />
+                    </g>
+                  </svg>
+                </div>
+                <h4 className="font-weight-semibold mb-1">
+                  Multiple languages
+                </h4>
+                <div className="small">
+                  Our goal is supporting all major languages, even yours.{' '}
+                  <a
+                    href=""
+                    onClick={this.handleOnClickMoreToCome}
+                    className="font-weight-bold text-dark"
+                  >
+                    Subscribe for updates!
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

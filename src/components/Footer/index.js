@@ -11,6 +11,7 @@ import {
   FACEBOOK_URL,
   TWITTER_URL,
   INSTAGRAM_URL,
+  MEDIUM_URL,
 } from '../../constants/urls'
 import './style.scss'
 
@@ -21,39 +22,39 @@ const Footer = ({ author, title }) => {
   }
 
   return (
-    <div className="bg-dark text-white footer">
-      <div className="container py-7">
+    <div className="footer">
+      <div className="container py-8">
         <div className="row pt-4">
           <div className="col-12 col-md-6 col-lg-5 mb-4">
             <h2>Playpost</h2>
             <div className="row">
               <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/">
+                <Link className="text-white-70" to="/">
                   <span>Home</span>
                 </Link>
               </div>
               <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/privacy">
+                <Link className="text-white-70" to="/privacy">
                   <span>Privacy Policy</span>
                 </Link>
               </div>
               <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/terms">
+                <Link className="text-white-70" to="/terms">
                   <span>Terms &amp; Conditions</span>
                 </Link>
               </div>
               <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/acceptable-use-policy">
+                <Link className="text-white-70" to="/acceptable-use-policy">
                   <span>Acceptable Use Policy</span>
                 </Link>
               </div>
               <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/crawler">
+                <Link className="text-white-70" to="/crawler">
                   <span>Crawler</span>
                 </Link>
               </div>
               <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-80" to="/support">
+                <Link className="text-white-70" to="/support">
                   <span>Support</span>
                 </Link>
               </div>
@@ -184,15 +185,15 @@ const Footer = ({ author, title }) => {
             <div className="row">
               <div className="mb-1 col-12">
                 <OutboundLink
-                  className="text-white-80"
+                  className="text-white-70"
                   href={GOOGLE_CHROME_EXTENSION_URL}
                 >
-                  <span>Chrome</span>
+                  <span>Chrome (soon)</span>
                 </OutboundLink>
               </div>
               <div className="mb-1 col-12">
                 <OutboundLink
-                  className="text-white-80"
+                  className="text-white-70"
                   href={FIREFOX_EXTENSION_URL}
                 >
                   <span>Firefox</span>
@@ -200,7 +201,7 @@ const Footer = ({ author, title }) => {
               </div>
               <div className="mb-1 col-12">
                 <OutboundLink
-                  className="text-white-80"
+                  className="text-white-70"
                   href={OPERA_EXTENSION_URL}
                 >
                   <span>Opera</span>
@@ -212,52 +213,59 @@ const Footer = ({ author, title }) => {
             <h2>Socials</h2>
             <div className="row">
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-80" href={FACEBOOK_URL}>
+                <OutboundLink className="text-white-70" href={FACEBOOK_URL}>
                   <span>Facebook</span>
                 </OutboundLink>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-80" href={TWITTER_URL}>
+                <OutboundLink className="text-white-70" href={TWITTER_URL}>
                   <span>Twitter</span>
                 </OutboundLink>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-80" href={INSTAGRAM_URL}>
+                <OutboundLink className="text-white-70" href={INSTAGRAM_URL}>
                   <span>Instagram</span>
                 </OutboundLink>
               </div>
+              <div className="mb-1 col-12">
+                <OutboundLink className="text-white-70" href={MEDIUM_URL}>
+                  <span>Medium</span>
+                </OutboundLink>
+              </div>
             </div>
+
           </div>
         </div>
-        <div className="border-top d-lg-none"></div>
       </div>
       <div className="container">
-        <div className="d-block d-lg-flex justify-content-between py-3 py-lg-2 footer__bottom">
-          <div className="small mb-2 mb-lg-0">
-            <span className="text-muted mr-5">
-              &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
-              <OutboundLink
-                className="text-muted"
-                href="https://www.linkedin.com/in/jvandenaardweg/"
-              >
-                <u>Jordy van den Aardweg</u>
-              </OutboundLink>
-              .
+        <div className="row justify-content-between py-3 footer__bottom">
+          <div className="col-12">
+            <div className="small mb-2 mb-lg-0">
+              <span className="text-muted">
+                &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
+                <OutboundLink
+                  className="text-muted"
+                  href="https://www.linkedin.com/in/jvandenaardweg/"
+                >
+                  <u>Jordy van den Aardweg</u>
+                </OutboundLink>
+                .
             </span>
-          </div>
-          <div className="small">
-            <Link
-              className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
-              to="/privacy"
-            >
-              <span>Privacy Policy</span>
-            </Link>
-            <Link
-              className="d-block d-lg-inline text-muted ml-lg-2"
-              to="/terms"
-            >
-              <span>Terms &amp; Conditions</span>
-            </Link>
+            </div>
+            <div className="small">
+              <Link
+                className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
+                to="/privacy"
+              >
+                <span>Privacy Policy</span>
+              </Link>
+              <Link
+                className="d-block d-lg-inline text-muted ml-lg-2"
+                to="/terms"
+              >
+                <span>Terms &amp; Conditions</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -23,15 +23,14 @@ class CustomerResponses extends React.Component {
   }
 
   render() {
-    const { location, title } = this.props
-
     return (
-      <div className="py-7">
-        <div id="customers">
-          <div className="row justify-content-center text-center py-3">
+      <section className="customers py-8" id="customers">
+
+        <div className="container">
+          <div className="row justify-content-center text-center mb-3">
             <div className="col-12 col-md-8">
-              <h4 className="text-black-50">Not convinced yet?</h4>
-              <h1 className="display-4">Our customers love it!</h1>
+              <h3 className="text-black-50">Not convinced yet?</h3>
+              <h2 className="display-4">Our customers love it!</h2>
               <a
                 className="action-link"
                 href=""
@@ -135,7 +134,7 @@ class CustomerResponses extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

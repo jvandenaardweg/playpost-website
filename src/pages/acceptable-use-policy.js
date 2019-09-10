@@ -81,13 +81,13 @@ class AcceptableUsePolicy extends React.Component {
                 ]}
               />
 
-              <h2 class="mt-5">Code Of Conduct</h2>
+              <h2 className="mt-5">Code Of Conduct</h2>
               <p>
                 You agree to use our Service in accordance with the following
                 acceptable use and code of conduct guidelines. In particular,
                 you agree that you:
               </p>
-              <ol class="custom-ordered-list">
+              <ol className="custom-ordered-list">
                 <li>
                   Will not upload, copy, distribute, share, or otherwise use
                   content that is unlawful, obscene, defamatory, libelous,

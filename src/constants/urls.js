@@ -8,3 +8,4 @@ export const OPERA_EXTENSION_URL = 'https://addons.opera.com/nl/extensions/detai
 export const INSTAGRAM_URL = 'https://www.instagram.com/playpostapp/'
 export const TWITTER_URL = 'https://twitter.com/playpostapp'
 export const FACEBOOK_URL = 'https://www.facebook.com/playpostapp/'
+export const MEDIUM_URL = 'https://medium.com/playpost'

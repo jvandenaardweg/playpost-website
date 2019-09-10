@@ -6,7 +6,7 @@
 //
 // Color system
 //
-@import './colors.scss';
+@import './variables';
 
 // Reassign color vars to semantic color scheme
 $theme-colors: (
@@ -110,6 +110,10 @@ ul li {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
+.text-white-70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .btn {
   border-radius: 0.3rem;
 }
@@ -142,6 +146,16 @@ ul li {
 
 .py-8 {
   padding-bottom: 8rem !important;
+}
+
+.py-5,
+.py-6,
+.py-7,
+.py-8 {
+  @include media-breakpoint-down(lg) {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
 }
 
 .container {
@@ -207,4 +221,14 @@ ul li {
 
 .font-weight-extra-bold {
   font-weight: 800 !important;
+}
+
+a.text-white:hover,
+a.text-white:focus {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+.display-4 {
+  line-height: 1.2;
 }

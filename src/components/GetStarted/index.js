@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
+import './style.scss'
+
 import {
   APPLE_APP_STORE_URL,
   GOOGLE_PLAY_STORE_URL,
@@ -13,16 +15,16 @@ import {
 class GetStarted extends React.Component {
   render() {
     return (
-      <div className="bg-tint">
-        <div className="py-8" id="get-started">
-          <div className="row justify-content-center text-center pt-3">
+      <section className="get-started py-8" id="get-started">
+        <div className="container">
+          <div className="row justify-content-center text-center">
             <div className="col-12 col-md-8">
               <h3 className="text-white-80">Get started</h3>
-              <h1 className="display-4 mb-4 text-white">
+              <h2 className="display-4 mb-4 text-white">
                 Download Playpost for free
-              </h1>
+              </h2>
               <div className="align-items-center">
-                <OutboundLink className="ml-1 mr-1" href={APPLE_APP_STORE_URL}>
+                <OutboundLink className="ml-1 mr-1 mb-2 d-inline-block" href={APPLE_APP_STORE_URL}>
                   <svg
                     width="185"
                     height="57"
@@ -143,27 +145,28 @@ class GetStarted extends React.Component {
                   href={GOOGLE_CHROME_EXTENSION_URL}
                   className="text-white font-weight-semibold"
                 >
-                  Chrome
-                </OutboundLink>
+                  Chrome (soon)
+              </OutboundLink>
                 ,{' '}
                 <OutboundLink
                   href={FIREFOX_EXTENSION_URL}
                   className="text-white font-weight-semibold"
                 >
                   Firefox
-                </OutboundLink>{' '}
+              </OutboundLink>{' '}
                 or{' '}
                 <OutboundLink
                   href={OPERA_EXTENSION_URL}
                   className="text-white font-weight-semibold"
                 >
                   Opera
-                </OutboundLink>
+              </OutboundLink>
               </div>
             </div>
           </div>
         </div>
-      </div>
+
+      </section>
     )
   }
 }
