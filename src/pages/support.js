@@ -37,15 +37,22 @@ class Support extends React.Component {
         </Helmet>
         <CenterHeader title={pageTitle} description={pageDescription} />
         <div className="container">
-          <div className="d-flex justify-content-center mt-4 mb-1">
-            <div className="px-1">
-              <button
-                className="btn btn-lg btn-primary font-weight-bold"
-                type="button"
-                onClick={this.openChat}
-              >
-                Start live chat
-              </button>
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ minHeight: '30vh', flexDirection: 'column' }}
+          >
+            <button
+              className="btn btn-lg btn-primary font-weight-bold"
+              type="button"
+              onClick={this.openChat}
+            >
+              Start live chat
+            </button>
+            <div className="mt-4">
+              <p>
+                Or contact us at{' '}
+                <a href="mailto:support@playpost.app">support@playpost.app</a>
+              </p>
             </div>
           </div>
         </div>

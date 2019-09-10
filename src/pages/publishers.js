@@ -148,12 +148,13 @@ class Publishers extends React.Component {
                 <div className="justify-content-center text-center d-flex mb-2">
                   <IconMedium name="user-shield" color="blueInverted" />
                 </div>
-                <h3 className="text-black-50">Friendly to use</h3>
+                <h3 className="text-black-50 h3">Friendly to use</h3>
                 <h2>Privacy-focused and GDPR compliant</h2>
                 <p className="lead mb-0">
-                  So you, as a publisher, writer or website owner, can use
-                  Playpost for Publishers without worrying about privacy
-                  implications.
+                  Playpost for Publishers will be build with a strong focus on
+                  privacy. So you, as a publisher, writer or website owner, can
+                  use this service without worrying about privacy implications
+                  for your audience.
                 </p>
               </div>
             </div>

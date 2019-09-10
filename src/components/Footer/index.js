@@ -28,36 +28,56 @@ const Footer = ({ author, title }) => {
           <div className="col-12 col-md-6 col-lg-5 mb-4">
             <h2>Playpost</h2>
             <div className="row">
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-70" to="/">
-                  <span>Home</span>
-                </Link>
+              <div className="col-12 col-md-6">
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/">
+                    <span>Home</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/#features">
+                    <span>Features</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/#voices">
+                    <span>Voices</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/publishers">
+                    <span>For publishers</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/support">
+                    <span>Support</span>
+                  </Link>
+                </div>
               </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-70" to="/privacy">
-                  <span>Privacy Policy</span>
-                </Link>
+              <div className="col-12 col-md-6">
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/terms">
+                    <span>Terms &amp; Conditions</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/acceptable-use-policy">
+                    <span>Acceptable Use Policy</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/crawler">
+                    <span>Crawler</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
+                  <Link className="text-white-70" to="/support">
+                    <span>Contact</span>
+                  </Link>
+                </div>
               </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-70" to="/terms">
-                  <span>Terms &amp; Conditions</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-70" to="/acceptable-use-policy">
-                  <span>Acceptable Use Policy</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-70" to="/crawler">
-                  <span>Crawler</span>
-                </Link>
-              </div>
-              <div className="mb-1 col-12 col-md-6">
-                <Link className="text-white-70" to="/support">
-                  <span>Support</span>
-                </Link>
-              </div>
+
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-3 mb-4">

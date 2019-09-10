@@ -8,12 +8,12 @@ class WaitingList extends React.Component {
         <div className="container">
           <div className="row justify-content-center text-center pt-3">
             <div className="col-12 col-md-8">
-              <h3 className="text-black-50">Be the first to try it out</h3>
-              <h2 className="display-4 mb-4">Join the waiting list</h2>
+              <h3 className="text-black-50 h3">Be the first to try it out</h3>
+              <h2 className="display-4 mb-4">Signup for early access</h2>
               <p className="mb-4">
-                Playpost for Publishers is a service under development. Join the
-                waiting list and you'll be one of the first to try it out when
-                we launch.
+                Playpost for Publishers is a service under development. Join our
+                early access list and you'll be one of the first to try it out
+                when we launch.
               </p>
             </div>
           </div>
@@ -37,7 +37,7 @@ class WaitingList extends React.Component {
                   aria-describedby="emailHelp"
                   placeholder="Your email address"
                 />
-                <div class="mc-field-group d-none">
+                <div className="mc-field-group d-none">
                   <select
                     name="group[23497]"
                     className="REQ_CSS"
@@ -56,13 +56,13 @@ class WaitingList extends React.Component {
                     name="subscribe"
                     id="mc-embedded-subscribe"
                   >
-                    Join
+                    Signup
                   </button>
                 </div>
               </form>
               <p className="small mb-0 text-black-50">
-                By joining the waiting list you confirm that you agree with our
-                <br />
+                By joining the early access list you confirm that you agree with
+                our{' '}
                 <Link className="text-black-50 weight-500" to="/privacy">
                   <span>Privacy Policy</span>
                 </Link>{' '}
