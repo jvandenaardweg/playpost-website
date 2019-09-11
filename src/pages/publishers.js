@@ -51,7 +51,7 @@ class Publishers extends React.Component {
           <div className="d-flex justify-content-center mt-lg-4 mb-1">
             <div className="px-1">
               <div className="row pb-2">
-                <div className="col-12 col-md-4 mb-4 mb-md-0">
+                <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="play" color="blue" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
                     Embeddable player
@@ -65,7 +65,7 @@ class Publishers extends React.Component {
                     <span>Read more</span>
                   </a> */}
                 </div>
-                <div className="col-12 col-md-4 mb-4 mb-md-0">
+                <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="signal" color="green" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
                     Listener insights
@@ -79,7 +79,7 @@ class Publishers extends React.Component {
                     <span>Read more</span>
                   </a> */}
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="mobile-alt" color="orange" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
                     Playpost app integration
@@ -96,7 +96,7 @@ class Publishers extends React.Component {
               </div>
 
               <div className="row pb-2 mb-5">
-                <div className="col-12 col-md-4 mb-4 mb-md-0">
+                <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="globe-americas" color="red" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
                     {LANGUAGE_COUNT} languages supported
@@ -110,7 +110,7 @@ class Publishers extends React.Component {
                     <span>Read more</span>
                   </a> */}
                 </div>
-                <div className="col-12 col-md-4 mb-4 mb-md-0">
+                <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="code" color="purple" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
                     API integration
@@ -124,7 +124,7 @@ class Publishers extends React.Component {
                     <span>Read more</span>
                   </a> */}
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="microphone" color="yellow" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
                     Record your own audio
