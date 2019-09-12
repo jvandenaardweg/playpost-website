@@ -7,9 +7,6 @@ import './style.scss'
 import {
   APPLE_APP_STORE_URL,
   GOOGLE_PLAY_STORE_URL,
-  GOOGLE_CHROME_EXTENSION_URL,
-  FIREFOX_EXTENSION_URL,
-  OPERA_EXTENSION_URL,
 } from '../../constants/urls'
 
 class GetStarted extends React.Component {
@@ -24,7 +21,10 @@ class GetStarted extends React.Component {
                 Download Playpost for free
               </h2>
               <div className="align-items-center">
-                <OutboundLink className="ml-1 mr-1 mb-2 d-inline-block" href={APPLE_APP_STORE_URL}>
+                <OutboundLink
+                  className="ml-1 mr-1 mb-2 d-inline-block"
+                  href={APPLE_APP_STORE_URL}
+                >
                   <svg
                     width="185"
                     height="57"
@@ -141,31 +141,21 @@ class GetStarted extends React.Component {
               </div>
               <div className="text-center text-white mt-2">
                 And install the browser extension on:{' '}
-                <OutboundLink
-                  href={GOOGLE_CHROME_EXTENSION_URL}
-                  className="text-white font-weight-semibold"
-                >
+                <Link className="text-white font-weight-bold" to="/chrome">
                   Chrome
-              </OutboundLink>
+                </Link>
                 ,{' '}
-                <OutboundLink
-                  href={FIREFOX_EXTENSION_URL}
-                  className="text-white font-weight-semibold"
-                >
+                <Link className="text-white font-weight-bold" to="/firefox">
                   Firefox
-              </OutboundLink>{' '}
+                </Link>{' '}
                 or{' '}
-                <OutboundLink
-                  href={OPERA_EXTENSION_URL}
-                  className="text-white font-weight-semibold"
-                >
+                <Link className="text-white font-weight-bold" to="/opera">
                   Opera
-              </OutboundLink>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-
       </section>
     )
   }

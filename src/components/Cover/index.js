@@ -1,5 +1,6 @@
 import React from 'react'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { Link } from 'gatsby'
 
 import './style.scss'
 
@@ -8,9 +9,6 @@ import { scrollIt } from '../../utils/scroll'
 import {
   APPLE_APP_STORE_URL,
   GOOGLE_PLAY_STORE_URL,
-  GOOGLE_CHROME_EXTENSION_URL,
-  FIREFOX_EXTENSION_URL,
-  OPERA_EXTENSION_URL,
 } from '../../constants/urls'
 
 class Cover extends React.Component {
@@ -156,26 +154,17 @@ class Cover extends React.Component {
                 <div className="col-12 col-lg-12 text-center text-md-left text-white">
                   <div className="cover__small small ml-md-6 mt-2">
                     <span>Save articles from your browser using:</span>{' '}
-                    <OutboundLink
-                      href={GOOGLE_CHROME_EXTENSION_URL}
-                      className="text-white font-weight-semibold"
-                    >
+                    <Link className="text-white font-weight-bold" to="/chrome">
                       Chrome
-                    </OutboundLink>
+                    </Link>
                     ,{' '}
-                    <OutboundLink
-                      href={FIREFOX_EXTENSION_URL}
-                      className="text-white font-weight-semibold"
-                    >
+                    <Link className="text-white font-weight-bold" to="/firefox">
                       Firefox
-                    </OutboundLink>{' '}
+                    </Link>{' '}
                     or{' '}
-                    <OutboundLink
-                      href={OPERA_EXTENSION_URL}
-                      className="text-white font-weight-semibold"
-                    >
+                    <Link className="text-white font-weight-bold" to="/opera">
                       Opera
-                    </OutboundLink>
+                    </Link>
                   </div>
                 </div>
               </div>

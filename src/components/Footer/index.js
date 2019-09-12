@@ -3,9 +3,6 @@ import React from 'react'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import {
-  GOOGLE_CHROME_EXTENSION_URL,
-  FIREFOX_EXTENSION_URL,
-  OPERA_EXTENSION_URL,
   APPLE_APP_STORE_URL,
   GOOGLE_PLAY_STORE_URL,
   FACEBOOK_URL,
@@ -204,28 +201,19 @@ const Footer = ({ author, title }) => {
             <h2>Extensions</h2>
             <div className="row">
               <div className="mb-1 col-12">
-                <OutboundLink
-                  className="text-white-70"
-                  href={GOOGLE_CHROME_EXTENSION_URL}
-                >
+                <Link className="text-white-70" to="/chrome">
                   <span>Chrome</span>
-                </OutboundLink>
+                </Link>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink
-                  className="text-white-70"
-                  href={FIREFOX_EXTENSION_URL}
-                >
+                <Link className="text-white-70" to="/firefox">
                   <span>Firefox</span>
-                </OutboundLink>
+                </Link>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink
-                  className="text-white-70"
-                  href={OPERA_EXTENSION_URL}
-                >
+                <Link className="text-white-70" to="/opera">
                   <span>Opera</span>
-                </OutboundLink>
+                </Link>
               </div>
             </div>
           </div>

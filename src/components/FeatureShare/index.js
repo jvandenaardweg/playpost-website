@@ -1,12 +1,7 @@
 import React from 'react'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { Link } from 'gatsby'
 
 import appsImage from '../../../static/img/example-apps.png'
-import {
-  GOOGLE_CHROME_EXTENSION_URL,
-  FIREFOX_EXTENSION_URL,
-  OPERA_EXTENSION_URL,
-} from '../../constants/urls'
 
 class FeatureShare extends React.Component {
   render() {
@@ -41,14 +36,10 @@ class FeatureShare extends React.Component {
             <div className="mt-4">
               <h2>Save from your computer</h2>
               <p className="mb-0">
-                Use our browser extension for{' '}
-                <OutboundLink href={GOOGLE_CHROME_EXTENSION_URL}>
-                  Chrome
-                </OutboundLink>
-                ,{' '}
-                <OutboundLink href={FIREFOX_EXTENSION_URL}>Firefox</OutboundLink>{' '}
-                or <OutboundLink href={OPERA_EXTENSION_URL}>Opera</OutboundLink>{' '}
-                to save articles from your computer to your playlist.
+                Use our browser extension for <Link to="/chrome">Chrome</Link>,{' '}
+                <Link to="/firefox">Firefox</Link>{' '}
+                <Link to="/opera">Opera</Link> to save articles from your
+                computer to your playlist.
               </p>
             </div>
           </div>
