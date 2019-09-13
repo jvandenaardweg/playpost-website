@@ -54,6 +54,11 @@ const Footer = ({ author, title }) => {
               </div>
               <div className="col-12 col-md-6">
                 <div className="mb-1">
+                  <Link className="text-white-70" to="/privacy">
+                    <span>Privacy Policy</span>
+                  </Link>
+                </div>
+                <div className="mb-1">
                   <Link className="text-white-70" to="/terms">
                     <span>Terms &amp; Conditions</span>
                   </Link>
@@ -249,7 +254,7 @@ const Footer = ({ author, title }) => {
         <div className="row">
           <div className="col-12">
             <div className="footer__bottom py-3">
-              <div className="small mb-2 mb-lg-0">
+              <div className="small text-center">
                 <span className="text-muted">
                   &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
                   <OutboundLink
@@ -260,20 +265,6 @@ const Footer = ({ author, title }) => {
                   </OutboundLink>
                   .
                 </span>
-              </div>
-              <div className="small">
-                <Link
-                  className="d-block d-lg-inline text-muted ml-lg-2 mb-2 mb-lg-0"
-                  to="/privacy"
-                >
-                  <span>Privacy Policy</span>
-                </Link>
-                <Link
-                  className="d-block d-lg-inline text-muted ml-lg-2"
-                  to="/terms"
-                >
-                  <span>Terms &amp; Conditions</span>
-                </Link>
               </div>
             </div>
           </div>
