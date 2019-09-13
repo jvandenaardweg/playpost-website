@@ -29,9 +29,9 @@ class Cover extends React.Component {
                 Instant podcasts of every article
               </h1>
               <p className="cover__lead large">
-                Turn every article on the web into audio using industry-leading
-                high-quality voices. So you can listen to it just like Podcasts
-                and Audiobooks.
+                Playpost transforms every article on the web into audio using
+                industry-leading high-quality voices. So you can listen to it
+                just like Podcasts and Audiobooks.
               </p>
               <div className="row align-items-center">
                 <div className="cover__badges col-12">

@@ -12,7 +12,7 @@ import GetStarted from 'components/GetStarted/index'
 
 const Index = ({ data, location }) => {
   const pageDescription =
-    'Turn every article on the web into audio using industry-leading high-quality voices. So you can listen to it just like Podcasts and Audiobooks.'
+    'Playpost transforms every article on the web into audio using industry-leading high-quality voices. So you can listen to it just like Podcasts and Audiobooks.'
   const pageTitle = 'Playpost - Instant podcasts of every article'
 
   return (
