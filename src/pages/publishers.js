@@ -113,7 +113,7 @@ class Publishers extends React.Component {
                 <div className="col-12 col-md-4 mb-3 mb-md-1">
                   <IconMedium name="code" color="purple" />
                   <h3 className="font-weight-semibold mb-1 mt-2">
-                    API integration
+                    API for developers
                   </h3>
                   <p>
                     Next to our embeddable player we'll offer an API. So your
