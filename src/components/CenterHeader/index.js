@@ -16,7 +16,7 @@ class CenterHeader extends React.Component {
                 <h1 className="display-4 text-white">{title}</h1>
               </div>
               <div class="col-12 col-md-7">
-                <p className="lead mb-0 text-white-80">{description}</p>
+                <p className="lead mb-0 text-white">{description}</p>
                 {!!this.props.button && (
                   <div className="mt-4">{this.props.button}</div>
                 )}

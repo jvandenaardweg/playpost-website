@@ -22,7 +22,7 @@ class Support extends React.Component {
 
     const pageTitle = 'Hi, how can we help?'
     const pageDescription =
-      "Questions, bug reports, feedback, feature requests — we're here for it all."
+      "Questions, bug reports, feedback, feature requests — we're here for it all. Start a live chat or e-mail us."
 
     return (
       <Layout location={location}>
