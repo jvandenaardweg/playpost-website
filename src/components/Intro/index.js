@@ -21,7 +21,7 @@ class Intro extends React.Component {
               We do our everyday chores.
             </p>
             <p className="lead mb-0">
-              What if you could just listen to articles?
+              What if you could just listen to articles? With Playpost you can!
             </p>
           </div>
         </div>
