@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import './style.scss'
 import { scrollIt } from '../../utils/scroll'
+
+import { VOICES_COUNT, LANGUAGE_COUNT } from '../../constants/counts';
 
 import backgroundVoicesImage from '../../../static/img/background-voices.png'
 import VoiceSample from 'components/VoiceSample/index'
@@ -86,13 +87,18 @@ class Voices extends React.Component {
           </div>
           <div className="col-12 col-md-5">
             <h3 className="text-black-50">Sounds natural</h3>
-            <h2>200+ naturally sounding voices by Artificial Intelligence</h2>
+            <h2>
+              {VOICES_COUNT}+ naturally sounding voices by Artificial
+              Intelligence
+            </h2>
             <p>
               The most advanced text to speech synthesis solutions to speak text
               to you and sound natural and pleasant to listen to. Personalize
               the experience by using a variety of voices.
             </p>
-            <h3 className="mb-1 font-weight-semibold">Supported languages</h3>
+            <h3 className="mb-1 font-weight-semibold">
+              {LANGUAGE_COUNT} supported languages
+            </h3>
             <p className="mb-2">
               New languages are added on a regular basis. We plan on supporting
               all major languages, including yours.
@@ -264,14 +270,7 @@ class Voices extends React.Component {
                   Multiple languages
                 </h4>
                 <div className="small">
-                  Our goal is supporting all major languages, even yours.{' '}
-                  <a
-                    href=""
-                    onClick={this.handleOnClickMoreToCome}
-                    className="font-weight-bold text-dark"
-                  >
-                    Subscribe for updates!
-                  </a>
+                  Our goal is supporting all major languages, even yours.
                 </div>
               </div>
             </div>
