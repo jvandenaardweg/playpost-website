@@ -19,7 +19,7 @@ class Publishers extends React.Component {
     const { location, title } = this.props
 
     const pageTitle = 'Playpost for Publishers'
-    const pageDescription = `Add audio articles to your website with minimal effort. Give your audience a new way to digest your articles using our ${VOICES_COUNT}+ different voices in ${LANGUAGE_COUNT} different languages.`
+    const pageDescription = `Add audio articles to your website with minimal effort. Grow your audience by giving them a new way to digest your articles using our ${VOICES_COUNT}+ different voices in ${LANGUAGE_COUNT} different languages. Or use your own recordings.`
 
     return (
       <Layout location={location}>
