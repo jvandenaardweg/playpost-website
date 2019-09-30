@@ -19,10 +19,8 @@ class FeatureShare extends React.Component {
             <h3 className="text-black-50">Multiple apps supported</h3>
             <h2>Easily save articles from every app</h2>
             <p>
-              During installation of Playpost, a share button is added to every
-              app. So you can share articles from one app, to your Playpost
-              playlist. on your phone to share articles to your playlist. Just
-              open your article and press share.
+              A share button is added to every app. So you can share articles
+              from one app, to your Playpost playlist.
             </p>
             <ol className="custom-ordered-list mb-0">
               <li className="font-weight-semibold">
@@ -37,7 +35,8 @@ class FeatureShare extends React.Component {
               <h2>Save from your computer</h2>
               <p className="mb-0">
                 Use our browser extension for <Link to="/chrome">Chrome</Link>,{' '}
-                <Link to="/firefox">Firefox</Link>{' '}
+                <Link to="/firefox">Firefox</Link>
+                {' or '}
                 <Link to="/opera">Opera</Link> to save articles from your
                 computer to your playlist.
               </p>

@@ -2,7 +2,7 @@ import React from 'react'
 import './style.scss'
 import { scrollIt } from '../../utils/scroll'
 
-import { VOICES_COUNT, LANGUAGE_COUNT } from '../../constants/counts';
+import { VOICES_COUNT, LANGUAGE_COUNT } from '../../constants/counts'
 
 import backgroundVoicesImage from '../../../static/img/background-voices.png'
 import VoiceSample from 'components/VoiceSample/index'
@@ -96,32 +96,15 @@ class Voices extends React.Component {
               to you and sound natural and pleasant to listen to. Personalize
               the experience by using a variety of voices.
             </p>
-            <h3 className="mb-1 font-weight-semibold">
-              {LANGUAGE_COUNT} supported languages
-            </h3>
-            <p className="mb-2">
-              New languages are added on a regular basis. We plan on supporting
-              all major languages, including yours.
-              <br />
-              <br />
-              {/* <br />
-            Playpost currently supports the following languages:
-            <br />
-            English, French, German, Spanish, Hindi, Dutch, Chinese (Mandarin),
-            Indonesian, Portuguese, Polish, Norwegian, Danish, Czech, Greek,
-            Swedish, Vietnamese, Korean, Finnish, Turkish, Russian and Romanian.
-            <br />
-            <br /> */}
-              <a
-                className="action-link"
-                href="#"
-                onClick={this.handleOnClickListenSamples}
-              >
-                <span>
-                  {isVisibleSamples ? 'Hide samples' : 'Listen to samples'}
-                </span>
-              </a>
-            </p>
+            <a
+              className="action-link"
+              href="#"
+              onClick={this.handleOnClickListenSamples}
+            >
+              <span>
+                {isVisibleSamples ? 'Hide samples' : 'Listen to samples'}
+              </span>
+            </a>
 
             <div className={!isVisibleSamples ? 'd-none' : ''}>
               <VoiceSample
@@ -189,31 +172,6 @@ class Voices extends React.Component {
                 language="Spanish"
               />
             </div>
-
-            {/* <VoiceSample
-            src="https://storage.playpost.app/voices/405ed251-a67e-4b0c-a168-2cb0adffad69.wav"
-            label="Hugo (French)"
-          />
-          <VoiceSample
-            src="https://storage.playpost.app/voices/5f42e3bc-0db3-4f2c-84b2-5cc348a60610.wav"
-            label="Armand (French)"
-          />
-          <VoiceSample
-            src="https://storage.playpost.app/voices/df71540d-eacf-4b63-91c7-677f95c941f4.wav"
-            label="Koen (Dutch)"
-          />
-          <VoiceSample
-            src="https://storage.playpost.app/voices/ca0e586e-0128-47b5-8a4e-eed168ac4cca.wav"
-            label="Vivaan (Indian English)"
-          />
-          <VoiceSample
-            src="https://storage.playpost.app/voices/2945b5e5-ec8a-4851-bdf6-2e41dcfe6202.wav"
-            label="Maya (Spanish)"
-          />
-          <VoiceSample
-            src="https://storage.playpost.app/voices/eda85a99-619d-4d13-ac3b-ab5203cf3134.mp3"
-            label="Enrique (Spanish)"
-          /> */}
 
             <div className="row">
               <div className="col-12 col-sm-6">
