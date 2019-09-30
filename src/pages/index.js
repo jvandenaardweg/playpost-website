@@ -27,7 +27,7 @@ const Index = ({ data, location }) => {
         <meta property="og:url" content="https://playpost.app/" />
         <meta
           property="og:image"
-          content={require('../../static/img/ogimage-v2.png')}
+          content={require('../../static/img/ogimage-v3.png')}
         />
       </Helmet>
       <Cover />
