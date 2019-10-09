@@ -2,6 +2,10 @@
   "root": "public/",
   "clean_urls": true,
   "redirects": {
+    "/favicon.ico": {
+      "url": "/img/favicon.ico",
+      "status": 302
+    },
     "/apple-app-site-association": {
       "url": "/apple-app-site-association.json",
       "status": 302
