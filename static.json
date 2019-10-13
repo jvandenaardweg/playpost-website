@@ -13,10 +13,6 @@
     "/terms-of-use": {
       "url": "/terms",
       "status": 302
-    },
-    "/playlist/add/**": {
-      "url": "/",
-      "status": 302
     }
   },
   "routes": {
