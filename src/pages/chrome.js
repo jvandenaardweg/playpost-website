@@ -39,17 +39,17 @@ class Chrome extends React.Component {
         <div className="container">
           <div className="d-flex justify-content-center mb-1">
             <div className="px-1">
-              <div class="row justify-content-between align-items-center mb-5">
-                <div class="col-12 col-md-6 order-2 order-md-1">
+              <div className="row justify-content-between align-items-center mb-5">
+                <div className="col-12 col-md-6 order-2 order-md-1">
                   <h3 className="text-black-50">Easy to use</h3>
-                  <h1 class="display-4">
+                  <h1 className="display-4">
                     Add articles to your playlist from your computer
                   </h1>
-                  <a class="action-link" href={GOOGLE_CHROME_EXTENSION_URL}>
+                  <a className="action-link" href={GOOGLE_CHROME_EXTENSION_URL}>
                     <span>Get started</span>
                   </a>
                 </div>
-                <div class="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0">
+                <div className="col-12 col-md-6 order-1 order-md-2 pl-md-0 mb-4 mb-md-0">
                   <img
                     src={require('../../static/img/browser-extension-transparent.png')}
                   />

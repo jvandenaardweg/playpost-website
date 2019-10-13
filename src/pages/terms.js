@@ -27,7 +27,7 @@ class Terms extends React.Component {
         </Helmet>
         <CenterHeader title={pageTitle} description={pageDescription} />
 
-        <div className="container mb-4">
+        <div className="container mb-4 mt-lg-5 mt-3">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8">
               <Badge label="Updated: 01-07-2019 14:19" />

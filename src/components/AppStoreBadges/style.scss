@@ -1,0 +1,33 @@
+@import '../../scss/variables';
+
+.appstorebadges {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  @include media-breakpoint-up(md) {
+    justify-content: flex-start;
+  }
+
+  svg {
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      width: auto;
+    }
+  }
+}
+
+.appstorebadges__badge {
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+
+  @include media-breakpoint-up(md) {
+    margin-right: 1rem;
+    margin-left: 0;
+  }
+
+  svg {
+    width: 100%;
+  }
+}
