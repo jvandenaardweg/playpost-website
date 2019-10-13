@@ -46,8 +46,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-copy-files',
       options: {
-        source: `${__dirname}/src/apple-app-site-association.json`,
-        destination: '/apple-app-site-association.json',
+        source: `${__dirname}/src/apple-app-site-association`,
+        destination: '/apple-app-site-association',
       },
     },
     'gatsby-plugin-catch-links',

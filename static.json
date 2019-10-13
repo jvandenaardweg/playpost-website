@@ -6,10 +6,6 @@
       "url": "/img/favicon.ico",
       "status": 302
     },
-    "/apple-app-site-association": {
-      "url": "/apple-app-site-association.json",
-      "status": 302
-    },
     "/privacy-policy": {
       "url": "/privacy",
       "status": 302
