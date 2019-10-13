@@ -14,7 +14,7 @@
       "url": "/terms",
       "status": 302
     },
-    "/playlist/add/*": {
+    "/playlist/add/**": {
       "url": "/",
       "status": 302
     }
