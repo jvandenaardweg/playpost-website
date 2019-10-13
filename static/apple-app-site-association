@@ -8,13 +8,7 @@
       {
         "appID": "8GH8GLAMTU.com.aardwegmedia.playpost",
         "paths": [
-          "/login/*",
-          "/signup/*",
-          "/playlist/*",
-          "/archive/*",
-          "/favorites/*",
-          "/settings/*",
-          "/upgrade/*"
+          "/playlist/add/*",
         ]
       }
     ]
