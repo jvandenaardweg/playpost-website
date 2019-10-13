@@ -16,11 +16,11 @@ class AppStoreBadges extends React.Component {
   }
 
   render() {
-    const { location, title } = this.props
+    const { centered } = this.props
 
     return (
       <div className="row align-items-center justify-content-center">
-        <div className="appstorebadges col-12">
+        <div className={`appstorebadges ${!centered ? 'col-12' : ''}`}>
           <div className="appstorebadges__badge">
             <OutboundLink href={APPLE_APP_STORE_URL}>
               <svg
