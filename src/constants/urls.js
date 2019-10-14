@@ -1,4 +1,4 @@
-export const APPLE_APP_STORE_URL = 'https://apps.apple.com/app/playpost/id1460663960?ls=1'
+export const APPLE_APP_STORE_URL = 'https://itunes.apple.com/app/apple-store/id1460663960?pt=298087&ct=mobi&mt=8'
 export const GOOGLE_PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.aardwegmedia.playpost'
 
 export const GOOGLE_CHROME_EXTENSION_URL = 'https://chrome.google.com/webstore/detail/save-to-playpost/ifnpinjadbboilclldkikcggajgpcdgm'
