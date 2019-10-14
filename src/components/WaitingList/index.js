@@ -42,11 +42,10 @@ class WaitingList extends React.Component {
                     name="group[23497]"
                     className="REQ_CSS"
                     id="mce-group[23497]"
+                    defaultValue="1"
                   >
                     <option value=""></option>
-                    <option value="1" selected>
-                      Playpost for Publishers
-                    </option>
+                    <option value="1">Playpost for Publishers</option>
                   </select>
                 </div>
                 <div className="input-group-append">

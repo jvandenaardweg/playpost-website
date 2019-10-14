@@ -48,7 +48,7 @@ class Publishers extends React.Component {
           }
         />
         <div className="container">
-          <div className="d-flex justify-content-center mt-lg-5 mb-1">
+          <div className="d-flex justify-content-center mt-lg-5 mt-5 mb-1">
             <div className="px-1">
               <div className="row pb-2 mt-lg-2">
                 <div className="col-12 col-md-4 mb-3 mb-md-1">
