@@ -10,8 +10,6 @@
   }
 
   svg {
-    width: 100%;
-
     @include media-breakpoint-up(md) {
       width: auto;
     }
@@ -24,9 +22,5 @@
   &:last-child {
     margin-right: 0;
     margin-left: 0.5rem;
-  }
-
-  svg {
-    width: 100%;
   }
 }
