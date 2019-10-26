@@ -3,7 +3,7 @@
   "clean_urls": true,
   "redirects": {
     "/favicon.ico": {
-      "url": "/img/favicon.ico",
+      "url": "https://playpost.app/img/favicon.ico",
       "status": 302
     },
     "/privacy-policy": {
