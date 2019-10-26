@@ -47,13 +47,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-copy-files',
-      options: {
-        source: `${__dirname}/src/apple-app-site-association`,
-        destination: '/apple-app-site-association',
-      },
-    },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
