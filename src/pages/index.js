@@ -29,6 +29,7 @@ const Index = ({ data, location }) => {
           property="og:image"
           content={require('../../static/img/ogimage-v3.png')}
         />
+        <script defer data-domain="playpost.app" src="https://analytics.aardwegmedia.nl/js/script.js"></script>
       </Helmet>
       <Cover />
       <div className="container" id="features">
