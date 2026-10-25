@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import './style.scss'
 import { APPLE_APP_STORE_URL } from '../../constants/urls'
 
@@ -55,12 +54,12 @@ class Modal extends React.Component {
 
             <div className="d-flex justify-content-center">
               <div className="px-1">
-                <OutboundLink
+                <a
                   className="btn btn-primary btn-lg font-weight-semibold"
                   href={APPLE_APP_STORE_URL}
                 >
                   Get iPhone App
-                </OutboundLink>
+                </a>
               </div>
               {/* <div className="px-1">
                 <a className="btn btn-outline-primary" href="">

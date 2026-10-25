@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import Layout from 'components/Layout'
 import CenterHeader from 'components/CenterHeader'
@@ -28,12 +27,12 @@ class Firefox extends React.Component {
           title={pageTitle}
           description={pageDescription}
           button={
-            <OutboundLink
+            <a
               href={FIREFOX_EXTENSION_URL}
               className="btn btn-lg btn-white font-weight-semibold"
             >
               Install Firefox extension
-            </OutboundLink>
+            </a>
           }
         />
         <div className="container">

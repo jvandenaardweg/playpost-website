@@ -1,6 +1,5 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import {
   APPLE_APP_STORE_URL,
@@ -86,7 +85,7 @@ const Footer = ({ author, title }) => {
             <h2>Mobile apps</h2>
             <div className="row">
               <div className="mb-2 col-12">
-                <OutboundLink href={APPLE_APP_STORE_URL}>
+                <a href={APPLE_APP_STORE_URL}>
                   <svg
                     width="123"
                     height="38"
@@ -109,10 +108,10 @@ const Footer = ({ author, title }) => {
                       />
                     </g>
                   </svg>
-                </OutboundLink>
+                </a>
               </div>
               <div className="mb-2 col-12">
-                <OutboundLink href={GOOGLE_PLAY_STORE_URL}>
+                <a href={GOOGLE_PLAY_STORE_URL}>
                   <svg
                     width="123"
                     height="38"
@@ -198,7 +197,7 @@ const Footer = ({ author, title }) => {
                       />
                     </g>
                   </svg>
-                </OutboundLink>
+                </a>
               </div>
             </div>
           </div>
@@ -226,24 +225,24 @@ const Footer = ({ author, title }) => {
             <h2>Socials</h2>
             <div className="row">
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-70" href={FACEBOOK_URL}>
+                <a className="text-white-70" href={FACEBOOK_URL}>
                   <span>Facebook</span>
-                </OutboundLink>
+                </a>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-70" href={TWITTER_URL}>
+                <a className="text-white-70" href={TWITTER_URL}>
                   <span>Twitter</span>
-                </OutboundLink>
+                </a>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-70" href={INSTAGRAM_URL}>
+                <a className="text-white-70" href={INSTAGRAM_URL}>
                   <span>Instagram</span>
-                </OutboundLink>
+                </a>
               </div>
               <div className="mb-1 col-12">
-                <OutboundLink className="text-white-70" href={MEDIUM_URL}>
+                <a className="text-white-70" href={MEDIUM_URL}>
                   <span>Medium</span>
-                </OutboundLink>
+                </a>
               </div>
             </div>
 
@@ -257,12 +256,12 @@ const Footer = ({ author, title }) => {
               <div className="small text-center">
                 <span className="text-muted">
                   &copy; 2019 Playpost. Made with &hearts; in Amsterdam by{' '}
-                  <OutboundLink
+                  <a
                     className="text-muted"
                     href="https://www.linkedin.com/in/jvandenaardweg/"
                   >
                     <u>Jordy van den Aardweg</u>
-                  </OutboundLink>
+                  </a>
                   .
                 </span>
               </div>

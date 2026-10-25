@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import './style.scss'
 import Icon from 'components/Icon'

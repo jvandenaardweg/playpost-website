@@ -1,5 +1,4 @@
 import React from 'react'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import './style.scss'
 
@@ -22,7 +21,7 @@ class AppStoreBadges extends React.Component {
       <div className="row align-items-center justify-content-center">
         <div className={`appstorebadges ${!centered ? 'col-12' : ''}`}>
           <div className="appstorebadges__badge">
-            <OutboundLink href={APPLE_APP_STORE_URL}>
+            <a href={APPLE_APP_STORE_URL}>
               <svg
                 width="185"
                 height="57"
@@ -45,10 +44,10 @@ class AppStoreBadges extends React.Component {
                   />
                 </g>
               </svg>
-            </OutboundLink>
+            </a>
           </div>
           <div className="appstorebadges__badge">
-            <OutboundLink href={GOOGLE_PLAY_STORE_URL}>
+            <a href={GOOGLE_PLAY_STORE_URL}>
               <svg
                 width="185"
                 height="57"
@@ -134,7 +133,7 @@ class AppStoreBadges extends React.Component {
                   />
                 </g>
               </svg>
-            </OutboundLink>
+            </a>
           </div>
         </div>
       </div>

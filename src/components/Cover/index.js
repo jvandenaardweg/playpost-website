@@ -1,5 +1,4 @@
 import React from 'react'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import { Link } from 'gatsby'
 
 import './style.scss'

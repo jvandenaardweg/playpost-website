@@ -14,15 +14,6 @@ module.exports = {
       options: { prefixes: [`/playlist/add/*`] },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-258356-39',
-        head: false,
-        anonymize: true,
-        respectDNT: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Playpost',
